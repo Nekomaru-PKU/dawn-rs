@@ -82,6 +82,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "dawn-rs"
+version = "0.1.0"
+
+[[package]]
 name = "dawn-sys"
 version = "0.1.0"
 dependencies = [
