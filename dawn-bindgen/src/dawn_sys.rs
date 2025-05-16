@@ -16,11 +16,7 @@ use crate::common::{
 };
 
 pub fn generate_from_yaml(yaml: &Yaml) -> TokenStream {
-    let mut out = quote! {
-        pub use raw::WGPUFlags;
-        pub use raw::WGPUBool;
-    };
-
+    let mut out = TokenStream::new();
     out.extend(generate_section_from_yaml(yaml, "enums", generate_enum));
     out.extend(generate_section_from_yaml(yaml, "bitflags", generate_bitflag));
     out.extend(generate_section_from_yaml(yaml, "structs", generate_struct));
@@ -48,7 +44,7 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
             strum::EnumString,
             strum::FromRepr,
             strum::IntoStaticStr))]
-        #[repr(u32)]
+        #[repr(i32)]
         pub enum #type_ident {
             #(#items)*
         }
@@ -72,7 +68,7 @@ fn generate_enum_item(type_name: &str, yaml: &Yaml) -> TokenStream {
         type_name,
         type_name,
         name_raw);
-    quote!(#ident = raw::#ident_raw as _,)
+    quote!(#ident = raw::#ident_raw,)
 }
 
 fn generate_bitflag(yaml: &Yaml) -> TokenStream {
@@ -103,7 +99,7 @@ fn generate_bitflag_item(type_name: &str, yaml: &Yaml) -> TokenStream {
     let name_raw = snake_case_to_pascal_case(snake_case_name);
     let ident = format_ident!("{name}");
     let ident_raw = format_ident!("WGPU{type_name}_{name_raw}");
-    quote!(const #ident = raw::#ident_raw as _;)
+    quote!(const #ident = raw::#ident_raw;)
 }
 
 fn generate_struct(yaml: &Yaml) -> TokenStream {
@@ -115,7 +111,11 @@ fn generate_struct(yaml: &Yaml) -> TokenStream {
 fn generate_callback(yaml: &Yaml) -> TokenStream {
     let name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
     let ident = format_ident!("WGPU{name}Callback");
-    quote!(pub use raw::#ident;)
+    let ident_info = format_ident!("WGPU{name}CallbackInfo");
+    quote!{
+        pub use raw::#ident;
+        pub use raw::#ident_info;
+    }
 }
 
 fn generate_function(yaml: &Yaml) -> TokenStream {

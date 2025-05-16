@@ -11,7 +11,7 @@ fn main() {
     eprintln!("copy_src: {}", copy_src.display());
     eprintln!("copy_dst: {}", copy_dst.display());
 
-    println!("cargo:rustc-link-search=native={}", output_binary_dir.display());
+    println!("cargo:rustc-link-search=native={}", source_binary_dir.display());
     println!("cargo:rustc-link-lib=dylib=webgpu_dawn");
     println!("cargo:rerun-if-changed={}", copy_src.display());
 

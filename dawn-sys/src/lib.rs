@@ -2,6 +2,13 @@
 
 include!("../generated/lib.rs");
 
+pub use raw::{
+    WGPUStringView,
+    WGPUFlags,
+    WGPUBool,
+    WGPUChainedStruct,
+};
+
 mod raw {
     #![allow(clippy::all)]
     #![allow(non_camel_case_types)]
