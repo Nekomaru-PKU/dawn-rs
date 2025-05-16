@@ -1,3 +1,7 @@
+#![no_std]
+
+include!("../generated/lib.rs");
+
 mod raw {
     #![allow(clippy::all)]
     #![allow(non_camel_case_types)]
@@ -8,4 +12,3 @@ mod raw {
     include!("../generated/bindings.rs");
 }
 
-include!("../generated/lib.rs");

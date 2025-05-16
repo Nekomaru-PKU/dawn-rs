@@ -87,12 +87,12 @@ pub const OVERFLOW: u32 = 3;
 pub const UNDERFLOW: u32 = 4;
 pub const TLOSS: u32 = 5;
 pub const PLOSS: u32 = 6;
-pub type va_list = *mut ::std::os::raw::c_char;
+pub type va_list = *mut ::core::ffi::c_char;
 unsafe extern "C" {
-    pub fn __va_start(arg1: *mut *mut ::std::os::raw::c_char, ...);
+    pub fn __va_start(arg1: *mut *mut ::core::ffi::c_char, ...);
 }
 pub type __vcrt_bool = bool;
-pub type wchar_t = ::std::os::raw::c_ushort;
+pub type wchar_t = ::core::ffi::c_ushort;
 unsafe extern "C" {
     pub fn __security_init_cookie();
 }
@@ -105,24 +105,24 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub static mut __security_cookie: usize;
 }
-pub type int_least8_t = ::std::os::raw::c_schar;
-pub type int_least16_t = ::std::os::raw::c_short;
-pub type int_least32_t = ::std::os::raw::c_int;
-pub type int_least64_t = ::std::os::raw::c_longlong;
-pub type uint_least8_t = ::std::os::raw::c_uchar;
-pub type uint_least16_t = ::std::os::raw::c_ushort;
-pub type uint_least32_t = ::std::os::raw::c_uint;
-pub type uint_least64_t = ::std::os::raw::c_ulonglong;
-pub type int_fast8_t = ::std::os::raw::c_schar;
-pub type int_fast16_t = ::std::os::raw::c_int;
-pub type int_fast32_t = ::std::os::raw::c_int;
-pub type int_fast64_t = ::std::os::raw::c_longlong;
-pub type uint_fast8_t = ::std::os::raw::c_uchar;
-pub type uint_fast16_t = ::std::os::raw::c_uint;
-pub type uint_fast32_t = ::std::os::raw::c_uint;
-pub type uint_fast64_t = ::std::os::raw::c_ulonglong;
-pub type intmax_t = ::std::os::raw::c_longlong;
-pub type uintmax_t = ::std::os::raw::c_ulonglong;
+pub type int_least8_t = ::core::ffi::c_schar;
+pub type int_least16_t = ::core::ffi::c_short;
+pub type int_least32_t = ::core::ffi::c_int;
+pub type int_least64_t = ::core::ffi::c_longlong;
+pub type uint_least8_t = ::core::ffi::c_uchar;
+pub type uint_least16_t = ::core::ffi::c_ushort;
+pub type uint_least32_t = ::core::ffi::c_uint;
+pub type uint_least64_t = ::core::ffi::c_ulonglong;
+pub type int_fast8_t = ::core::ffi::c_schar;
+pub type int_fast16_t = ::core::ffi::c_int;
+pub type int_fast32_t = ::core::ffi::c_int;
+pub type int_fast64_t = ::core::ffi::c_longlong;
+pub type uint_fast8_t = ::core::ffi::c_uchar;
+pub type uint_fast16_t = ::core::ffi::c_uint;
+pub type uint_fast32_t = ::core::ffi::c_uint;
+pub type uint_fast64_t = ::core::ffi::c_ulonglong;
+pub type intmax_t = ::core::ffi::c_longlong;
+pub type uintmax_t = ::core::ffi::c_ulonglong;
 pub type __crt_bool = bool;
 unsafe extern "C" {
     pub fn _invalid_parameter_noinfo();
@@ -135,34 +135,34 @@ unsafe extern "C" {
         _Expression: *const wchar_t,
         _FunctionName: *const wchar_t,
         _FileName: *const wchar_t,
-        _LineNo: ::std::os::raw::c_uint,
+        _LineNo: ::core::ffi::c_uint,
         _Reserved: usize,
     ) -> !;
 }
-pub type errno_t = ::std::os::raw::c_int;
-pub type wint_t = ::std::os::raw::c_ushort;
-pub type wctype_t = ::std::os::raw::c_ushort;
-pub type __time32_t = ::std::os::raw::c_long;
-pub type __time64_t = ::std::os::raw::c_longlong;
+pub type errno_t = ::core::ffi::c_int;
+pub type wint_t = ::core::ffi::c_ushort;
+pub type wctype_t = ::core::ffi::c_ushort;
+pub type __time32_t = ::core::ffi::c_long;
+pub type __time64_t = ::core::ffi::c_longlong;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct __crt_locale_data_public {
-    pub _locale_pctype: *const ::std::os::raw::c_ushort,
-    pub _locale_mb_cur_max: ::std::os::raw::c_int,
-    pub _locale_lc_codepage: ::std::os::raw::c_uint,
+    pub _locale_pctype: *const ::core::ffi::c_ushort,
+    pub _locale_mb_cur_max: ::core::ffi::c_int,
+    pub _locale_lc_codepage: ::core::ffi::c_uint,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of __crt_locale_data_public"]
-        [::std::mem::size_of::<__crt_locale_data_public>() - 16usize];
+        [::core::mem::size_of::<__crt_locale_data_public>() - 16usize];
     ["Alignment of __crt_locale_data_public"]
-        [::std::mem::align_of::<__crt_locale_data_public>() - 8usize];
+        [::core::mem::align_of::<__crt_locale_data_public>() - 8usize];
     ["Offset of field: __crt_locale_data_public::_locale_pctype"]
-        [::std::mem::offset_of!(__crt_locale_data_public, _locale_pctype) - 0usize];
+        [::core::mem::offset_of!(__crt_locale_data_public, _locale_pctype) - 0usize];
     ["Offset of field: __crt_locale_data_public::_locale_mb_cur_max"]
-        [::std::mem::offset_of!(__crt_locale_data_public, _locale_mb_cur_max) - 8usize];
+        [::core::mem::offset_of!(__crt_locale_data_public, _locale_mb_cur_max) - 8usize];
     ["Offset of field: __crt_locale_data_public::_locale_lc_codepage"]
-        [::std::mem::offset_of!(__crt_locale_data_public, _locale_lc_codepage) - 12usize];
+        [::core::mem::offset_of!(__crt_locale_data_public, _locale_lc_codepage) - 12usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -172,44 +172,44 @@ pub struct __crt_locale_pointers {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of __crt_locale_pointers"][::std::mem::size_of::<__crt_locale_pointers>() - 16usize];
+    ["Size of __crt_locale_pointers"][::core::mem::size_of::<__crt_locale_pointers>() - 16usize];
     ["Alignment of __crt_locale_pointers"]
-        [::std::mem::align_of::<__crt_locale_pointers>() - 8usize];
+        [::core::mem::align_of::<__crt_locale_pointers>() - 8usize];
     ["Offset of field: __crt_locale_pointers::locinfo"]
-        [::std::mem::offset_of!(__crt_locale_pointers, locinfo) - 0usize];
+        [::core::mem::offset_of!(__crt_locale_pointers, locinfo) - 0usize];
     ["Offset of field: __crt_locale_pointers::mbcinfo"]
-        [::std::mem::offset_of!(__crt_locale_pointers, mbcinfo) - 8usize];
+        [::core::mem::offset_of!(__crt_locale_pointers, mbcinfo) - 8usize];
 };
 pub type _locale_t = *mut __crt_locale_pointers;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _Mbstatet {
-    pub _Wchar: ::std::os::raw::c_ulong,
-    pub _Byte: ::std::os::raw::c_ushort,
-    pub _State: ::std::os::raw::c_ushort,
+    pub _Wchar: ::core::ffi::c_ulong,
+    pub _Byte: ::core::ffi::c_ushort,
+    pub _State: ::core::ffi::c_ushort,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _Mbstatet"][::std::mem::size_of::<_Mbstatet>() - 8usize];
-    ["Alignment of _Mbstatet"][::std::mem::align_of::<_Mbstatet>() - 4usize];
-    ["Offset of field: _Mbstatet::_Wchar"][::std::mem::offset_of!(_Mbstatet, _Wchar) - 0usize];
-    ["Offset of field: _Mbstatet::_Byte"][::std::mem::offset_of!(_Mbstatet, _Byte) - 4usize];
-    ["Offset of field: _Mbstatet::_State"][::std::mem::offset_of!(_Mbstatet, _State) - 6usize];
+    ["Size of _Mbstatet"][::core::mem::size_of::<_Mbstatet>() - 8usize];
+    ["Alignment of _Mbstatet"][::core::mem::align_of::<_Mbstatet>() - 4usize];
+    ["Offset of field: _Mbstatet::_Wchar"][::core::mem::offset_of!(_Mbstatet, _Wchar) - 0usize];
+    ["Offset of field: _Mbstatet::_Byte"][::core::mem::offset_of!(_Mbstatet, _Byte) - 4usize];
+    ["Offset of field: _Mbstatet::_State"][::core::mem::offset_of!(_Mbstatet, _State) - 6usize];
 };
 pub type mbstate_t = _Mbstatet;
 pub type time_t = __time64_t;
 pub type rsize_t = usize;
 unsafe extern "C" {
-    pub fn _errno() -> *mut ::std::os::raw::c_int;
+    pub fn _errno() -> *mut ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _set_errno(_Value: ::std::os::raw::c_int) -> errno_t;
+    pub fn _set_errno(_Value: ::core::ffi::c_int) -> errno_t;
 }
 unsafe extern "C" {
-    pub fn _get_errno(_Value: *mut ::std::os::raw::c_int) -> errno_t;
+    pub fn _get_errno(_Value: *mut ::core::ffi::c_int) -> errno_t;
 }
 unsafe extern "C" {
-    pub fn __threadid() -> ::std::os::raw::c_ulong;
+    pub fn __threadid() -> ::core::ffi::c_ulong;
 }
 unsafe extern "C" {
     pub fn __threadhandle() -> usize;
@@ -217,21 +217,21 @@ unsafe extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _exception {
-    pub type_: ::std::os::raw::c_int,
-    pub name: *mut ::std::os::raw::c_char,
+    pub type_: ::core::ffi::c_int,
+    pub name: *mut ::core::ffi::c_char,
     pub arg1: f64,
     pub arg2: f64,
     pub retval: f64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _exception"][::std::mem::size_of::<_exception>() - 40usize];
-    ["Alignment of _exception"][::std::mem::align_of::<_exception>() - 8usize];
-    ["Offset of field: _exception::type_"][::std::mem::offset_of!(_exception, type_) - 0usize];
-    ["Offset of field: _exception::name"][::std::mem::offset_of!(_exception, name) - 8usize];
-    ["Offset of field: _exception::arg1"][::std::mem::offset_of!(_exception, arg1) - 16usize];
-    ["Offset of field: _exception::arg2"][::std::mem::offset_of!(_exception, arg2) - 24usize];
-    ["Offset of field: _exception::retval"][::std::mem::offset_of!(_exception, retval) - 32usize];
+    ["Size of _exception"][::core::mem::size_of::<_exception>() - 40usize];
+    ["Alignment of _exception"][::core::mem::align_of::<_exception>() - 8usize];
+    ["Offset of field: _exception::type_"][::core::mem::offset_of!(_exception, type_) - 0usize];
+    ["Offset of field: _exception::name"][::core::mem::offset_of!(_exception, name) - 8usize];
+    ["Offset of field: _exception::arg1"][::core::mem::offset_of!(_exception, arg1) - 16usize];
+    ["Offset of field: _exception::arg2"][::core::mem::offset_of!(_exception, arg2) - 24usize];
+    ["Offset of field: _exception::retval"][::core::mem::offset_of!(_exception, retval) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -241,10 +241,10 @@ pub struct _complex {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _complex"][::std::mem::size_of::<_complex>() - 16usize];
-    ["Alignment of _complex"][::std::mem::align_of::<_complex>() - 8usize];
-    ["Offset of field: _complex::x"][::std::mem::offset_of!(_complex, x) - 0usize];
-    ["Offset of field: _complex::y"][::std::mem::offset_of!(_complex, y) - 8usize];
+    ["Size of _complex"][::core::mem::size_of::<_complex>() - 16usize];
+    ["Alignment of _complex"][::core::mem::align_of::<_complex>() - 8usize];
+    ["Offset of field: _complex::x"][::core::mem::offset_of!(_complex, x) - 0usize];
+    ["Offset of field: _complex::y"][::core::mem::offset_of!(_complex, y) - 8usize];
 };
 pub type float_t = f32;
 pub type double_t = f64;
@@ -252,175 +252,171 @@ unsafe extern "C" {
     pub static _HUGE: f64;
 }
 unsafe extern "C" {
-    pub fn _fperrraise(_Except: ::std::os::raw::c_int);
+    pub fn _fperrraise(_Except: ::core::ffi::c_int);
 }
 unsafe extern "C" {
-    pub fn _dclass(_X: f64) -> ::std::os::raw::c_short;
+    pub fn _dclass(_X: f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ldclass(_X: f64) -> ::std::os::raw::c_short;
+    pub fn _ldclass(_X: f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdclass(_X: f32) -> ::std::os::raw::c_short;
+    pub fn _fdclass(_X: f32) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dsign(_X: f64) -> ::std::os::raw::c_int;
+    pub fn _dsign(_X: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _ldsign(_X: f64) -> ::std::os::raw::c_int;
+    pub fn _ldsign(_X: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _fdsign(_X: f32) -> ::std::os::raw::c_int;
+    pub fn _fdsign(_X: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _dpcomp(_X: f64, _Y: f64) -> ::std::os::raw::c_int;
+    pub fn _dpcomp(_X: f64, _Y: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _ldpcomp(_X: f64, _Y: f64) -> ::std::os::raw::c_int;
+    pub fn _ldpcomp(_X: f64, _Y: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _fdpcomp(_X: f32, _Y: f32) -> ::std::os::raw::c_int;
+    pub fn _fdpcomp(_X: f32, _Y: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _dtest(_Px: *mut f64) -> ::std::os::raw::c_short;
+    pub fn _dtest(_Px: *mut f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ldtest(_Px: *mut f64) -> ::std::os::raw::c_short;
+    pub fn _ldtest(_Px: *mut f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdtest(_Px: *mut f32) -> ::std::os::raw::c_short;
+    pub fn _fdtest(_Px: *mut f32) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _d_int(_Px: *mut f64, _Xexp: ::std::os::raw::c_short) -> ::std::os::raw::c_short;
+    pub fn _d_int(_Px: *mut f64, _Xexp: ::core::ffi::c_short) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ld_int(_Px: *mut f64, _Xexp: ::std::os::raw::c_short) -> ::std::os::raw::c_short;
+    pub fn _ld_int(_Px: *mut f64, _Xexp: ::core::ffi::c_short) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fd_int(_Px: *mut f32, _Xexp: ::std::os::raw::c_short) -> ::std::os::raw::c_short;
+    pub fn _fd_int(_Px: *mut f32, _Xexp: ::core::ffi::c_short) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dscale(_Px: *mut f64, _Lexp: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
+    pub fn _dscale(_Px: *mut f64, _Lexp: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ldscale(_Px: *mut f64, _Lexp: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
+    pub fn _ldscale(_Px: *mut f64, _Lexp: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdscale(_Px: *mut f32, _Lexp: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
+    pub fn _fdscale(_Px: *mut f32, _Lexp: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f64) -> ::std::os::raw::c_short;
+    pub fn _dunscale(_Pex: *mut ::core::ffi::c_short, _Px: *mut f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ldunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f64)
-        -> ::std::os::raw::c_short;
+    pub fn _ldunscale(_Pex: *mut ::core::ffi::c_short, _Px: *mut f64) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdunscale(_Pex: *mut ::std::os::raw::c_short, _Px: *mut f32)
-        -> ::std::os::raw::c_short;
+    pub fn _fdunscale(_Pex: *mut ::core::ffi::c_short, _Px: *mut f32) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dexp(_Px: *mut f64, _Y: f64, _Eoff: ::std::os::raw::c_long) -> ::std::os::raw::c_short;
+    pub fn _dexp(_Px: *mut f64, _Y: f64, _Eoff: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _ldexp(_Px: *mut f64, _Y: f64, _Eoff: ::std::os::raw::c_long)
-        -> ::std::os::raw::c_short;
+    pub fn _ldexp(_Px: *mut f64, _Y: f64, _Eoff: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdexp(_Px: *mut f32, _Y: f32, _Eoff: ::std::os::raw::c_long)
-        -> ::std::os::raw::c_short;
+    pub fn _fdexp(_Px: *mut f32, _Y: f32, _Eoff: ::core::ffi::c_long) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dnorm(_Ps: *mut ::std::os::raw::c_ushort) -> ::std::os::raw::c_short;
+    pub fn _dnorm(_Ps: *mut ::core::ffi::c_ushort) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _fdnorm(_Ps: *mut ::std::os::raw::c_ushort) -> ::std::os::raw::c_short;
+    pub fn _fdnorm(_Ps: *mut ::core::ffi::c_ushort) -> ::core::ffi::c_short;
 }
 unsafe extern "C" {
-    pub fn _dpoly(_X: f64, _Tab: *const f64, _N: ::std::os::raw::c_int) -> f64;
+    pub fn _dpoly(_X: f64, _Tab: *const f64, _N: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
-    pub fn _ldpoly(_X: f64, _Tab: *const f64, _N: ::std::os::raw::c_int) -> f64;
+    pub fn _ldpoly(_X: f64, _Tab: *const f64, _N: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
-    pub fn _fdpoly(_X: f32, _Tab: *const f32, _N: ::std::os::raw::c_int) -> f32;
+    pub fn _fdpoly(_X: f32, _Tab: *const f32, _N: ::core::ffi::c_int) -> f32;
 }
 unsafe extern "C" {
-    pub fn _dlog(_X: f64, _Baseflag: ::std::os::raw::c_int) -> f64;
+    pub fn _dlog(_X: f64, _Baseflag: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
-    pub fn _ldlog(_X: f64, _Baseflag: ::std::os::raw::c_int) -> f64;
+    pub fn _ldlog(_X: f64, _Baseflag: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
-    pub fn _fdlog(_X: f32, _Baseflag: ::std::os::raw::c_int) -> f32;
+    pub fn _fdlog(_X: f32, _Baseflag: ::core::ffi::c_int) -> f32;
 }
 unsafe extern "C" {
-    pub fn _dsin(_X: f64, _Qoff: ::std::os::raw::c_uint) -> f64;
+    pub fn _dsin(_X: f64, _Qoff: ::core::ffi::c_uint) -> f64;
 }
 unsafe extern "C" {
-    pub fn _ldsin(_X: f64, _Qoff: ::std::os::raw::c_uint) -> f64;
+    pub fn _ldsin(_X: f64, _Qoff: ::core::ffi::c_uint) -> f64;
 }
 unsafe extern "C" {
-    pub fn _fdsin(_X: f32, _Qoff: ::std::os::raw::c_uint) -> f32;
+    pub fn _fdsin(_X: f32, _Qoff: ::core::ffi::c_uint) -> f32;
 }
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union _double_val {
-    pub _Sh: [::std::os::raw::c_ushort; 4usize],
+    pub _Sh: [::core::ffi::c_ushort; 4usize],
     pub _Val: f64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _double_val"][::std::mem::size_of::<_double_val>() - 8usize];
-    ["Alignment of _double_val"][::std::mem::align_of::<_double_val>() - 8usize];
-    ["Offset of field: _double_val::_Sh"][::std::mem::offset_of!(_double_val, _Sh) - 0usize];
-    ["Offset of field: _double_val::_Val"][::std::mem::offset_of!(_double_val, _Val) - 0usize];
+    ["Size of _double_val"][::core::mem::size_of::<_double_val>() - 8usize];
+    ["Alignment of _double_val"][::core::mem::align_of::<_double_val>() - 8usize];
+    ["Offset of field: _double_val::_Sh"][::core::mem::offset_of!(_double_val, _Sh) - 0usize];
+    ["Offset of field: _double_val::_Val"][::core::mem::offset_of!(_double_val, _Val) - 0usize];
 };
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union _float_val {
-    pub _Sh: [::std::os::raw::c_ushort; 2usize],
+    pub _Sh: [::core::ffi::c_ushort; 2usize],
     pub _Val: f32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _float_val"][::std::mem::size_of::<_float_val>() - 4usize];
-    ["Alignment of _float_val"][::std::mem::align_of::<_float_val>() - 4usize];
-    ["Offset of field: _float_val::_Sh"][::std::mem::offset_of!(_float_val, _Sh) - 0usize];
-    ["Offset of field: _float_val::_Val"][::std::mem::offset_of!(_float_val, _Val) - 0usize];
+    ["Size of _float_val"][::core::mem::size_of::<_float_val>() - 4usize];
+    ["Alignment of _float_val"][::core::mem::align_of::<_float_val>() - 4usize];
+    ["Offset of field: _float_val::_Sh"][::core::mem::offset_of!(_float_val, _Sh) - 0usize];
+    ["Offset of field: _float_val::_Val"][::core::mem::offset_of!(_float_val, _Val) - 0usize];
 };
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union _ldouble_val {
-    pub _Sh: [::std::os::raw::c_ushort; 4usize],
+    pub _Sh: [::core::ffi::c_ushort; 4usize],
     pub _Val: f64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _ldouble_val"][::std::mem::size_of::<_ldouble_val>() - 8usize];
-    ["Alignment of _ldouble_val"][::std::mem::align_of::<_ldouble_val>() - 8usize];
-    ["Offset of field: _ldouble_val::_Sh"][::std::mem::offset_of!(_ldouble_val, _Sh) - 0usize];
-    ["Offset of field: _ldouble_val::_Val"][::std::mem::offset_of!(_ldouble_val, _Val) - 0usize];
+    ["Size of _ldouble_val"][::core::mem::size_of::<_ldouble_val>() - 8usize];
+    ["Alignment of _ldouble_val"][::core::mem::align_of::<_ldouble_val>() - 8usize];
+    ["Offset of field: _ldouble_val::_Sh"][::core::mem::offset_of!(_ldouble_val, _Sh) - 0usize];
+    ["Offset of field: _ldouble_val::_Val"][::core::mem::offset_of!(_ldouble_val, _Val) - 0usize];
 };
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub union _float_const {
-    pub _Word: [::std::os::raw::c_ushort; 4usize],
+    pub _Word: [::core::ffi::c_ushort; 4usize],
     pub _Float: f32,
     pub _Double: f64,
     pub _Long_double: f64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of _float_const"][::std::mem::size_of::<_float_const>() - 8usize];
-    ["Alignment of _float_const"][::std::mem::align_of::<_float_const>() - 8usize];
-    ["Offset of field: _float_const::_Word"][::std::mem::offset_of!(_float_const, _Word) - 0usize];
+    ["Size of _float_const"][::core::mem::size_of::<_float_const>() - 8usize];
+    ["Alignment of _float_const"][::core::mem::align_of::<_float_const>() - 8usize];
+    ["Offset of field: _float_const::_Word"][::core::mem::offset_of!(_float_const, _Word) - 0usize];
     ["Offset of field: _float_const::_Float"]
-        [::std::mem::offset_of!(_float_const, _Float) - 0usize];
+        [::core::mem::offset_of!(_float_const, _Float) - 0usize];
     ["Offset of field: _float_const::_Double"]
-        [::std::mem::offset_of!(_float_const, _Double) - 0usize];
+        [::core::mem::offset_of!(_float_const, _Double) - 0usize];
     ["Offset of field: _float_const::_Long_double"]
-        [::std::mem::offset_of!(_float_const, _Long_double) - 0usize];
+        [::core::mem::offset_of!(_float_const, _Long_double) - 0usize];
 };
 unsafe extern "C" {
     pub static _Denorm_C: _float_const;
@@ -498,13 +494,13 @@ unsafe extern "C" {
     pub static _LXbig_C: f64;
 }
 unsafe extern "C" {
-    pub fn abs(_X: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
+    pub fn abs(_X: ::core::ffi::c_int) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn labs(_X: ::std::os::raw::c_long) -> ::std::os::raw::c_long;
+    pub fn labs(_X: ::core::ffi::c_long) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn llabs(_X: ::std::os::raw::c_longlong) -> ::std::os::raw::c_longlong;
+    pub fn llabs(_X: ::core::ffi::c_longlong) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
     pub fn acos(_X: f64) -> f64;
@@ -567,10 +563,10 @@ unsafe extern "C" {
     pub fn atanh(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn atof(_String: *const ::std::os::raw::c_char) -> f64;
+    pub fn atof(_String: *const ::core::ffi::c_char) -> f64;
 }
 unsafe extern "C" {
-    pub fn _atof_l(_String: *const ::std::os::raw::c_char, _Locale: _locale_t) -> f64;
+    pub fn _atof_l(_String: *const ::core::ffi::c_char, _Locale: _locale_t) -> f64;
 }
 unsafe extern "C" {
     pub fn _cabs(_Complex_value: _complex) -> f64;
@@ -618,7 +614,7 @@ unsafe extern "C" {
     pub fn fmin(_X: f64, _Y: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn frexp(_X: f64, _Y: *mut ::std::os::raw::c_int) -> f64;
+    pub fn frexp(_X: f64, _Y: *mut ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn hypot(_X: f64, _Y: f64) -> f64;
@@ -627,19 +623,19 @@ unsafe extern "C" {
     pub fn _hypot(_X: f64, _Y: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn ilogb(_X: f64) -> ::std::os::raw::c_int;
+    pub fn ilogb(_X: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn ldexp(_X: f64, _Y: ::std::os::raw::c_int) -> f64;
+    pub fn ldexp(_X: f64, _Y: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn lgamma(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn llrint(_X: f64) -> ::std::os::raw::c_longlong;
+    pub fn llrint(_X: f64) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
-    pub fn llround(_X: f64) -> ::std::os::raw::c_longlong;
+    pub fn llround(_X: f64) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
     pub fn log1p(_X: f64) -> f64;
@@ -651,19 +647,19 @@ unsafe extern "C" {
     pub fn logb(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn lrint(_X: f64) -> ::std::os::raw::c_long;
+    pub fn lrint(_X: f64) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn lround(_X: f64) -> ::std::os::raw::c_long;
+    pub fn lround(_X: f64) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn _matherr(_Except: *mut _exception) -> ::std::os::raw::c_int;
+    pub fn _matherr(_Except: *mut _exception) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
     pub fn modf(_X: f64, _Y: *mut f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn nan(_X: *const ::std::os::raw::c_char) -> f64;
+    pub fn nan(_X: *const ::core::ffi::c_char) -> f64;
 }
 unsafe extern "C" {
     pub fn nearbyint(_X: f64) -> f64;
@@ -678,7 +674,7 @@ unsafe extern "C" {
     pub fn remainder(_X: f64, _Y: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn remquo(_X: f64, _Y: f64, _Z: *mut ::std::os::raw::c_int) -> f64;
+    pub fn remquo(_X: f64, _Y: f64, _Z: *mut ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn rint(_X: f64) -> f64;
@@ -687,10 +683,10 @@ unsafe extern "C" {
     pub fn round(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn scalbln(_X: f64, _Y: ::std::os::raw::c_long) -> f64;
+    pub fn scalbln(_X: f64, _Y: ::core::ffi::c_long) -> f64;
 }
 unsafe extern "C" {
-    pub fn scalbn(_X: f64, _Y: ::std::os::raw::c_int) -> f64;
+    pub fn scalbn(_X: f64, _Y: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn tgamma(_X: f64) -> f64;
@@ -705,7 +701,7 @@ unsafe extern "C" {
     pub fn _j1(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn _jn(_X: ::std::os::raw::c_int, _Y: f64) -> f64;
+    pub fn _jn(_X: ::core::ffi::c_int, _Y: f64) -> f64;
 }
 unsafe extern "C" {
     pub fn _y0(_X: f64) -> f64;
@@ -714,7 +710,7 @@ unsafe extern "C" {
     pub fn _y1(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn _yn(_X: ::std::os::raw::c_int, _Y: f64) -> f64;
+    pub fn _yn(_X: ::core::ffi::c_int, _Y: f64) -> f64;
 }
 unsafe extern "C" {
     pub fn acoshf(_X: f32) -> f32;
@@ -765,16 +761,16 @@ unsafe extern "C" {
     pub fn _hypotf(_X: f32, _Y: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn ilogbf(_X: f32) -> ::std::os::raw::c_int;
+    pub fn ilogbf(_X: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
     pub fn lgammaf(_X: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn llrintf(_X: f32) -> ::std::os::raw::c_longlong;
+    pub fn llrintf(_X: f32) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
-    pub fn llroundf(_X: f32) -> ::std::os::raw::c_longlong;
+    pub fn llroundf(_X: f32) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
     pub fn log1pf(_X: f32) -> f32;
@@ -786,13 +782,13 @@ unsafe extern "C" {
     pub fn logbf(_X: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn lrintf(_X: f32) -> ::std::os::raw::c_long;
+    pub fn lrintf(_X: f32) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn lroundf(_X: f32) -> ::std::os::raw::c_long;
+    pub fn lroundf(_X: f32) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn nanf(_X: *const ::std::os::raw::c_char) -> f32;
+    pub fn nanf(_X: *const ::core::ffi::c_char) -> f32;
 }
 unsafe extern "C" {
     pub fn nearbyintf(_X: f32) -> f32;
@@ -807,7 +803,7 @@ unsafe extern "C" {
     pub fn remainderf(_X: f32, _Y: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn remquof(_X: f32, _Y: f32, _Z: *mut ::std::os::raw::c_int) -> f32;
+    pub fn remquof(_X: f32, _Y: f32, _Z: *mut ::core::ffi::c_int) -> f32;
 }
 unsafe extern "C" {
     pub fn rintf(_X: f32) -> f32;
@@ -816,10 +812,10 @@ unsafe extern "C" {
     pub fn roundf(_X: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn scalblnf(_X: f32, _Y: ::std::os::raw::c_long) -> f32;
+    pub fn scalblnf(_X: f32, _Y: ::core::ffi::c_long) -> f32;
 }
 unsafe extern "C" {
-    pub fn scalbnf(_X: f32, _Y: ::std::os::raw::c_int) -> f32;
+    pub fn scalbnf(_X: f32, _Y: ::core::ffi::c_int) -> f32;
 }
 unsafe extern "C" {
     pub fn tgammaf(_X: f32) -> f32;
@@ -834,19 +830,19 @@ unsafe extern "C" {
     pub fn _nextafterf(_X: f32, _Y: f32) -> f32;
 }
 unsafe extern "C" {
-    pub fn _finitef(_X: f32) -> ::std::os::raw::c_int;
+    pub fn _finitef(_X: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _isnanf(_X: f32) -> ::std::os::raw::c_int;
+    pub fn _isnanf(_X: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _fpclassf(_X: f32) -> ::std::os::raw::c_int;
+    pub fn _fpclassf(_X: f32) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _set_FMA3_enable(_Flag: ::std::os::raw::c_int) -> ::std::os::raw::c_int;
+    pub fn _set_FMA3_enable(_Flag: ::core::ffi::c_int) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
-    pub fn _get_FMA3_enable() -> ::std::os::raw::c_int;
+    pub fn _get_FMA3_enable() -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
     pub fn acosf(_X: f32) -> f32;
@@ -945,16 +941,16 @@ unsafe extern "C" {
     pub fn fminl(_X: f64, _Y: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn ilogbl(_X: f64) -> ::std::os::raw::c_int;
+    pub fn ilogbl(_X: f64) -> ::core::ffi::c_int;
 }
 unsafe extern "C" {
     pub fn lgammal(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn llrintl(_X: f64) -> ::std::os::raw::c_longlong;
+    pub fn llrintl(_X: f64) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
-    pub fn llroundl(_X: f64) -> ::std::os::raw::c_longlong;
+    pub fn llroundl(_X: f64) -> ::core::ffi::c_longlong;
 }
 unsafe extern "C" {
     pub fn log1pl(_X: f64) -> f64;
@@ -966,13 +962,13 @@ unsafe extern "C" {
     pub fn logbl(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn lrintl(_X: f64) -> ::std::os::raw::c_long;
+    pub fn lrintl(_X: f64) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn lroundl(_X: f64) -> ::std::os::raw::c_long;
+    pub fn lroundl(_X: f64) -> ::core::ffi::c_long;
 }
 unsafe extern "C" {
-    pub fn nanl(_X: *const ::std::os::raw::c_char) -> f64;
+    pub fn nanl(_X: *const ::core::ffi::c_char) -> f64;
 }
 unsafe extern "C" {
     pub fn nearbyintl(_X: f64) -> f64;
@@ -987,7 +983,7 @@ unsafe extern "C" {
     pub fn remainderl(_X: f64, _Y: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn remquol(_X: f64, _Y: f64, _Z: *mut ::std::os::raw::c_int) -> f64;
+    pub fn remquol(_X: f64, _Y: f64, _Z: *mut ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn rintl(_X: f64) -> f64;
@@ -996,10 +992,10 @@ unsafe extern "C" {
     pub fn roundl(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn scalblnl(_X: f64, _Y: ::std::os::raw::c_long) -> f64;
+    pub fn scalblnl(_X: f64, _Y: ::core::ffi::c_long) -> f64;
 }
 unsafe extern "C" {
-    pub fn scalbnl(_X: f64, _Y: ::std::os::raw::c_int) -> f64;
+    pub fn scalbnl(_X: f64, _Y: ::core::ffi::c_int) -> f64;
 }
 unsafe extern "C" {
     pub fn tgammal(_X: f64) -> f64;
@@ -1017,7 +1013,7 @@ unsafe extern "C" {
     pub fn j1(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn jn(_X: ::std::os::raw::c_int, _Y: f64) -> f64;
+    pub fn jn(_X: ::core::ffi::c_int, _Y: f64) -> f64;
 }
 unsafe extern "C" {
     pub fn y0(_X: f64) -> f64;
@@ -1026,22 +1022,22 @@ unsafe extern "C" {
     pub fn y1(_X: f64) -> f64;
 }
 unsafe extern "C" {
-    pub fn yn(_X: ::std::os::raw::c_int, _Y: f64) -> f64;
+    pub fn yn(_X: ::core::ffi::c_int, _Y: f64) -> f64;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUStringView {
-    pub data: *const ::std::os::raw::c_char,
+    pub data: *const ::core::ffi::c_char,
     pub length: usize,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUStringView"][::std::mem::size_of::<WGPUStringView>() - 16usize];
-    ["Alignment of WGPUStringView"][::std::mem::align_of::<WGPUStringView>() - 8usize];
+    ["Size of WGPUStringView"][::core::mem::size_of::<WGPUStringView>() - 16usize];
+    ["Alignment of WGPUStringView"][::core::mem::align_of::<WGPUStringView>() - 8usize];
     ["Offset of field: WGPUStringView::data"]
-        [::std::mem::offset_of!(WGPUStringView, data) - 0usize];
+        [::core::mem::offset_of!(WGPUStringView, data) - 0usize];
     ["Offset of field: WGPUStringView::length"]
-        [::std::mem::offset_of!(WGPUStringView, length) - 8usize];
+        [::core::mem::offset_of!(WGPUStringView, length) - 8usize];
 };
 pub type WGPUFlags = u64;
 pub type WGPUBool = u32;
@@ -1182,13 +1178,13 @@ pub const WGPUAdapterType_WGPUAdapterType_IntegratedGPU: WGPUAdapterType = 2;
 pub const WGPUAdapterType_WGPUAdapterType_CPU: WGPUAdapterType = 3;
 pub const WGPUAdapterType_WGPUAdapterType_Unknown: WGPUAdapterType = 4;
 pub const WGPUAdapterType_WGPUAdapterType_Force32: WGPUAdapterType = 2147483647;
-pub type WGPUAdapterType = ::std::os::raw::c_int;
+pub type WGPUAdapterType = ::core::ffi::c_int;
 pub const WGPUAddressMode_WGPUAddressMode_Undefined: WGPUAddressMode = 0;
 pub const WGPUAddressMode_WGPUAddressMode_ClampToEdge: WGPUAddressMode = 1;
 pub const WGPUAddressMode_WGPUAddressMode_Repeat: WGPUAddressMode = 2;
 pub const WGPUAddressMode_WGPUAddressMode_MirrorRepeat: WGPUAddressMode = 3;
 pub const WGPUAddressMode_WGPUAddressMode_Force32: WGPUAddressMode = 2147483647;
-pub type WGPUAddressMode = ::std::os::raw::c_int;
+pub type WGPUAddressMode = ::core::ffi::c_int;
 pub const WGPUBackendType_WGPUBackendType_Undefined: WGPUBackendType = 0;
 pub const WGPUBackendType_WGPUBackendType_Null: WGPUBackendType = 1;
 pub const WGPUBackendType_WGPUBackendType_WebGPU: WGPUBackendType = 2;
@@ -1199,7 +1195,7 @@ pub const WGPUBackendType_WGPUBackendType_Vulkan: WGPUBackendType = 6;
 pub const WGPUBackendType_WGPUBackendType_OpenGL: WGPUBackendType = 7;
 pub const WGPUBackendType_WGPUBackendType_OpenGLES: WGPUBackendType = 8;
 pub const WGPUBackendType_WGPUBackendType_Force32: WGPUBackendType = 2147483647;
-pub type WGPUBackendType = ::std::os::raw::c_int;
+pub type WGPUBackendType = ::core::ffi::c_int;
 pub const WGPUBlendFactor_WGPUBlendFactor_Undefined: WGPUBlendFactor = 0;
 pub const WGPUBlendFactor_WGPUBlendFactor_Zero: WGPUBlendFactor = 1;
 pub const WGPUBlendFactor_WGPUBlendFactor_One: WGPUBlendFactor = 2;
@@ -1219,7 +1215,7 @@ pub const WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1: WGPUBlendFactor = 15;
 pub const WGPUBlendFactor_WGPUBlendFactor_Src1Alpha: WGPUBlendFactor = 16;
 pub const WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1Alpha: WGPUBlendFactor = 17;
 pub const WGPUBlendFactor_WGPUBlendFactor_Force32: WGPUBlendFactor = 2147483647;
-pub type WGPUBlendFactor = ::std::os::raw::c_int;
+pub type WGPUBlendFactor = ::core::ffi::c_int;
 pub const WGPUBlendOperation_WGPUBlendOperation_Undefined: WGPUBlendOperation = 0;
 pub const WGPUBlendOperation_WGPUBlendOperation_Add: WGPUBlendOperation = 1;
 pub const WGPUBlendOperation_WGPUBlendOperation_Subtract: WGPUBlendOperation = 2;
@@ -1227,24 +1223,24 @@ pub const WGPUBlendOperation_WGPUBlendOperation_ReverseSubtract: WGPUBlendOperat
 pub const WGPUBlendOperation_WGPUBlendOperation_Min: WGPUBlendOperation = 4;
 pub const WGPUBlendOperation_WGPUBlendOperation_Max: WGPUBlendOperation = 5;
 pub const WGPUBlendOperation_WGPUBlendOperation_Force32: WGPUBlendOperation = 2147483647;
-pub type WGPUBlendOperation = ::std::os::raw::c_int;
+pub type WGPUBlendOperation = ::core::ffi::c_int;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_BindingNotUsed: WGPUBufferBindingType = 0;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_Undefined: WGPUBufferBindingType = 1;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_Uniform: WGPUBufferBindingType = 2;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_Storage: WGPUBufferBindingType = 3;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_ReadOnlyStorage: WGPUBufferBindingType = 4;
 pub const WGPUBufferBindingType_WGPUBufferBindingType_Force32: WGPUBufferBindingType = 2147483647;
-pub type WGPUBufferBindingType = ::std::os::raw::c_int;
+pub type WGPUBufferBindingType = ::core::ffi::c_int;
 pub const WGPUBufferMapState_WGPUBufferMapState_Unmapped: WGPUBufferMapState = 1;
 pub const WGPUBufferMapState_WGPUBufferMapState_Pending: WGPUBufferMapState = 2;
 pub const WGPUBufferMapState_WGPUBufferMapState_Mapped: WGPUBufferMapState = 3;
 pub const WGPUBufferMapState_WGPUBufferMapState_Force32: WGPUBufferMapState = 2147483647;
-pub type WGPUBufferMapState = ::std::os::raw::c_int;
+pub type WGPUBufferMapState = ::core::ffi::c_int;
 pub const WGPUCallbackMode_WGPUCallbackMode_WaitAnyOnly: WGPUCallbackMode = 1;
 pub const WGPUCallbackMode_WGPUCallbackMode_AllowProcessEvents: WGPUCallbackMode = 2;
 pub const WGPUCallbackMode_WGPUCallbackMode_AllowSpontaneous: WGPUCallbackMode = 3;
 pub const WGPUCallbackMode_WGPUCallbackMode_Force32: WGPUCallbackMode = 2147483647;
-pub type WGPUCallbackMode = ::std::os::raw::c_int;
+pub type WGPUCallbackMode = ::core::ffi::c_int;
 pub const WGPUCompareFunction_WGPUCompareFunction_Undefined: WGPUCompareFunction = 0;
 pub const WGPUCompareFunction_WGPUCompareFunction_Never: WGPUCompareFunction = 1;
 pub const WGPUCompareFunction_WGPUCompareFunction_Less: WGPUCompareFunction = 2;
@@ -1255,14 +1251,14 @@ pub const WGPUCompareFunction_WGPUCompareFunction_NotEqual: WGPUCompareFunction 
 pub const WGPUCompareFunction_WGPUCompareFunction_GreaterEqual: WGPUCompareFunction = 7;
 pub const WGPUCompareFunction_WGPUCompareFunction_Always: WGPUCompareFunction = 8;
 pub const WGPUCompareFunction_WGPUCompareFunction_Force32: WGPUCompareFunction = 2147483647;
-pub type WGPUCompareFunction = ::std::os::raw::c_int;
+pub type WGPUCompareFunction = ::core::ffi::c_int;
 pub const WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_Success:
     WGPUCompilationInfoRequestStatus = 1;
 pub const WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_CallbackCancelled:
     WGPUCompilationInfoRequestStatus = 2;
 pub const WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_Force32:
     WGPUCompilationInfoRequestStatus = 2147483647;
-pub type WGPUCompilationInfoRequestStatus = ::std::os::raw::c_int;
+pub type WGPUCompilationInfoRequestStatus = ::core::ffi::c_int;
 pub const WGPUCompilationMessageType_WGPUCompilationMessageType_Error: WGPUCompilationMessageType =
     1;
 pub const WGPUCompilationMessageType_WGPUCompilationMessageType_Warning:
@@ -1271,7 +1267,7 @@ pub const WGPUCompilationMessageType_WGPUCompilationMessageType_Info: WGPUCompil
     3;
 pub const WGPUCompilationMessageType_WGPUCompilationMessageType_Force32:
     WGPUCompilationMessageType = 2147483647;
-pub type WGPUCompilationMessageType = ::std::os::raw::c_int;
+pub type WGPUCompilationMessageType = ::core::ffi::c_int;
 pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Auto: WGPUCompositeAlphaMode = 0;
 pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Opaque: WGPUCompositeAlphaMode = 1;
 pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Premultiplied: WGPUCompositeAlphaMode = 2;
@@ -1279,7 +1275,7 @@ pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Unpremultiplied: WGPUCom
 pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Inherit: WGPUCompositeAlphaMode = 4;
 pub const WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Force32: WGPUCompositeAlphaMode =
     2147483647;
-pub type WGPUCompositeAlphaMode = ::std::os::raw::c_int;
+pub type WGPUCompositeAlphaMode = ::core::ffi::c_int;
 pub const WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_Success:
     WGPUCreatePipelineAsyncStatus = 1;
 pub const WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_CallbackCancelled:
@@ -1290,36 +1286,36 @@ pub const WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_InternalEr
     WGPUCreatePipelineAsyncStatus = 4;
 pub const WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_Force32:
     WGPUCreatePipelineAsyncStatus = 2147483647;
-pub type WGPUCreatePipelineAsyncStatus = ::std::os::raw::c_int;
+pub type WGPUCreatePipelineAsyncStatus = ::core::ffi::c_int;
 pub const WGPUCullMode_WGPUCullMode_Undefined: WGPUCullMode = 0;
 pub const WGPUCullMode_WGPUCullMode_None: WGPUCullMode = 1;
 pub const WGPUCullMode_WGPUCullMode_Front: WGPUCullMode = 2;
 pub const WGPUCullMode_WGPUCullMode_Back: WGPUCullMode = 3;
 pub const WGPUCullMode_WGPUCullMode_Force32: WGPUCullMode = 2147483647;
-pub type WGPUCullMode = ::std::os::raw::c_int;
+pub type WGPUCullMode = ::core::ffi::c_int;
 pub const WGPUDeviceLostReason_WGPUDeviceLostReason_Unknown: WGPUDeviceLostReason = 1;
 pub const WGPUDeviceLostReason_WGPUDeviceLostReason_Destroyed: WGPUDeviceLostReason = 2;
 pub const WGPUDeviceLostReason_WGPUDeviceLostReason_CallbackCancelled: WGPUDeviceLostReason = 3;
 pub const WGPUDeviceLostReason_WGPUDeviceLostReason_FailedCreation: WGPUDeviceLostReason = 4;
 pub const WGPUDeviceLostReason_WGPUDeviceLostReason_Force32: WGPUDeviceLostReason = 2147483647;
-pub type WGPUDeviceLostReason = ::std::os::raw::c_int;
+pub type WGPUDeviceLostReason = ::core::ffi::c_int;
 pub const WGPUErrorFilter_WGPUErrorFilter_Validation: WGPUErrorFilter = 1;
 pub const WGPUErrorFilter_WGPUErrorFilter_OutOfMemory: WGPUErrorFilter = 2;
 pub const WGPUErrorFilter_WGPUErrorFilter_Internal: WGPUErrorFilter = 3;
 pub const WGPUErrorFilter_WGPUErrorFilter_Force32: WGPUErrorFilter = 2147483647;
-pub type WGPUErrorFilter = ::std::os::raw::c_int;
+pub type WGPUErrorFilter = ::core::ffi::c_int;
 pub const WGPUErrorType_WGPUErrorType_NoError: WGPUErrorType = 1;
 pub const WGPUErrorType_WGPUErrorType_Validation: WGPUErrorType = 2;
 pub const WGPUErrorType_WGPUErrorType_OutOfMemory: WGPUErrorType = 3;
 pub const WGPUErrorType_WGPUErrorType_Internal: WGPUErrorType = 4;
 pub const WGPUErrorType_WGPUErrorType_Unknown: WGPUErrorType = 5;
 pub const WGPUErrorType_WGPUErrorType_Force32: WGPUErrorType = 2147483647;
-pub type WGPUErrorType = ::std::os::raw::c_int;
+pub type WGPUErrorType = ::core::ffi::c_int;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Undefined: WGPUFeatureLevel = 0;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Compatibility: WGPUFeatureLevel = 1;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Core: WGPUFeatureLevel = 2;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Force32: WGPUFeatureLevel = 2147483647;
-pub type WGPUFeatureLevel = ::std::os::raw::c_int;
+pub type WGPUFeatureLevel = ::core::ffi::c_int;
 pub const WGPUFeatureName_WGPUFeatureName_DepthClipControl: WGPUFeatureName = 1;
 pub const WGPUFeatureName_WGPUFeatureName_Depth32FloatStencil8: WGPUFeatureName = 2;
 pub const WGPUFeatureName_WGPUFeatureName_TimestampQuery: WGPUFeatureName = 3;
@@ -1338,22 +1334,22 @@ pub const WGPUFeatureName_WGPUFeatureName_ClipDistances: WGPUFeatureName = 15;
 pub const WGPUFeatureName_WGPUFeatureName_DualSourceBlending: WGPUFeatureName = 16;
 pub const WGPUFeatureName_WGPUFeatureName_Subgroups: WGPUFeatureName = 17;
 pub const WGPUFeatureName_WGPUFeatureName_Force32: WGPUFeatureName = 2147483647;
-pub type WGPUFeatureName = ::std::os::raw::c_int;
+pub type WGPUFeatureName = ::core::ffi::c_int;
 pub const WGPUFilterMode_WGPUFilterMode_Undefined: WGPUFilterMode = 0;
 pub const WGPUFilterMode_WGPUFilterMode_Nearest: WGPUFilterMode = 1;
 pub const WGPUFilterMode_WGPUFilterMode_Linear: WGPUFilterMode = 2;
 pub const WGPUFilterMode_WGPUFilterMode_Force32: WGPUFilterMode = 2147483647;
-pub type WGPUFilterMode = ::std::os::raw::c_int;
+pub type WGPUFilterMode = ::core::ffi::c_int;
 pub const WGPUFrontFace_WGPUFrontFace_Undefined: WGPUFrontFace = 0;
 pub const WGPUFrontFace_WGPUFrontFace_CCW: WGPUFrontFace = 1;
 pub const WGPUFrontFace_WGPUFrontFace_CW: WGPUFrontFace = 2;
 pub const WGPUFrontFace_WGPUFrontFace_Force32: WGPUFrontFace = 2147483647;
-pub type WGPUFrontFace = ::std::os::raw::c_int;
+pub type WGPUFrontFace = ::core::ffi::c_int;
 pub const WGPUIndexFormat_WGPUIndexFormat_Undefined: WGPUIndexFormat = 0;
 pub const WGPUIndexFormat_WGPUIndexFormat_Uint16: WGPUIndexFormat = 1;
 pub const WGPUIndexFormat_WGPUIndexFormat_Uint32: WGPUIndexFormat = 2;
 pub const WGPUIndexFormat_WGPUIndexFormat_Force32: WGPUIndexFormat = 2147483647;
-pub type WGPUIndexFormat = ::std::os::raw::c_int;
+pub type WGPUIndexFormat = ::core::ffi::c_int;
 pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_TimedWaitAnyEnable:
     WGPUInstanceFeatureName = 1;
 pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_ShaderSourceSPIRV:
@@ -1362,52 +1358,52 @@ pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_MultipleDevicesPerAdap
     WGPUInstanceFeatureName = 3;
 pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_Force32: WGPUInstanceFeatureName =
     2147483647;
-pub type WGPUInstanceFeatureName = ::std::os::raw::c_int;
+pub type WGPUInstanceFeatureName = ::core::ffi::c_int;
 pub const WGPULoadOp_WGPULoadOp_Undefined: WGPULoadOp = 0;
 pub const WGPULoadOp_WGPULoadOp_Load: WGPULoadOp = 1;
 pub const WGPULoadOp_WGPULoadOp_Clear: WGPULoadOp = 2;
 pub const WGPULoadOp_WGPULoadOp_Force32: WGPULoadOp = 2147483647;
-pub type WGPULoadOp = ::std::os::raw::c_int;
+pub type WGPULoadOp = ::core::ffi::c_int;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Success: WGPUMapAsyncStatus = 1;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_CallbackCancelled: WGPUMapAsyncStatus = 2;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Error: WGPUMapAsyncStatus = 3;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Aborted: WGPUMapAsyncStatus = 4;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Force32: WGPUMapAsyncStatus = 2147483647;
-pub type WGPUMapAsyncStatus = ::std::os::raw::c_int;
+pub type WGPUMapAsyncStatus = ::core::ffi::c_int;
 pub const WGPUMipmapFilterMode_WGPUMipmapFilterMode_Undefined: WGPUMipmapFilterMode = 0;
 pub const WGPUMipmapFilterMode_WGPUMipmapFilterMode_Nearest: WGPUMipmapFilterMode = 1;
 pub const WGPUMipmapFilterMode_WGPUMipmapFilterMode_Linear: WGPUMipmapFilterMode = 2;
 pub const WGPUMipmapFilterMode_WGPUMipmapFilterMode_Force32: WGPUMipmapFilterMode = 2147483647;
-pub type WGPUMipmapFilterMode = ::std::os::raw::c_int;
+pub type WGPUMipmapFilterMode = ::core::ffi::c_int;
 pub const WGPUOptionalBool_WGPUOptionalBool_False: WGPUOptionalBool = 0;
 pub const WGPUOptionalBool_WGPUOptionalBool_True: WGPUOptionalBool = 1;
 pub const WGPUOptionalBool_WGPUOptionalBool_Undefined: WGPUOptionalBool = 2;
 pub const WGPUOptionalBool_WGPUOptionalBool_Force32: WGPUOptionalBool = 2147483647;
-pub type WGPUOptionalBool = ::std::os::raw::c_int;
+pub type WGPUOptionalBool = ::core::ffi::c_int;
 pub const WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Success: WGPUPopErrorScopeStatus = 1;
 pub const WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_CallbackCancelled:
     WGPUPopErrorScopeStatus = 2;
 pub const WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Error: WGPUPopErrorScopeStatus = 3;
 pub const WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Force32: WGPUPopErrorScopeStatus =
     2147483647;
-pub type WGPUPopErrorScopeStatus = ::std::os::raw::c_int;
+pub type WGPUPopErrorScopeStatus = ::core::ffi::c_int;
 pub const WGPUPowerPreference_WGPUPowerPreference_Undefined: WGPUPowerPreference = 0;
 pub const WGPUPowerPreference_WGPUPowerPreference_LowPower: WGPUPowerPreference = 1;
 pub const WGPUPowerPreference_WGPUPowerPreference_HighPerformance: WGPUPowerPreference = 2;
 pub const WGPUPowerPreference_WGPUPowerPreference_Force32: WGPUPowerPreference = 2147483647;
-pub type WGPUPowerPreference = ::std::os::raw::c_int;
+pub type WGPUPowerPreference = ::core::ffi::c_int;
 pub const WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_SRGB: WGPUPredefinedColorSpace = 1;
 pub const WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_DisplayP3: WGPUPredefinedColorSpace = 2;
 pub const WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_Force32: WGPUPredefinedColorSpace =
     2147483647;
-pub type WGPUPredefinedColorSpace = ::std::os::raw::c_int;
+pub type WGPUPredefinedColorSpace = ::core::ffi::c_int;
 pub const WGPUPresentMode_WGPUPresentMode_Undefined: WGPUPresentMode = 0;
 pub const WGPUPresentMode_WGPUPresentMode_Fifo: WGPUPresentMode = 1;
 pub const WGPUPresentMode_WGPUPresentMode_FifoRelaxed: WGPUPresentMode = 2;
 pub const WGPUPresentMode_WGPUPresentMode_Immediate: WGPUPresentMode = 3;
 pub const WGPUPresentMode_WGPUPresentMode_Mailbox: WGPUPresentMode = 4;
 pub const WGPUPresentMode_WGPUPresentMode_Force32: WGPUPresentMode = 2147483647;
-pub type WGPUPresentMode = ::std::os::raw::c_int;
+pub type WGPUPresentMode = ::core::ffi::c_int;
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_Undefined: WGPUPrimitiveTopology = 0;
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_PointList: WGPUPrimitiveTopology = 1;
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineList: WGPUPrimitiveTopology = 2;
@@ -1415,18 +1411,18 @@ pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineStrip: WGPUPrimitiveTo
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleList: WGPUPrimitiveTopology = 4;
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleStrip: WGPUPrimitiveTopology = 5;
 pub const WGPUPrimitiveTopology_WGPUPrimitiveTopology_Force32: WGPUPrimitiveTopology = 2147483647;
-pub type WGPUPrimitiveTopology = ::std::os::raw::c_int;
+pub type WGPUPrimitiveTopology = ::core::ffi::c_int;
 pub const WGPUQueryType_WGPUQueryType_Occlusion: WGPUQueryType = 1;
 pub const WGPUQueryType_WGPUQueryType_Timestamp: WGPUQueryType = 2;
 pub const WGPUQueryType_WGPUQueryType_Force32: WGPUQueryType = 2147483647;
-pub type WGPUQueryType = ::std::os::raw::c_int;
+pub type WGPUQueryType = ::core::ffi::c_int;
 pub const WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Success: WGPUQueueWorkDoneStatus = 1;
 pub const WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_CallbackCancelled:
     WGPUQueueWorkDoneStatus = 2;
 pub const WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Error: WGPUQueueWorkDoneStatus = 3;
 pub const WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Force32: WGPUQueueWorkDoneStatus =
     2147483647;
-pub type WGPUQueueWorkDoneStatus = ::std::os::raw::c_int;
+pub type WGPUQueueWorkDoneStatus = ::core::ffi::c_int;
 pub const WGPURequestAdapterStatus_WGPURequestAdapterStatus_Success: WGPURequestAdapterStatus = 1;
 pub const WGPURequestAdapterStatus_WGPURequestAdapterStatus_CallbackCancelled:
     WGPURequestAdapterStatus = 2;
@@ -1435,14 +1431,14 @@ pub const WGPURequestAdapterStatus_WGPURequestAdapterStatus_Unavailable: WGPUReq
 pub const WGPURequestAdapterStatus_WGPURequestAdapterStatus_Error: WGPURequestAdapterStatus = 4;
 pub const WGPURequestAdapterStatus_WGPURequestAdapterStatus_Force32: WGPURequestAdapterStatus =
     2147483647;
-pub type WGPURequestAdapterStatus = ::std::os::raw::c_int;
+pub type WGPURequestAdapterStatus = ::core::ffi::c_int;
 pub const WGPURequestDeviceStatus_WGPURequestDeviceStatus_Success: WGPURequestDeviceStatus = 1;
 pub const WGPURequestDeviceStatus_WGPURequestDeviceStatus_CallbackCancelled:
     WGPURequestDeviceStatus = 2;
 pub const WGPURequestDeviceStatus_WGPURequestDeviceStatus_Error: WGPURequestDeviceStatus = 3;
 pub const WGPURequestDeviceStatus_WGPURequestDeviceStatus_Force32: WGPURequestDeviceStatus =
     2147483647;
-pub type WGPURequestDeviceStatus = ::std::os::raw::c_int;
+pub type WGPURequestDeviceStatus = ::core::ffi::c_int;
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_BindingNotUsed: WGPUSamplerBindingType = 0;
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Undefined: WGPUSamplerBindingType = 1;
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Filtering: WGPUSamplerBindingType = 2;
@@ -1450,11 +1446,11 @@ pub const WGPUSamplerBindingType_WGPUSamplerBindingType_NonFiltering: WGPUSample
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Comparison: WGPUSamplerBindingType = 4;
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Force32: WGPUSamplerBindingType =
     2147483647;
-pub type WGPUSamplerBindingType = ::std::os::raw::c_int;
+pub type WGPUSamplerBindingType = ::core::ffi::c_int;
 pub const WGPUStatus_WGPUStatus_Success: WGPUStatus = 1;
 pub const WGPUStatus_WGPUStatus_Error: WGPUStatus = 2;
 pub const WGPUStatus_WGPUStatus_Force32: WGPUStatus = 2147483647;
-pub type WGPUStatus = ::std::os::raw::c_int;
+pub type WGPUStatus = ::core::ffi::c_int;
 pub const WGPUStencilOperation_WGPUStencilOperation_Undefined: WGPUStencilOperation = 0;
 pub const WGPUStencilOperation_WGPUStencilOperation_Keep: WGPUStencilOperation = 1;
 pub const WGPUStencilOperation_WGPUStencilOperation_Zero: WGPUStencilOperation = 2;
@@ -1465,7 +1461,7 @@ pub const WGPUStencilOperation_WGPUStencilOperation_DecrementClamp: WGPUStencilO
 pub const WGPUStencilOperation_WGPUStencilOperation_IncrementWrap: WGPUStencilOperation = 7;
 pub const WGPUStencilOperation_WGPUStencilOperation_DecrementWrap: WGPUStencilOperation = 8;
 pub const WGPUStencilOperation_WGPUStencilOperation_Force32: WGPUStencilOperation = 2147483647;
-pub type WGPUStencilOperation = ::std::os::raw::c_int;
+pub type WGPUStencilOperation = ::core::ffi::c_int;
 pub const WGPUStorageTextureAccess_WGPUStorageTextureAccess_BindingNotUsed:
     WGPUStorageTextureAccess = 0;
 pub const WGPUStorageTextureAccess_WGPUStorageTextureAccess_Undefined: WGPUStorageTextureAccess = 1;
@@ -1474,12 +1470,12 @@ pub const WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadOnly: WGPUStorag
 pub const WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadWrite: WGPUStorageTextureAccess = 4;
 pub const WGPUStorageTextureAccess_WGPUStorageTextureAccess_Force32: WGPUStorageTextureAccess =
     2147483647;
-pub type WGPUStorageTextureAccess = ::std::os::raw::c_int;
+pub type WGPUStorageTextureAccess = ::core::ffi::c_int;
 pub const WGPUStoreOp_WGPUStoreOp_Undefined: WGPUStoreOp = 0;
 pub const WGPUStoreOp_WGPUStoreOp_Store: WGPUStoreOp = 1;
 pub const WGPUStoreOp_WGPUStoreOp_Discard: WGPUStoreOp = 2;
 pub const WGPUStoreOp_WGPUStoreOp_Force32: WGPUStoreOp = 2147483647;
-pub type WGPUStoreOp = ::std::os::raw::c_int;
+pub type WGPUStoreOp = ::core::ffi::c_int;
 pub const WGPUSType_WGPUSType_ShaderSourceSPIRV: WGPUSType = 1;
 pub const WGPUSType_WGPUSType_ShaderSourceWGSL: WGPUSType = 2;
 pub const WGPUSType_WGPUSType_RenderPassMaxDrawCount: WGPUSType = 3;
@@ -1492,7 +1488,7 @@ pub const WGPUSType_WGPUSType_SurfaceSourceXCBWindow: WGPUSType = 9;
 pub const WGPUSType_WGPUSType_SurfaceColorManagement: WGPUSType = 10;
 pub const WGPUSType_WGPUSType_RequestAdapterWebXROptions: WGPUSType = 11;
 pub const WGPUSType_WGPUSType_Force32: WGPUSType = 2147483647;
-pub type WGPUSType = ::std::os::raw::c_int;
+pub type WGPUSType = ::core::ffi::c_int;
 pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal:
     WGPUSurfaceGetCurrentTextureStatus = 1;
 pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal : WGPUSurfaceGetCurrentTextureStatus = 2 ;
@@ -1506,19 +1502,19 @@ pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_
     WGPUSurfaceGetCurrentTextureStatus = 6;
 pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Force32:
     WGPUSurfaceGetCurrentTextureStatus = 2147483647;
-pub type WGPUSurfaceGetCurrentTextureStatus = ::std::os::raw::c_int;
+pub type WGPUSurfaceGetCurrentTextureStatus = ::core::ffi::c_int;
 pub const WGPUTextureAspect_WGPUTextureAspect_Undefined: WGPUTextureAspect = 0;
 pub const WGPUTextureAspect_WGPUTextureAspect_All: WGPUTextureAspect = 1;
 pub const WGPUTextureAspect_WGPUTextureAspect_StencilOnly: WGPUTextureAspect = 2;
 pub const WGPUTextureAspect_WGPUTextureAspect_DepthOnly: WGPUTextureAspect = 3;
 pub const WGPUTextureAspect_WGPUTextureAspect_Force32: WGPUTextureAspect = 2147483647;
-pub type WGPUTextureAspect = ::std::os::raw::c_int;
+pub type WGPUTextureAspect = ::core::ffi::c_int;
 pub const WGPUTextureDimension_WGPUTextureDimension_Undefined: WGPUTextureDimension = 0;
 pub const WGPUTextureDimension_WGPUTextureDimension_1D: WGPUTextureDimension = 1;
 pub const WGPUTextureDimension_WGPUTextureDimension_2D: WGPUTextureDimension = 2;
 pub const WGPUTextureDimension_WGPUTextureDimension_3D: WGPUTextureDimension = 3;
 pub const WGPUTextureDimension_WGPUTextureDimension_Force32: WGPUTextureDimension = 2147483647;
-pub type WGPUTextureDimension = ::std::os::raw::c_int;
+pub type WGPUTextureDimension = ::core::ffi::c_int;
 pub const WGPUTextureFormat_WGPUTextureFormat_Undefined: WGPUTextureFormat = 0;
 pub const WGPUTextureFormat_WGPUTextureFormat_R8Unorm: WGPUTextureFormat = 1;
 pub const WGPUTextureFormat_WGPUTextureFormat_R8Snorm: WGPUTextureFormat = 2;
@@ -1616,7 +1612,7 @@ pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x10UnormSrgb: WGPUTextureFor
 pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x12Unorm: WGPUTextureFormat = 94;
 pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x12UnormSrgb: WGPUTextureFormat = 95;
 pub const WGPUTextureFormat_WGPUTextureFormat_Force32: WGPUTextureFormat = 2147483647;
-pub type WGPUTextureFormat = ::std::os::raw::c_int;
+pub type WGPUTextureFormat = ::core::ffi::c_int;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_BindingNotUsed: WGPUTextureSampleType = 0;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_Undefined: WGPUTextureSampleType = 1;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_Float: WGPUTextureSampleType = 2;
@@ -1625,7 +1621,7 @@ pub const WGPUTextureSampleType_WGPUTextureSampleType_Depth: WGPUTextureSampleTy
 pub const WGPUTextureSampleType_WGPUTextureSampleType_Sint: WGPUTextureSampleType = 5;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_Uint: WGPUTextureSampleType = 6;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_Force32: WGPUTextureSampleType = 2147483647;
-pub type WGPUTextureSampleType = ::std::os::raw::c_int;
+pub type WGPUTextureSampleType = ::core::ffi::c_int;
 pub const WGPUTextureViewDimension_WGPUTextureViewDimension_Undefined: WGPUTextureViewDimension = 0;
 pub const WGPUTextureViewDimension_WGPUTextureViewDimension_1D: WGPUTextureViewDimension = 1;
 pub const WGPUTextureViewDimension_WGPUTextureViewDimension_2D: WGPUTextureViewDimension = 2;
@@ -1635,11 +1631,11 @@ pub const WGPUTextureViewDimension_WGPUTextureViewDimension_CubeArray: WGPUTextu
 pub const WGPUTextureViewDimension_WGPUTextureViewDimension_3D: WGPUTextureViewDimension = 6;
 pub const WGPUTextureViewDimension_WGPUTextureViewDimension_Force32: WGPUTextureViewDimension =
     2147483647;
-pub type WGPUTextureViewDimension = ::std::os::raw::c_int;
+pub type WGPUTextureViewDimension = ::core::ffi::c_int;
 pub const WGPUToneMappingMode_WGPUToneMappingMode_Standard: WGPUToneMappingMode = 1;
 pub const WGPUToneMappingMode_WGPUToneMappingMode_Extended: WGPUToneMappingMode = 2;
 pub const WGPUToneMappingMode_WGPUToneMappingMode_Force32: WGPUToneMappingMode = 2147483647;
-pub type WGPUToneMappingMode = ::std::os::raw::c_int;
+pub type WGPUToneMappingMode = ::core::ffi::c_int;
 pub const WGPUVertexFormat_WGPUVertexFormat_Uint8: WGPUVertexFormat = 1;
 pub const WGPUVertexFormat_WGPUVertexFormat_Uint8x2: WGPUVertexFormat = 2;
 pub const WGPUVertexFormat_WGPUVertexFormat_Uint8x4: WGPUVertexFormat = 3;
@@ -1682,17 +1678,17 @@ pub const WGPUVertexFormat_WGPUVertexFormat_Sint32x4: WGPUVertexFormat = 39;
 pub const WGPUVertexFormat_WGPUVertexFormat_Unorm10_10_10_2: WGPUVertexFormat = 40;
 pub const WGPUVertexFormat_WGPUVertexFormat_Unorm8x4BGRA: WGPUVertexFormat = 41;
 pub const WGPUVertexFormat_WGPUVertexFormat_Force32: WGPUVertexFormat = 2147483647;
-pub type WGPUVertexFormat = ::std::os::raw::c_int;
+pub type WGPUVertexFormat = ::core::ffi::c_int;
 pub const WGPUVertexStepMode_WGPUVertexStepMode_Undefined: WGPUVertexStepMode = 0;
 pub const WGPUVertexStepMode_WGPUVertexStepMode_Vertex: WGPUVertexStepMode = 1;
 pub const WGPUVertexStepMode_WGPUVertexStepMode_Instance: WGPUVertexStepMode = 2;
 pub const WGPUVertexStepMode_WGPUVertexStepMode_Force32: WGPUVertexStepMode = 2147483647;
-pub type WGPUVertexStepMode = ::std::os::raw::c_int;
+pub type WGPUVertexStepMode = ::core::ffi::c_int;
 pub const WGPUWaitStatus_WGPUWaitStatus_Success: WGPUWaitStatus = 1;
 pub const WGPUWaitStatus_WGPUWaitStatus_TimedOut: WGPUWaitStatus = 2;
 pub const WGPUWaitStatus_WGPUWaitStatus_Error: WGPUWaitStatus = 3;
 pub const WGPUWaitStatus_WGPUWaitStatus_Force32: WGPUWaitStatus = 2147483647;
-pub type WGPUWaitStatus = ::std::os::raw::c_int;
+pub type WGPUWaitStatus = ::core::ffi::c_int;
 pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures : WGPUWGSLLanguageFeatureName = 1 ;
 pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct:
     WGPUWGSLLanguageFeatureName = 2;
@@ -1702,7 +1698,7 @@ pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerComposi
     WGPUWGSLLanguageFeatureName = 4;
 pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Force32:
     WGPUWGSLLanguageFeatureName = 2147483647;
-pub type WGPUWGSLLanguageFeatureName = ::std::os::raw::c_int;
+pub type WGPUWGSLLanguageFeatureName = ::core::ffi::c_int;
 pub type WGPUBufferUsage = WGPUFlags;
 pub const WGPUBufferUsage_None: WGPUBufferUsage = 0;
 pub const WGPUBufferUsage_MapRead: WGPUBufferUsage = 1;
@@ -1738,92 +1734,92 @@ pub const WGPUTextureUsage_CopyDst: WGPUTextureUsage = 2;
 pub const WGPUTextureUsage_TextureBinding: WGPUTextureUsage = 4;
 pub const WGPUTextureUsage_StorageBinding: WGPUTextureUsage = 8;
 pub const WGPUTextureUsage_RenderAttachment: WGPUTextureUsage = 16;
-pub type WGPUProc = ::std::option::Option<unsafe extern "C" fn()>;
-pub type WGPUBufferMapCallback = ::std::option::Option<
+pub type WGPUProc = ::core::option::Option<unsafe extern "C" fn()>;
+pub type WGPUBufferMapCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUMapAsyncStatus,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUCompilationInfoCallback = ::std::option::Option<
+pub type WGPUCompilationInfoCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUCompilationInfoRequestStatus,
         compilationInfo: *const WGPUCompilationInfo,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUCreateComputePipelineAsyncCallback = ::std::option::Option<
+pub type WGPUCreateComputePipelineAsyncCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUCreatePipelineAsyncStatus,
         pipeline: WGPUComputePipeline,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUCreateRenderPipelineAsyncCallback = ::std::option::Option<
+pub type WGPUCreateRenderPipelineAsyncCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUCreatePipelineAsyncStatus,
         pipeline: WGPURenderPipeline,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUDeviceLostCallback = ::std::option::Option<
+pub type WGPUDeviceLostCallback = ::core::option::Option<
     unsafe extern "C" fn(
         device: *const WGPUDevice,
         reason: WGPUDeviceLostReason,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUPopErrorScopeCallback = ::std::option::Option<
+pub type WGPUPopErrorScopeCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUPopErrorScopeStatus,
         type_: WGPUErrorType,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUQueueWorkDoneCallback = ::std::option::Option<
+pub type WGPUQueueWorkDoneCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUQueueWorkDoneStatus,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPURequestAdapterCallback = ::std::option::Option<
+pub type WGPURequestAdapterCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPURequestAdapterStatus,
         adapter: WGPUAdapter,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPURequestDeviceCallback = ::std::option::Option<
+pub type WGPURequestDeviceCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPURequestDeviceStatus,
         device: WGPUDevice,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
-pub type WGPUUncapturedErrorCallback = ::std::option::Option<
+pub type WGPUUncapturedErrorCallback = ::core::option::Option<
     unsafe extern "C" fn(
         device: *const WGPUDevice,
         type_: WGPUErrorType,
         message: WGPUStringView,
-        userdata1: *mut ::std::os::raw::c_void,
-        userdata2: *mut ::std::os::raw::c_void,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
     ),
 >;
 #[repr(C)]
@@ -1834,12 +1830,12 @@ pub struct WGPUChainedStruct {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUChainedStruct"][::std::mem::size_of::<WGPUChainedStruct>() - 16usize];
-    ["Alignment of WGPUChainedStruct"][::std::mem::align_of::<WGPUChainedStruct>() - 8usize];
+    ["Size of WGPUChainedStruct"][::core::mem::size_of::<WGPUChainedStruct>() - 16usize];
+    ["Alignment of WGPUChainedStruct"][::core::mem::align_of::<WGPUChainedStruct>() - 8usize];
     ["Offset of field: WGPUChainedStruct::next"]
-        [::std::mem::offset_of!(WGPUChainedStruct, next) - 0usize];
+        [::core::mem::offset_of!(WGPUChainedStruct, next) - 0usize];
     ["Offset of field: WGPUChainedStruct::sType"]
-        [::std::mem::offset_of!(WGPUChainedStruct, sType) - 8usize];
+        [::core::mem::offset_of!(WGPUChainedStruct, sType) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1847,25 +1843,25 @@ pub struct WGPUBufferMapCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUBufferMapCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUBufferMapCallbackInfo"]
-        [::std::mem::size_of::<WGPUBufferMapCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUBufferMapCallbackInfo>() - 40usize];
     ["Alignment of WGPUBufferMapCallbackInfo"]
-        [::std::mem::align_of::<WGPUBufferMapCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUBufferMapCallbackInfo>() - 8usize];
     ["Offset of field: WGPUBufferMapCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUBufferMapCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBufferMapCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUBufferMapCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUBufferMapCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUBufferMapCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUBufferMapCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUBufferMapCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUBufferMapCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUBufferMapCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUBufferMapCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUBufferMapCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUBufferMapCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUBufferMapCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUBufferMapCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1873,25 +1869,25 @@ pub struct WGPUCompilationInfoCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUCompilationInfoCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUCompilationInfoCallbackInfo"]
-        [::std::mem::size_of::<WGPUCompilationInfoCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUCompilationInfoCallbackInfo>() - 40usize];
     ["Alignment of WGPUCompilationInfoCallbackInfo"]
-        [::std::mem::align_of::<WGPUCompilationInfoCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUCompilationInfoCallbackInfo>() - 8usize];
     ["Offset of field: WGPUCompilationInfoCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUCompilationInfoCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCompilationInfoCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUCompilationInfoCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUCompilationInfoCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUCompilationInfoCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUCompilationInfoCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUCompilationInfoCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUCompilationInfoCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUCompilationInfoCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUCompilationInfoCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUCompilationInfoCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUCompilationInfoCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUCompilationInfoCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUCompilationInfoCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1899,25 +1895,25 @@ pub struct WGPUCreateComputePipelineAsyncCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUCreateComputePipelineAsyncCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUCreateComputePipelineAsyncCallbackInfo"]
-        [::std::mem::size_of::<WGPUCreateComputePipelineAsyncCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUCreateComputePipelineAsyncCallbackInfo>() - 40usize];
     ["Alignment of WGPUCreateComputePipelineAsyncCallbackInfo"]
-        [::std::mem::align_of::<WGPUCreateComputePipelineAsyncCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUCreateComputePipelineAsyncCallbackInfo>() - 8usize];
     ["Offset of field: WGPUCreateComputePipelineAsyncCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUCreateComputePipelineAsyncCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUCreateComputePipelineAsyncCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUCreateComputePipelineAsyncCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUCreateComputePipelineAsyncCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUCreateComputePipelineAsyncCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1925,25 +1921,25 @@ pub struct WGPUCreateRenderPipelineAsyncCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUCreateRenderPipelineAsyncCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUCreateRenderPipelineAsyncCallbackInfo"]
-        [::std::mem::size_of::<WGPUCreateRenderPipelineAsyncCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUCreateRenderPipelineAsyncCallbackInfo>() - 40usize];
     ["Alignment of WGPUCreateRenderPipelineAsyncCallbackInfo"]
-        [::std::mem::align_of::<WGPUCreateRenderPipelineAsyncCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUCreateRenderPipelineAsyncCallbackInfo>() - 8usize];
     ["Offset of field: WGPUCreateRenderPipelineAsyncCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUCreateRenderPipelineAsyncCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUCreateRenderPipelineAsyncCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUCreateRenderPipelineAsyncCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUCreateRenderPipelineAsyncCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUCreateRenderPipelineAsyncCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1951,25 +1947,25 @@ pub struct WGPUDeviceLostCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUDeviceLostCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUDeviceLostCallbackInfo"]
-        [::std::mem::size_of::<WGPUDeviceLostCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUDeviceLostCallbackInfo>() - 40usize];
     ["Alignment of WGPUDeviceLostCallbackInfo"]
-        [::std::mem::align_of::<WGPUDeviceLostCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUDeviceLostCallbackInfo>() - 8usize];
     ["Offset of field: WGPUDeviceLostCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUDeviceLostCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUDeviceLostCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUDeviceLostCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUDeviceLostCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUDeviceLostCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUDeviceLostCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUDeviceLostCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUDeviceLostCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUDeviceLostCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUDeviceLostCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUDeviceLostCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUDeviceLostCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUDeviceLostCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUDeviceLostCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1977,25 +1973,25 @@ pub struct WGPUPopErrorScopeCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUPopErrorScopeCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUPopErrorScopeCallbackInfo"]
-        [::std::mem::size_of::<WGPUPopErrorScopeCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUPopErrorScopeCallbackInfo>() - 40usize];
     ["Alignment of WGPUPopErrorScopeCallbackInfo"]
-        [::std::mem::align_of::<WGPUPopErrorScopeCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUPopErrorScopeCallbackInfo>() - 8usize];
     ["Offset of field: WGPUPopErrorScopeCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUPopErrorScopeCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUPopErrorScopeCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUPopErrorScopeCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUPopErrorScopeCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUPopErrorScopeCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2003,25 +1999,25 @@ pub struct WGPUQueueWorkDoneCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPUQueueWorkDoneCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUQueueWorkDoneCallbackInfo"]
-        [::std::mem::size_of::<WGPUQueueWorkDoneCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPUQueueWorkDoneCallbackInfo>() - 40usize];
     ["Alignment of WGPUQueueWorkDoneCallbackInfo"]
-        [::std::mem::align_of::<WGPUQueueWorkDoneCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUQueueWorkDoneCallbackInfo>() - 8usize];
     ["Offset of field: WGPUQueueWorkDoneCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUQueueWorkDoneCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPUQueueWorkDoneCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPUQueueWorkDoneCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPUQueueWorkDoneCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPUQueueWorkDoneCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2029,25 +2025,25 @@ pub struct WGPURequestAdapterCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPURequestAdapterCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURequestAdapterCallbackInfo"]
-        [::std::mem::size_of::<WGPURequestAdapterCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPURequestAdapterCallbackInfo>() - 40usize];
     ["Alignment of WGPURequestAdapterCallbackInfo"]
-        [::std::mem::align_of::<WGPURequestAdapterCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPURequestAdapterCallbackInfo>() - 8usize];
     ["Offset of field: WGPURequestAdapterCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPURequestAdapterCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURequestAdapterCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPURequestAdapterCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPURequestAdapterCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPURequestAdapterCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPURequestAdapterCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPURequestAdapterCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPURequestAdapterCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPURequestAdapterCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPURequestAdapterCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPURequestAdapterCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPURequestAdapterCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPURequestAdapterCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPURequestAdapterCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2055,48 +2051,48 @@ pub struct WGPURequestDeviceCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
     pub callback: WGPURequestDeviceCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURequestDeviceCallbackInfo"]
-        [::std::mem::size_of::<WGPURequestDeviceCallbackInfo>() - 40usize];
+        [::core::mem::size_of::<WGPURequestDeviceCallbackInfo>() - 40usize];
     ["Alignment of WGPURequestDeviceCallbackInfo"]
-        [::std::mem::align_of::<WGPURequestDeviceCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPURequestDeviceCallbackInfo>() - 8usize];
     ["Offset of field: WGPURequestDeviceCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPURequestDeviceCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURequestDeviceCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPURequestDeviceCallbackInfo::mode"]
-        [::std::mem::offset_of!(WGPURequestDeviceCallbackInfo, mode) - 8usize];
+        [::core::mem::offset_of!(WGPURequestDeviceCallbackInfo, mode) - 8usize];
     ["Offset of field: WGPURequestDeviceCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPURequestDeviceCallbackInfo, callback) - 16usize];
+        [::core::mem::offset_of!(WGPURequestDeviceCallbackInfo, callback) - 16usize];
     ["Offset of field: WGPURequestDeviceCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPURequestDeviceCallbackInfo, userdata1) - 24usize];
+        [::core::mem::offset_of!(WGPURequestDeviceCallbackInfo, userdata1) - 24usize];
     ["Offset of field: WGPURequestDeviceCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPURequestDeviceCallbackInfo, userdata2) - 32usize];
+        [::core::mem::offset_of!(WGPURequestDeviceCallbackInfo, userdata2) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUUncapturedErrorCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub callback: WGPUUncapturedErrorCallback,
-    pub userdata1: *mut ::std::os::raw::c_void,
-    pub userdata2: *mut ::std::os::raw::c_void,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUUncapturedErrorCallbackInfo"]
-        [::std::mem::size_of::<WGPUUncapturedErrorCallbackInfo>() - 32usize];
+        [::core::mem::size_of::<WGPUUncapturedErrorCallbackInfo>() - 32usize];
     ["Alignment of WGPUUncapturedErrorCallbackInfo"]
-        [::std::mem::align_of::<WGPUUncapturedErrorCallbackInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUUncapturedErrorCallbackInfo>() - 8usize];
     ["Offset of field: WGPUUncapturedErrorCallbackInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUUncapturedErrorCallbackInfo::callback"]
-        [::std::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, callback) - 8usize];
+        [::core::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, callback) - 8usize];
     ["Offset of field: WGPUUncapturedErrorCallbackInfo::userdata1"]
-        [::std::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, userdata1) - 16usize];
+        [::core::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, userdata1) - 16usize];
     ["Offset of field: WGPUUncapturedErrorCallbackInfo::userdata2"]
-        [::std::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, userdata2) - 24usize];
+        [::core::mem::offset_of!(WGPUUncapturedErrorCallbackInfo, userdata2) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2115,30 +2111,30 @@ pub struct WGPUAdapterInfo {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUAdapterInfo"][::std::mem::size_of::<WGPUAdapterInfo>() - 96usize];
-    ["Alignment of WGPUAdapterInfo"][::std::mem::align_of::<WGPUAdapterInfo>() - 8usize];
+    ["Size of WGPUAdapterInfo"][::core::mem::size_of::<WGPUAdapterInfo>() - 96usize];
+    ["Alignment of WGPUAdapterInfo"][::core::mem::align_of::<WGPUAdapterInfo>() - 8usize];
     ["Offset of field: WGPUAdapterInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUAdapterInfo::vendor"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, vendor) - 8usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, vendor) - 8usize];
     ["Offset of field: WGPUAdapterInfo::architecture"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, architecture) - 24usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, architecture) - 24usize];
     ["Offset of field: WGPUAdapterInfo::device"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, device) - 40usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, device) - 40usize];
     ["Offset of field: WGPUAdapterInfo::description"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, description) - 56usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, description) - 56usize];
     ["Offset of field: WGPUAdapterInfo::backendType"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, backendType) - 72usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, backendType) - 72usize];
     ["Offset of field: WGPUAdapterInfo::adapterType"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, adapterType) - 76usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, adapterType) - 76usize];
     ["Offset of field: WGPUAdapterInfo::vendorID"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, vendorID) - 80usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, vendorID) - 80usize];
     ["Offset of field: WGPUAdapterInfo::deviceID"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, deviceID) - 84usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, deviceID) - 84usize];
     ["Offset of field: WGPUAdapterInfo::subgroupMinSize"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, subgroupMinSize) - 88usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMinSize) - 88usize];
     ["Offset of field: WGPUAdapterInfo::subgroupMaxSize"]
-        [::std::mem::offset_of!(WGPUAdapterInfo, subgroupMaxSize) - 92usize];
+        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMaxSize) - 92usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2153,22 +2149,22 @@ pub struct WGPUBindGroupEntry {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBindGroupEntry"][::std::mem::size_of::<WGPUBindGroupEntry>() - 56usize];
-    ["Alignment of WGPUBindGroupEntry"][::std::mem::align_of::<WGPUBindGroupEntry>() - 8usize];
+    ["Size of WGPUBindGroupEntry"][::core::mem::size_of::<WGPUBindGroupEntry>() - 56usize];
+    ["Alignment of WGPUBindGroupEntry"][::core::mem::align_of::<WGPUBindGroupEntry>() - 8usize];
     ["Offset of field: WGPUBindGroupEntry::nextInChain"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, nextInChain) - 0usize];
     ["Offset of field: WGPUBindGroupEntry::binding"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, binding) - 8usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, binding) - 8usize];
     ["Offset of field: WGPUBindGroupEntry::buffer"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, buffer) - 16usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, buffer) - 16usize];
     ["Offset of field: WGPUBindGroupEntry::offset"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, offset) - 24usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, offset) - 24usize];
     ["Offset of field: WGPUBindGroupEntry::size"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, size) - 32usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, size) - 32usize];
     ["Offset of field: WGPUBindGroupEntry::sampler"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, sampler) - 40usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, sampler) - 40usize];
     ["Offset of field: WGPUBindGroupEntry::textureView"]
-        [::std::mem::offset_of!(WGPUBindGroupEntry, textureView) - 48usize];
+        [::core::mem::offset_of!(WGPUBindGroupEntry, textureView) - 48usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2179,14 +2175,14 @@ pub struct WGPUBlendComponent {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBlendComponent"][::std::mem::size_of::<WGPUBlendComponent>() - 12usize];
-    ["Alignment of WGPUBlendComponent"][::std::mem::align_of::<WGPUBlendComponent>() - 4usize];
+    ["Size of WGPUBlendComponent"][::core::mem::size_of::<WGPUBlendComponent>() - 12usize];
+    ["Alignment of WGPUBlendComponent"][::core::mem::align_of::<WGPUBlendComponent>() - 4usize];
     ["Offset of field: WGPUBlendComponent::operation"]
-        [::std::mem::offset_of!(WGPUBlendComponent, operation) - 0usize];
+        [::core::mem::offset_of!(WGPUBlendComponent, operation) - 0usize];
     ["Offset of field: WGPUBlendComponent::srcFactor"]
-        [::std::mem::offset_of!(WGPUBlendComponent, srcFactor) - 4usize];
+        [::core::mem::offset_of!(WGPUBlendComponent, srcFactor) - 4usize];
     ["Offset of field: WGPUBlendComponent::dstFactor"]
-        [::std::mem::offset_of!(WGPUBlendComponent, dstFactor) - 8usize];
+        [::core::mem::offset_of!(WGPUBlendComponent, dstFactor) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2198,17 +2194,18 @@ pub struct WGPUBufferBindingLayout {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBufferBindingLayout"][::std::mem::size_of::<WGPUBufferBindingLayout>() - 24usize];
+    ["Size of WGPUBufferBindingLayout"]
+        [::core::mem::size_of::<WGPUBufferBindingLayout>() - 24usize];
     ["Alignment of WGPUBufferBindingLayout"]
-        [::std::mem::align_of::<WGPUBufferBindingLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUBufferBindingLayout>() - 8usize];
     ["Offset of field: WGPUBufferBindingLayout::nextInChain"]
-        [::std::mem::offset_of!(WGPUBufferBindingLayout, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBufferBindingLayout, nextInChain) - 0usize];
     ["Offset of field: WGPUBufferBindingLayout::type_"]
-        [::std::mem::offset_of!(WGPUBufferBindingLayout, type_) - 8usize];
+        [::core::mem::offset_of!(WGPUBufferBindingLayout, type_) - 8usize];
     ["Offset of field: WGPUBufferBindingLayout::hasDynamicOffset"]
-        [::std::mem::offset_of!(WGPUBufferBindingLayout, hasDynamicOffset) - 12usize];
+        [::core::mem::offset_of!(WGPUBufferBindingLayout, hasDynamicOffset) - 12usize];
     ["Offset of field: WGPUBufferBindingLayout::minBindingSize"]
-        [::std::mem::offset_of!(WGPUBufferBindingLayout, minBindingSize) - 16usize];
+        [::core::mem::offset_of!(WGPUBufferBindingLayout, minBindingSize) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2221,18 +2218,18 @@ pub struct WGPUBufferDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBufferDescriptor"][::std::mem::size_of::<WGPUBufferDescriptor>() - 48usize];
-    ["Alignment of WGPUBufferDescriptor"][::std::mem::align_of::<WGPUBufferDescriptor>() - 8usize];
+    ["Size of WGPUBufferDescriptor"][::core::mem::size_of::<WGPUBufferDescriptor>() - 48usize];
+    ["Alignment of WGPUBufferDescriptor"][::core::mem::align_of::<WGPUBufferDescriptor>() - 8usize];
     ["Offset of field: WGPUBufferDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUBufferDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBufferDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUBufferDescriptor::label"]
-        [::std::mem::offset_of!(WGPUBufferDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUBufferDescriptor, label) - 8usize];
     ["Offset of field: WGPUBufferDescriptor::usage"]
-        [::std::mem::offset_of!(WGPUBufferDescriptor, usage) - 24usize];
+        [::core::mem::offset_of!(WGPUBufferDescriptor, usage) - 24usize];
     ["Offset of field: WGPUBufferDescriptor::size"]
-        [::std::mem::offset_of!(WGPUBufferDescriptor, size) - 32usize];
+        [::core::mem::offset_of!(WGPUBufferDescriptor, size) - 32usize];
     ["Offset of field: WGPUBufferDescriptor::mappedAtCreation"]
-        [::std::mem::offset_of!(WGPUBufferDescriptor, mappedAtCreation) - 40usize];
+        [::core::mem::offset_of!(WGPUBufferDescriptor, mappedAtCreation) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2244,12 +2241,12 @@ pub struct WGPUColor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUColor"][::std::mem::size_of::<WGPUColor>() - 32usize];
-    ["Alignment of WGPUColor"][::std::mem::align_of::<WGPUColor>() - 8usize];
-    ["Offset of field: WGPUColor::r"][::std::mem::offset_of!(WGPUColor, r) - 0usize];
-    ["Offset of field: WGPUColor::g"][::std::mem::offset_of!(WGPUColor, g) - 8usize];
-    ["Offset of field: WGPUColor::b"][::std::mem::offset_of!(WGPUColor, b) - 16usize];
-    ["Offset of field: WGPUColor::a"][::std::mem::offset_of!(WGPUColor, a) - 24usize];
+    ["Size of WGPUColor"][::core::mem::size_of::<WGPUColor>() - 32usize];
+    ["Alignment of WGPUColor"][::core::mem::align_of::<WGPUColor>() - 8usize];
+    ["Offset of field: WGPUColor::r"][::core::mem::offset_of!(WGPUColor, r) - 0usize];
+    ["Offset of field: WGPUColor::g"][::core::mem::offset_of!(WGPUColor, g) - 8usize];
+    ["Offset of field: WGPUColor::b"][::core::mem::offset_of!(WGPUColor, b) - 16usize];
+    ["Offset of field: WGPUColor::a"][::core::mem::offset_of!(WGPUColor, a) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2260,13 +2257,13 @@ pub struct WGPUCommandBufferDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUCommandBufferDescriptor"]
-        [::std::mem::size_of::<WGPUCommandBufferDescriptor>() - 24usize];
+        [::core::mem::size_of::<WGPUCommandBufferDescriptor>() - 24usize];
     ["Alignment of WGPUCommandBufferDescriptor"]
-        [::std::mem::align_of::<WGPUCommandBufferDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUCommandBufferDescriptor>() - 8usize];
     ["Offset of field: WGPUCommandBufferDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUCommandBufferDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCommandBufferDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUCommandBufferDescriptor::label"]
-        [::std::mem::offset_of!(WGPUCommandBufferDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUCommandBufferDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2277,13 +2274,13 @@ pub struct WGPUCommandEncoderDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUCommandEncoderDescriptor"]
-        [::std::mem::size_of::<WGPUCommandEncoderDescriptor>() - 24usize];
+        [::core::mem::size_of::<WGPUCommandEncoderDescriptor>() - 24usize];
     ["Alignment of WGPUCommandEncoderDescriptor"]
-        [::std::mem::align_of::<WGPUCommandEncoderDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUCommandEncoderDescriptor>() - 8usize];
     ["Offset of field: WGPUCommandEncoderDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUCommandEncoderDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUCommandEncoderDescriptor::label"]
-        [::std::mem::offset_of!(WGPUCommandEncoderDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2298,23 +2295,23 @@ pub struct WGPUCompilationMessage {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUCompilationMessage"][::std::mem::size_of::<WGPUCompilationMessage>() - 64usize];
+    ["Size of WGPUCompilationMessage"][::core::mem::size_of::<WGPUCompilationMessage>() - 64usize];
     ["Alignment of WGPUCompilationMessage"]
-        [::std::mem::align_of::<WGPUCompilationMessage>() - 8usize];
+        [::core::mem::align_of::<WGPUCompilationMessage>() - 8usize];
     ["Offset of field: WGPUCompilationMessage::nextInChain"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, nextInChain) - 0usize];
     ["Offset of field: WGPUCompilationMessage::message"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, message) - 8usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, message) - 8usize];
     ["Offset of field: WGPUCompilationMessage::type_"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, type_) - 24usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, type_) - 24usize];
     ["Offset of field: WGPUCompilationMessage::lineNum"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, lineNum) - 32usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, lineNum) - 32usize];
     ["Offset of field: WGPUCompilationMessage::linePos"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, linePos) - 40usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, linePos) - 40usize];
     ["Offset of field: WGPUCompilationMessage::offset"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, offset) - 48usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, offset) - 48usize];
     ["Offset of field: WGPUCompilationMessage::length"]
-        [::std::mem::offset_of!(WGPUCompilationMessage, length) - 56usize];
+        [::core::mem::offset_of!(WGPUCompilationMessage, length) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2325,14 +2322,14 @@ pub struct WGPUConstantEntry {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUConstantEntry"][::std::mem::size_of::<WGPUConstantEntry>() - 32usize];
-    ["Alignment of WGPUConstantEntry"][::std::mem::align_of::<WGPUConstantEntry>() - 8usize];
+    ["Size of WGPUConstantEntry"][::core::mem::size_of::<WGPUConstantEntry>() - 32usize];
+    ["Alignment of WGPUConstantEntry"][::core::mem::align_of::<WGPUConstantEntry>() - 8usize];
     ["Offset of field: WGPUConstantEntry::nextInChain"]
-        [::std::mem::offset_of!(WGPUConstantEntry, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUConstantEntry, nextInChain) - 0usize];
     ["Offset of field: WGPUConstantEntry::key"]
-        [::std::mem::offset_of!(WGPUConstantEntry, key) - 8usize];
+        [::core::mem::offset_of!(WGPUConstantEntry, key) - 8usize];
     ["Offset of field: WGPUConstantEntry::value"]
-        [::std::mem::offset_of!(WGPUConstantEntry, value) - 24usize];
+        [::core::mem::offset_of!(WGPUConstantEntry, value) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2343,13 +2340,13 @@ pub struct WGPUExtent3D {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUExtent3D"][::std::mem::size_of::<WGPUExtent3D>() - 12usize];
-    ["Alignment of WGPUExtent3D"][::std::mem::align_of::<WGPUExtent3D>() - 4usize];
-    ["Offset of field: WGPUExtent3D::width"][::std::mem::offset_of!(WGPUExtent3D, width) - 0usize];
+    ["Size of WGPUExtent3D"][::core::mem::size_of::<WGPUExtent3D>() - 12usize];
+    ["Alignment of WGPUExtent3D"][::core::mem::align_of::<WGPUExtent3D>() - 4usize];
+    ["Offset of field: WGPUExtent3D::width"][::core::mem::offset_of!(WGPUExtent3D, width) - 0usize];
     ["Offset of field: WGPUExtent3D::height"]
-        [::std::mem::offset_of!(WGPUExtent3D, height) - 4usize];
+        [::core::mem::offset_of!(WGPUExtent3D, height) - 4usize];
     ["Offset of field: WGPUExtent3D::depthOrArrayLayers"]
-        [::std::mem::offset_of!(WGPUExtent3D, depthOrArrayLayers) - 8usize];
+        [::core::mem::offset_of!(WGPUExtent3D, depthOrArrayLayers) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2358,9 +2355,9 @@ pub struct WGPUFuture {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUFuture"][::std::mem::size_of::<WGPUFuture>() - 8usize];
-    ["Alignment of WGPUFuture"][::std::mem::align_of::<WGPUFuture>() - 8usize];
-    ["Offset of field: WGPUFuture::id"][::std::mem::offset_of!(WGPUFuture, id) - 0usize];
+    ["Size of WGPUFuture"][::core::mem::size_of::<WGPUFuture>() - 8usize];
+    ["Alignment of WGPUFuture"][::core::mem::align_of::<WGPUFuture>() - 8usize];
+    ["Offset of field: WGPUFuture::id"][::core::mem::offset_of!(WGPUFuture, id) - 0usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2370,12 +2367,12 @@ pub struct WGPUInstanceLimits {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUInstanceLimits"][::std::mem::size_of::<WGPUInstanceLimits>() - 16usize];
-    ["Alignment of WGPUInstanceLimits"][::std::mem::align_of::<WGPUInstanceLimits>() - 8usize];
+    ["Size of WGPUInstanceLimits"][::core::mem::size_of::<WGPUInstanceLimits>() - 16usize];
+    ["Alignment of WGPUInstanceLimits"][::core::mem::align_of::<WGPUInstanceLimits>() - 8usize];
     ["Offset of field: WGPUInstanceLimits::nextInChain"]
-        [::std::mem::offset_of!(WGPUInstanceLimits, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUInstanceLimits, nextInChain) - 0usize];
     ["Offset of field: WGPUInstanceLimits::timedWaitAnyMaxCount"]
-        [::std::mem::offset_of!(WGPUInstanceLimits, timedWaitAnyMaxCount) - 8usize];
+        [::core::mem::offset_of!(WGPUInstanceLimits, timedWaitAnyMaxCount) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2416,74 +2413,74 @@ pub struct WGPULimits {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPULimits"][::std::mem::size_of::<WGPULimits>() - 152usize];
-    ["Alignment of WGPULimits"][::std::mem::align_of::<WGPULimits>() - 8usize];
+    ["Size of WGPULimits"][::core::mem::size_of::<WGPULimits>() - 152usize];
+    ["Alignment of WGPULimits"][::core::mem::align_of::<WGPULimits>() - 8usize];
     ["Offset of field: WGPULimits::nextInChain"]
-        [::std::mem::offset_of!(WGPULimits, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPULimits, nextInChain) - 0usize];
     ["Offset of field: WGPULimits::maxTextureDimension1D"]
-        [::std::mem::offset_of!(WGPULimits, maxTextureDimension1D) - 8usize];
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension1D) - 8usize];
     ["Offset of field: WGPULimits::maxTextureDimension2D"]
-        [::std::mem::offset_of!(WGPULimits, maxTextureDimension2D) - 12usize];
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension2D) - 12usize];
     ["Offset of field: WGPULimits::maxTextureDimension3D"]
-        [::std::mem::offset_of!(WGPULimits, maxTextureDimension3D) - 16usize];
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension3D) - 16usize];
     ["Offset of field: WGPULimits::maxTextureArrayLayers"]
-        [::std::mem::offset_of!(WGPULimits, maxTextureArrayLayers) - 20usize];
+        [::core::mem::offset_of!(WGPULimits, maxTextureArrayLayers) - 20usize];
     ["Offset of field: WGPULimits::maxBindGroups"]
-        [::std::mem::offset_of!(WGPULimits, maxBindGroups) - 24usize];
+        [::core::mem::offset_of!(WGPULimits, maxBindGroups) - 24usize];
     ["Offset of field: WGPULimits::maxBindGroupsPlusVertexBuffers"]
-        [::std::mem::offset_of!(WGPULimits, maxBindGroupsPlusVertexBuffers) - 28usize];
+        [::core::mem::offset_of!(WGPULimits, maxBindGroupsPlusVertexBuffers) - 28usize];
     ["Offset of field: WGPULimits::maxBindingsPerBindGroup"]
-        [::std::mem::offset_of!(WGPULimits, maxBindingsPerBindGroup) - 32usize];
+        [::core::mem::offset_of!(WGPULimits, maxBindingsPerBindGroup) - 32usize];
     ["Offset of field: WGPULimits::maxDynamicUniformBuffersPerPipelineLayout"]
-        [::std::mem::offset_of!(WGPULimits, maxDynamicUniformBuffersPerPipelineLayout) - 36usize];
+        [::core::mem::offset_of!(WGPULimits, maxDynamicUniformBuffersPerPipelineLayout) - 36usize];
     ["Offset of field: WGPULimits::maxDynamicStorageBuffersPerPipelineLayout"]
-        [::std::mem::offset_of!(WGPULimits, maxDynamicStorageBuffersPerPipelineLayout) - 40usize];
+        [::core::mem::offset_of!(WGPULimits, maxDynamicStorageBuffersPerPipelineLayout) - 40usize];
     ["Offset of field: WGPULimits::maxSampledTexturesPerShaderStage"]
-        [::std::mem::offset_of!(WGPULimits, maxSampledTexturesPerShaderStage) - 44usize];
+        [::core::mem::offset_of!(WGPULimits, maxSampledTexturesPerShaderStage) - 44usize];
     ["Offset of field: WGPULimits::maxSamplersPerShaderStage"]
-        [::std::mem::offset_of!(WGPULimits, maxSamplersPerShaderStage) - 48usize];
+        [::core::mem::offset_of!(WGPULimits, maxSamplersPerShaderStage) - 48usize];
     ["Offset of field: WGPULimits::maxStorageBuffersPerShaderStage"]
-        [::std::mem::offset_of!(WGPULimits, maxStorageBuffersPerShaderStage) - 52usize];
+        [::core::mem::offset_of!(WGPULimits, maxStorageBuffersPerShaderStage) - 52usize];
     ["Offset of field: WGPULimits::maxStorageTexturesPerShaderStage"]
-        [::std::mem::offset_of!(WGPULimits, maxStorageTexturesPerShaderStage) - 56usize];
+        [::core::mem::offset_of!(WGPULimits, maxStorageTexturesPerShaderStage) - 56usize];
     ["Offset of field: WGPULimits::maxUniformBuffersPerShaderStage"]
-        [::std::mem::offset_of!(WGPULimits, maxUniformBuffersPerShaderStage) - 60usize];
+        [::core::mem::offset_of!(WGPULimits, maxUniformBuffersPerShaderStage) - 60usize];
     ["Offset of field: WGPULimits::maxUniformBufferBindingSize"]
-        [::std::mem::offset_of!(WGPULimits, maxUniformBufferBindingSize) - 64usize];
+        [::core::mem::offset_of!(WGPULimits, maxUniformBufferBindingSize) - 64usize];
     ["Offset of field: WGPULimits::maxStorageBufferBindingSize"]
-        [::std::mem::offset_of!(WGPULimits, maxStorageBufferBindingSize) - 72usize];
+        [::core::mem::offset_of!(WGPULimits, maxStorageBufferBindingSize) - 72usize];
     ["Offset of field: WGPULimits::minUniformBufferOffsetAlignment"]
-        [::std::mem::offset_of!(WGPULimits, minUniformBufferOffsetAlignment) - 80usize];
+        [::core::mem::offset_of!(WGPULimits, minUniformBufferOffsetAlignment) - 80usize];
     ["Offset of field: WGPULimits::minStorageBufferOffsetAlignment"]
-        [::std::mem::offset_of!(WGPULimits, minStorageBufferOffsetAlignment) - 84usize];
+        [::core::mem::offset_of!(WGPULimits, minStorageBufferOffsetAlignment) - 84usize];
     ["Offset of field: WGPULimits::maxVertexBuffers"]
-        [::std::mem::offset_of!(WGPULimits, maxVertexBuffers) - 88usize];
+        [::core::mem::offset_of!(WGPULimits, maxVertexBuffers) - 88usize];
     ["Offset of field: WGPULimits::maxBufferSize"]
-        [::std::mem::offset_of!(WGPULimits, maxBufferSize) - 96usize];
+        [::core::mem::offset_of!(WGPULimits, maxBufferSize) - 96usize];
     ["Offset of field: WGPULimits::maxVertexAttributes"]
-        [::std::mem::offset_of!(WGPULimits, maxVertexAttributes) - 104usize];
+        [::core::mem::offset_of!(WGPULimits, maxVertexAttributes) - 104usize];
     ["Offset of field: WGPULimits::maxVertexBufferArrayStride"]
-        [::std::mem::offset_of!(WGPULimits, maxVertexBufferArrayStride) - 108usize];
+        [::core::mem::offset_of!(WGPULimits, maxVertexBufferArrayStride) - 108usize];
     ["Offset of field: WGPULimits::maxInterStageShaderVariables"]
-        [::std::mem::offset_of!(WGPULimits, maxInterStageShaderVariables) - 112usize];
+        [::core::mem::offset_of!(WGPULimits, maxInterStageShaderVariables) - 112usize];
     ["Offset of field: WGPULimits::maxColorAttachments"]
-        [::std::mem::offset_of!(WGPULimits, maxColorAttachments) - 116usize];
+        [::core::mem::offset_of!(WGPULimits, maxColorAttachments) - 116usize];
     ["Offset of field: WGPULimits::maxColorAttachmentBytesPerSample"]
-        [::std::mem::offset_of!(WGPULimits, maxColorAttachmentBytesPerSample) - 120usize];
+        [::core::mem::offset_of!(WGPULimits, maxColorAttachmentBytesPerSample) - 120usize];
     ["Offset of field: WGPULimits::maxComputeWorkgroupStorageSize"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeWorkgroupStorageSize) - 124usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupStorageSize) - 124usize];
     ["Offset of field: WGPULimits::maxComputeInvocationsPerWorkgroup"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeInvocationsPerWorkgroup) - 128usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeInvocationsPerWorkgroup) - 128usize];
     ["Offset of field: WGPULimits::maxComputeWorkgroupSizeX"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeX) - 132usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeX) - 132usize];
     ["Offset of field: WGPULimits::maxComputeWorkgroupSizeY"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeY) - 136usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeY) - 136usize];
     ["Offset of field: WGPULimits::maxComputeWorkgroupSizeZ"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeZ) - 140usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeZ) - 140usize];
     ["Offset of field: WGPULimits::maxComputeWorkgroupsPerDimension"]
-        [::std::mem::offset_of!(WGPULimits, maxComputeWorkgroupsPerDimension) - 144usize];
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupsPerDimension) - 144usize];
     ["Offset of field: WGPULimits::maxImmediateSize"]
-        [::std::mem::offset_of!(WGPULimits, maxImmediateSize) - 148usize];
+        [::core::mem::offset_of!(WGPULimits, maxImmediateSize) - 148usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2495,16 +2492,16 @@ pub struct WGPUMultisampleState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUMultisampleState"][::std::mem::size_of::<WGPUMultisampleState>() - 24usize];
-    ["Alignment of WGPUMultisampleState"][::std::mem::align_of::<WGPUMultisampleState>() - 8usize];
+    ["Size of WGPUMultisampleState"][::core::mem::size_of::<WGPUMultisampleState>() - 24usize];
+    ["Alignment of WGPUMultisampleState"][::core::mem::align_of::<WGPUMultisampleState>() - 8usize];
     ["Offset of field: WGPUMultisampleState::nextInChain"]
-        [::std::mem::offset_of!(WGPUMultisampleState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUMultisampleState, nextInChain) - 0usize];
     ["Offset of field: WGPUMultisampleState::count"]
-        [::std::mem::offset_of!(WGPUMultisampleState, count) - 8usize];
+        [::core::mem::offset_of!(WGPUMultisampleState, count) - 8usize];
     ["Offset of field: WGPUMultisampleState::mask"]
-        [::std::mem::offset_of!(WGPUMultisampleState, mask) - 12usize];
+        [::core::mem::offset_of!(WGPUMultisampleState, mask) - 12usize];
     ["Offset of field: WGPUMultisampleState::alphaToCoverageEnabled"]
-        [::std::mem::offset_of!(WGPUMultisampleState, alphaToCoverageEnabled) - 16usize];
+        [::core::mem::offset_of!(WGPUMultisampleState, alphaToCoverageEnabled) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2515,11 +2512,11 @@ pub struct WGPUOrigin3D {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUOrigin3D"][::std::mem::size_of::<WGPUOrigin3D>() - 12usize];
-    ["Alignment of WGPUOrigin3D"][::std::mem::align_of::<WGPUOrigin3D>() - 4usize];
-    ["Offset of field: WGPUOrigin3D::x"][::std::mem::offset_of!(WGPUOrigin3D, x) - 0usize];
-    ["Offset of field: WGPUOrigin3D::y"][::std::mem::offset_of!(WGPUOrigin3D, y) - 4usize];
-    ["Offset of field: WGPUOrigin3D::z"][::std::mem::offset_of!(WGPUOrigin3D, z) - 8usize];
+    ["Size of WGPUOrigin3D"][::core::mem::size_of::<WGPUOrigin3D>() - 12usize];
+    ["Alignment of WGPUOrigin3D"][::core::mem::align_of::<WGPUOrigin3D>() - 4usize];
+    ["Offset of field: WGPUOrigin3D::x"][::core::mem::offset_of!(WGPUOrigin3D, x) - 0usize];
+    ["Offset of field: WGPUOrigin3D::y"][::core::mem::offset_of!(WGPUOrigin3D, y) - 4usize];
+    ["Offset of field: WGPUOrigin3D::z"][::core::mem::offset_of!(WGPUOrigin3D, z) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2531,17 +2528,18 @@ pub struct WGPUPassTimestampWrites {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUPassTimestampWrites"][::std::mem::size_of::<WGPUPassTimestampWrites>() - 24usize];
+    ["Size of WGPUPassTimestampWrites"]
+        [::core::mem::size_of::<WGPUPassTimestampWrites>() - 24usize];
     ["Alignment of WGPUPassTimestampWrites"]
-        [::std::mem::align_of::<WGPUPassTimestampWrites>() - 8usize];
+        [::core::mem::align_of::<WGPUPassTimestampWrites>() - 8usize];
     ["Offset of field: WGPUPassTimestampWrites::nextInChain"]
-        [::std::mem::offset_of!(WGPUPassTimestampWrites, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUPassTimestampWrites, nextInChain) - 0usize];
     ["Offset of field: WGPUPassTimestampWrites::querySet"]
-        [::std::mem::offset_of!(WGPUPassTimestampWrites, querySet) - 8usize];
+        [::core::mem::offset_of!(WGPUPassTimestampWrites, querySet) - 8usize];
     ["Offset of field: WGPUPassTimestampWrites::beginningOfPassWriteIndex"]
-        [::std::mem::offset_of!(WGPUPassTimestampWrites, beginningOfPassWriteIndex) - 16usize];
+        [::core::mem::offset_of!(WGPUPassTimestampWrites, beginningOfPassWriteIndex) - 16usize];
     ["Offset of field: WGPUPassTimestampWrites::endOfPassWriteIndex"]
-        [::std::mem::offset_of!(WGPUPassTimestampWrites, endOfPassWriteIndex) - 20usize];
+        [::core::mem::offset_of!(WGPUPassTimestampWrites, endOfPassWriteIndex) - 20usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2555,19 +2553,19 @@ pub struct WGPUPipelineLayoutDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUPipelineLayoutDescriptor"]
-        [::std::mem::size_of::<WGPUPipelineLayoutDescriptor>() - 48usize];
+        [::core::mem::size_of::<WGPUPipelineLayoutDescriptor>() - 48usize];
     ["Alignment of WGPUPipelineLayoutDescriptor"]
-        [::std::mem::align_of::<WGPUPipelineLayoutDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUPipelineLayoutDescriptor>() - 8usize];
     ["Offset of field: WGPUPipelineLayoutDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUPipelineLayoutDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUPipelineLayoutDescriptor::label"]
-        [::std::mem::offset_of!(WGPUPipelineLayoutDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, label) - 8usize];
     ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayoutCount"]
-        [::std::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayoutCount) - 24usize];
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayoutCount) - 24usize];
     ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayouts"]
-        [::std::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayouts) - 32usize];
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayouts) - 32usize];
     ["Offset of field: WGPUPipelineLayoutDescriptor::immediateSize"]
-        [::std::mem::offset_of!(WGPUPipelineLayoutDescriptor, immediateSize) - 40usize];
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, immediateSize) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2581,20 +2579,20 @@ pub struct WGPUPrimitiveState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUPrimitiveState"][::std::mem::size_of::<WGPUPrimitiveState>() - 32usize];
-    ["Alignment of WGPUPrimitiveState"][::std::mem::align_of::<WGPUPrimitiveState>() - 8usize];
+    ["Size of WGPUPrimitiveState"][::core::mem::size_of::<WGPUPrimitiveState>() - 32usize];
+    ["Alignment of WGPUPrimitiveState"][::core::mem::align_of::<WGPUPrimitiveState>() - 8usize];
     ["Offset of field: WGPUPrimitiveState::nextInChain"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, nextInChain) - 0usize];
     ["Offset of field: WGPUPrimitiveState::topology"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, topology) - 8usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, topology) - 8usize];
     ["Offset of field: WGPUPrimitiveState::stripIndexFormat"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, stripIndexFormat) - 12usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, stripIndexFormat) - 12usize];
     ["Offset of field: WGPUPrimitiveState::frontFace"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, frontFace) - 16usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, frontFace) - 16usize];
     ["Offset of field: WGPUPrimitiveState::cullMode"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, cullMode) - 20usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, cullMode) - 20usize];
     ["Offset of field: WGPUPrimitiveState::unclippedDepth"]
-        [::std::mem::offset_of!(WGPUPrimitiveState, unclippedDepth) - 24usize];
+        [::core::mem::offset_of!(WGPUPrimitiveState, unclippedDepth) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2606,17 +2604,17 @@ pub struct WGPUQuerySetDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUQuerySetDescriptor"][::std::mem::size_of::<WGPUQuerySetDescriptor>() - 32usize];
+    ["Size of WGPUQuerySetDescriptor"][::core::mem::size_of::<WGPUQuerySetDescriptor>() - 32usize];
     ["Alignment of WGPUQuerySetDescriptor"]
-        [::std::mem::align_of::<WGPUQuerySetDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUQuerySetDescriptor>() - 8usize];
     ["Offset of field: WGPUQuerySetDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUQuerySetDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUQuerySetDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUQuerySetDescriptor::label"]
-        [::std::mem::offset_of!(WGPUQuerySetDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUQuerySetDescriptor, label) - 8usize];
     ["Offset of field: WGPUQuerySetDescriptor::type_"]
-        [::std::mem::offset_of!(WGPUQuerySetDescriptor, type_) - 24usize];
+        [::core::mem::offset_of!(WGPUQuerySetDescriptor, type_) - 24usize];
     ["Offset of field: WGPUQuerySetDescriptor::count"]
-        [::std::mem::offset_of!(WGPUQuerySetDescriptor, count) - 28usize];
+        [::core::mem::offset_of!(WGPUQuerySetDescriptor, count) - 28usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2626,12 +2624,12 @@ pub struct WGPUQueueDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUQueueDescriptor"][::std::mem::size_of::<WGPUQueueDescriptor>() - 24usize];
-    ["Alignment of WGPUQueueDescriptor"][::std::mem::align_of::<WGPUQueueDescriptor>() - 8usize];
+    ["Size of WGPUQueueDescriptor"][::core::mem::size_of::<WGPUQueueDescriptor>() - 24usize];
+    ["Alignment of WGPUQueueDescriptor"][::core::mem::align_of::<WGPUQueueDescriptor>() - 8usize];
     ["Offset of field: WGPUQueueDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUQueueDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUQueueDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUQueueDescriptor::label"]
-        [::std::mem::offset_of!(WGPUQueueDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUQueueDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2642,13 +2640,13 @@ pub struct WGPURenderBundleDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderBundleDescriptor"]
-        [::std::mem::size_of::<WGPURenderBundleDescriptor>() - 24usize];
+        [::core::mem::size_of::<WGPURenderBundleDescriptor>() - 24usize];
     ["Alignment of WGPURenderBundleDescriptor"]
-        [::std::mem::align_of::<WGPURenderBundleDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPURenderBundleDescriptor>() - 8usize];
     ["Offset of field: WGPURenderBundleDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderBundleDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderBundleDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPURenderBundleDescriptor::label"]
-        [::std::mem::offset_of!(WGPURenderBundleDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPURenderBundleDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2665,25 +2663,25 @@ pub struct WGPURenderBundleEncoderDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderBundleEncoderDescriptor"]
-        [::std::mem::size_of::<WGPURenderBundleEncoderDescriptor>() - 56usize];
+        [::core::mem::size_of::<WGPURenderBundleEncoderDescriptor>() - 56usize];
     ["Alignment of WGPURenderBundleEncoderDescriptor"]
-        [::std::mem::align_of::<WGPURenderBundleEncoderDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPURenderBundleEncoderDescriptor>() - 8usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::label"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, label) - 8usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::colorFormatCount"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, colorFormatCount) - 24usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, colorFormatCount) - 24usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::colorFormats"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, colorFormats) - 32usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, colorFormats) - 32usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::depthStencilFormat"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, depthStencilFormat) - 40usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, depthStencilFormat) - 40usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::sampleCount"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, sampleCount) - 44usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, sampleCount) - 44usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::depthReadOnly"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, depthReadOnly) - 48usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, depthReadOnly) - 48usize];
     ["Offset of field: WGPURenderBundleEncoderDescriptor::stencilReadOnly"]
-        [::std::mem::offset_of!(WGPURenderBundleEncoderDescriptor, stencilReadOnly) - 52usize];
+        [::core::mem::offset_of!(WGPURenderBundleEncoderDescriptor, stencilReadOnly) - 52usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2702,29 +2700,31 @@ pub struct WGPURenderPassDepthStencilAttachment {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderPassDepthStencilAttachment"]
-        [::std::mem::size_of::<WGPURenderPassDepthStencilAttachment>() - 48usize];
+        [::core::mem::size_of::<WGPURenderPassDepthStencilAttachment>() - 48usize];
     ["Alignment of WGPURenderPassDepthStencilAttachment"]
-        [::std::mem::align_of::<WGPURenderPassDepthStencilAttachment>() - 8usize];
+        [::core::mem::align_of::<WGPURenderPassDepthStencilAttachment>() - 8usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, nextInChain) - 0usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::view"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, view) - 8usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, view) - 8usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::depthLoadOp"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthLoadOp) - 16usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthLoadOp) - 16usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::depthStoreOp"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthStoreOp) - 20usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthStoreOp) - 20usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::depthClearValue"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthClearValue) - 24usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthClearValue) - 24usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::depthReadOnly"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthReadOnly) - 28usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, depthReadOnly) - 28usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::stencilLoadOp"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilLoadOp) - 32usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilLoadOp) - 32usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::stencilStoreOp"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilStoreOp) - 36usize];
-    ["Offset of field: WGPURenderPassDepthStencilAttachment::stencilClearValue"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilClearValue) - 40usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilStoreOp) - 36usize];
+    ["Offset of field: WGPURenderPassDepthStencilAttachment::stencilClearValue"][::core::mem::offset_of!(
+        WGPURenderPassDepthStencilAttachment,
+        stencilClearValue
+    ) - 40usize];
     ["Offset of field: WGPURenderPassDepthStencilAttachment::stencilReadOnly"]
-        [::std::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilReadOnly) - 44usize];
+        [::core::mem::offset_of!(WGPURenderPassDepthStencilAttachment, stencilReadOnly) - 44usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2735,13 +2735,13 @@ pub struct WGPURenderPassMaxDrawCount {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderPassMaxDrawCount"]
-        [::std::mem::size_of::<WGPURenderPassMaxDrawCount>() - 24usize];
+        [::core::mem::size_of::<WGPURenderPassMaxDrawCount>() - 24usize];
     ["Alignment of WGPURenderPassMaxDrawCount"]
-        [::std::mem::align_of::<WGPURenderPassMaxDrawCount>() - 8usize];
+        [::core::mem::align_of::<WGPURenderPassMaxDrawCount>() - 8usize];
     ["Offset of field: WGPURenderPassMaxDrawCount::chain"]
-        [::std::mem::offset_of!(WGPURenderPassMaxDrawCount, chain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderPassMaxDrawCount, chain) - 0usize];
     ["Offset of field: WGPURenderPassMaxDrawCount::maxDrawCount"]
-        [::std::mem::offset_of!(WGPURenderPassMaxDrawCount, maxDrawCount) - 16usize];
+        [::core::mem::offset_of!(WGPURenderPassMaxDrawCount, maxDrawCount) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2752,13 +2752,13 @@ pub struct WGPURequestAdapterWebXROptions {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURequestAdapterWebXROptions"]
-        [::std::mem::size_of::<WGPURequestAdapterWebXROptions>() - 24usize];
+        [::core::mem::size_of::<WGPURequestAdapterWebXROptions>() - 24usize];
     ["Alignment of WGPURequestAdapterWebXROptions"]
-        [::std::mem::align_of::<WGPURequestAdapterWebXROptions>() - 8usize];
+        [::core::mem::align_of::<WGPURequestAdapterWebXROptions>() - 8usize];
     ["Offset of field: WGPURequestAdapterWebXROptions::chain"]
-        [::std::mem::offset_of!(WGPURequestAdapterWebXROptions, chain) - 0usize];
+        [::core::mem::offset_of!(WGPURequestAdapterWebXROptions, chain) - 0usize];
     ["Offset of field: WGPURequestAdapterWebXROptions::xrCompatible"]
-        [::std::mem::offset_of!(WGPURequestAdapterWebXROptions, xrCompatible) - 16usize];
+        [::core::mem::offset_of!(WGPURequestAdapterWebXROptions, xrCompatible) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2769,13 +2769,13 @@ pub struct WGPUSamplerBindingLayout {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSamplerBindingLayout"]
-        [::std::mem::size_of::<WGPUSamplerBindingLayout>() - 16usize];
+        [::core::mem::size_of::<WGPUSamplerBindingLayout>() - 16usize];
     ["Alignment of WGPUSamplerBindingLayout"]
-        [::std::mem::align_of::<WGPUSamplerBindingLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUSamplerBindingLayout>() - 8usize];
     ["Offset of field: WGPUSamplerBindingLayout::nextInChain"]
-        [::std::mem::offset_of!(WGPUSamplerBindingLayout, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSamplerBindingLayout, nextInChain) - 0usize];
     ["Offset of field: WGPUSamplerBindingLayout::type_"]
-        [::std::mem::offset_of!(WGPUSamplerBindingLayout, type_) - 8usize];
+        [::core::mem::offset_of!(WGPUSamplerBindingLayout, type_) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2795,33 +2795,33 @@ pub struct WGPUSamplerDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSamplerDescriptor"][::std::mem::size_of::<WGPUSamplerDescriptor>() - 64usize];
+    ["Size of WGPUSamplerDescriptor"][::core::mem::size_of::<WGPUSamplerDescriptor>() - 64usize];
     ["Alignment of WGPUSamplerDescriptor"]
-        [::std::mem::align_of::<WGPUSamplerDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUSamplerDescriptor>() - 8usize];
     ["Offset of field: WGPUSamplerDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUSamplerDescriptor::label"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, label) - 8usize];
     ["Offset of field: WGPUSamplerDescriptor::addressModeU"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, addressModeU) - 24usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeU) - 24usize];
     ["Offset of field: WGPUSamplerDescriptor::addressModeV"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, addressModeV) - 28usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeV) - 28usize];
     ["Offset of field: WGPUSamplerDescriptor::addressModeW"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, addressModeW) - 32usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeW) - 32usize];
     ["Offset of field: WGPUSamplerDescriptor::magFilter"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, magFilter) - 36usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, magFilter) - 36usize];
     ["Offset of field: WGPUSamplerDescriptor::minFilter"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, minFilter) - 40usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, minFilter) - 40usize];
     ["Offset of field: WGPUSamplerDescriptor::mipmapFilter"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, mipmapFilter) - 44usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, mipmapFilter) - 44usize];
     ["Offset of field: WGPUSamplerDescriptor::lodMinClamp"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, lodMinClamp) - 48usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMinClamp) - 48usize];
     ["Offset of field: WGPUSamplerDescriptor::lodMaxClamp"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, lodMaxClamp) - 52usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMaxClamp) - 52usize];
     ["Offset of field: WGPUSamplerDescriptor::compare"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, compare) - 56usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, compare) - 56usize];
     ["Offset of field: WGPUSamplerDescriptor::maxAnisotropy"]
-        [::std::mem::offset_of!(WGPUSamplerDescriptor, maxAnisotropy) - 60usize];
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, maxAnisotropy) - 60usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2832,15 +2832,15 @@ pub struct WGPUShaderSourceSPIRV {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUShaderSourceSPIRV"][::std::mem::size_of::<WGPUShaderSourceSPIRV>() - 32usize];
+    ["Size of WGPUShaderSourceSPIRV"][::core::mem::size_of::<WGPUShaderSourceSPIRV>() - 32usize];
     ["Alignment of WGPUShaderSourceSPIRV"]
-        [::std::mem::align_of::<WGPUShaderSourceSPIRV>() - 8usize];
+        [::core::mem::align_of::<WGPUShaderSourceSPIRV>() - 8usize];
     ["Offset of field: WGPUShaderSourceSPIRV::chain"]
-        [::std::mem::offset_of!(WGPUShaderSourceSPIRV, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUShaderSourceSPIRV, chain) - 0usize];
     ["Offset of field: WGPUShaderSourceSPIRV::codeSize"]
-        [::std::mem::offset_of!(WGPUShaderSourceSPIRV, codeSize) - 16usize];
+        [::core::mem::offset_of!(WGPUShaderSourceSPIRV, codeSize) - 16usize];
     ["Offset of field: WGPUShaderSourceSPIRV::code"]
-        [::std::mem::offset_of!(WGPUShaderSourceSPIRV, code) - 24usize];
+        [::core::mem::offset_of!(WGPUShaderSourceSPIRV, code) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2850,12 +2850,12 @@ pub struct WGPUShaderSourceWGSL {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUShaderSourceWGSL"][::std::mem::size_of::<WGPUShaderSourceWGSL>() - 32usize];
-    ["Alignment of WGPUShaderSourceWGSL"][::std::mem::align_of::<WGPUShaderSourceWGSL>() - 8usize];
+    ["Size of WGPUShaderSourceWGSL"][::core::mem::size_of::<WGPUShaderSourceWGSL>() - 32usize];
+    ["Alignment of WGPUShaderSourceWGSL"][::core::mem::align_of::<WGPUShaderSourceWGSL>() - 8usize];
     ["Offset of field: WGPUShaderSourceWGSL::chain"]
-        [::std::mem::offset_of!(WGPUShaderSourceWGSL, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUShaderSourceWGSL, chain) - 0usize];
     ["Offset of field: WGPUShaderSourceWGSL::code"]
-        [::std::mem::offset_of!(WGPUShaderSourceWGSL, code) - 16usize];
+        [::core::mem::offset_of!(WGPUShaderSourceWGSL, code) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2867,16 +2867,16 @@ pub struct WGPUStencilFaceState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUStencilFaceState"][::std::mem::size_of::<WGPUStencilFaceState>() - 16usize];
-    ["Alignment of WGPUStencilFaceState"][::std::mem::align_of::<WGPUStencilFaceState>() - 4usize];
+    ["Size of WGPUStencilFaceState"][::core::mem::size_of::<WGPUStencilFaceState>() - 16usize];
+    ["Alignment of WGPUStencilFaceState"][::core::mem::align_of::<WGPUStencilFaceState>() - 4usize];
     ["Offset of field: WGPUStencilFaceState::compare"]
-        [::std::mem::offset_of!(WGPUStencilFaceState, compare) - 0usize];
+        [::core::mem::offset_of!(WGPUStencilFaceState, compare) - 0usize];
     ["Offset of field: WGPUStencilFaceState::failOp"]
-        [::std::mem::offset_of!(WGPUStencilFaceState, failOp) - 4usize];
+        [::core::mem::offset_of!(WGPUStencilFaceState, failOp) - 4usize];
     ["Offset of field: WGPUStencilFaceState::depthFailOp"]
-        [::std::mem::offset_of!(WGPUStencilFaceState, depthFailOp) - 8usize];
+        [::core::mem::offset_of!(WGPUStencilFaceState, depthFailOp) - 8usize];
     ["Offset of field: WGPUStencilFaceState::passOp"]
-        [::std::mem::offset_of!(WGPUStencilFaceState, passOp) - 12usize];
+        [::core::mem::offset_of!(WGPUStencilFaceState, passOp) - 12usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2889,17 +2889,17 @@ pub struct WGPUStorageTextureBindingLayout {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUStorageTextureBindingLayout"]
-        [::std::mem::size_of::<WGPUStorageTextureBindingLayout>() - 24usize];
+        [::core::mem::size_of::<WGPUStorageTextureBindingLayout>() - 24usize];
     ["Alignment of WGPUStorageTextureBindingLayout"]
-        [::std::mem::align_of::<WGPUStorageTextureBindingLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUStorageTextureBindingLayout>() - 8usize];
     ["Offset of field: WGPUStorageTextureBindingLayout::nextInChain"]
-        [::std::mem::offset_of!(WGPUStorageTextureBindingLayout, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUStorageTextureBindingLayout, nextInChain) - 0usize];
     ["Offset of field: WGPUStorageTextureBindingLayout::access"]
-        [::std::mem::offset_of!(WGPUStorageTextureBindingLayout, access) - 8usize];
+        [::core::mem::offset_of!(WGPUStorageTextureBindingLayout, access) - 8usize];
     ["Offset of field: WGPUStorageTextureBindingLayout::format"]
-        [::std::mem::offset_of!(WGPUStorageTextureBindingLayout, format) - 12usize];
+        [::core::mem::offset_of!(WGPUStorageTextureBindingLayout, format) - 12usize];
     ["Offset of field: WGPUStorageTextureBindingLayout::viewDimension"]
-        [::std::mem::offset_of!(WGPUStorageTextureBindingLayout, viewDimension) - 16usize];
+        [::core::mem::offset_of!(WGPUStorageTextureBindingLayout, viewDimension) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2909,13 +2909,13 @@ pub struct WGPUSupportedFeatures {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSupportedFeatures"][::std::mem::size_of::<WGPUSupportedFeatures>() - 16usize];
+    ["Size of WGPUSupportedFeatures"][::core::mem::size_of::<WGPUSupportedFeatures>() - 16usize];
     ["Alignment of WGPUSupportedFeatures"]
-        [::std::mem::align_of::<WGPUSupportedFeatures>() - 8usize];
+        [::core::mem::align_of::<WGPUSupportedFeatures>() - 8usize];
     ["Offset of field: WGPUSupportedFeatures::featureCount"]
-        [::std::mem::offset_of!(WGPUSupportedFeatures, featureCount) - 0usize];
+        [::core::mem::offset_of!(WGPUSupportedFeatures, featureCount) - 0usize];
     ["Offset of field: WGPUSupportedFeatures::features"]
-        [::std::mem::offset_of!(WGPUSupportedFeatures, features) - 8usize];
+        [::core::mem::offset_of!(WGPUSupportedFeatures, features) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2926,13 +2926,13 @@ pub struct WGPUSupportedInstanceFeatures {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSupportedInstanceFeatures"]
-        [::std::mem::size_of::<WGPUSupportedInstanceFeatures>() - 16usize];
+        [::core::mem::size_of::<WGPUSupportedInstanceFeatures>() - 16usize];
     ["Alignment of WGPUSupportedInstanceFeatures"]
-        [::std::mem::align_of::<WGPUSupportedInstanceFeatures>() - 8usize];
+        [::core::mem::align_of::<WGPUSupportedInstanceFeatures>() - 8usize];
     ["Offset of field: WGPUSupportedInstanceFeatures::featureCount"]
-        [::std::mem::offset_of!(WGPUSupportedInstanceFeatures, featureCount) - 0usize];
+        [::core::mem::offset_of!(WGPUSupportedInstanceFeatures, featureCount) - 0usize];
     ["Offset of field: WGPUSupportedInstanceFeatures::features"]
-        [::std::mem::offset_of!(WGPUSupportedInstanceFeatures, features) - 8usize];
+        [::core::mem::offset_of!(WGPUSupportedInstanceFeatures, features) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2943,13 +2943,13 @@ pub struct WGPUSupportedWGSLLanguageFeatures {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSupportedWGSLLanguageFeatures"]
-        [::std::mem::size_of::<WGPUSupportedWGSLLanguageFeatures>() - 16usize];
+        [::core::mem::size_of::<WGPUSupportedWGSLLanguageFeatures>() - 16usize];
     ["Alignment of WGPUSupportedWGSLLanguageFeatures"]
-        [::std::mem::align_of::<WGPUSupportedWGSLLanguageFeatures>() - 8usize];
+        [::core::mem::align_of::<WGPUSupportedWGSLLanguageFeatures>() - 8usize];
     ["Offset of field: WGPUSupportedWGSLLanguageFeatures::featureCount"]
-        [::std::mem::offset_of!(WGPUSupportedWGSLLanguageFeatures, featureCount) - 0usize];
+        [::core::mem::offset_of!(WGPUSupportedWGSLLanguageFeatures, featureCount) - 0usize];
     ["Offset of field: WGPUSupportedWGSLLanguageFeatures::features"]
-        [::std::mem::offset_of!(WGPUSupportedWGSLLanguageFeatures, features) - 8usize];
+        [::core::mem::offset_of!(WGPUSupportedWGSLLanguageFeatures, features) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2965,25 +2965,26 @@ pub struct WGPUSurfaceCapabilities {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSurfaceCapabilities"][::std::mem::size_of::<WGPUSurfaceCapabilities>() - 64usize];
+    ["Size of WGPUSurfaceCapabilities"]
+        [::core::mem::size_of::<WGPUSurfaceCapabilities>() - 64usize];
     ["Alignment of WGPUSurfaceCapabilities"]
-        [::std::mem::align_of::<WGPUSurfaceCapabilities>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceCapabilities>() - 8usize];
     ["Offset of field: WGPUSurfaceCapabilities::nextInChain"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, nextInChain) - 0usize];
     ["Offset of field: WGPUSurfaceCapabilities::usages"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, usages) - 8usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, usages) - 8usize];
     ["Offset of field: WGPUSurfaceCapabilities::formatCount"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, formatCount) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, formatCount) - 16usize];
     ["Offset of field: WGPUSurfaceCapabilities::formats"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, formats) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, formats) - 24usize];
     ["Offset of field: WGPUSurfaceCapabilities::presentModeCount"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, presentModeCount) - 32usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, presentModeCount) - 32usize];
     ["Offset of field: WGPUSurfaceCapabilities::presentModes"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, presentModes) - 40usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, presentModes) - 40usize];
     ["Offset of field: WGPUSurfaceCapabilities::alphaModeCount"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, alphaModeCount) - 48usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, alphaModeCount) - 48usize];
     ["Offset of field: WGPUSurfaceCapabilities::alphaModes"]
-        [::std::mem::offset_of!(WGPUSurfaceCapabilities, alphaModes) - 56usize];
+        [::core::mem::offset_of!(WGPUSurfaceCapabilities, alphaModes) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2995,15 +2996,15 @@ pub struct WGPUSurfaceColorManagement {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceColorManagement"]
-        [::std::mem::size_of::<WGPUSurfaceColorManagement>() - 24usize];
+        [::core::mem::size_of::<WGPUSurfaceColorManagement>() - 24usize];
     ["Alignment of WGPUSurfaceColorManagement"]
-        [::std::mem::align_of::<WGPUSurfaceColorManagement>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceColorManagement>() - 8usize];
     ["Offset of field: WGPUSurfaceColorManagement::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceColorManagement, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceColorManagement, chain) - 0usize];
     ["Offset of field: WGPUSurfaceColorManagement::colorSpace"]
-        [::std::mem::offset_of!(WGPUSurfaceColorManagement, colorSpace) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceColorManagement, colorSpace) - 16usize];
     ["Offset of field: WGPUSurfaceColorManagement::toneMappingMode"]
-        [::std::mem::offset_of!(WGPUSurfaceColorManagement, toneMappingMode) - 20usize];
+        [::core::mem::offset_of!(WGPUSurfaceColorManagement, toneMappingMode) - 20usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3022,143 +3023,143 @@ pub struct WGPUSurfaceConfiguration {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceConfiguration"]
-        [::std::mem::size_of::<WGPUSurfaceConfiguration>() - 64usize];
+        [::core::mem::size_of::<WGPUSurfaceConfiguration>() - 64usize];
     ["Alignment of WGPUSurfaceConfiguration"]
-        [::std::mem::align_of::<WGPUSurfaceConfiguration>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceConfiguration>() - 8usize];
     ["Offset of field: WGPUSurfaceConfiguration::nextInChain"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, nextInChain) - 0usize];
     ["Offset of field: WGPUSurfaceConfiguration::device"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, device) - 8usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, device) - 8usize];
     ["Offset of field: WGPUSurfaceConfiguration::format"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, format) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, format) - 16usize];
     ["Offset of field: WGPUSurfaceConfiguration::usage"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, usage) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, usage) - 24usize];
     ["Offset of field: WGPUSurfaceConfiguration::width"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, width) - 32usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, width) - 32usize];
     ["Offset of field: WGPUSurfaceConfiguration::height"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, height) - 36usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, height) - 36usize];
     ["Offset of field: WGPUSurfaceConfiguration::viewFormatCount"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, viewFormatCount) - 40usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, viewFormatCount) - 40usize];
     ["Offset of field: WGPUSurfaceConfiguration::viewFormats"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, viewFormats) - 48usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, viewFormats) - 48usize];
     ["Offset of field: WGPUSurfaceConfiguration::alphaMode"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, alphaMode) - 56usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, alphaMode) - 56usize];
     ["Offset of field: WGPUSurfaceConfiguration::presentMode"]
-        [::std::mem::offset_of!(WGPUSurfaceConfiguration, presentMode) - 60usize];
+        [::core::mem::offset_of!(WGPUSurfaceConfiguration, presentMode) - 60usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceAndroidNativeWindow {
     pub chain: WGPUChainedStruct,
-    pub window: *mut ::std::os::raw::c_void,
+    pub window: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceAndroidNativeWindow"]
-        [::std::mem::size_of::<WGPUSurfaceSourceAndroidNativeWindow>() - 24usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceAndroidNativeWindow>() - 24usize];
     ["Alignment of WGPUSurfaceSourceAndroidNativeWindow"]
-        [::std::mem::align_of::<WGPUSurfaceSourceAndroidNativeWindow>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceAndroidNativeWindow>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceAndroidNativeWindow::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceAndroidNativeWindow, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceAndroidNativeWindow, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceAndroidNativeWindow::window"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceAndroidNativeWindow, window) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceAndroidNativeWindow, window) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceMetalLayer {
     pub chain: WGPUChainedStruct,
-    pub layer: *mut ::std::os::raw::c_void,
+    pub layer: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceMetalLayer"]
-        [::std::mem::size_of::<WGPUSurfaceSourceMetalLayer>() - 24usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceMetalLayer>() - 24usize];
     ["Alignment of WGPUSurfaceSourceMetalLayer"]
-        [::std::mem::align_of::<WGPUSurfaceSourceMetalLayer>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceMetalLayer>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceMetalLayer::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceMetalLayer, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceMetalLayer, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceMetalLayer::layer"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceMetalLayer, layer) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceMetalLayer, layer) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceWaylandSurface {
     pub chain: WGPUChainedStruct,
-    pub display: *mut ::std::os::raw::c_void,
-    pub surface: *mut ::std::os::raw::c_void,
+    pub display: *mut ::core::ffi::c_void,
+    pub surface: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceWaylandSurface"]
-        [::std::mem::size_of::<WGPUSurfaceSourceWaylandSurface>() - 32usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceWaylandSurface>() - 32usize];
     ["Alignment of WGPUSurfaceSourceWaylandSurface"]
-        [::std::mem::align_of::<WGPUSurfaceSourceWaylandSurface>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceWaylandSurface>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceWaylandSurface::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceWaylandSurface::display"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, display) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, display) - 16usize];
     ["Offset of field: WGPUSurfaceSourceWaylandSurface::surface"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, surface) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWaylandSurface, surface) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceWindowsHWND {
     pub chain: WGPUChainedStruct,
-    pub hinstance: *mut ::std::os::raw::c_void,
-    pub hwnd: *mut ::std::os::raw::c_void,
+    pub hinstance: *mut ::core::ffi::c_void,
+    pub hwnd: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceWindowsHWND"]
-        [::std::mem::size_of::<WGPUSurfaceSourceWindowsHWND>() - 32usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceWindowsHWND>() - 32usize];
     ["Alignment of WGPUSurfaceSourceWindowsHWND"]
-        [::std::mem::align_of::<WGPUSurfaceSourceWindowsHWND>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceWindowsHWND>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceWindowsHWND::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceWindowsHWND::hinstance"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, hinstance) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, hinstance) - 16usize];
     ["Offset of field: WGPUSurfaceSourceWindowsHWND::hwnd"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, hwnd) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceWindowsHWND, hwnd) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceXCBWindow {
     pub chain: WGPUChainedStruct,
-    pub connection: *mut ::std::os::raw::c_void,
+    pub connection: *mut ::core::ffi::c_void,
     pub window: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceXCBWindow"]
-        [::std::mem::size_of::<WGPUSurfaceSourceXCBWindow>() - 32usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceXCBWindow>() - 32usize];
     ["Alignment of WGPUSurfaceSourceXCBWindow"]
-        [::std::mem::align_of::<WGPUSurfaceSourceXCBWindow>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceXCBWindow>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceXCBWindow::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXCBWindow, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXCBWindow, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceXCBWindow::connection"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXCBWindow, connection) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXCBWindow, connection) - 16usize];
     ["Offset of field: WGPUSurfaceSourceXCBWindow::window"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXCBWindow, window) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXCBWindow, window) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceSourceXlibWindow {
     pub chain: WGPUChainedStruct,
-    pub display: *mut ::std::os::raw::c_void,
+    pub display: *mut ::core::ffi::c_void,
     pub window: u64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUSurfaceSourceXlibWindow"]
-        [::std::mem::size_of::<WGPUSurfaceSourceXlibWindow>() - 32usize];
+        [::core::mem::size_of::<WGPUSurfaceSourceXlibWindow>() - 32usize];
     ["Alignment of WGPUSurfaceSourceXlibWindow"]
-        [::std::mem::align_of::<WGPUSurfaceSourceXlibWindow>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceSourceXlibWindow>() - 8usize];
     ["Offset of field: WGPUSurfaceSourceXlibWindow::chain"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXlibWindow, chain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXlibWindow, chain) - 0usize];
     ["Offset of field: WGPUSurfaceSourceXlibWindow::display"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXlibWindow, display) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXlibWindow, display) - 16usize];
     ["Offset of field: WGPUSurfaceSourceXlibWindow::window"]
-        [::std::mem::offset_of!(WGPUSurfaceSourceXlibWindow, window) - 24usize];
+        [::core::mem::offset_of!(WGPUSurfaceSourceXlibWindow, window) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3169,14 +3170,14 @@ pub struct WGPUSurfaceTexture {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSurfaceTexture"][::std::mem::size_of::<WGPUSurfaceTexture>() - 24usize];
-    ["Alignment of WGPUSurfaceTexture"][::std::mem::align_of::<WGPUSurfaceTexture>() - 8usize];
+    ["Size of WGPUSurfaceTexture"][::core::mem::size_of::<WGPUSurfaceTexture>() - 24usize];
+    ["Alignment of WGPUSurfaceTexture"][::core::mem::align_of::<WGPUSurfaceTexture>() - 8usize];
     ["Offset of field: WGPUSurfaceTexture::nextInChain"]
-        [::std::mem::offset_of!(WGPUSurfaceTexture, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceTexture, nextInChain) - 0usize];
     ["Offset of field: WGPUSurfaceTexture::texture"]
-        [::std::mem::offset_of!(WGPUSurfaceTexture, texture) - 8usize];
+        [::core::mem::offset_of!(WGPUSurfaceTexture, texture) - 8usize];
     ["Offset of field: WGPUSurfaceTexture::status"]
-        [::std::mem::offset_of!(WGPUSurfaceTexture, status) - 16usize];
+        [::core::mem::offset_of!(WGPUSurfaceTexture, status) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3188,15 +3189,15 @@ pub struct WGPUTexelCopyBufferLayout {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUTexelCopyBufferLayout"]
-        [::std::mem::size_of::<WGPUTexelCopyBufferLayout>() - 16usize];
+        [::core::mem::size_of::<WGPUTexelCopyBufferLayout>() - 16usize];
     ["Alignment of WGPUTexelCopyBufferLayout"]
-        [::std::mem::align_of::<WGPUTexelCopyBufferLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUTexelCopyBufferLayout>() - 8usize];
     ["Offset of field: WGPUTexelCopyBufferLayout::offset"]
-        [::std::mem::offset_of!(WGPUTexelCopyBufferLayout, offset) - 0usize];
+        [::core::mem::offset_of!(WGPUTexelCopyBufferLayout, offset) - 0usize];
     ["Offset of field: WGPUTexelCopyBufferLayout::bytesPerRow"]
-        [::std::mem::offset_of!(WGPUTexelCopyBufferLayout, bytesPerRow) - 8usize];
+        [::core::mem::offset_of!(WGPUTexelCopyBufferLayout, bytesPerRow) - 8usize];
     ["Offset of field: WGPUTexelCopyBufferLayout::rowsPerImage"]
-        [::std::mem::offset_of!(WGPUTexelCopyBufferLayout, rowsPerImage) - 12usize];
+        [::core::mem::offset_of!(WGPUTexelCopyBufferLayout, rowsPerImage) - 12usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3209,17 +3210,17 @@ pub struct WGPUTextureBindingLayout {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUTextureBindingLayout"]
-        [::std::mem::size_of::<WGPUTextureBindingLayout>() - 24usize];
+        [::core::mem::size_of::<WGPUTextureBindingLayout>() - 24usize];
     ["Alignment of WGPUTextureBindingLayout"]
-        [::std::mem::align_of::<WGPUTextureBindingLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUTextureBindingLayout>() - 8usize];
     ["Offset of field: WGPUTextureBindingLayout::nextInChain"]
-        [::std::mem::offset_of!(WGPUTextureBindingLayout, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUTextureBindingLayout, nextInChain) - 0usize];
     ["Offset of field: WGPUTextureBindingLayout::sampleType"]
-        [::std::mem::offset_of!(WGPUTextureBindingLayout, sampleType) - 8usize];
+        [::core::mem::offset_of!(WGPUTextureBindingLayout, sampleType) - 8usize];
     ["Offset of field: WGPUTextureBindingLayout::viewDimension"]
-        [::std::mem::offset_of!(WGPUTextureBindingLayout, viewDimension) - 12usize];
+        [::core::mem::offset_of!(WGPUTextureBindingLayout, viewDimension) - 12usize];
     ["Offset of field: WGPUTextureBindingLayout::multisampled"]
-        [::std::mem::offset_of!(WGPUTextureBindingLayout, multisampled) - 16usize];
+        [::core::mem::offset_of!(WGPUTextureBindingLayout, multisampled) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3238,29 +3239,29 @@ pub struct WGPUTextureViewDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUTextureViewDescriptor"]
-        [::std::mem::size_of::<WGPUTextureViewDescriptor>() - 64usize];
+        [::core::mem::size_of::<WGPUTextureViewDescriptor>() - 64usize];
     ["Alignment of WGPUTextureViewDescriptor"]
-        [::std::mem::align_of::<WGPUTextureViewDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUTextureViewDescriptor>() - 8usize];
     ["Offset of field: WGPUTextureViewDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUTextureViewDescriptor::label"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, label) - 8usize];
     ["Offset of field: WGPUTextureViewDescriptor::format"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, format) - 24usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, format) - 24usize];
     ["Offset of field: WGPUTextureViewDescriptor::dimension"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, dimension) - 28usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, dimension) - 28usize];
     ["Offset of field: WGPUTextureViewDescriptor::baseMipLevel"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, baseMipLevel) - 32usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseMipLevel) - 32usize];
     ["Offset of field: WGPUTextureViewDescriptor::mipLevelCount"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, mipLevelCount) - 36usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, mipLevelCount) - 36usize];
     ["Offset of field: WGPUTextureViewDescriptor::baseArrayLayer"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, baseArrayLayer) - 40usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseArrayLayer) - 40usize];
     ["Offset of field: WGPUTextureViewDescriptor::arrayLayerCount"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, arrayLayerCount) - 44usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, arrayLayerCount) - 44usize];
     ["Offset of field: WGPUTextureViewDescriptor::aspect"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, aspect) - 48usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, aspect) - 48usize];
     ["Offset of field: WGPUTextureViewDescriptor::usage"]
-        [::std::mem::offset_of!(WGPUTextureViewDescriptor, usage) - 56usize];
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, usage) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3272,16 +3273,16 @@ pub struct WGPUVertexAttribute {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUVertexAttribute"][::std::mem::size_of::<WGPUVertexAttribute>() - 32usize];
-    ["Alignment of WGPUVertexAttribute"][::std::mem::align_of::<WGPUVertexAttribute>() - 8usize];
+    ["Size of WGPUVertexAttribute"][::core::mem::size_of::<WGPUVertexAttribute>() - 32usize];
+    ["Alignment of WGPUVertexAttribute"][::core::mem::align_of::<WGPUVertexAttribute>() - 8usize];
     ["Offset of field: WGPUVertexAttribute::nextInChain"]
-        [::std::mem::offset_of!(WGPUVertexAttribute, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUVertexAttribute, nextInChain) - 0usize];
     ["Offset of field: WGPUVertexAttribute::format"]
-        [::std::mem::offset_of!(WGPUVertexAttribute, format) - 8usize];
+        [::core::mem::offset_of!(WGPUVertexAttribute, format) - 8usize];
     ["Offset of field: WGPUVertexAttribute::offset"]
-        [::std::mem::offset_of!(WGPUVertexAttribute, offset) - 16usize];
+        [::core::mem::offset_of!(WGPUVertexAttribute, offset) - 16usize];
     ["Offset of field: WGPUVertexAttribute::shaderLocation"]
-        [::std::mem::offset_of!(WGPUVertexAttribute, shaderLocation) - 24usize];
+        [::core::mem::offset_of!(WGPUVertexAttribute, shaderLocation) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3294,19 +3295,20 @@ pub struct WGPUBindGroupDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBindGroupDescriptor"][::std::mem::size_of::<WGPUBindGroupDescriptor>() - 48usize];
+    ["Size of WGPUBindGroupDescriptor"]
+        [::core::mem::size_of::<WGPUBindGroupDescriptor>() - 48usize];
     ["Alignment of WGPUBindGroupDescriptor"]
-        [::std::mem::align_of::<WGPUBindGroupDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUBindGroupDescriptor>() - 8usize];
     ["Offset of field: WGPUBindGroupDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUBindGroupDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUBindGroupDescriptor::label"]
-        [::std::mem::offset_of!(WGPUBindGroupDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, label) - 8usize];
     ["Offset of field: WGPUBindGroupDescriptor::layout"]
-        [::std::mem::offset_of!(WGPUBindGroupDescriptor, layout) - 24usize];
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, layout) - 24usize];
     ["Offset of field: WGPUBindGroupDescriptor::entryCount"]
-        [::std::mem::offset_of!(WGPUBindGroupDescriptor, entryCount) - 32usize];
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entryCount) - 32usize];
     ["Offset of field: WGPUBindGroupDescriptor::entries"]
-        [::std::mem::offset_of!(WGPUBindGroupDescriptor, entries) - 40usize];
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entries) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3323,25 +3325,25 @@ pub struct WGPUBindGroupLayoutEntry {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUBindGroupLayoutEntry"]
-        [::std::mem::size_of::<WGPUBindGroupLayoutEntry>() - 120usize];
+        [::core::mem::size_of::<WGPUBindGroupLayoutEntry>() - 120usize];
     ["Alignment of WGPUBindGroupLayoutEntry"]
-        [::std::mem::align_of::<WGPUBindGroupLayoutEntry>() - 8usize];
+        [::core::mem::align_of::<WGPUBindGroupLayoutEntry>() - 8usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::nextInChain"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, nextInChain) - 0usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::binding"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, binding) - 8usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, binding) - 8usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::visibility"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, visibility) - 16usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, visibility) - 16usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::bindingArraySize"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, bindingArraySize) - 24usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, bindingArraySize) - 24usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::buffer"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, buffer) - 32usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, buffer) - 32usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::sampler"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, sampler) - 56usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, sampler) - 56usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::texture"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, texture) - 72usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, texture) - 72usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::storageTexture"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutEntry, storageTexture) - 96usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, storageTexture) - 96usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3351,12 +3353,12 @@ pub struct WGPUBlendState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBlendState"][::std::mem::size_of::<WGPUBlendState>() - 24usize];
-    ["Alignment of WGPUBlendState"][::std::mem::align_of::<WGPUBlendState>() - 4usize];
+    ["Size of WGPUBlendState"][::core::mem::size_of::<WGPUBlendState>() - 24usize];
+    ["Alignment of WGPUBlendState"][::core::mem::align_of::<WGPUBlendState>() - 4usize];
     ["Offset of field: WGPUBlendState::color"]
-        [::std::mem::offset_of!(WGPUBlendState, color) - 0usize];
+        [::core::mem::offset_of!(WGPUBlendState, color) - 0usize];
     ["Offset of field: WGPUBlendState::alpha"]
-        [::std::mem::offset_of!(WGPUBlendState, alpha) - 12usize];
+        [::core::mem::offset_of!(WGPUBlendState, alpha) - 12usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3367,14 +3369,14 @@ pub struct WGPUCompilationInfo {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUCompilationInfo"][::std::mem::size_of::<WGPUCompilationInfo>() - 24usize];
-    ["Alignment of WGPUCompilationInfo"][::std::mem::align_of::<WGPUCompilationInfo>() - 8usize];
+    ["Size of WGPUCompilationInfo"][::core::mem::size_of::<WGPUCompilationInfo>() - 24usize];
+    ["Alignment of WGPUCompilationInfo"][::core::mem::align_of::<WGPUCompilationInfo>() - 8usize];
     ["Offset of field: WGPUCompilationInfo::nextInChain"]
-        [::std::mem::offset_of!(WGPUCompilationInfo, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUCompilationInfo, nextInChain) - 0usize];
     ["Offset of field: WGPUCompilationInfo::messageCount"]
-        [::std::mem::offset_of!(WGPUCompilationInfo, messageCount) - 8usize];
+        [::core::mem::offset_of!(WGPUCompilationInfo, messageCount) - 8usize];
     ["Offset of field: WGPUCompilationInfo::messages"]
-        [::std::mem::offset_of!(WGPUCompilationInfo, messages) - 16usize];
+        [::core::mem::offset_of!(WGPUCompilationInfo, messages) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3386,15 +3388,15 @@ pub struct WGPUComputePassDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUComputePassDescriptor"]
-        [::std::mem::size_of::<WGPUComputePassDescriptor>() - 32usize];
+        [::core::mem::size_of::<WGPUComputePassDescriptor>() - 32usize];
     ["Alignment of WGPUComputePassDescriptor"]
-        [::std::mem::align_of::<WGPUComputePassDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUComputePassDescriptor>() - 8usize];
     ["Offset of field: WGPUComputePassDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUComputePassDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUComputePassDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUComputePassDescriptor::label"]
-        [::std::mem::offset_of!(WGPUComputePassDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUComputePassDescriptor, label) - 8usize];
     ["Offset of field: WGPUComputePassDescriptor::timestampWrites"]
-        [::std::mem::offset_of!(WGPUComputePassDescriptor, timestampWrites) - 24usize];
+        [::core::mem::offset_of!(WGPUComputePassDescriptor, timestampWrites) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3407,18 +3409,18 @@ pub struct WGPUComputeState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUComputeState"][::std::mem::size_of::<WGPUComputeState>() - 48usize];
-    ["Alignment of WGPUComputeState"][::std::mem::align_of::<WGPUComputeState>() - 8usize];
+    ["Size of WGPUComputeState"][::core::mem::size_of::<WGPUComputeState>() - 48usize];
+    ["Alignment of WGPUComputeState"][::core::mem::align_of::<WGPUComputeState>() - 8usize];
     ["Offset of field: WGPUComputeState::nextInChain"]
-        [::std::mem::offset_of!(WGPUComputeState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUComputeState, nextInChain) - 0usize];
     ["Offset of field: WGPUComputeState::module"]
-        [::std::mem::offset_of!(WGPUComputeState, module) - 8usize];
+        [::core::mem::offset_of!(WGPUComputeState, module) - 8usize];
     ["Offset of field: WGPUComputeState::entryPoint"]
-        [::std::mem::offset_of!(WGPUComputeState, entryPoint) - 16usize];
+        [::core::mem::offset_of!(WGPUComputeState, entryPoint) - 16usize];
     ["Offset of field: WGPUComputeState::constantCount"]
-        [::std::mem::offset_of!(WGPUComputeState, constantCount) - 32usize];
+        [::core::mem::offset_of!(WGPUComputeState, constantCount) - 32usize];
     ["Offset of field: WGPUComputeState::constants"]
-        [::std::mem::offset_of!(WGPUComputeState, constants) - 40usize];
+        [::core::mem::offset_of!(WGPUComputeState, constants) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3437,31 +3439,31 @@ pub struct WGPUDepthStencilState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUDepthStencilState"][::std::mem::size_of::<WGPUDepthStencilState>() - 72usize];
+    ["Size of WGPUDepthStencilState"][::core::mem::size_of::<WGPUDepthStencilState>() - 72usize];
     ["Alignment of WGPUDepthStencilState"]
-        [::std::mem::align_of::<WGPUDepthStencilState>() - 8usize];
+        [::core::mem::align_of::<WGPUDepthStencilState>() - 8usize];
     ["Offset of field: WGPUDepthStencilState::nextInChain"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, nextInChain) - 0usize];
     ["Offset of field: WGPUDepthStencilState::format"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, format) - 8usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, format) - 8usize];
     ["Offset of field: WGPUDepthStencilState::depthWriteEnabled"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, depthWriteEnabled) - 12usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, depthWriteEnabled) - 12usize];
     ["Offset of field: WGPUDepthStencilState::depthCompare"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, depthCompare) - 16usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, depthCompare) - 16usize];
     ["Offset of field: WGPUDepthStencilState::stencilFront"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, stencilFront) - 20usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, stencilFront) - 20usize];
     ["Offset of field: WGPUDepthStencilState::stencilBack"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, stencilBack) - 36usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, stencilBack) - 36usize];
     ["Offset of field: WGPUDepthStencilState::stencilReadMask"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, stencilReadMask) - 52usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, stencilReadMask) - 52usize];
     ["Offset of field: WGPUDepthStencilState::stencilWriteMask"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, stencilWriteMask) - 56usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, stencilWriteMask) - 56usize];
     ["Offset of field: WGPUDepthStencilState::depthBias"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, depthBias) - 60usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, depthBias) - 60usize];
     ["Offset of field: WGPUDepthStencilState::depthBiasSlopeScale"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, depthBiasSlopeScale) - 64usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, depthBiasSlopeScale) - 64usize];
     ["Offset of field: WGPUDepthStencilState::depthBiasClamp"]
-        [::std::mem::offset_of!(WGPUDepthStencilState, depthBiasClamp) - 68usize];
+        [::core::mem::offset_of!(WGPUDepthStencilState, depthBiasClamp) - 68usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3477,24 +3479,24 @@ pub struct WGPUDeviceDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUDeviceDescriptor"][::std::mem::size_of::<WGPUDeviceDescriptor>() - 144usize];
-    ["Alignment of WGPUDeviceDescriptor"][::std::mem::align_of::<WGPUDeviceDescriptor>() - 8usize];
+    ["Size of WGPUDeviceDescriptor"][::core::mem::size_of::<WGPUDeviceDescriptor>() - 144usize];
+    ["Alignment of WGPUDeviceDescriptor"][::core::mem::align_of::<WGPUDeviceDescriptor>() - 8usize];
     ["Offset of field: WGPUDeviceDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUDeviceDescriptor::label"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, label) - 8usize];
     ["Offset of field: WGPUDeviceDescriptor::requiredFeatureCount"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatureCount) - 24usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatureCount) - 24usize];
     ["Offset of field: WGPUDeviceDescriptor::requiredFeatures"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatures) - 32usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatures) - 32usize];
     ["Offset of field: WGPUDeviceDescriptor::requiredLimits"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, requiredLimits) - 40usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredLimits) - 40usize];
     ["Offset of field: WGPUDeviceDescriptor::defaultQueue"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, defaultQueue) - 48usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, defaultQueue) - 48usize];
     ["Offset of field: WGPUDeviceDescriptor::deviceLostCallbackInfo"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, deviceLostCallbackInfo) - 72usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, deviceLostCallbackInfo) - 72usize];
     ["Offset of field: WGPUDeviceDescriptor::uncapturedErrorCallbackInfo"]
-        [::std::mem::offset_of!(WGPUDeviceDescriptor, uncapturedErrorCallbackInfo) - 112usize];
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, uncapturedErrorCallbackInfo) - 112usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3504,12 +3506,12 @@ pub struct WGPUFutureWaitInfo {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUFutureWaitInfo"][::std::mem::size_of::<WGPUFutureWaitInfo>() - 16usize];
-    ["Alignment of WGPUFutureWaitInfo"][::std::mem::align_of::<WGPUFutureWaitInfo>() - 8usize];
+    ["Size of WGPUFutureWaitInfo"][::core::mem::size_of::<WGPUFutureWaitInfo>() - 16usize];
+    ["Alignment of WGPUFutureWaitInfo"][::core::mem::align_of::<WGPUFutureWaitInfo>() - 8usize];
     ["Offset of field: WGPUFutureWaitInfo::future"]
-        [::std::mem::offset_of!(WGPUFutureWaitInfo, future) - 0usize];
+        [::core::mem::offset_of!(WGPUFutureWaitInfo, future) - 0usize];
     ["Offset of field: WGPUFutureWaitInfo::completed"]
-        [::std::mem::offset_of!(WGPUFutureWaitInfo, completed) - 8usize];
+        [::core::mem::offset_of!(WGPUFutureWaitInfo, completed) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3521,17 +3523,17 @@ pub struct WGPUInstanceDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUInstanceDescriptor"][::std::mem::size_of::<WGPUInstanceDescriptor>() - 32usize];
+    ["Size of WGPUInstanceDescriptor"][::core::mem::size_of::<WGPUInstanceDescriptor>() - 32usize];
     ["Alignment of WGPUInstanceDescriptor"]
-        [::std::mem::align_of::<WGPUInstanceDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUInstanceDescriptor>() - 8usize];
     ["Offset of field: WGPUInstanceDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUInstanceDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUInstanceDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUInstanceDescriptor::requiredFeatureCount"]
-        [::std::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatureCount) - 8usize];
+        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatureCount) - 8usize];
     ["Offset of field: WGPUInstanceDescriptor::requiredFeatures"]
-        [::std::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatures) - 16usize];
+        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatures) - 16usize];
     ["Offset of field: WGPUInstanceDescriptor::requiredLimits"]
-        [::std::mem::offset_of!(WGPUInstanceDescriptor, requiredLimits) - 24usize];
+        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredLimits) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3547,23 +3549,23 @@ pub struct WGPURenderPassColorAttachment {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderPassColorAttachment"]
-        [::std::mem::size_of::<WGPURenderPassColorAttachment>() - 72usize];
+        [::core::mem::size_of::<WGPURenderPassColorAttachment>() - 72usize];
     ["Alignment of WGPURenderPassColorAttachment"]
-        [::std::mem::align_of::<WGPURenderPassColorAttachment>() - 8usize];
+        [::core::mem::align_of::<WGPURenderPassColorAttachment>() - 8usize];
     ["Offset of field: WGPURenderPassColorAttachment::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, nextInChain) - 0usize];
     ["Offset of field: WGPURenderPassColorAttachment::view"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, view) - 8usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, view) - 8usize];
     ["Offset of field: WGPURenderPassColorAttachment::depthSlice"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, depthSlice) - 16usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, depthSlice) - 16usize];
     ["Offset of field: WGPURenderPassColorAttachment::resolveTarget"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, resolveTarget) - 24usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, resolveTarget) - 24usize];
     ["Offset of field: WGPURenderPassColorAttachment::loadOp"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, loadOp) - 32usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, loadOp) - 32usize];
     ["Offset of field: WGPURenderPassColorAttachment::storeOp"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, storeOp) - 36usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, storeOp) - 36usize];
     ["Offset of field: WGPURenderPassColorAttachment::clearValue"]
-        [::std::mem::offset_of!(WGPURenderPassColorAttachment, clearValue) - 40usize];
+        [::core::mem::offset_of!(WGPURenderPassColorAttachment, clearValue) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3578,21 +3580,21 @@ pub struct WGPURequestAdapterOptions {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURequestAdapterOptions"]
-        [::std::mem::size_of::<WGPURequestAdapterOptions>() - 32usize];
+        [::core::mem::size_of::<WGPURequestAdapterOptions>() - 32usize];
     ["Alignment of WGPURequestAdapterOptions"]
-        [::std::mem::align_of::<WGPURequestAdapterOptions>() - 8usize];
+        [::core::mem::align_of::<WGPURequestAdapterOptions>() - 8usize];
     ["Offset of field: WGPURequestAdapterOptions::nextInChain"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, nextInChain) - 0usize];
     ["Offset of field: WGPURequestAdapterOptions::featureLevel"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, featureLevel) - 8usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, featureLevel) - 8usize];
     ["Offset of field: WGPURequestAdapterOptions::powerPreference"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, powerPreference) - 12usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, powerPreference) - 12usize];
     ["Offset of field: WGPURequestAdapterOptions::forceFallbackAdapter"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, forceFallbackAdapter) - 16usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, forceFallbackAdapter) - 16usize];
     ["Offset of field: WGPURequestAdapterOptions::backendType"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, backendType) - 20usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, backendType) - 20usize];
     ["Offset of field: WGPURequestAdapterOptions::compatibleSurface"]
-        [::std::mem::offset_of!(WGPURequestAdapterOptions, compatibleSurface) - 24usize];
+        [::core::mem::offset_of!(WGPURequestAdapterOptions, compatibleSurface) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3603,13 +3605,13 @@ pub struct WGPUShaderModuleDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUShaderModuleDescriptor"]
-        [::std::mem::size_of::<WGPUShaderModuleDescriptor>() - 24usize];
+        [::core::mem::size_of::<WGPUShaderModuleDescriptor>() - 24usize];
     ["Alignment of WGPUShaderModuleDescriptor"]
-        [::std::mem::align_of::<WGPUShaderModuleDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUShaderModuleDescriptor>() - 8usize];
     ["Offset of field: WGPUShaderModuleDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUShaderModuleDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUShaderModuleDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUShaderModuleDescriptor::label"]
-        [::std::mem::offset_of!(WGPUShaderModuleDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUShaderModuleDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3619,13 +3621,13 @@ pub struct WGPUSurfaceDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSurfaceDescriptor"][::std::mem::size_of::<WGPUSurfaceDescriptor>() - 24usize];
+    ["Size of WGPUSurfaceDescriptor"][::core::mem::size_of::<WGPUSurfaceDescriptor>() - 24usize];
     ["Alignment of WGPUSurfaceDescriptor"]
-        [::std::mem::align_of::<WGPUSurfaceDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUSurfaceDescriptor>() - 8usize];
     ["Offset of field: WGPUSurfaceDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUSurfaceDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUSurfaceDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUSurfaceDescriptor::label"]
-        [::std::mem::offset_of!(WGPUSurfaceDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUSurfaceDescriptor, label) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3635,13 +3637,14 @@ pub struct WGPUTexelCopyBufferInfo {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUTexelCopyBufferInfo"][::std::mem::size_of::<WGPUTexelCopyBufferInfo>() - 24usize];
+    ["Size of WGPUTexelCopyBufferInfo"]
+        [::core::mem::size_of::<WGPUTexelCopyBufferInfo>() - 24usize];
     ["Alignment of WGPUTexelCopyBufferInfo"]
-        [::std::mem::align_of::<WGPUTexelCopyBufferInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUTexelCopyBufferInfo>() - 8usize];
     ["Offset of field: WGPUTexelCopyBufferInfo::layout"]
-        [::std::mem::offset_of!(WGPUTexelCopyBufferInfo, layout) - 0usize];
+        [::core::mem::offset_of!(WGPUTexelCopyBufferInfo, layout) - 0usize];
     ["Offset of field: WGPUTexelCopyBufferInfo::buffer"]
-        [::std::mem::offset_of!(WGPUTexelCopyBufferInfo, buffer) - 16usize];
+        [::core::mem::offset_of!(WGPUTexelCopyBufferInfo, buffer) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3654,17 +3657,17 @@ pub struct WGPUTexelCopyTextureInfo {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUTexelCopyTextureInfo"]
-        [::std::mem::size_of::<WGPUTexelCopyTextureInfo>() - 32usize];
+        [::core::mem::size_of::<WGPUTexelCopyTextureInfo>() - 32usize];
     ["Alignment of WGPUTexelCopyTextureInfo"]
-        [::std::mem::align_of::<WGPUTexelCopyTextureInfo>() - 8usize];
+        [::core::mem::align_of::<WGPUTexelCopyTextureInfo>() - 8usize];
     ["Offset of field: WGPUTexelCopyTextureInfo::texture"]
-        [::std::mem::offset_of!(WGPUTexelCopyTextureInfo, texture) - 0usize];
+        [::core::mem::offset_of!(WGPUTexelCopyTextureInfo, texture) - 0usize];
     ["Offset of field: WGPUTexelCopyTextureInfo::mipLevel"]
-        [::std::mem::offset_of!(WGPUTexelCopyTextureInfo, mipLevel) - 8usize];
+        [::core::mem::offset_of!(WGPUTexelCopyTextureInfo, mipLevel) - 8usize];
     ["Offset of field: WGPUTexelCopyTextureInfo::origin"]
-        [::std::mem::offset_of!(WGPUTexelCopyTextureInfo, origin) - 12usize];
+        [::core::mem::offset_of!(WGPUTexelCopyTextureInfo, origin) - 12usize];
     ["Offset of field: WGPUTexelCopyTextureInfo::aspect"]
-        [::std::mem::offset_of!(WGPUTexelCopyTextureInfo, aspect) - 24usize];
+        [::core::mem::offset_of!(WGPUTexelCopyTextureInfo, aspect) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3682,29 +3685,29 @@ pub struct WGPUTextureDescriptor {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUTextureDescriptor"][::std::mem::size_of::<WGPUTextureDescriptor>() - 80usize];
+    ["Size of WGPUTextureDescriptor"][::core::mem::size_of::<WGPUTextureDescriptor>() - 80usize];
     ["Alignment of WGPUTextureDescriptor"]
-        [::std::mem::align_of::<WGPUTextureDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUTextureDescriptor>() - 8usize];
     ["Offset of field: WGPUTextureDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUTextureDescriptor::label"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, label) - 8usize];
     ["Offset of field: WGPUTextureDescriptor::usage"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, usage) - 24usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, usage) - 24usize];
     ["Offset of field: WGPUTextureDescriptor::dimension"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, dimension) - 32usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, dimension) - 32usize];
     ["Offset of field: WGPUTextureDescriptor::size"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, size) - 36usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, size) - 36usize];
     ["Offset of field: WGPUTextureDescriptor::format"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, format) - 48usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, format) - 48usize];
     ["Offset of field: WGPUTextureDescriptor::mipLevelCount"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, mipLevelCount) - 52usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, mipLevelCount) - 52usize];
     ["Offset of field: WGPUTextureDescriptor::sampleCount"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, sampleCount) - 56usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, sampleCount) - 56usize];
     ["Offset of field: WGPUTextureDescriptor::viewFormatCount"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, viewFormatCount) - 64usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, viewFormatCount) - 64usize];
     ["Offset of field: WGPUTextureDescriptor::viewFormats"]
-        [::std::mem::offset_of!(WGPUTextureDescriptor, viewFormats) - 72usize];
+        [::core::mem::offset_of!(WGPUTextureDescriptor, viewFormats) - 72usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3717,19 +3720,19 @@ pub struct WGPUVertexBufferLayout {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUVertexBufferLayout"][::std::mem::size_of::<WGPUVertexBufferLayout>() - 40usize];
+    ["Size of WGPUVertexBufferLayout"][::core::mem::size_of::<WGPUVertexBufferLayout>() - 40usize];
     ["Alignment of WGPUVertexBufferLayout"]
-        [::std::mem::align_of::<WGPUVertexBufferLayout>() - 8usize];
+        [::core::mem::align_of::<WGPUVertexBufferLayout>() - 8usize];
     ["Offset of field: WGPUVertexBufferLayout::nextInChain"]
-        [::std::mem::offset_of!(WGPUVertexBufferLayout, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUVertexBufferLayout, nextInChain) - 0usize];
     ["Offset of field: WGPUVertexBufferLayout::stepMode"]
-        [::std::mem::offset_of!(WGPUVertexBufferLayout, stepMode) - 8usize];
+        [::core::mem::offset_of!(WGPUVertexBufferLayout, stepMode) - 8usize];
     ["Offset of field: WGPUVertexBufferLayout::arrayStride"]
-        [::std::mem::offset_of!(WGPUVertexBufferLayout, arrayStride) - 16usize];
+        [::core::mem::offset_of!(WGPUVertexBufferLayout, arrayStride) - 16usize];
     ["Offset of field: WGPUVertexBufferLayout::attributeCount"]
-        [::std::mem::offset_of!(WGPUVertexBufferLayout, attributeCount) - 24usize];
+        [::core::mem::offset_of!(WGPUVertexBufferLayout, attributeCount) - 24usize];
     ["Offset of field: WGPUVertexBufferLayout::attributes"]
-        [::std::mem::offset_of!(WGPUVertexBufferLayout, attributes) - 32usize];
+        [::core::mem::offset_of!(WGPUVertexBufferLayout, attributes) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3742,17 +3745,17 @@ pub struct WGPUBindGroupLayoutDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUBindGroupLayoutDescriptor"]
-        [::std::mem::size_of::<WGPUBindGroupLayoutDescriptor>() - 40usize];
+        [::core::mem::size_of::<WGPUBindGroupLayoutDescriptor>() - 40usize];
     ["Alignment of WGPUBindGroupLayoutDescriptor"]
-        [::std::mem::align_of::<WGPUBindGroupLayoutDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUBindGroupLayoutDescriptor>() - 8usize];
     ["Offset of field: WGPUBindGroupLayoutDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUBindGroupLayoutDescriptor::label"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutDescriptor, label) - 8usize];
     ["Offset of field: WGPUBindGroupLayoutDescriptor::entryCount"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutDescriptor, entryCount) - 24usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutDescriptor, entryCount) - 24usize];
     ["Offset of field: WGPUBindGroupLayoutDescriptor::entries"]
-        [::std::mem::offset_of!(WGPUBindGroupLayoutDescriptor, entries) - 32usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutDescriptor, entries) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3764,16 +3767,16 @@ pub struct WGPUColorTargetState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUColorTargetState"][::std::mem::size_of::<WGPUColorTargetState>() - 32usize];
-    ["Alignment of WGPUColorTargetState"][::std::mem::align_of::<WGPUColorTargetState>() - 8usize];
+    ["Size of WGPUColorTargetState"][::core::mem::size_of::<WGPUColorTargetState>() - 32usize];
+    ["Alignment of WGPUColorTargetState"][::core::mem::align_of::<WGPUColorTargetState>() - 8usize];
     ["Offset of field: WGPUColorTargetState::nextInChain"]
-        [::std::mem::offset_of!(WGPUColorTargetState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUColorTargetState, nextInChain) - 0usize];
     ["Offset of field: WGPUColorTargetState::format"]
-        [::std::mem::offset_of!(WGPUColorTargetState, format) - 8usize];
+        [::core::mem::offset_of!(WGPUColorTargetState, format) - 8usize];
     ["Offset of field: WGPUColorTargetState::blend"]
-        [::std::mem::offset_of!(WGPUColorTargetState, blend) - 16usize];
+        [::core::mem::offset_of!(WGPUColorTargetState, blend) - 16usize];
     ["Offset of field: WGPUColorTargetState::writeMask"]
-        [::std::mem::offset_of!(WGPUColorTargetState, writeMask) - 24usize];
+        [::core::mem::offset_of!(WGPUColorTargetState, writeMask) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3786,17 +3789,17 @@ pub struct WGPUComputePipelineDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUComputePipelineDescriptor"]
-        [::std::mem::size_of::<WGPUComputePipelineDescriptor>() - 80usize];
+        [::core::mem::size_of::<WGPUComputePipelineDescriptor>() - 80usize];
     ["Alignment of WGPUComputePipelineDescriptor"]
-        [::std::mem::align_of::<WGPUComputePipelineDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPUComputePipelineDescriptor>() - 8usize];
     ["Offset of field: WGPUComputePipelineDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPUComputePipelineDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUComputePipelineDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUComputePipelineDescriptor::label"]
-        [::std::mem::offset_of!(WGPUComputePipelineDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPUComputePipelineDescriptor, label) - 8usize];
     ["Offset of field: WGPUComputePipelineDescriptor::layout"]
-        [::std::mem::offset_of!(WGPUComputePipelineDescriptor, layout) - 24usize];
+        [::core::mem::offset_of!(WGPUComputePipelineDescriptor, layout) - 24usize];
     ["Offset of field: WGPUComputePipelineDescriptor::compute"]
-        [::std::mem::offset_of!(WGPUComputePipelineDescriptor, compute) - 32usize];
+        [::core::mem::offset_of!(WGPUComputePipelineDescriptor, compute) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3812,23 +3815,23 @@ pub struct WGPURenderPassDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderPassDescriptor"]
-        [::std::mem::size_of::<WGPURenderPassDescriptor>() - 64usize];
+        [::core::mem::size_of::<WGPURenderPassDescriptor>() - 64usize];
     ["Alignment of WGPURenderPassDescriptor"]
-        [::std::mem::align_of::<WGPURenderPassDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPURenderPassDescriptor>() - 8usize];
     ["Offset of field: WGPURenderPassDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPURenderPassDescriptor::label"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, label) - 8usize];
     ["Offset of field: WGPURenderPassDescriptor::colorAttachmentCount"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, colorAttachmentCount) - 24usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachmentCount) - 24usize];
     ["Offset of field: WGPURenderPassDescriptor::colorAttachments"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, colorAttachments) - 32usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachments) - 32usize];
     ["Offset of field: WGPURenderPassDescriptor::depthStencilAttachment"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, depthStencilAttachment) - 40usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, depthStencilAttachment) - 40usize];
     ["Offset of field: WGPURenderPassDescriptor::occlusionQuerySet"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, occlusionQuerySet) - 48usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, occlusionQuerySet) - 48usize];
     ["Offset of field: WGPURenderPassDescriptor::timestampWrites"]
-        [::std::mem::offset_of!(WGPURenderPassDescriptor, timestampWrites) - 56usize];
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, timestampWrites) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3843,22 +3846,22 @@ pub struct WGPUVertexState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUVertexState"][::std::mem::size_of::<WGPUVertexState>() - 64usize];
-    ["Alignment of WGPUVertexState"][::std::mem::align_of::<WGPUVertexState>() - 8usize];
+    ["Size of WGPUVertexState"][::core::mem::size_of::<WGPUVertexState>() - 64usize];
+    ["Alignment of WGPUVertexState"][::core::mem::align_of::<WGPUVertexState>() - 8usize];
     ["Offset of field: WGPUVertexState::nextInChain"]
-        [::std::mem::offset_of!(WGPUVertexState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUVertexState, nextInChain) - 0usize];
     ["Offset of field: WGPUVertexState::module"]
-        [::std::mem::offset_of!(WGPUVertexState, module) - 8usize];
+        [::core::mem::offset_of!(WGPUVertexState, module) - 8usize];
     ["Offset of field: WGPUVertexState::entryPoint"]
-        [::std::mem::offset_of!(WGPUVertexState, entryPoint) - 16usize];
+        [::core::mem::offset_of!(WGPUVertexState, entryPoint) - 16usize];
     ["Offset of field: WGPUVertexState::constantCount"]
-        [::std::mem::offset_of!(WGPUVertexState, constantCount) - 32usize];
+        [::core::mem::offset_of!(WGPUVertexState, constantCount) - 32usize];
     ["Offset of field: WGPUVertexState::constants"]
-        [::std::mem::offset_of!(WGPUVertexState, constants) - 40usize];
+        [::core::mem::offset_of!(WGPUVertexState, constants) - 40usize];
     ["Offset of field: WGPUVertexState::bufferCount"]
-        [::std::mem::offset_of!(WGPUVertexState, bufferCount) - 48usize];
+        [::core::mem::offset_of!(WGPUVertexState, bufferCount) - 48usize];
     ["Offset of field: WGPUVertexState::buffers"]
-        [::std::mem::offset_of!(WGPUVertexState, buffers) - 56usize];
+        [::core::mem::offset_of!(WGPUVertexState, buffers) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3873,22 +3876,22 @@ pub struct WGPUFragmentState {
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUFragmentState"][::std::mem::size_of::<WGPUFragmentState>() - 64usize];
-    ["Alignment of WGPUFragmentState"][::std::mem::align_of::<WGPUFragmentState>() - 8usize];
+    ["Size of WGPUFragmentState"][::core::mem::size_of::<WGPUFragmentState>() - 64usize];
+    ["Alignment of WGPUFragmentState"][::core::mem::align_of::<WGPUFragmentState>() - 8usize];
     ["Offset of field: WGPUFragmentState::nextInChain"]
-        [::std::mem::offset_of!(WGPUFragmentState, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPUFragmentState, nextInChain) - 0usize];
     ["Offset of field: WGPUFragmentState::module"]
-        [::std::mem::offset_of!(WGPUFragmentState, module) - 8usize];
+        [::core::mem::offset_of!(WGPUFragmentState, module) - 8usize];
     ["Offset of field: WGPUFragmentState::entryPoint"]
-        [::std::mem::offset_of!(WGPUFragmentState, entryPoint) - 16usize];
+        [::core::mem::offset_of!(WGPUFragmentState, entryPoint) - 16usize];
     ["Offset of field: WGPUFragmentState::constantCount"]
-        [::std::mem::offset_of!(WGPUFragmentState, constantCount) - 32usize];
+        [::core::mem::offset_of!(WGPUFragmentState, constantCount) - 32usize];
     ["Offset of field: WGPUFragmentState::constants"]
-        [::std::mem::offset_of!(WGPUFragmentState, constants) - 40usize];
+        [::core::mem::offset_of!(WGPUFragmentState, constants) - 40usize];
     ["Offset of field: WGPUFragmentState::targetCount"]
-        [::std::mem::offset_of!(WGPUFragmentState, targetCount) - 48usize];
+        [::core::mem::offset_of!(WGPUFragmentState, targetCount) - 48usize];
     ["Offset of field: WGPUFragmentState::targets"]
-        [::std::mem::offset_of!(WGPUFragmentState, targets) - 56usize];
+        [::core::mem::offset_of!(WGPUFragmentState, targets) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3905,95 +3908,96 @@ pub struct WGPURenderPipelineDescriptor {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPURenderPipelineDescriptor"]
-        [::std::mem::size_of::<WGPURenderPipelineDescriptor>() - 168usize];
+        [::core::mem::size_of::<WGPURenderPipelineDescriptor>() - 168usize];
     ["Alignment of WGPURenderPipelineDescriptor"]
-        [::std::mem::align_of::<WGPURenderPipelineDescriptor>() - 8usize];
+        [::core::mem::align_of::<WGPURenderPipelineDescriptor>() - 8usize];
     ["Offset of field: WGPURenderPipelineDescriptor::nextInChain"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, nextInChain) - 0usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPURenderPipelineDescriptor::label"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, label) - 8usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, label) - 8usize];
     ["Offset of field: WGPURenderPipelineDescriptor::layout"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, layout) - 24usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, layout) - 24usize];
     ["Offset of field: WGPURenderPipelineDescriptor::vertex"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, vertex) - 32usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, vertex) - 32usize];
     ["Offset of field: WGPURenderPipelineDescriptor::primitive"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, primitive) - 96usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, primitive) - 96usize];
     ["Offset of field: WGPURenderPipelineDescriptor::depthStencil"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, depthStencil) - 128usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, depthStencil) - 128usize];
     ["Offset of field: WGPURenderPipelineDescriptor::multisample"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, multisample) - 136usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, multisample) - 136usize];
     ["Offset of field: WGPURenderPipelineDescriptor::fragment"]
-        [::std::mem::offset_of!(WGPURenderPipelineDescriptor, fragment) - 160usize];
+        [::core::mem::offset_of!(WGPURenderPipelineDescriptor, fragment) - 160usize];
 };
-pub type WGPUProcCreateInstance = ::std::option::Option<
+pub type WGPUProcCreateInstance = ::core::option::Option<
     unsafe extern "C" fn(descriptor: *const WGPUInstanceDescriptor) -> WGPUInstance,
 >;
 pub type WGPUProcGetInstanceFeatures =
-    ::std::option::Option<unsafe extern "C" fn(features: *mut WGPUSupportedInstanceFeatures)>;
+    ::core::option::Option<unsafe extern "C" fn(features: *mut WGPUSupportedInstanceFeatures)>;
 pub type WGPUProcGetInstanceLimits =
-    ::std::option::Option<unsafe extern "C" fn(limits: *mut WGPUInstanceLimits) -> WGPUStatus>;
+    ::core::option::Option<unsafe extern "C" fn(limits: *mut WGPUInstanceLimits) -> WGPUStatus>;
 pub type WGPUProcHasInstanceFeature =
-    ::std::option::Option<unsafe extern "C" fn(feature: WGPUInstanceFeatureName) -> WGPUBool>;
+    ::core::option::Option<unsafe extern "C" fn(feature: WGPUInstanceFeatureName) -> WGPUBool>;
 pub type WGPUProcGetProcAddress =
-    ::std::option::Option<unsafe extern "C" fn(procName: WGPUStringView) -> WGPUProc>;
-pub type WGPUProcAdapterGetFeatures = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(procName: WGPUStringView) -> WGPUProc>;
+pub type WGPUProcAdapterGetFeatures = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, features: *mut WGPUSupportedFeatures),
 >;
-pub type WGPUProcAdapterGetInfo = ::std::option::Option<
+pub type WGPUProcAdapterGetInfo = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, info: *mut WGPUAdapterInfo) -> WGPUStatus,
 >;
-pub type WGPUProcAdapterGetLimits = ::std::option::Option<
+pub type WGPUProcAdapterGetLimits = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, limits: *mut WGPULimits) -> WGPUStatus,
 >;
-pub type WGPUProcAdapterHasFeature = ::std::option::Option<
+pub type WGPUProcAdapterHasFeature = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, feature: WGPUFeatureName) -> WGPUBool,
 >;
-pub type WGPUProcAdapterRequestDevice = ::std::option::Option<
+pub type WGPUProcAdapterRequestDevice = ::core::option::Option<
     unsafe extern "C" fn(
         adapter: WGPUAdapter,
         descriptor: *const WGPUDeviceDescriptor,
         callbackInfo: WGPURequestDeviceCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcAdapterAddRef = ::std::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
-pub type WGPUProcAdapterRelease = ::std::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
+pub type WGPUProcAdapterAddRef = ::core::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
+pub type WGPUProcAdapterRelease =
+    ::core::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
 pub type WGPUProcAdapterInfoFreeMembers =
-    ::std::option::Option<unsafe extern "C" fn(adapterInfo: WGPUAdapterInfo)>;
+    ::core::option::Option<unsafe extern "C" fn(adapterInfo: WGPUAdapterInfo)>;
 pub type WGPUProcBindGroupSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup, label: WGPUStringView)>;
+    ::core::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup, label: WGPUStringView)>;
 pub type WGPUProcBindGroupAddRef =
-    ::std::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup)>;
+    ::core::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup)>;
 pub type WGPUProcBindGroupRelease =
-    ::std::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup)>;
-pub type WGPUProcBindGroupLayoutSetLabel = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup)>;
+pub type WGPUProcBindGroupLayoutSetLabel = ::core::option::Option<
     unsafe extern "C" fn(bindGroupLayout: WGPUBindGroupLayout, label: WGPUStringView),
 >;
 pub type WGPUProcBindGroupLayoutAddRef =
-    ::std::option::Option<unsafe extern "C" fn(bindGroupLayout: WGPUBindGroupLayout)>;
+    ::core::option::Option<unsafe extern "C" fn(bindGroupLayout: WGPUBindGroupLayout)>;
 pub type WGPUProcBindGroupLayoutRelease =
-    ::std::option::Option<unsafe extern "C" fn(bindGroupLayout: WGPUBindGroupLayout)>;
-pub type WGPUProcBufferDestroy = ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
-pub type WGPUProcBufferGetConstMappedRange = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(bindGroupLayout: WGPUBindGroupLayout)>;
+pub type WGPUProcBufferDestroy = ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
+pub type WGPUProcBufferGetConstMappedRange = ::core::option::Option<
     unsafe extern "C" fn(
         buffer: WGPUBuffer,
         offset: usize,
         size: usize,
-    ) -> *const ::std::os::raw::c_void,
+    ) -> *const ::core::ffi::c_void,
 >;
-pub type WGPUProcBufferGetMappedRange = ::std::option::Option<
+pub type WGPUProcBufferGetMappedRange = ::core::option::Option<
     unsafe extern "C" fn(
         buffer: WGPUBuffer,
         offset: usize,
         size: usize,
-    ) -> *mut ::std::os::raw::c_void,
+    ) -> *mut ::core::ffi::c_void,
 >;
 pub type WGPUProcBufferGetMapState =
-    ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> WGPUBufferMapState>;
+    ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> WGPUBufferMapState>;
 pub type WGPUProcBufferGetSize =
-    ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> u64>;
+    ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> u64>;
 pub type WGPUProcBufferGetUsage =
-    ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> WGPUBufferUsage>;
-pub type WGPUProcBufferMapAsync = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer) -> WGPUBufferUsage>;
+pub type WGPUProcBufferMapAsync = ::core::option::Option<
     unsafe extern "C" fn(
         buffer: WGPUBuffer,
         mode: WGPUMapMode,
@@ -4002,47 +4006,47 @@ pub type WGPUProcBufferMapAsync = ::std::option::Option<
         callbackInfo: WGPUBufferMapCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcBufferReadMappedRange = ::std::option::Option<
+pub type WGPUProcBufferReadMappedRange = ::core::option::Option<
     unsafe extern "C" fn(
         buffer: WGPUBuffer,
         offset: usize,
-        data: *mut ::std::os::raw::c_void,
+        data: *mut ::core::ffi::c_void,
         size: usize,
     ) -> WGPUStatus,
 >;
 pub type WGPUProcBufferSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer, label: WGPUStringView)>;
-pub type WGPUProcBufferUnmap = ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
-pub type WGPUProcBufferWriteMappedRange = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer, label: WGPUStringView)>;
+pub type WGPUProcBufferUnmap = ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
+pub type WGPUProcBufferWriteMappedRange = ::core::option::Option<
     unsafe extern "C" fn(
         buffer: WGPUBuffer,
         offset: usize,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         size: usize,
     ) -> WGPUStatus,
 >;
-pub type WGPUProcBufferAddRef = ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
-pub type WGPUProcBufferRelease = ::std::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
-pub type WGPUProcCommandBufferSetLabel = ::std::option::Option<
+pub type WGPUProcBufferAddRef = ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
+pub type WGPUProcBufferRelease = ::core::option::Option<unsafe extern "C" fn(buffer: WGPUBuffer)>;
+pub type WGPUProcCommandBufferSetLabel = ::core::option::Option<
     unsafe extern "C" fn(commandBuffer: WGPUCommandBuffer, label: WGPUStringView),
 >;
 pub type WGPUProcCommandBufferAddRef =
-    ::std::option::Option<unsafe extern "C" fn(commandBuffer: WGPUCommandBuffer)>;
+    ::core::option::Option<unsafe extern "C" fn(commandBuffer: WGPUCommandBuffer)>;
 pub type WGPUProcCommandBufferRelease =
-    ::std::option::Option<unsafe extern "C" fn(commandBuffer: WGPUCommandBuffer)>;
-pub type WGPUProcCommandEncoderBeginComputePass = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(commandBuffer: WGPUCommandBuffer)>;
+pub type WGPUProcCommandEncoderBeginComputePass = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         descriptor: *const WGPUComputePassDescriptor,
     ) -> WGPUComputePassEncoder,
 >;
-pub type WGPUProcCommandEncoderBeginRenderPass = ::std::option::Option<
+pub type WGPUProcCommandEncoderBeginRenderPass = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         descriptor: *const WGPURenderPassDescriptor,
     ) -> WGPURenderPassEncoder,
 >;
-pub type WGPUProcCommandEncoderClearBuffer = ::std::option::Option<
+pub type WGPUProcCommandEncoderClearBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         buffer: WGPUBuffer,
@@ -4050,7 +4054,7 @@ pub type WGPUProcCommandEncoderClearBuffer = ::std::option::Option<
         size: u64,
     ),
 >;
-pub type WGPUProcCommandEncoderCopyBufferToBuffer = ::std::option::Option<
+pub type WGPUProcCommandEncoderCopyBufferToBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         source: WGPUBuffer,
@@ -4060,7 +4064,7 @@ pub type WGPUProcCommandEncoderCopyBufferToBuffer = ::std::option::Option<
         size: u64,
     ),
 >;
-pub type WGPUProcCommandEncoderCopyBufferToTexture = ::std::option::Option<
+pub type WGPUProcCommandEncoderCopyBufferToTexture = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         source: *const WGPUTexelCopyBufferInfo,
@@ -4068,7 +4072,7 @@ pub type WGPUProcCommandEncoderCopyBufferToTexture = ::std::option::Option<
         copySize: *const WGPUExtent3D,
     ),
 >;
-pub type WGPUProcCommandEncoderCopyTextureToBuffer = ::std::option::Option<
+pub type WGPUProcCommandEncoderCopyTextureToBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         source: *const WGPUTexelCopyTextureInfo,
@@ -4076,7 +4080,7 @@ pub type WGPUProcCommandEncoderCopyTextureToBuffer = ::std::option::Option<
         copySize: *const WGPUExtent3D,
     ),
 >;
-pub type WGPUProcCommandEncoderCopyTextureToTexture = ::std::option::Option<
+pub type WGPUProcCommandEncoderCopyTextureToTexture = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         source: *const WGPUTexelCopyTextureInfo,
@@ -4084,21 +4088,21 @@ pub type WGPUProcCommandEncoderCopyTextureToTexture = ::std::option::Option<
         copySize: *const WGPUExtent3D,
     ),
 >;
-pub type WGPUProcCommandEncoderFinish = ::std::option::Option<
+pub type WGPUProcCommandEncoderFinish = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         descriptor: *const WGPUCommandBufferDescriptor,
     ) -> WGPUCommandBuffer,
 >;
-pub type WGPUProcCommandEncoderInsertDebugMarker = ::std::option::Option<
+pub type WGPUProcCommandEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, markerLabel: WGPUStringView),
 >;
 pub type WGPUProcCommandEncoderPopDebugGroup =
-    ::std::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
-pub type WGPUProcCommandEncoderPushDebugGroup = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
+pub type WGPUProcCommandEncoderPushDebugGroup = ::core::option::Option<
     unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, groupLabel: WGPUStringView),
 >;
-pub type WGPUProcCommandEncoderResolveQuerySet = ::std::option::Option<
+pub type WGPUProcCommandEncoderResolveQuerySet = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         querySet: WGPUQuerySet,
@@ -4108,10 +4112,10 @@ pub type WGPUProcCommandEncoderResolveQuerySet = ::std::option::Option<
         destinationOffset: u64,
     ),
 >;
-pub type WGPUProcCommandEncoderSetLabel = ::std::option::Option<
+pub type WGPUProcCommandEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, label: WGPUStringView),
 >;
-pub type WGPUProcCommandEncoderWriteTimestamp = ::std::option::Option<
+pub type WGPUProcCommandEncoderWriteTimestamp = ::core::option::Option<
     unsafe extern "C" fn(
         commandEncoder: WGPUCommandEncoder,
         querySet: WGPUQuerySet,
@@ -4119,10 +4123,10 @@ pub type WGPUProcCommandEncoderWriteTimestamp = ::std::option::Option<
     ),
 >;
 pub type WGPUProcCommandEncoderAddRef =
-    ::std::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
+    ::core::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
 pub type WGPUProcCommandEncoderRelease =
-    ::std::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
-pub type WGPUProcComputePassEncoderDispatchWorkgroups = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder)>;
+pub type WGPUProcComputePassEncoderDispatchWorkgroups = ::core::option::Option<
     unsafe extern "C" fn(
         computePassEncoder: WGPUComputePassEncoder,
         workgroupCountX: u32,
@@ -4130,7 +4134,7 @@ pub type WGPUProcComputePassEncoderDispatchWorkgroups = ::std::option::Option<
         workgroupCountZ: u32,
     ),
 >;
-pub type WGPUProcComputePassEncoderDispatchWorkgroupsIndirect = ::std::option::Option<
+pub type WGPUProcComputePassEncoderDispatchWorkgroupsIndirect = ::core::option::Option<
     unsafe extern "C" fn(
         computePassEncoder: WGPUComputePassEncoder,
         indirectBuffer: WGPUBuffer,
@@ -4138,16 +4142,16 @@ pub type WGPUProcComputePassEncoderDispatchWorkgroupsIndirect = ::std::option::O
     ),
 >;
 pub type WGPUProcComputePassEncoderEnd =
-    ::std::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
-pub type WGPUProcComputePassEncoderInsertDebugMarker = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
+pub type WGPUProcComputePassEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, markerLabel: WGPUStringView),
 >;
 pub type WGPUProcComputePassEncoderPopDebugGroup =
-    ::std::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
-pub type WGPUProcComputePassEncoderPushDebugGroup = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
+pub type WGPUProcComputePassEncoderPushDebugGroup = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, groupLabel: WGPUStringView),
 >;
-pub type WGPUProcComputePassEncoderSetBindGroup = ::std::option::Option<
+pub type WGPUProcComputePassEncoderSetBindGroup = ::core::option::Option<
     unsafe extern "C" fn(
         computePassEncoder: WGPUComputePassEncoder,
         groupIndex: u32,
@@ -4156,166 +4160,166 @@ pub type WGPUProcComputePassEncoderSetBindGroup = ::std::option::Option<
         dynamicOffsets: *const u32,
     ),
 >;
-pub type WGPUProcComputePassEncoderSetLabel = ::std::option::Option<
+pub type WGPUProcComputePassEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, label: WGPUStringView),
 >;
-pub type WGPUProcComputePassEncoderSetPipeline = ::std::option::Option<
+pub type WGPUProcComputePassEncoderSetPipeline = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, pipeline: WGPUComputePipeline),
 >;
 pub type WGPUProcComputePassEncoderAddRef =
-    ::std::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
+    ::core::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
 pub type WGPUProcComputePassEncoderRelease =
-    ::std::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
-pub type WGPUProcComputePipelineGetBindGroupLayout = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
+pub type WGPUProcComputePipelineGetBindGroupLayout = ::core::option::Option<
     unsafe extern "C" fn(
         computePipeline: WGPUComputePipeline,
         groupIndex: u32,
     ) -> WGPUBindGroupLayout,
 >;
-pub type WGPUProcComputePipelineSetLabel = ::std::option::Option<
+pub type WGPUProcComputePipelineSetLabel = ::core::option::Option<
     unsafe extern "C" fn(computePipeline: WGPUComputePipeline, label: WGPUStringView),
 >;
 pub type WGPUProcComputePipelineAddRef =
-    ::std::option::Option<unsafe extern "C" fn(computePipeline: WGPUComputePipeline)>;
+    ::core::option::Option<unsafe extern "C" fn(computePipeline: WGPUComputePipeline)>;
 pub type WGPUProcComputePipelineRelease =
-    ::std::option::Option<unsafe extern "C" fn(computePipeline: WGPUComputePipeline)>;
-pub type WGPUProcDeviceCreateBindGroup = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(computePipeline: WGPUComputePipeline)>;
+pub type WGPUProcDeviceCreateBindGroup = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUBindGroupDescriptor,
     ) -> WGPUBindGroup,
 >;
-pub type WGPUProcDeviceCreateBindGroupLayout = ::std::option::Option<
+pub type WGPUProcDeviceCreateBindGroupLayout = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUBindGroupLayoutDescriptor,
     ) -> WGPUBindGroupLayout,
 >;
-pub type WGPUProcDeviceCreateBuffer = ::std::option::Option<
+pub type WGPUProcDeviceCreateBuffer = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, descriptor: *const WGPUBufferDescriptor) -> WGPUBuffer,
 >;
-pub type WGPUProcDeviceCreateCommandEncoder = ::std::option::Option<
+pub type WGPUProcDeviceCreateCommandEncoder = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUCommandEncoderDescriptor,
     ) -> WGPUCommandEncoder,
 >;
-pub type WGPUProcDeviceCreateComputePipeline = ::std::option::Option<
+pub type WGPUProcDeviceCreateComputePipeline = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUComputePipelineDescriptor,
     ) -> WGPUComputePipeline,
 >;
-pub type WGPUProcDeviceCreateComputePipelineAsync = ::std::option::Option<
+pub type WGPUProcDeviceCreateComputePipelineAsync = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUComputePipelineDescriptor,
         callbackInfo: WGPUCreateComputePipelineAsyncCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcDeviceCreatePipelineLayout = ::std::option::Option<
+pub type WGPUProcDeviceCreatePipelineLayout = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUPipelineLayoutDescriptor,
     ) -> WGPUPipelineLayout,
 >;
-pub type WGPUProcDeviceCreateQuerySet = ::std::option::Option<
+pub type WGPUProcDeviceCreateQuerySet = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUQuerySetDescriptor,
     ) -> WGPUQuerySet,
 >;
-pub type WGPUProcDeviceCreateRenderBundleEncoder = ::std::option::Option<
+pub type WGPUProcDeviceCreateRenderBundleEncoder = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPURenderBundleEncoderDescriptor,
     ) -> WGPURenderBundleEncoder,
 >;
-pub type WGPUProcDeviceCreateRenderPipeline = ::std::option::Option<
+pub type WGPUProcDeviceCreateRenderPipeline = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPURenderPipelineDescriptor,
     ) -> WGPURenderPipeline,
 >;
-pub type WGPUProcDeviceCreateRenderPipelineAsync = ::std::option::Option<
+pub type WGPUProcDeviceCreateRenderPipelineAsync = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPURenderPipelineDescriptor,
         callbackInfo: WGPUCreateRenderPipelineAsyncCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcDeviceCreateSampler = ::std::option::Option<
+pub type WGPUProcDeviceCreateSampler = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUSamplerDescriptor,
     ) -> WGPUSampler,
 >;
-pub type WGPUProcDeviceCreateShaderModule = ::std::option::Option<
+pub type WGPUProcDeviceCreateShaderModule = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUShaderModuleDescriptor,
     ) -> WGPUShaderModule,
 >;
-pub type WGPUProcDeviceCreateTexture = ::std::option::Option<
+pub type WGPUProcDeviceCreateTexture = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         descriptor: *const WGPUTextureDescriptor,
     ) -> WGPUTexture,
 >;
-pub type WGPUProcDeviceDestroy = ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
-pub type WGPUProcDeviceGetAdapterInfo = ::std::option::Option<
+pub type WGPUProcDeviceDestroy = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcDeviceGetAdapterInfo = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, adapterInfo: *mut WGPUAdapterInfo) -> WGPUStatus,
 >;
-pub type WGPUProcDeviceGetFeatures = ::std::option::Option<
+pub type WGPUProcDeviceGetFeatures = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, features: *mut WGPUSupportedFeatures),
 >;
-pub type WGPUProcDeviceGetLimits = ::std::option::Option<
+pub type WGPUProcDeviceGetLimits = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, limits: *mut WGPULimits) -> WGPUStatus,
 >;
 pub type WGPUProcDeviceGetLostFuture =
-    ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUFuture>;
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUFuture>;
 pub type WGPUProcDeviceGetQueue =
-    ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUQueue>;
-pub type WGPUProcDeviceHasFeature = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUQueue>;
+pub type WGPUProcDeviceHasFeature = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, feature: WGPUFeatureName) -> WGPUBool,
 >;
-pub type WGPUProcDevicePopErrorScope = ::std::option::Option<
+pub type WGPUProcDevicePopErrorScope = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
         callbackInfo: WGPUPopErrorScopeCallbackInfo,
     ) -> WGPUFuture,
 >;
 pub type WGPUProcDevicePushErrorScope =
-    ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice, filter: WGPUErrorFilter)>;
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice, filter: WGPUErrorFilter)>;
 pub type WGPUProcDeviceSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice, label: WGPUStringView)>;
-pub type WGPUProcDeviceAddRef = ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
-pub type WGPUProcDeviceRelease = ::std::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
-pub type WGPUProcInstanceCreateSurface = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice, label: WGPUStringView)>;
+pub type WGPUProcDeviceAddRef = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcDeviceRelease = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcInstanceCreateSurface = ::core::option::Option<
     unsafe extern "C" fn(
         instance: WGPUInstance,
         descriptor: *const WGPUSurfaceDescriptor,
     ) -> WGPUSurface,
 >;
-pub type WGPUProcInstanceGetWGSLLanguageFeatures = ::std::option::Option<
+pub type WGPUProcInstanceGetWGSLLanguageFeatures = ::core::option::Option<
     unsafe extern "C" fn(
         instance: WGPUInstance,
         features: *mut WGPUSupportedWGSLLanguageFeatures,
     ) -> WGPUStatus,
 >;
-pub type WGPUProcInstanceHasWGSLLanguageFeature = ::std::option::Option<
+pub type WGPUProcInstanceHasWGSLLanguageFeature = ::core::option::Option<
     unsafe extern "C" fn(instance: WGPUInstance, feature: WGPUWGSLLanguageFeatureName) -> WGPUBool,
 >;
 pub type WGPUProcInstanceProcessEvents =
-    ::std::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
-pub type WGPUProcInstanceRequestAdapter = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
+pub type WGPUProcInstanceRequestAdapter = ::core::option::Option<
     unsafe extern "C" fn(
         instance: WGPUInstance,
         options: *const WGPURequestAdapterOptions,
         callbackInfo: WGPURequestAdapterCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcInstanceWaitAny = ::std::option::Option<
+pub type WGPUProcInstanceWaitAny = ::core::option::Option<
     unsafe extern "C" fn(
         instance: WGPUInstance,
         futureCount: usize,
@@ -4324,68 +4328,68 @@ pub type WGPUProcInstanceWaitAny = ::std::option::Option<
     ) -> WGPUWaitStatus,
 >;
 pub type WGPUProcInstanceAddRef =
-    ::std::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
+    ::core::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
 pub type WGPUProcInstanceRelease =
-    ::std::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
-pub type WGPUProcPipelineLayoutSetLabel = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(instance: WGPUInstance)>;
+pub type WGPUProcPipelineLayoutSetLabel = ::core::option::Option<
     unsafe extern "C" fn(pipelineLayout: WGPUPipelineLayout, label: WGPUStringView),
 >;
 pub type WGPUProcPipelineLayoutAddRef =
-    ::std::option::Option<unsafe extern "C" fn(pipelineLayout: WGPUPipelineLayout)>;
+    ::core::option::Option<unsafe extern "C" fn(pipelineLayout: WGPUPipelineLayout)>;
 pub type WGPUProcPipelineLayoutRelease =
-    ::std::option::Option<unsafe extern "C" fn(pipelineLayout: WGPUPipelineLayout)>;
+    ::core::option::Option<unsafe extern "C" fn(pipelineLayout: WGPUPipelineLayout)>;
 pub type WGPUProcQuerySetDestroy =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
 pub type WGPUProcQuerySetGetCount =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet) -> u32>;
 pub type WGPUProcQuerySetGetType =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet) -> WGPUQueryType>;
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet) -> WGPUQueryType>;
 pub type WGPUProcQuerySetSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet, label: WGPUStringView)>;
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet, label: WGPUStringView)>;
 pub type WGPUProcQuerySetAddRef =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
 pub type WGPUProcQuerySetRelease =
-    ::std::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
-pub type WGPUProcQueueOnSubmittedWorkDone = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
+pub type WGPUProcQueueOnSubmittedWorkDone = ::core::option::Option<
     unsafe extern "C" fn(
         queue: WGPUQueue,
         callbackInfo: WGPUQueueWorkDoneCallbackInfo,
     ) -> WGPUFuture,
 >;
 pub type WGPUProcQueueSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(queue: WGPUQueue, label: WGPUStringView)>;
-pub type WGPUProcQueueSubmit = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(queue: WGPUQueue, label: WGPUStringView)>;
+pub type WGPUProcQueueSubmit = ::core::option::Option<
     unsafe extern "C" fn(queue: WGPUQueue, commandCount: usize, commands: *const WGPUCommandBuffer),
 >;
-pub type WGPUProcQueueWriteBuffer = ::std::option::Option<
+pub type WGPUProcQueueWriteBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         queue: WGPUQueue,
         buffer: WGPUBuffer,
         bufferOffset: u64,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         size: usize,
     ),
 >;
-pub type WGPUProcQueueWriteTexture = ::std::option::Option<
+pub type WGPUProcQueueWriteTexture = ::core::option::Option<
     unsafe extern "C" fn(
         queue: WGPUQueue,
         destination: *const WGPUTexelCopyTextureInfo,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         dataSize: usize,
         dataLayout: *const WGPUTexelCopyBufferLayout,
         writeSize: *const WGPUExtent3D,
     ),
 >;
-pub type WGPUProcQueueAddRef = ::std::option::Option<unsafe extern "C" fn(queue: WGPUQueue)>;
-pub type WGPUProcQueueRelease = ::std::option::Option<unsafe extern "C" fn(queue: WGPUQueue)>;
-pub type WGPUProcRenderBundleSetLabel = ::std::option::Option<
+pub type WGPUProcQueueAddRef = ::core::option::Option<unsafe extern "C" fn(queue: WGPUQueue)>;
+pub type WGPUProcQueueRelease = ::core::option::Option<unsafe extern "C" fn(queue: WGPUQueue)>;
+pub type WGPUProcRenderBundleSetLabel = ::core::option::Option<
     unsafe extern "C" fn(renderBundle: WGPURenderBundle, label: WGPUStringView),
 >;
 pub type WGPUProcRenderBundleAddRef =
-    ::std::option::Option<unsafe extern "C" fn(renderBundle: WGPURenderBundle)>;
+    ::core::option::Option<unsafe extern "C" fn(renderBundle: WGPURenderBundle)>;
 pub type WGPUProcRenderBundleRelease =
-    ::std::option::Option<unsafe extern "C" fn(renderBundle: WGPURenderBundle)>;
-pub type WGPUProcRenderBundleEncoderDraw = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderBundle: WGPURenderBundle)>;
+pub type WGPUProcRenderBundleEncoderDraw = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         vertexCount: u32,
@@ -4394,7 +4398,7 @@ pub type WGPUProcRenderBundleEncoderDraw = ::std::option::Option<
         firstInstance: u32,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderDrawIndexed = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderDrawIndexed = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         indexCount: u32,
@@ -4404,35 +4408,35 @@ pub type WGPUProcRenderBundleEncoderDrawIndexed = ::std::option::Option<
         firstInstance: u32,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderDrawIndexedIndirect = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderDrawIndexedIndirect = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         indirectBuffer: WGPUBuffer,
         indirectOffset: u64,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderDrawIndirect = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderDrawIndirect = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         indirectBuffer: WGPUBuffer,
         indirectOffset: u64,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderFinish = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderFinish = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         descriptor: *const WGPURenderBundleDescriptor,
     ) -> WGPURenderBundle,
 >;
-pub type WGPUProcRenderBundleEncoderInsertDebugMarker = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder, markerLabel: WGPUStringView),
 >;
 pub type WGPUProcRenderBundleEncoderPopDebugGroup =
-    ::std::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
-pub type WGPUProcRenderBundleEncoderPushDebugGroup = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
+pub type WGPUProcRenderBundleEncoderPushDebugGroup = ::core::option::Option<
     unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder, groupLabel: WGPUStringView),
 >;
-pub type WGPUProcRenderBundleEncoderSetBindGroup = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderSetBindGroup = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         groupIndex: u32,
@@ -4441,7 +4445,7 @@ pub type WGPUProcRenderBundleEncoderSetBindGroup = ::std::option::Option<
         dynamicOffsets: *const u32,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderSetIndexBuffer = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderSetIndexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         buffer: WGPUBuffer,
@@ -4450,16 +4454,16 @@ pub type WGPUProcRenderBundleEncoderSetIndexBuffer = ::std::option::Option<
         size: u64,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderSetLabel = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder, label: WGPUStringView),
 >;
-pub type WGPUProcRenderBundleEncoderSetPipeline = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderSetPipeline = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         pipeline: WGPURenderPipeline,
     ),
 >;
-pub type WGPUProcRenderBundleEncoderSetVertexBuffer = ::std::option::Option<
+pub type WGPUProcRenderBundleEncoderSetVertexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
         slot: u32,
@@ -4469,13 +4473,13 @@ pub type WGPUProcRenderBundleEncoderSetVertexBuffer = ::std::option::Option<
     ),
 >;
 pub type WGPUProcRenderBundleEncoderAddRef =
-    ::std::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
+    ::core::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
 pub type WGPUProcRenderBundleEncoderRelease =
-    ::std::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
-pub type WGPUProcRenderPassEncoderBeginOcclusionQuery = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderBundleEncoder: WGPURenderBundleEncoder)>;
+pub type WGPUProcRenderPassEncoderBeginOcclusionQuery = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, queryIndex: u32),
 >;
-pub type WGPUProcRenderPassEncoderDraw = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderDraw = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         vertexCount: u32,
@@ -4484,7 +4488,7 @@ pub type WGPUProcRenderPassEncoderDraw = ::std::option::Option<
         firstInstance: u32,
     ),
 >;
-pub type WGPUProcRenderPassEncoderDrawIndexed = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderDrawIndexed = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         indexCount: u32,
@@ -4494,14 +4498,14 @@ pub type WGPUProcRenderPassEncoderDrawIndexed = ::std::option::Option<
         firstInstance: u32,
     ),
 >;
-pub type WGPUProcRenderPassEncoderDrawIndexedIndirect = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderDrawIndexedIndirect = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         indirectBuffer: WGPUBuffer,
         indirectOffset: u64,
     ),
 >;
-pub type WGPUProcRenderPassEncoderDrawIndirect = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderDrawIndirect = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         indirectBuffer: WGPUBuffer,
@@ -4509,25 +4513,25 @@ pub type WGPUProcRenderPassEncoderDrawIndirect = ::std::option::Option<
     ),
 >;
 pub type WGPUProcRenderPassEncoderEnd =
-    ::std::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
 pub type WGPUProcRenderPassEncoderEndOcclusionQuery =
-    ::std::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
-pub type WGPUProcRenderPassEncoderExecuteBundles = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
+pub type WGPUProcRenderPassEncoderExecuteBundles = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         bundleCount: usize,
         bundles: *const WGPURenderBundle,
     ),
 >;
-pub type WGPUProcRenderPassEncoderInsertDebugMarker = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, markerLabel: WGPUStringView),
 >;
 pub type WGPUProcRenderPassEncoderPopDebugGroup =
-    ::std::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
-pub type WGPUProcRenderPassEncoderPushDebugGroup = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
+pub type WGPUProcRenderPassEncoderPushDebugGroup = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, groupLabel: WGPUStringView),
 >;
-pub type WGPUProcRenderPassEncoderSetBindGroup = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetBindGroup = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         groupIndex: u32,
@@ -4536,10 +4540,10 @@ pub type WGPUProcRenderPassEncoderSetBindGroup = ::std::option::Option<
         dynamicOffsets: *const u32,
     ),
 >;
-pub type WGPUProcRenderPassEncoderSetBlendConstant = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetBlendConstant = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, color: *const WGPUColor),
 >;
-pub type WGPUProcRenderPassEncoderSetIndexBuffer = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetIndexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         buffer: WGPUBuffer,
@@ -4548,13 +4552,13 @@ pub type WGPUProcRenderPassEncoderSetIndexBuffer = ::std::option::Option<
         size: u64,
     ),
 >;
-pub type WGPUProcRenderPassEncoderSetLabel = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, label: WGPUStringView),
 >;
-pub type WGPUProcRenderPassEncoderSetPipeline = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetPipeline = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, pipeline: WGPURenderPipeline),
 >;
-pub type WGPUProcRenderPassEncoderSetScissorRect = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetScissorRect = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         x: u32,
@@ -4563,10 +4567,10 @@ pub type WGPUProcRenderPassEncoderSetScissorRect = ::std::option::Option<
         height: u32,
     ),
 >;
-pub type WGPUProcRenderPassEncoderSetStencilReference = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetStencilReference = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, reference: u32),
 >;
-pub type WGPUProcRenderPassEncoderSetVertexBuffer = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetVertexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         slot: u32,
@@ -4575,7 +4579,7 @@ pub type WGPUProcRenderPassEncoderSetVertexBuffer = ::std::option::Option<
         size: u64,
     ),
 >;
-pub type WGPUProcRenderPassEncoderSetViewport = ::std::option::Option<
+pub type WGPUProcRenderPassEncoderSetViewport = ::core::option::Option<
     unsafe extern "C" fn(
         renderPassEncoder: WGPURenderPassEncoder,
         x: f32,
@@ -4587,104 +4591,108 @@ pub type WGPUProcRenderPassEncoderSetViewport = ::std::option::Option<
     ),
 >;
 pub type WGPUProcRenderPassEncoderAddRef =
-    ::std::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
 pub type WGPUProcRenderPassEncoderRelease =
-    ::std::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
-pub type WGPUProcRenderPipelineGetBindGroupLayout = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
+pub type WGPUProcRenderPipelineGetBindGroupLayout = ::core::option::Option<
     unsafe extern "C" fn(
         renderPipeline: WGPURenderPipeline,
         groupIndex: u32,
     ) -> WGPUBindGroupLayout,
 >;
-pub type WGPUProcRenderPipelineSetLabel = ::std::option::Option<
+pub type WGPUProcRenderPipelineSetLabel = ::core::option::Option<
     unsafe extern "C" fn(renderPipeline: WGPURenderPipeline, label: WGPUStringView),
 >;
 pub type WGPUProcRenderPipelineAddRef =
-    ::std::option::Option<unsafe extern "C" fn(renderPipeline: WGPURenderPipeline)>;
+    ::core::option::Option<unsafe extern "C" fn(renderPipeline: WGPURenderPipeline)>;
 pub type WGPUProcRenderPipelineRelease =
-    ::std::option::Option<unsafe extern "C" fn(renderPipeline: WGPURenderPipeline)>;
+    ::core::option::Option<unsafe extern "C" fn(renderPipeline: WGPURenderPipeline)>;
 pub type WGPUProcSamplerSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(sampler: WGPUSampler, label: WGPUStringView)>;
-pub type WGPUProcSamplerAddRef = ::std::option::Option<unsafe extern "C" fn(sampler: WGPUSampler)>;
-pub type WGPUProcSamplerRelease = ::std::option::Option<unsafe extern "C" fn(sampler: WGPUSampler)>;
-pub type WGPUProcShaderModuleGetCompilationInfo = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(sampler: WGPUSampler, label: WGPUStringView)>;
+pub type WGPUProcSamplerAddRef = ::core::option::Option<unsafe extern "C" fn(sampler: WGPUSampler)>;
+pub type WGPUProcSamplerRelease =
+    ::core::option::Option<unsafe extern "C" fn(sampler: WGPUSampler)>;
+pub type WGPUProcShaderModuleGetCompilationInfo = ::core::option::Option<
     unsafe extern "C" fn(
         shaderModule: WGPUShaderModule,
         callbackInfo: WGPUCompilationInfoCallbackInfo,
     ) -> WGPUFuture,
 >;
-pub type WGPUProcShaderModuleSetLabel = ::std::option::Option<
+pub type WGPUProcShaderModuleSetLabel = ::core::option::Option<
     unsafe extern "C" fn(shaderModule: WGPUShaderModule, label: WGPUStringView),
 >;
 pub type WGPUProcShaderModuleAddRef =
-    ::std::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
+    ::core::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
 pub type WGPUProcShaderModuleRelease =
-    ::std::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
+    ::core::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
 pub type WGPUProcSupportedFeaturesFreeMembers =
-    ::std::option::Option<unsafe extern "C" fn(supportedFeatures: WGPUSupportedFeatures)>;
-pub type WGPUProcSupportedInstanceFeaturesFreeMembers = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(supportedFeatures: WGPUSupportedFeatures)>;
+pub type WGPUProcSupportedInstanceFeaturesFreeMembers = ::core::option::Option<
     unsafe extern "C" fn(supportedInstanceFeatures: WGPUSupportedInstanceFeatures),
 >;
-pub type WGPUProcSupportedWGSLLanguageFeaturesFreeMembers = ::std::option::Option<
+pub type WGPUProcSupportedWGSLLanguageFeaturesFreeMembers = ::core::option::Option<
     unsafe extern "C" fn(supportedWGSLLanguageFeatures: WGPUSupportedWGSLLanguageFeatures),
 >;
-pub type WGPUProcSurfaceConfigure = ::std::option::Option<
+pub type WGPUProcSurfaceConfigure = ::core::option::Option<
     unsafe extern "C" fn(surface: WGPUSurface, config: *const WGPUSurfaceConfiguration),
 >;
-pub type WGPUProcSurfaceGetCapabilities = ::std::option::Option<
+pub type WGPUProcSurfaceGetCapabilities = ::core::option::Option<
     unsafe extern "C" fn(
         surface: WGPUSurface,
         adapter: WGPUAdapter,
         capabilities: *mut WGPUSurfaceCapabilities,
     ) -> WGPUStatus,
 >;
-pub type WGPUProcSurfaceGetCurrentTexture = ::std::option::Option<
+pub type WGPUProcSurfaceGetCurrentTexture = ::core::option::Option<
     unsafe extern "C" fn(surface: WGPUSurface, surfaceTexture: *mut WGPUSurfaceTexture),
 >;
 pub type WGPUProcSurfacePresent =
-    ::std::option::Option<unsafe extern "C" fn(surface: WGPUSurface) -> WGPUStatus>;
+    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface) -> WGPUStatus>;
 pub type WGPUProcSurfaceSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(surface: WGPUSurface, label: WGPUStringView)>;
+    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface, label: WGPUStringView)>;
 pub type WGPUProcSurfaceUnconfigure =
-    ::std::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
-pub type WGPUProcSurfaceAddRef = ::std::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
-pub type WGPUProcSurfaceRelease = ::std::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
+    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
+pub type WGPUProcSurfaceAddRef = ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
+pub type WGPUProcSurfaceRelease =
+    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
 pub type WGPUProcSurfaceCapabilitiesFreeMembers =
-    ::std::option::Option<unsafe extern "C" fn(surfaceCapabilities: WGPUSurfaceCapabilities)>;
-pub type WGPUProcTextureCreateView = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(surfaceCapabilities: WGPUSurfaceCapabilities)>;
+pub type WGPUProcTextureCreateView = ::core::option::Option<
     unsafe extern "C" fn(
         texture: WGPUTexture,
         descriptor: *const WGPUTextureViewDescriptor,
     ) -> WGPUTextureView,
 >;
-pub type WGPUProcTextureDestroy = ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
+pub type WGPUProcTextureDestroy =
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
 pub type WGPUProcTextureGetDepthOrArrayLayers =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
 pub type WGPUProcTextureGetDimension =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureDimension>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureDimension>;
 pub type WGPUProcTextureGetFormat =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureFormat>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureFormat>;
 pub type WGPUProcTextureGetHeight =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
 pub type WGPUProcTextureGetMipLevelCount =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
 pub type WGPUProcTextureGetSampleCount =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
 pub type WGPUProcTextureGetUsage =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureUsage>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> WGPUTextureUsage>;
 pub type WGPUProcTextureGetWidth =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture) -> u32>;
 pub type WGPUProcTextureSetLabel =
-    ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture, label: WGPUStringView)>;
-pub type WGPUProcTextureAddRef = ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
-pub type WGPUProcTextureRelease = ::std::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
-pub type WGPUProcTextureViewSetLabel = ::std::option::Option<
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture, label: WGPUStringView)>;
+pub type WGPUProcTextureAddRef = ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
+pub type WGPUProcTextureRelease =
+    ::core::option::Option<unsafe extern "C" fn(texture: WGPUTexture)>;
+pub type WGPUProcTextureViewSetLabel = ::core::option::Option<
     unsafe extern "C" fn(textureView: WGPUTextureView, label: WGPUStringView),
 >;
 pub type WGPUProcTextureViewAddRef =
-    ::std::option::Option<unsafe extern "C" fn(textureView: WGPUTextureView)>;
+    ::core::option::Option<unsafe extern "C" fn(textureView: WGPUTextureView)>;
 pub type WGPUProcTextureViewRelease =
-    ::std::option::Option<unsafe extern "C" fn(textureView: WGPUTextureView)>;
+    ::core::option::Option<unsafe extern "C" fn(textureView: WGPUTextureView)>;
 unsafe extern "C" {
     pub fn wgpuCreateInstance(descriptor: *const WGPUInstanceDescriptor) -> WGPUInstance;
 }
@@ -4754,14 +4762,14 @@ unsafe extern "C" {
         buffer: WGPUBuffer,
         offset: usize,
         size: usize,
-    ) -> *const ::std::os::raw::c_void;
+    ) -> *const ::core::ffi::c_void;
 }
 unsafe extern "C" {
     pub fn wgpuBufferGetMappedRange(
         buffer: WGPUBuffer,
         offset: usize,
         size: usize,
-    ) -> *mut ::std::os::raw::c_void;
+    ) -> *mut ::core::ffi::c_void;
 }
 unsafe extern "C" {
     pub fn wgpuBufferGetMapState(buffer: WGPUBuffer) -> WGPUBufferMapState;
@@ -4785,7 +4793,7 @@ unsafe extern "C" {
     pub fn wgpuBufferReadMappedRange(
         buffer: WGPUBuffer,
         offset: usize,
-        data: *mut ::std::os::raw::c_void,
+        data: *mut ::core::ffi::c_void,
         size: usize,
     ) -> WGPUStatus;
 }
@@ -4799,7 +4807,7 @@ unsafe extern "C" {
     pub fn wgpuBufferWriteMappedRange(
         buffer: WGPUBuffer,
         offset: usize,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         size: usize,
     ) -> WGPUStatus;
 }
@@ -5212,7 +5220,7 @@ unsafe extern "C" {
         queue: WGPUQueue,
         buffer: WGPUBuffer,
         bufferOffset: u64,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         size: usize,
     );
 }
@@ -5220,7 +5228,7 @@ unsafe extern "C" {
     pub fn wgpuQueueWriteTexture(
         queue: WGPUQueue,
         destination: *const WGPUTexelCopyTextureInfo,
-        data: *const ::std::os::raw::c_void,
+        data: *const ::core::ffi::c_void,
         dataSize: usize,
         dataLayout: *const WGPUTexelCopyBufferLayout,
         writeSize: *const WGPUExtent3D,

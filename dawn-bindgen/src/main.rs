@@ -39,6 +39,7 @@ fn generate_bindings_to_file(path: &str) {
         .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
     bindgen::builder()
         .header(workspace_path!("dawn-bindgen/include/webgpu-no-docs.h"))
+        .use_core()
         .generate()
         .expect("failed to generate bindings for webgpu.h")
         .write_to_file(path)
