@@ -1,0 +1,15 @@
+[package]
+name = "dawn-bindgen"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+generate-bindings = ["dep:bindgen"]
+
+[dependencies]
+bindgen = { version = "0.71.1", optional = true }
+prettyplease = "0.2.32"
+proc-macro2 = { version = "1.0.95", default-features = false }
+quote = { version = "1.0.40", default-features = false }
+syn = { version = "2.0.101", default-features = false, features = ["parsing"] }
+yaml-rust2 = { version = "0.10.1", default-features = false }

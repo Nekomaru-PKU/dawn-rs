@@ -1,0 +1,12 @@
+[package]
+name = "dawn-sys"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+default = ["strum"]
+strum = ["dep:strum"]
+
+[dependencies]
+bitflags = { version = "2.9.1", features = ["std"] }
+strum = { version = "0.27.1", features = ["derive"], optional = true }
