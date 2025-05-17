@@ -1,8 +1,15 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUAdapterType {
     DiscreteGPU = raw::WGPUAdapterType_WGPUAdapterType_DiscreteGPU,
@@ -18,7 +25,13 @@ impl WGPUAdapterType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUAddressMode {
@@ -35,8 +48,15 @@ impl WGPUAddressMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUBackendType {
     Undefined = raw::WGPUBackendType_WGPUBackendType_Undefined,
@@ -57,7 +77,13 @@ impl WGPUBackendType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUBlendFactor {
@@ -88,7 +114,13 @@ impl WGPUBlendFactor {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUBlendOperation {
@@ -107,8 +139,15 @@ impl WGPUBlendOperation {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUBufferBindingType {
     BindingNotUsed = raw::WGPUBufferBindingType_WGPUBufferBindingType_BindingNotUsed,
@@ -125,7 +164,13 @@ impl WGPUBufferBindingType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUBufferMapState {
@@ -141,7 +186,13 @@ impl WGPUBufferMapState {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUCallbackMode {
@@ -157,7 +208,13 @@ impl WGPUCallbackMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUCompareFunction {
@@ -179,8 +236,15 @@ impl WGPUCompareFunction {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUCompilationInfoRequestStatus {
     Success = raw::WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_Success,
@@ -194,8 +258,15 @@ impl WGPUCompilationInfoRequestStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUCompilationMessageType {
     Error = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Error,
@@ -210,7 +281,13 @@ impl WGPUCompilationMessageType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUCompositeAlphaMode {
@@ -233,8 +310,15 @@ impl WGPUCompositeAlphaMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUCreatePipelineAsyncStatus {
     Success = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_Success,
@@ -250,7 +334,13 @@ impl WGPUCreatePipelineAsyncStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUCullMode {
@@ -267,8 +357,15 @@ impl WGPUCullMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUDeviceLostReason {
     Unknown = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_Unknown,
@@ -284,7 +381,13 @@ impl WGPUDeviceLostReason {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUErrorFilter {
@@ -300,8 +403,15 @@ impl WGPUErrorFilter {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUErrorType {
     NoError = raw::WGPUErrorType_WGPUErrorType_NoError,
@@ -318,7 +428,13 @@ impl WGPUErrorType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUFeatureLevel {
@@ -337,7 +453,13 @@ impl WGPUFeatureLevel {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUFeatureName {
@@ -367,7 +489,13 @@ impl WGPUFeatureName {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUFilterMode {
@@ -383,7 +511,13 @@ impl WGPUFilterMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUFrontFace {
@@ -399,7 +533,13 @@ impl WGPUFrontFace {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUIndexFormat {
@@ -415,7 +555,13 @@ impl WGPUIndexFormat {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUInstanceFeatureName {
@@ -431,7 +577,13 @@ impl WGPUInstanceFeatureName {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPULoadOp {
@@ -447,8 +599,15 @@ impl WGPULoadOp {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUMapAsyncStatus {
     Success = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Success,
@@ -464,7 +623,13 @@ impl WGPUMapAsyncStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUMipmapFilterMode {
@@ -480,7 +645,13 @@ impl WGPUMipmapFilterMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUOptionalBool {
@@ -496,8 +667,15 @@ impl WGPUOptionalBool {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUPopErrorScopeStatus {
     Success = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Success,
@@ -512,7 +690,13 @@ impl WGPUPopErrorScopeStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUPowerPreference {
@@ -528,7 +712,13 @@ impl WGPUPowerPreference {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUPredefinedColorSpace {
@@ -543,7 +733,13 @@ impl WGPUPredefinedColorSpace {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUPresentMode {
@@ -582,7 +778,13 @@ impl WGPUPresentMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUPrimitiveTopology {
@@ -601,8 +803,15 @@ impl WGPUPrimitiveTopology {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUQueryType {
     Occlusion = raw::WGPUQueryType_WGPUQueryType_Occlusion,
@@ -616,8 +825,15 @@ impl WGPUQueryType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUQueueWorkDoneStatus {
     Success = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Success,
@@ -632,8 +848,15 @@ impl WGPUQueueWorkDoneStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPURequestAdapterStatus {
     Success = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Success,
@@ -649,8 +872,15 @@ impl WGPURequestAdapterStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPURequestDeviceStatus {
     Success = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_Success,
@@ -665,8 +895,15 @@ impl WGPURequestDeviceStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUSType {
     ShaderSourceSPIRV = raw::WGPUSType_WGPUSType_ShaderSourceSPIRV,
@@ -689,8 +926,15 @@ impl WGPUSType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUSamplerBindingType {
     BindingNotUsed = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_BindingNotUsed,
@@ -707,8 +951,15 @@ impl WGPUSamplerBindingType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUStatus {
     Success = raw::WGPUStatus_WGPUStatus_Success,
@@ -722,7 +973,13 @@ impl WGPUStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUStencilOperation {
@@ -744,7 +1001,13 @@ impl WGPUStencilOperation {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUStorageTextureAccess {
@@ -762,7 +1025,13 @@ impl WGPUStorageTextureAccess {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUStoreOp {
@@ -778,8 +1047,15 @@ impl WGPUStoreOp {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUSurfaceGetCurrentTextureStatus {
     SuccessOptimal = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal,
@@ -797,7 +1073,13 @@ impl WGPUSurfaceGetCurrentTextureStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUTextureAspect {
@@ -814,7 +1096,13 @@ impl WGPUTextureAspect {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUTextureDimension {
@@ -831,7 +1119,13 @@ impl WGPUTextureDimension {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUTextureFormat {
@@ -940,8 +1234,15 @@ impl WGPUTextureFormat {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUTextureSampleType {
     BindingNotUsed = raw::WGPUTextureSampleType_WGPUTextureSampleType_BindingNotUsed,
@@ -960,7 +1261,13 @@ impl WGPUTextureSampleType {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUTextureViewDimension {
@@ -980,7 +1287,13 @@ impl WGPUTextureViewDimension {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUToneMappingMode {
@@ -995,7 +1308,13 @@ impl WGPUToneMappingMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUVertexFormat {
@@ -1049,7 +1368,13 @@ impl WGPUVertexFormat {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUVertexStepMode {
@@ -1065,8 +1390,15 @@ impl WGPUVertexStepMode {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUWaitStatus {
     Success = raw::WGPUWaitStatus_WGPUWaitStatus_Success,
@@ -1081,7 +1413,13 @@ impl WGPUWaitStatus {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "strum",
-    derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
 )]
 #[repr(i32)]
 pub enum WGPUWGSLLanguageFeatureName {

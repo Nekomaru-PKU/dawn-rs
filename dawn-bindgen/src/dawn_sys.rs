@@ -34,9 +34,9 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
         .as_vec()
         .expect(error_yaml_invalid_field!("entries"));
     let emit_is =
-        type_name.ends_with("_type") ||
-        type_name.ends_with("_reason") ||
-        type_name.ends_with("_status");
+        type_name.ends_with("Type") ||
+        type_name.ends_with("Reason") ||
+        type_name.ends_with("Status");
     let emit_doc = items_vec
         .iter()
         .all(|item| {
@@ -61,6 +61,7 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
         #[cfg_attr(feature = "strum", derive(
             strum::Display,
             strum::EnumString,
+            strum::EnumIter,
             strum::FromRepr,
             strum::IntoStaticStr))]
         #attr_is
