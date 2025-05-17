@@ -214,10 +214,15 @@ impl WGPUCompilationMessageType {
 )]
 #[repr(i32)]
 pub enum WGPUCompositeAlphaMode {
+    /// Lets the WebGPU implementation choose the best mode (supported, and with the best performance) between @ref WGPUCompositeAlphaMode_Opaque or @ref WGPUCompositeAlphaMode_Inherit.
     Auto = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Auto,
+    /// The alpha component of the image is ignored and teated as if it is always 1.0.
     Opaque = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Opaque,
+    /// The alpha component is respected and non-alpha components are assumed to be already multiplied with the alpha component. For example, (0.5, 0, 0, 0.5) is semi-transparent bright red.
     Premultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Premultiplied,
+    /// The alpha component is respected and non-alpha components are assumed to NOT be already multiplied with the alpha component. For example, (1.0, 0, 0, 0.5) is semi-transparent bright red.
     Unpremultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Unpremultiplied,
+    /// The handling of the alpha component is unknown to WebGPU and should be handled by the application using system-specific APIs. This mode may be unavailable (for example on Wasm).
     Inherit = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Inherit,
 }
 impl WGPUCompositeAlphaMode {
@@ -317,8 +322,11 @@ impl WGPUErrorType {
 )]
 #[repr(i32)]
 pub enum WGPUFeatureLevel {
+    /// Indicates no value is passed for this argument.
     Undefined = raw::WGPUFeatureLevel_WGPUFeatureLevel_Undefined,
+    /// Compatibility profile which can be supported on OpenGL ES 3.1 and D3D11.
     Compatibility = raw::WGPUFeatureLevel_WGPUFeatureLevel_Compatibility,
+    /// Core profile which can be supported on Vulkan/Metal/D3D12 (at least).
     Core = raw::WGPUFeatureLevel_WGPUFeatureLevel_Core,
 }
 impl WGPUFeatureLevel {
@@ -539,10 +547,31 @@ impl WGPUPredefinedColorSpace {
 )]
 #[repr(i32)]
 pub enum WGPUPresentMode {
+    /// Present mode is not specified. Use the default.
     Undefined = raw::WGPUPresentMode_WGPUPresentMode_Undefined,
+    /**
+The presentation of the image to the user waits for the next vertical blanking period to update in a first-in, first-out manner.
+
+Tearing cannot be observed and frame-loop will be limited to the display's refresh rate.
+
+This is the only mode that's always available.*/
     Fifo = raw::WGPUPresentMode_WGPUPresentMode_Fifo,
+    /**
+The presentation of the image to the user tries to wait for the next vertical blanking period but may decide to not wait if a frame is presented late.
+
+Tearing can sometimes be observed but late-frame don't produce a full-frame stutter in the presentation.
+
+This is still a first-in, first-out mechanism so a frame-loop will be limited to the display's refresh rate.*/
     FifoRelaxed = raw::WGPUPresentMode_WGPUPresentMode_FifoRelaxed,
+    /**
+The presentation of the image to the user is updated immediately without waiting for a vertical blank.
+
+Tearing can be observed but latency is minimized.*/
     Immediate = raw::WGPUPresentMode_WGPUPresentMode_Immediate,
+    /**
+The presentation of the image to the user waits for the next vertical blanking period to update to the latest provided image.
+
+Tearing cannot be observed and a frame-loop is not limited to the display's refresh rate.*/
     Mailbox = raw::WGPUPresentMode_WGPUPresentMode_Mailbox,
 }
 impl WGPUPresentMode {

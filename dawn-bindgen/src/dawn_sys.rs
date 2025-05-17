@@ -30,12 +30,31 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
     let type_name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
     let type_ident = format_ident!("WGPU{type_name}");
 
-    let items = yaml["entries"]
+    let items_vec = yaml["entries"]
         .as_vec()
-        .expect(error_yaml_invalid_field!("entries"))
+        .expect(error_yaml_invalid_field!("entries"));
+    let emit_is =
+        type_name.ends_with("_type") ||
+        type_name.ends_with("_reason") ||
+        type_name.ends_with("_status");
+    let emit_doc = items_vec
+        .iter()
+        .all(|item| {
+            item["doc"]
+                .as_str()
+                .map(str::trim)
+                .map(|doc| !doc.is_empty() && doc != "TODO")
+                .unwrap_or(false)
+        });
+    let attr_is = if emit_is {
+        quote!(#[cfg_attr(feature = "strum", derive(strum::EnumIs))])
+    } else {
+        quote!()
+    };
+    let items = items_vec
         .iter()
         .filter(|&item| !item.is_null())
-        .map(|yaml| generate_enum_item(&type_name, yaml));
+        .map(|yaml| generate_enum_item(&type_name, yaml, emit_doc));
 
     quote! {
         #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -44,6 +63,7 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
             strum::EnumString,
             strum::FromRepr,
             strum::IntoStaticStr))]
+        #attr_is
         #[repr(i32)]
         pub enum #type_ident {
             #(#items)*
@@ -57,7 +77,7 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
     }
 }
 
-fn generate_enum_item(type_name: &str, yaml: &Yaml) -> TokenStream {
+fn generate_enum_item(type_name: &str, yaml: &Yaml, emit_doc: bool) -> TokenStream {
     let snake_case_name = get_name_from_yaml(yaml);
     let name = snake_case_to_pascal_case(
         &handle_invalid_ident(snake_case_name));
@@ -68,7 +88,33 @@ fn generate_enum_item(type_name: &str, yaml: &Yaml) -> TokenStream {
         type_name,
         type_name,
         name_raw);
-    quote!(#ident = raw::#ident_raw,)
+
+    if emit_doc {
+        let doc = yaml["doc"]
+            .as_str()
+            .expect(error_yaml_invalid_field!("doc"))
+            .replace('"', "")
+            .lines()
+            .map(str::trim)
+            .filter(|line| !line.is_empty())
+            .collect::<Vec<_>>()
+            .join("\n\n");
+        let doc = if doc.contains(
+            "Indicates no value is passed for this argument.") {
+            "Indicates no value is passed for this argument.".into()
+        } else if doc.contains('\n') {
+            format!("\n{}", doc)
+        } else {
+            doc
+        };
+        let doc = format!(" {doc}");
+        quote! {
+            #[doc = #doc]
+            #ident = raw::#ident_raw,
+        }
+    } else {
+        quote!(#ident = raw::#ident_raw,)
+    }
 }
 
 fn generate_bitflag(yaml: &Yaml) -> TokenStream {
