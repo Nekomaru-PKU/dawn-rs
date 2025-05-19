@@ -1,0 +1,11 @@
+[package]
+name = "dawn-examples"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+dawn-sys = { path = "../dawn-sys" }
+dawn-rs = { path = "../dawn-rs" }
+winsafe = { version = "0.0.23", features = ["gui"] }
