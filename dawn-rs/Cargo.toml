@@ -8,3 +8,12 @@ keywords = ["dawn", "webgpu", "wgpu", "vulkan", "metal"]
 license = "MIT OR Apache-2.0"
 authors = { workspace = true }
 repository = { workspace = true }
+
+[features]
+default = ["strum"]
+strum = ["dep:strum"]
+
+[dependencies]
+dawn-sys = { path = "../dawn-sys" }
+bitflags = "2.9.1"
+strum = { version = "0.27.1", features = ["derive"], optional = true }

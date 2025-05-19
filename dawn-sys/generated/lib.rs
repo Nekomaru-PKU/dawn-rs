@@ -1,1707 +1,900 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUWGSLLanguageFeatureName {
-    ReadonlyAndReadwriteStorageTextures = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures,
-    Packed4x8IntegerDotProduct = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct,
-    UnrestrictedPointerParameters = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_UnrestrictedPointerParameters,
-    PointerCompositeAccess = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerCompositeAccess,
-    SizedBindingArray = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_SizedBindingArray,
-    ChromiumTestingUnimplemented = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented,
-    ChromiumTestingUnsafeExperimental = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental,
-    ChromiumTestingExperimental = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental,
-    ChromiumTestingShippedWithKillswitch = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShippedWithKillswitch,
-    ChromiumTestingShipped = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShipped,
-}
-impl WGPUWGSLLanguageFeatureName {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUAdapterType {
-    DiscreteGPU = raw::WGPUAdapterType_WGPUAdapterType_DiscreteGPU,
-    IntegratedGPU = raw::WGPUAdapterType_WGPUAdapterType_IntegratedGPU,
-    CPU = raw::WGPUAdapterType_WGPUAdapterType_CPU,
-    Unknown = raw::WGPUAdapterType_WGPUAdapterType_Unknown,
-}
-impl WGPUAdapterType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUAddressMode {
-    Undefined = raw::WGPUAddressMode_WGPUAddressMode_Undefined,
-    ClampToEdge = raw::WGPUAddressMode_WGPUAddressMode_ClampToEdge,
-    Repeat = raw::WGPUAddressMode_WGPUAddressMode_Repeat,
-    MirrorRepeat = raw::WGPUAddressMode_WGPUAddressMode_MirrorRepeat,
-}
-impl WGPUAddressMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUAlphaMode {
-    Opaque = raw::WGPUAlphaMode_WGPUAlphaMode_Opaque,
-    Premultiplied = raw::WGPUAlphaMode_WGPUAlphaMode_Premultiplied,
-    Unpremultiplied = raw::WGPUAlphaMode_WGPUAlphaMode_Unpremultiplied,
-}
-impl WGPUAlphaMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUBackendType {
-    Undefined = raw::WGPUBackendType_WGPUBackendType_Undefined,
-    Null = raw::WGPUBackendType_WGPUBackendType_Null,
-    WebGPU = raw::WGPUBackendType_WGPUBackendType_WebGPU,
-    D3D11 = raw::WGPUBackendType_WGPUBackendType_D3D11,
-    D3D12 = raw::WGPUBackendType_WGPUBackendType_D3D12,
-    Metal = raw::WGPUBackendType_WGPUBackendType_Metal,
-    Vulkan = raw::WGPUBackendType_WGPUBackendType_Vulkan,
-    OpenGL = raw::WGPUBackendType_WGPUBackendType_OpenGL,
-    OpenGLES = raw::WGPUBackendType_WGPUBackendType_OpenGLES,
-}
-impl WGPUBackendType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUBlendFactor {
-    Undefined = raw::WGPUBlendFactor_WGPUBlendFactor_Undefined,
-    Zero = raw::WGPUBlendFactor_WGPUBlendFactor_Zero,
-    One = raw::WGPUBlendFactor_WGPUBlendFactor_One,
-    Src = raw::WGPUBlendFactor_WGPUBlendFactor_Src,
-    OneMinusSrc = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc,
-    SrcAlpha = raw::WGPUBlendFactor_WGPUBlendFactor_SrcAlpha,
-    OneMinusSrcAlpha = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrcAlpha,
-    Dst = raw::WGPUBlendFactor_WGPUBlendFactor_Dst,
-    OneMinusDst = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusDst,
-    DstAlpha = raw::WGPUBlendFactor_WGPUBlendFactor_DstAlpha,
-    OneMinusDstAlpha = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusDstAlpha,
-    SrcAlphaSaturated = raw::WGPUBlendFactor_WGPUBlendFactor_SrcAlphaSaturated,
-    Constant = raw::WGPUBlendFactor_WGPUBlendFactor_Constant,
-    OneMinusConstant = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusConstant,
-    Src1 = raw::WGPUBlendFactor_WGPUBlendFactor_Src1,
-    OneMinusSrc1 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1,
-    Src1Alpha = raw::WGPUBlendFactor_WGPUBlendFactor_Src1Alpha,
-    OneMinusSrc1Alpha = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1Alpha,
-}
-impl WGPUBlendFactor {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUBlendOperation {
-    Undefined = raw::WGPUBlendOperation_WGPUBlendOperation_Undefined,
-    Add = raw::WGPUBlendOperation_WGPUBlendOperation_Add,
-    Subtract = raw::WGPUBlendOperation_WGPUBlendOperation_Subtract,
-    ReverseSubtract = raw::WGPUBlendOperation_WGPUBlendOperation_ReverseSubtract,
-    Min = raw::WGPUBlendOperation_WGPUBlendOperation_Min,
-    Max = raw::WGPUBlendOperation_WGPUBlendOperation_Max,
-}
-impl WGPUBlendOperation {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUBufferBindingType {
-    BindingNotUsed = raw::WGPUBufferBindingType_WGPUBufferBindingType_BindingNotUsed,
-    Undefined = raw::WGPUBufferBindingType_WGPUBufferBindingType_Undefined,
-    Uniform = raw::WGPUBufferBindingType_WGPUBufferBindingType_Uniform,
-    Storage = raw::WGPUBufferBindingType_WGPUBufferBindingType_Storage,
-    ReadOnlyStorage = raw::WGPUBufferBindingType_WGPUBufferBindingType_ReadOnlyStorage,
-}
-impl WGPUBufferBindingType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUBufferMapState {
-    Unmapped = raw::WGPUBufferMapState_WGPUBufferMapState_Unmapped,
-    Pending = raw::WGPUBufferMapState_WGPUBufferMapState_Pending,
-    Mapped = raw::WGPUBufferMapState_WGPUBufferMapState_Mapped,
-}
-impl WGPUBufferMapState {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUCallbackMode {
-    WaitAnyOnly = raw::WGPUCallbackMode_WGPUCallbackMode_WaitAnyOnly,
-    AllowProcessEvents = raw::WGPUCallbackMode_WGPUCallbackMode_AllowProcessEvents,
-    AllowSpontaneous = raw::WGPUCallbackMode_WGPUCallbackMode_AllowSpontaneous,
-}
-impl WGPUCallbackMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUCompareFunction {
-    Undefined = raw::WGPUCompareFunction_WGPUCompareFunction_Undefined,
-    Never = raw::WGPUCompareFunction_WGPUCompareFunction_Never,
-    Less = raw::WGPUCompareFunction_WGPUCompareFunction_Less,
-    Equal = raw::WGPUCompareFunction_WGPUCompareFunction_Equal,
-    LessEqual = raw::WGPUCompareFunction_WGPUCompareFunction_LessEqual,
-    Greater = raw::WGPUCompareFunction_WGPUCompareFunction_Greater,
-    NotEqual = raw::WGPUCompareFunction_WGPUCompareFunction_NotEqual,
-    GreaterEqual = raw::WGPUCompareFunction_WGPUCompareFunction_GreaterEqual,
-    Always = raw::WGPUCompareFunction_WGPUCompareFunction_Always,
-}
-impl WGPUCompareFunction {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUCompilationInfoRequestStatus {
-    Success = raw::WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_Success,
-    CallbackCancelled = raw::WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_CallbackCancelled,
-}
-impl WGPUCompilationInfoRequestStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUCompilationMessageType {
-    Error = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Error,
-    Warning = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Warning,
-    Info = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Info,
-}
-impl WGPUCompilationMessageType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUCompositeAlphaMode {
-    Auto = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Auto,
-    Opaque = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Opaque,
-    Premultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Premultiplied,
-    Unpremultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Unpremultiplied,
-    Inherit = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Inherit,
-}
-impl WGPUCompositeAlphaMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUCreatePipelineAsyncStatus {
-    Success = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_Success,
-    CallbackCancelled = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_CallbackCancelled,
-    ValidationError = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_ValidationError,
-    InternalError = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_InternalError,
-}
-impl WGPUCreatePipelineAsyncStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUCullMode {
-    Undefined = raw::WGPUCullMode_WGPUCullMode_Undefined,
-    None = raw::WGPUCullMode_WGPUCullMode_None,
-    Front = raw::WGPUCullMode_WGPUCullMode_Front,
-    Back = raw::WGPUCullMode_WGPUCullMode_Back,
-}
-impl WGPUCullMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUDeviceLostReason {
-    Unknown = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_Unknown,
-    Destroyed = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_Destroyed,
-    CallbackCancelled = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_CallbackCancelled,
-    FailedCreation = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_FailedCreation,
-}
-impl WGPUDeviceLostReason {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUErrorFilter {
-    Validation = raw::WGPUErrorFilter_WGPUErrorFilter_Validation,
-    OutOfMemory = raw::WGPUErrorFilter_WGPUErrorFilter_OutOfMemory,
-    Internal = raw::WGPUErrorFilter_WGPUErrorFilter_Internal,
-}
-impl WGPUErrorFilter {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUErrorType {
-    NoError = raw::WGPUErrorType_WGPUErrorType_NoError,
-    Validation = raw::WGPUErrorType_WGPUErrorType_Validation,
-    OutOfMemory = raw::WGPUErrorType_WGPUErrorType_OutOfMemory,
-    Internal = raw::WGPUErrorType_WGPUErrorType_Internal,
-    Unknown = raw::WGPUErrorType_WGPUErrorType_Unknown,
-}
-impl WGPUErrorType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUExternalTextureRotation {
-    Rotate0Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate0Degrees,
-    Rotate90Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate90Degrees,
-    Rotate180Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate180Degrees,
-    Rotate270Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate270Degrees,
-}
-impl WGPUExternalTextureRotation {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUFeatureLevel {
-    Undefined = raw::WGPUFeatureLevel_WGPUFeatureLevel_Undefined,
-    Compatibility = raw::WGPUFeatureLevel_WGPUFeatureLevel_Compatibility,
-    Core = raw::WGPUFeatureLevel_WGPUFeatureLevel_Core,
-}
-impl WGPUFeatureLevel {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUFeatureName {
-    DepthClipControl = raw::WGPUFeatureName_WGPUFeatureName_DepthClipControl,
-    Depth32FloatStencil8 = raw::WGPUFeatureName_WGPUFeatureName_Depth32FloatStencil8,
-    TimestampQuery = raw::WGPUFeatureName_WGPUFeatureName_TimestampQuery,
-    TextureCompressionBC = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionBC,
-    TextureCompressionBCSliced3D = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionBCSliced3D,
-    TextureCompressionETC2 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionETC2,
-    TextureCompressionASTC = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionASTC,
-    TextureCompressionASTCSliced3D = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionASTCSliced3D,
-    IndirectFirstInstance = raw::WGPUFeatureName_WGPUFeatureName_IndirectFirstInstance,
-    ShaderF16 = raw::WGPUFeatureName_WGPUFeatureName_ShaderF16,
-    RG11B10UfloatRenderable = raw::WGPUFeatureName_WGPUFeatureName_RG11B10UfloatRenderable,
-    BGRA8UnormStorage = raw::WGPUFeatureName_WGPUFeatureName_BGRA8UnormStorage,
-    Float32Filterable = raw::WGPUFeatureName_WGPUFeatureName_Float32Filterable,
-    Float32Blendable = raw::WGPUFeatureName_WGPUFeatureName_Float32Blendable,
-    ClipDistances = raw::WGPUFeatureName_WGPUFeatureName_ClipDistances,
-    DualSourceBlending = raw::WGPUFeatureName_WGPUFeatureName_DualSourceBlending,
-    Subgroups = raw::WGPUFeatureName_WGPUFeatureName_Subgroups,
-    CoreFeaturesAndLimits = raw::WGPUFeatureName_WGPUFeatureName_CoreFeaturesAndLimits,
-    DawnInternalUsages = raw::WGPUFeatureName_WGPUFeatureName_DawnInternalUsages,
-    DawnMultiPlanarFormats = raw::WGPUFeatureName_WGPUFeatureName_DawnMultiPlanarFormats,
-    DawnNative = raw::WGPUFeatureName_WGPUFeatureName_DawnNative,
-    ChromiumExperimentalTimestampQueryInsidePasses = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalTimestampQueryInsidePasses,
-    ImplicitDeviceSynchronization = raw::WGPUFeatureName_WGPUFeatureName_ImplicitDeviceSynchronization,
-    TransientAttachments = raw::WGPUFeatureName_WGPUFeatureName_TransientAttachments,
-    MSAARenderToSingleSampled = raw::WGPUFeatureName_WGPUFeatureName_MSAARenderToSingleSampled,
-    D3D11MultithreadProtected = raw::WGPUFeatureName_WGPUFeatureName_D3D11MultithreadProtected,
-    ANGLETextureSharing = raw::WGPUFeatureName_WGPUFeatureName_ANGLETextureSharing,
-    PixelLocalStorageCoherent = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageCoherent,
-    PixelLocalStorageNonCoherent = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageNonCoherent,
-    Unorm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Unorm16TextureFormats,
-    Snorm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Snorm16TextureFormats,
-    MultiPlanarFormatExtendedUsages = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatExtendedUsages,
-    MultiPlanarFormatP010 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP010,
-    HostMappedPointer = raw::WGPUFeatureName_WGPUFeatureName_HostMappedPointer,
-    MultiPlanarRenderTargets = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarRenderTargets,
-    MultiPlanarFormatNv12a = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv12a,
-    FramebufferFetch = raw::WGPUFeatureName_WGPUFeatureName_FramebufferFetch,
-    BufferMapExtendedUsages = raw::WGPUFeatureName_WGPUFeatureName_BufferMapExtendedUsages,
-    AdapterPropertiesMemoryHeaps = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesMemoryHeaps,
-    AdapterPropertiesD3D = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesD3D,
-    AdapterPropertiesVk = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesVk,
-    R8UnormStorage = raw::WGPUFeatureName_WGPUFeatureName_R8UnormStorage,
-    DawnFormatCapabilities = raw::WGPUFeatureName_WGPUFeatureName_DawnFormatCapabilities,
-    DawnDrmFormatCapabilities = raw::WGPUFeatureName_WGPUFeatureName_DawnDrmFormatCapabilities,
-    Norm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Norm16TextureFormats,
-    MultiPlanarFormatNv16 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv16,
-    MultiPlanarFormatNv24 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv24,
-    MultiPlanarFormatP210 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP210,
-    MultiPlanarFormatP410 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP410,
-    SharedTextureMemoryVkDedicatedAllocation = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryVkDedicatedAllocation,
-    SharedTextureMemoryAHardwareBuffer = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryAHardwareBuffer,
-    SharedTextureMemoryDmaBuf = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDmaBuf,
-    SharedTextureMemoryOpaqueFD = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryOpaqueFD,
-    SharedTextureMemoryZirconHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryZirconHandle,
-    SharedTextureMemoryDXGISharedHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDXGISharedHandle,
-    SharedTextureMemoryD3D11Texture2D = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryD3D11Texture2D,
-    SharedTextureMemoryIOSurface = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryIOSurface,
-    SharedTextureMemoryEGLImage = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryEGLImage,
-    SharedFenceVkSemaphoreOpaqueFD = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreOpaqueFD,
-    SharedFenceSyncFD = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceSyncFD,
-    SharedFenceVkSemaphoreZirconHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreZirconHandle,
-    SharedFenceDXGISharedHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceDXGISharedHandle,
-    SharedFenceMTLSharedEvent = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceMTLSharedEvent,
-    SharedBufferMemoryD3D12Resource = raw::WGPUFeatureName_WGPUFeatureName_SharedBufferMemoryD3D12Resource,
-    StaticSamplers = raw::WGPUFeatureName_WGPUFeatureName_StaticSamplers,
-    YCbCrVulkanSamplers = raw::WGPUFeatureName_WGPUFeatureName_YCbCrVulkanSamplers,
-    ShaderModuleCompilationOptions = raw::WGPUFeatureName_WGPUFeatureName_ShaderModuleCompilationOptions,
-    DawnLoadResolveTexture = raw::WGPUFeatureName_WGPUFeatureName_DawnLoadResolveTexture,
-    DawnPartialLoadResolveTexture = raw::WGPUFeatureName_WGPUFeatureName_DawnPartialLoadResolveTexture,
-    MultiDrawIndirect = raw::WGPUFeatureName_WGPUFeatureName_MultiDrawIndirect,
-    DawnTexelCopyBufferRowAlignment = raw::WGPUFeatureName_WGPUFeatureName_DawnTexelCopyBufferRowAlignment,
-    FlexibleTextureViews = raw::WGPUFeatureName_WGPUFeatureName_FlexibleTextureViews,
-    ChromiumExperimentalSubgroupMatrix = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalSubgroupMatrix,
-    SharedFenceEGLSync = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceEGLSync,
-    DawnDeviceAllocatorControl = raw::WGPUFeatureName_WGPUFeatureName_DawnDeviceAllocatorControl,
-}
-impl WGPUFeatureName {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUFilterMode {
-    Undefined = raw::WGPUFilterMode_WGPUFilterMode_Undefined,
-    Nearest = raw::WGPUFilterMode_WGPUFilterMode_Nearest,
-    Linear = raw::WGPUFilterMode_WGPUFilterMode_Linear,
-}
-impl WGPUFilterMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUFrontFace {
-    Undefined = raw::WGPUFrontFace_WGPUFrontFace_Undefined,
-    CCW = raw::WGPUFrontFace_WGPUFrontFace_CCW,
-    CW = raw::WGPUFrontFace_WGPUFrontFace_CW,
-}
-impl WGPUFrontFace {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUIndexFormat {
-    Undefined = raw::WGPUIndexFormat_WGPUIndexFormat_Undefined,
-    Uint16 = raw::WGPUIndexFormat_WGPUIndexFormat_Uint16,
-    Uint32 = raw::WGPUIndexFormat_WGPUIndexFormat_Uint32,
-}
-impl WGPUIndexFormat {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPULoadOp {
-    Undefined = raw::WGPULoadOp_WGPULoadOp_Undefined,
-    Load = raw::WGPULoadOp_WGPULoadOp_Load,
-    Clear = raw::WGPULoadOp_WGPULoadOp_Clear,
-    ExpandResolveTexture = raw::WGPULoadOp_WGPULoadOp_ExpandResolveTexture,
-}
-impl WGPULoadOp {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPULoggingType {
-    Verbose = raw::WGPULoggingType_WGPULoggingType_Verbose,
-    Info = raw::WGPULoggingType_WGPULoggingType_Info,
-    Warning = raw::WGPULoggingType_WGPULoggingType_Warning,
-    Error = raw::WGPULoggingType_WGPULoggingType_Error,
-}
-impl WGPULoggingType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUMapAsyncStatus {
-    Success = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Success,
-    CallbackCancelled = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_CallbackCancelled,
-    Error = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Error,
-    Aborted = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Aborted,
-}
-impl WGPUMapAsyncStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUMipmapFilterMode {
-    Undefined = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Undefined,
-    Nearest = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Nearest,
-    Linear = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Linear,
-}
-impl WGPUMipmapFilterMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUOptionalBool {
-    False = raw::WGPUOptionalBool_WGPUOptionalBool_False,
-    True = raw::WGPUOptionalBool_WGPUOptionalBool_True,
-    Undefined = raw::WGPUOptionalBool_WGPUOptionalBool_Undefined,
-}
-impl WGPUOptionalBool {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUPopErrorScopeStatus {
-    Success = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Success,
-    CallbackCancelled = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_CallbackCancelled,
-    Error = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Error,
-}
-impl WGPUPopErrorScopeStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUPowerPreference {
-    Undefined = raw::WGPUPowerPreference_WGPUPowerPreference_Undefined,
-    LowPower = raw::WGPUPowerPreference_WGPUPowerPreference_LowPower,
-    HighPerformance = raw::WGPUPowerPreference_WGPUPowerPreference_HighPerformance,
-}
-impl WGPUPowerPreference {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUPredefinedColorSpace {
-    SRGB = raw::WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_SRGB,
-    DisplayP3 = raw::WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_DisplayP3,
-}
-impl WGPUPredefinedColorSpace {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUPresentMode {
-    Undefined = raw::WGPUPresentMode_WGPUPresentMode_Undefined,
-    Fifo = raw::WGPUPresentMode_WGPUPresentMode_Fifo,
-    FifoRelaxed = raw::WGPUPresentMode_WGPUPresentMode_FifoRelaxed,
-    Immediate = raw::WGPUPresentMode_WGPUPresentMode_Immediate,
-    Mailbox = raw::WGPUPresentMode_WGPUPresentMode_Mailbox,
-}
-impl WGPUPresentMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUPrimitiveTopology {
-    Undefined = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_Undefined,
-    PointList = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_PointList,
-    LineList = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineList,
-    LineStrip = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineStrip,
-    TriangleList = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleList,
-    TriangleStrip = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleStrip,
-}
-impl WGPUPrimitiveTopology {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUQueryType {
-    Occlusion = raw::WGPUQueryType_WGPUQueryType_Occlusion,
-    Timestamp = raw::WGPUQueryType_WGPUQueryType_Timestamp,
-}
-impl WGPUQueryType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUQueueWorkDoneStatus {
-    Success = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Success,
-    CallbackCancelled = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_CallbackCancelled,
-    Error = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Error,
-}
-impl WGPUQueueWorkDoneStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPURequestAdapterStatus {
-    Success = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Success,
-    CallbackCancelled = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_CallbackCancelled,
-    Unavailable = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Unavailable,
-    Error = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Error,
-}
-impl WGPURequestAdapterStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPURequestDeviceStatus {
-    Success = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_Success,
-    CallbackCancelled = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_CallbackCancelled,
-    Error = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_Error,
-}
-impl WGPURequestDeviceStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUSType {
-    ShaderSourceSPIRV = raw::WGPUSType_WGPUSType_ShaderSourceSPIRV,
-    ShaderSourceWGSL = raw::WGPUSType_WGPUSType_ShaderSourceWGSL,
-    RenderPassMaxDrawCount = raw::WGPUSType_WGPUSType_RenderPassMaxDrawCount,
-    SurfaceSourceMetalLayer = raw::WGPUSType_WGPUSType_SurfaceSourceMetalLayer,
-    SurfaceSourceWindowsHWND = raw::WGPUSType_WGPUSType_SurfaceSourceWindowsHWND,
-    SurfaceSourceXlibWindow = raw::WGPUSType_WGPUSType_SurfaceSourceXlibWindow,
-    SurfaceSourceWaylandSurface = raw::WGPUSType_WGPUSType_SurfaceSourceWaylandSurface,
-    SurfaceSourceAndroidNativeWindow = raw::WGPUSType_WGPUSType_SurfaceSourceAndroidNativeWindow,
-    SurfaceSourceXCBWindow = raw::WGPUSType_WGPUSType_SurfaceSourceXCBWindow,
-    SurfaceColorManagement = raw::WGPUSType_WGPUSType_SurfaceColorManagement,
-    RequestAdapterWebXROptions = raw::WGPUSType_WGPUSType_RequestAdapterWebXROptions,
-    AdapterPropertiesSubgroups = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroups,
-    BindGroupLayoutEntryArraySize = raw::WGPUSType_WGPUSType_BindGroupLayoutEntryArraySize,
-    TextureBindingViewDimensionDescriptor = raw::WGPUSType_WGPUSType_TextureBindingViewDimensionDescriptor,
-    EmscriptenSurfaceSourceCanvasHTMLSelector = raw::WGPUSType_WGPUSType_EmscriptenSurfaceSourceCanvasHTMLSelector,
-    SurfaceDescriptorFromWindowsCoreWindow = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsCoreWindow,
-    ExternalTextureBindingEntry = raw::WGPUSType_WGPUSType_ExternalTextureBindingEntry,
-    ExternalTextureBindingLayout = raw::WGPUSType_WGPUSType_ExternalTextureBindingLayout,
-    SurfaceDescriptorFromWindowsUWPSwapChainPanel = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsUWPSwapChainPanel,
-    DawnTextureInternalUsageDescriptor = raw::WGPUSType_WGPUSType_DawnTextureInternalUsageDescriptor,
-    DawnEncoderInternalUsageDescriptor = raw::WGPUSType_WGPUSType_DawnEncoderInternalUsageDescriptor,
-    DawnInstanceDescriptor = raw::WGPUSType_WGPUSType_DawnInstanceDescriptor,
-    DawnCacheDeviceDescriptor = raw::WGPUSType_WGPUSType_DawnCacheDeviceDescriptor,
-    DawnAdapterPropertiesPowerPreference = raw::WGPUSType_WGPUSType_DawnAdapterPropertiesPowerPreference,
-    DawnBufferDescriptorErrorInfoFromWireClient = raw::WGPUSType_WGPUSType_DawnBufferDescriptorErrorInfoFromWireClient,
-    DawnTogglesDescriptor = raw::WGPUSType_WGPUSType_DawnTogglesDescriptor,
-    DawnShaderModuleSPIRVOptionsDescriptor = raw::WGPUSType_WGPUSType_DawnShaderModuleSPIRVOptionsDescriptor,
-    RequestAdapterOptionsLUID = raw::WGPUSType_WGPUSType_RequestAdapterOptionsLUID,
-    RequestAdapterOptionsGetGLProc = raw::WGPUSType_WGPUSType_RequestAdapterOptionsGetGLProc,
-    RequestAdapterOptionsD3D11Device = raw::WGPUSType_WGPUSType_RequestAdapterOptionsD3D11Device,
-    DawnRenderPassColorAttachmentRenderToSingleSampled = raw::WGPUSType_WGPUSType_DawnRenderPassColorAttachmentRenderToSingleSampled,
-    RenderPassPixelLocalStorage = raw::WGPUSType_WGPUSType_RenderPassPixelLocalStorage,
-    PipelineLayoutPixelLocalStorage = raw::WGPUSType_WGPUSType_PipelineLayoutPixelLocalStorage,
-    BufferHostMappedPointer = raw::WGPUSType_WGPUSType_BufferHostMappedPointer,
-    AdapterPropertiesMemoryHeaps = raw::WGPUSType_WGPUSType_AdapterPropertiesMemoryHeaps,
-    AdapterPropertiesD3D = raw::WGPUSType_WGPUSType_AdapterPropertiesD3D,
-    AdapterPropertiesVk = raw::WGPUSType_WGPUSType_AdapterPropertiesVk,
-    DawnWireWGSLControl = raw::WGPUSType_WGPUSType_DawnWireWGSLControl,
-    DawnWGSLBlocklist = raw::WGPUSType_WGPUSType_DawnWGSLBlocklist,
-    DawnDrmFormatCapabilities = raw::WGPUSType_WGPUSType_DawnDrmFormatCapabilities,
-    ShaderModuleCompilationOptions = raw::WGPUSType_WGPUSType_ShaderModuleCompilationOptions,
-    ColorTargetStateExpandResolveTextureDawn = raw::WGPUSType_WGPUSType_ColorTargetStateExpandResolveTextureDawn,
-    RenderPassDescriptorExpandResolveRect = raw::WGPUSType_WGPUSType_RenderPassDescriptorExpandResolveRect,
-    SharedTextureMemoryVkDedicatedAllocationDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkDedicatedAllocationDescriptor,
-    SharedTextureMemoryAHardwareBufferDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferDescriptor,
-    SharedTextureMemoryDmaBufDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryDmaBufDescriptor,
-    SharedTextureMemoryOpaqueFDDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryOpaqueFDDescriptor,
-    SharedTextureMemoryZirconHandleDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryZirconHandleDescriptor,
-    SharedTextureMemoryDXGISharedHandleDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryDXGISharedHandleDescriptor,
-    SharedTextureMemoryD3D11Texture2DDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3D11Texture2DDescriptor,
-    SharedTextureMemoryIOSurfaceDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryIOSurfaceDescriptor,
-    SharedTextureMemoryEGLImageDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryEGLImageDescriptor,
-    SharedTextureMemoryInitializedBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedBeginState,
-    SharedTextureMemoryInitializedEndState = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedEndState,
-    SharedTextureMemoryVkImageLayoutBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutBeginState,
-    SharedTextureMemoryVkImageLayoutEndState = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutEndState,
-    SharedTextureMemoryD3DSwapchainBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3DSwapchainBeginState,
-    SharedFenceVkSemaphoreOpaqueFDDescriptor = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDDescriptor,
-    SharedFenceVkSemaphoreOpaqueFDExportInfo = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDExportInfo,
-    SharedFenceSyncFDDescriptor = raw::WGPUSType_WGPUSType_SharedFenceSyncFDDescriptor,
-    SharedFenceSyncFDExportInfo = raw::WGPUSType_WGPUSType_SharedFenceSyncFDExportInfo,
-    SharedFenceVkSemaphoreZirconHandleDescriptor = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleDescriptor,
-    SharedFenceVkSemaphoreZirconHandleExportInfo = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleExportInfo,
-    SharedFenceDXGISharedHandleDescriptor = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleDescriptor,
-    SharedFenceDXGISharedHandleExportInfo = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleExportInfo,
-    SharedFenceMTLSharedEventDescriptor = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventDescriptor,
-    SharedFenceMTLSharedEventExportInfo = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventExportInfo,
-    SharedBufferMemoryD3D12ResourceDescriptor = raw::WGPUSType_WGPUSType_SharedBufferMemoryD3D12ResourceDescriptor,
-    StaticSamplerBindingLayout = raw::WGPUSType_WGPUSType_StaticSamplerBindingLayout,
-    YCbCrVkDescriptor = raw::WGPUSType_WGPUSType_YCbCrVkDescriptor,
-    SharedTextureMemoryAHardwareBufferProperties = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferProperties,
-    AHardwareBufferProperties = raw::WGPUSType_WGPUSType_AHardwareBufferProperties,
-    DawnTexelCopyBufferRowAlignmentLimits = raw::WGPUSType_WGPUSType_DawnTexelCopyBufferRowAlignmentLimits,
-    AdapterPropertiesSubgroupMatrixConfigs = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroupMatrixConfigs,
-    SharedFenceEGLSyncDescriptor = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncDescriptor,
-    SharedFenceEGLSyncExportInfo = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncExportInfo,
-    DawnInjectedInvalidSType = raw::WGPUSType_WGPUSType_DawnInjectedInvalidSType,
-    DawnCompilationMessageUtf16 = raw::WGPUSType_WGPUSType_DawnCompilationMessageUtf16,
-    DawnFakeBufferOOMForTesting = raw::WGPUSType_WGPUSType_DawnFakeBufferOOMForTesting,
-    SurfaceDescriptorFromWindowsWinUISwapChainPanel = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsWinUISwapChainPanel,
-    DawnDeviceAllocatorControl = raw::WGPUSType_WGPUSType_DawnDeviceAllocatorControl,
-    DawnHostMappedPointerLimits = raw::WGPUSType_WGPUSType_DawnHostMappedPointerLimits,
-    RenderPassDescriptorResolveRect = raw::WGPUSType_WGPUSType_RenderPassDescriptorResolveRect,
-}
-impl WGPUSType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUSamplerBindingType {
-    BindingNotUsed = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_BindingNotUsed,
-    Undefined = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Undefined,
-    Filtering = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Filtering,
-    NonFiltering = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_NonFiltering,
-    Comparison = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Comparison,
-}
-impl WGPUSamplerBindingType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUSharedFenceType {
-    VkSemaphoreOpaqueFD = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreOpaqueFD,
-    SyncFD = raw::WGPUSharedFenceType_WGPUSharedFenceType_SyncFD,
-    VkSemaphoreZirconHandle = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreZirconHandle,
-    DXGISharedHandle = raw::WGPUSharedFenceType_WGPUSharedFenceType_DXGISharedHandle,
-    MTLSharedEvent = raw::WGPUSharedFenceType_WGPUSharedFenceType_MTLSharedEvent,
-    EGLSync = raw::WGPUSharedFenceType_WGPUSharedFenceType_EGLSync,
-}
-impl WGPUSharedFenceType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUStatus {
-    Success = raw::WGPUStatus_WGPUStatus_Success,
-    Error = raw::WGPUStatus_WGPUStatus_Error,
-}
-impl WGPUStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUStencilOperation {
-    Undefined = raw::WGPUStencilOperation_WGPUStencilOperation_Undefined,
-    Keep = raw::WGPUStencilOperation_WGPUStencilOperation_Keep,
-    Zero = raw::WGPUStencilOperation_WGPUStencilOperation_Zero,
-    Replace = raw::WGPUStencilOperation_WGPUStencilOperation_Replace,
-    Invert = raw::WGPUStencilOperation_WGPUStencilOperation_Invert,
-    IncrementClamp = raw::WGPUStencilOperation_WGPUStencilOperation_IncrementClamp,
-    DecrementClamp = raw::WGPUStencilOperation_WGPUStencilOperation_DecrementClamp,
-    IncrementWrap = raw::WGPUStencilOperation_WGPUStencilOperation_IncrementWrap,
-    DecrementWrap = raw::WGPUStencilOperation_WGPUStencilOperation_DecrementWrap,
-}
-impl WGPUStencilOperation {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUStorageTextureAccess {
-    BindingNotUsed = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_BindingNotUsed,
-    Undefined = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_Undefined,
-    WriteOnly = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_WriteOnly,
-    ReadOnly = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadOnly,
-    ReadWrite = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadWrite,
-}
-impl WGPUStorageTextureAccess {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUStoreOp {
-    Undefined = raw::WGPUStoreOp_WGPUStoreOp_Undefined,
-    Store = raw::WGPUStoreOp_WGPUStoreOp_Store,
-    Discard = raw::WGPUStoreOp_WGPUStoreOp_Discard,
-}
-impl WGPUStoreOp {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUSubgroupMatrixComponentType {
-    F32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F32,
-    F16 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F16,
-    U32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_U32,
-    I32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_I32,
-}
-impl WGPUSubgroupMatrixComponentType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUSurfaceGetCurrentTextureStatus {
-    SuccessOptimal = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal,
-    SuccessSuboptimal = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal,
-    Timeout = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Timeout,
-    Outdated = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Outdated,
-    Lost = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Lost,
-    Error = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Error,
-}
-impl WGPUSurfaceGetCurrentTextureStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUTextureAspect {
-    Undefined = raw::WGPUTextureAspect_WGPUTextureAspect_Undefined,
-    All = raw::WGPUTextureAspect_WGPUTextureAspect_All,
-    StencilOnly = raw::WGPUTextureAspect_WGPUTextureAspect_StencilOnly,
-    DepthOnly = raw::WGPUTextureAspect_WGPUTextureAspect_DepthOnly,
-    Plane0Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane0Only,
-    Plane1Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane1Only,
-    Plane2Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane2Only,
-}
-impl WGPUTextureAspect {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUTextureDimension {
-    Undefined = raw::WGPUTextureDimension_WGPUTextureDimension_Undefined,
-    D1 = raw::WGPUTextureDimension_WGPUTextureDimension_1D,
-    D2 = raw::WGPUTextureDimension_WGPUTextureDimension_2D,
-    D3 = raw::WGPUTextureDimension_WGPUTextureDimension_3D,
-}
-impl WGPUTextureDimension {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUTextureFormat {
-    Undefined = raw::WGPUTextureFormat_WGPUTextureFormat_Undefined,
-    R8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8Unorm,
-    R8Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8Snorm,
-    R8Uint = raw::WGPUTextureFormat_WGPUTextureFormat_R8Uint,
-    R8Sint = raw::WGPUTextureFormat_WGPUTextureFormat_R8Sint,
-    R16Uint = raw::WGPUTextureFormat_WGPUTextureFormat_R16Uint,
-    R16Sint = raw::WGPUTextureFormat_WGPUTextureFormat_R16Sint,
-    R16Float = raw::WGPUTextureFormat_WGPUTextureFormat_R16Float,
-    RG8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Unorm,
-    RG8Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Snorm,
-    RG8Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Uint,
-    RG8Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Sint,
-    R32Float = raw::WGPUTextureFormat_WGPUTextureFormat_R32Float,
-    R32Uint = raw::WGPUTextureFormat_WGPUTextureFormat_R32Uint,
-    R32Sint = raw::WGPUTextureFormat_WGPUTextureFormat_R32Sint,
-    RG16Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Uint,
-    RG16Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Sint,
-    RG16Float = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Float,
-    RGBA8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Unorm,
-    RGBA8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8UnormSrgb,
-    RGBA8Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Snorm,
-    RGBA8Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Uint,
-    RGBA8Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Sint,
-    BGRA8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_BGRA8Unorm,
-    BGRA8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_BGRA8UnormSrgb,
-    RGB10A2Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RGB10A2Uint,
-    RGB10A2Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGB10A2Unorm,
-    RG11B10Ufloat = raw::WGPUTextureFormat_WGPUTextureFormat_RG11B10Ufloat,
-    RGB9E5Ufloat = raw::WGPUTextureFormat_WGPUTextureFormat_RGB9E5Ufloat,
-    RG32Float = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Float,
-    RG32Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Uint,
-    RG32Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Sint,
-    RGBA16Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Uint,
-    RGBA16Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Sint,
-    RGBA16Float = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Float,
-    RGBA32Float = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Float,
-    RGBA32Uint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Uint,
-    RGBA32Sint = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Sint,
-    Stencil8 = raw::WGPUTextureFormat_WGPUTextureFormat_Stencil8,
-    Depth16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_Depth16Unorm,
-    Depth24Plus = raw::WGPUTextureFormat_WGPUTextureFormat_Depth24Plus,
-    Depth24PlusStencil8 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth24PlusStencil8,
-    Depth32Float = raw::WGPUTextureFormat_WGPUTextureFormat_Depth32Float,
-    Depth32FloatStencil8 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth32FloatStencil8,
-    BC1RGBAUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC1RGBAUnorm,
-    BC1RGBAUnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_BC1RGBAUnormSrgb,
-    BC2RGBAUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC2RGBAUnorm,
-    BC2RGBAUnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_BC2RGBAUnormSrgb,
-    BC3RGBAUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC3RGBAUnorm,
-    BC3RGBAUnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_BC3RGBAUnormSrgb,
-    BC4RUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC4RUnorm,
-    BC4RSnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC4RSnorm,
-    BC5RGUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC5RGUnorm,
-    BC5RGSnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC5RGSnorm,
-    BC6HRGBUfloat = raw::WGPUTextureFormat_WGPUTextureFormat_BC6HRGBUfloat,
-    BC6HRGBFloat = raw::WGPUTextureFormat_WGPUTextureFormat_BC6HRGBFloat,
-    BC7RGBAUnorm = raw::WGPUTextureFormat_WGPUTextureFormat_BC7RGBAUnorm,
-    BC7RGBAUnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_BC7RGBAUnormSrgb,
-    ETC2RGB8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8Unorm,
-    ETC2RGB8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8UnormSrgb,
-    ETC2RGB8A1Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8A1Unorm,
-    ETC2RGB8A1UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8A1UnormSrgb,
-    ETC2RGBA8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGBA8Unorm,
-    ETC2RGBA8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGBA8UnormSrgb,
-    EACR11Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_EACR11Unorm,
-    EACR11Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_EACR11Snorm,
-    EACRG11Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_EACRG11Unorm,
-    EACRG11Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_EACRG11Snorm,
-    ASTC4x4Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC4x4Unorm,
-    ASTC4x4UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC4x4UnormSrgb,
-    ASTC5x4Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x4Unorm,
-    ASTC5x4UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x4UnormSrgb,
-    ASTC5x5Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x5Unorm,
-    ASTC5x5UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x5UnormSrgb,
-    ASTC6x5Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x5Unorm,
-    ASTC6x5UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x5UnormSrgb,
-    ASTC6x6Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x6Unorm,
-    ASTC6x6UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x6UnormSrgb,
-    ASTC8x5Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x5Unorm,
-    ASTC8x5UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x5UnormSrgb,
-    ASTC8x6Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x6Unorm,
-    ASTC8x6UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x6UnormSrgb,
-    ASTC8x8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x8Unorm,
-    ASTC8x8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x8UnormSrgb,
-    ASTC10x5Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x5Unorm,
-    ASTC10x5UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x5UnormSrgb,
-    ASTC10x6Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x6Unorm,
-    ASTC10x6UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x6UnormSrgb,
-    ASTC10x8Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x8Unorm,
-    ASTC10x8UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x8UnormSrgb,
-    ASTC10x10Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x10Unorm,
-    ASTC10x10UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x10UnormSrgb,
-    ASTC12x10Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x10Unorm,
-    ASTC12x10UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x10UnormSrgb,
-    ASTC12x12Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12Unorm,
-    ASTC12x12UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12UnormSrgb,
-    R16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R16Unorm,
-    RG16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Unorm,
-    RGBA16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Unorm,
-    R16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_R16Snorm,
-    RG16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Snorm,
-    RGBA16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Snorm,
-    R8BG8Biplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar420Unorm,
-    R10X6BG10X6Biplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm,
-    R8BG8A8Triplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8A8Triplanar420Unorm,
-    R8BG8Biplanar422Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar422Unorm,
-    R8BG8Biplanar444Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar444Unorm,
-    R10X6BG10X6Biplanar422Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm,
-    R10X6BG10X6Biplanar444Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm,
-    External = raw::WGPUTextureFormat_WGPUTextureFormat_External,
-}
-impl WGPUTextureFormat {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUTextureSampleType {
-    BindingNotUsed = raw::WGPUTextureSampleType_WGPUTextureSampleType_BindingNotUsed,
-    Undefined = raw::WGPUTextureSampleType_WGPUTextureSampleType_Undefined,
-    Float = raw::WGPUTextureSampleType_WGPUTextureSampleType_Float,
-    UnfilterableFloat = raw::WGPUTextureSampleType_WGPUTextureSampleType_UnfilterableFloat,
-    Depth = raw::WGPUTextureSampleType_WGPUTextureSampleType_Depth,
-    Sint = raw::WGPUTextureSampleType_WGPUTextureSampleType_Sint,
-    Uint = raw::WGPUTextureSampleType_WGPUTextureSampleType_Uint,
-}
-impl WGPUTextureSampleType {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUTextureViewDimension {
-    Undefined = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_Undefined,
-    D1 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_1D,
-    D2 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_2D,
-    D2Array = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_2DArray,
-    Cube = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_Cube,
-    CubeArray = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_CubeArray,
-    D3 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_3D,
-}
-impl WGPUTextureViewDimension {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUToneMappingMode {
-    Standard = raw::WGPUToneMappingMode_WGPUToneMappingMode_Standard,
-    Extended = raw::WGPUToneMappingMode_WGPUToneMappingMode_Extended,
-}
-impl WGPUToneMappingMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUVertexFormat {
-    Uint8 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8,
-    Uint8x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8x2,
-    Uint8x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8x4,
-    Sint8 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8,
-    Sint8x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8x2,
-    Sint8x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8x4,
-    Unorm8 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8,
-    Unorm8x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x2,
-    Unorm8x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x4,
-    Snorm8 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8,
-    Snorm8x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8x2,
-    Snorm8x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8x4,
-    Uint16 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16,
-    Uint16x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16x2,
-    Uint16x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16x4,
-    Sint16 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16,
-    Sint16x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16x2,
-    Sint16x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16x4,
-    Unorm16 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16,
-    Unorm16x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16x2,
-    Unorm16x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16x4,
-    Snorm16 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16,
-    Snorm16x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16x2,
-    Snorm16x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16x4,
-    Float16 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16,
-    Float16x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16x2,
-    Float16x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16x4,
-    Float32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32,
-    Float32x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x2,
-    Float32x3 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x3,
-    Float32x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x4,
-    Uint32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32,
-    Uint32x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x2,
-    Uint32x3 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x3,
-    Uint32x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x4,
-    Sint32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32,
-    Sint32x2 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x2,
-    Sint32x3 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x3,
-    Sint32x4 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x4,
-    Unorm10_10_10_2 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm10_10_10_2,
-    Unorm8x4BGRA = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x4BGRA,
-}
-impl WGPUVertexFormat {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUVertexStepMode {
-    Undefined = raw::WGPUVertexStepMode_WGPUVertexStepMode_Undefined,
-    Vertex = raw::WGPUVertexStepMode_WGPUVertexStepMode_Vertex,
-    Instance = raw::WGPUVertexStepMode_WGPUVertexStepMode_Instance,
-}
-impl WGPUVertexStepMode {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
-#[repr(i32)]
-pub enum WGPUWaitStatus {
-    Success = raw::WGPUWaitStatus_WGPUWaitStatus_Success,
-    TimedOut = raw::WGPUWaitStatus_WGPUWaitStatus_TimedOut,
-    Error = raw::WGPUWaitStatus_WGPUWaitStatus_Error,
-}
-impl WGPUWaitStatus {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUBufferUsage :
-    WGPUFlags { const NONE = raw::WGPUBufferUsage_None; const MAP_READ =
-    raw::WGPUBufferUsage_MapRead; const MAP_WRITE = raw::WGPUBufferUsage_MapWrite; const
-    COPY_SRC = raw::WGPUBufferUsage_CopySrc; const COPY_DST =
-    raw::WGPUBufferUsage_CopyDst; const INDEX = raw::WGPUBufferUsage_Index; const VERTEX
-    = raw::WGPUBufferUsage_Vertex; const UNIFORM = raw::WGPUBufferUsage_Uniform; const
-    STORAGE = raw::WGPUBufferUsage_Storage; const INDIRECT =
-    raw::WGPUBufferUsage_Indirect; const QUERY_RESOLVE =
-    raw::WGPUBufferUsage_QueryResolve; }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUColorWriteMask :
-    WGPUFlags { const NONE = raw::WGPUColorWriteMask_None; const RED =
-    raw::WGPUColorWriteMask_Red; const GREEN = raw::WGPUColorWriteMask_Green; const BLUE
-    = raw::WGPUColorWriteMask_Blue; const ALPHA = raw::WGPUColorWriteMask_Alpha; const
-    ALL = raw::WGPUColorWriteMask_All; }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUHeapProperty :
-    WGPUFlags { const NONE = raw::WGPUHeapProperty_None; const DEVICE_LOCAL =
-    raw::WGPUHeapProperty_DeviceLocal; const HOST_VISIBLE =
-    raw::WGPUHeapProperty_HostVisible; const HOST_COHERENT =
-    raw::WGPUHeapProperty_HostCoherent; const HOST_UNCACHED =
-    raw::WGPUHeapProperty_HostUncached; const HOST_CACHED =
-    raw::WGPUHeapProperty_HostCached; }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUMapMode : WGPUFlags
-    { const NONE = raw::WGPUMapMode_None; const READ = raw::WGPUMapMode_Read; const WRITE
-    = raw::WGPUMapMode_Write; }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUShaderStage :
-    WGPUFlags { const NONE = raw::WGPUShaderStage_None; const VERTEX =
-    raw::WGPUShaderStage_Vertex; const FRAGMENT = raw::WGPUShaderStage_Fragment; const
-    COMPUTE = raw::WGPUShaderStage_Compute; }
-}
-bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUTextureUsage :
-    WGPUFlags { const NONE = raw::WGPUTextureUsage_None; const COPY_SRC =
-    raw::WGPUTextureUsage_CopySrc; const COPY_DST = raw::WGPUTextureUsage_CopyDst; const
-    TEXTURE_BINDING = raw::WGPUTextureUsage_TextureBinding; const STORAGE_BINDING =
-    raw::WGPUTextureUsage_StorageBinding; const RENDER_ATTACHMENT =
-    raw::WGPUTextureUsage_RenderAttachment; const TRANSIENT_ATTACHMENT =
-    raw::WGPUTextureUsage_TransientAttachment; const STORAGE_ATTACHMENT =
-    raw::WGPUTextureUsage_StorageAttachment; }
+pub mod WGPUWGSLLanguageFeatureName {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const ReadonlyAndReadwriteStorageTextures: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures;
+    pub const Packed4x8IntegerDotProduct: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct;
+    pub const UnrestrictedPointerParameters: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_UnrestrictedPointerParameters;
+    pub const PointerCompositeAccess: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerCompositeAccess;
+    pub const SizedBindingArray: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_SizedBindingArray;
+    pub const ChromiumTestingUnimplemented: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented;
+    pub const ChromiumTestingUnsafeExperimental: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental;
+    pub const ChromiumTestingExperimental: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental;
+    pub const ChromiumTestingShippedWithKillswitch: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShippedWithKillswitch;
+    pub const ChromiumTestingShipped: i32 = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShipped;
+}
+pub mod WGPUAdapterType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const DiscreteGPU: i32 = raw::WGPUAdapterType_WGPUAdapterType_DiscreteGPU;
+    pub const IntegratedGPU: i32 = raw::WGPUAdapterType_WGPUAdapterType_IntegratedGPU;
+    pub const CPU: i32 = raw::WGPUAdapterType_WGPUAdapterType_CPU;
+    pub const Unknown: i32 = raw::WGPUAdapterType_WGPUAdapterType_Unknown;
+}
+pub mod WGPUAddressMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUAddressMode_WGPUAddressMode_Undefined;
+    pub const ClampToEdge: i32 = raw::WGPUAddressMode_WGPUAddressMode_ClampToEdge;
+    pub const Repeat: i32 = raw::WGPUAddressMode_WGPUAddressMode_Repeat;
+    pub const MirrorRepeat: i32 = raw::WGPUAddressMode_WGPUAddressMode_MirrorRepeat;
+}
+pub mod WGPUAlphaMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Opaque: i32 = raw::WGPUAlphaMode_WGPUAlphaMode_Opaque;
+    pub const Premultiplied: i32 = raw::WGPUAlphaMode_WGPUAlphaMode_Premultiplied;
+    pub const Unpremultiplied: i32 = raw::WGPUAlphaMode_WGPUAlphaMode_Unpremultiplied;
+}
+pub mod WGPUBackendType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUBackendType_WGPUBackendType_Undefined;
+    pub const Null: i32 = raw::WGPUBackendType_WGPUBackendType_Null;
+    pub const WebGPU: i32 = raw::WGPUBackendType_WGPUBackendType_WebGPU;
+    pub const D3D11: i32 = raw::WGPUBackendType_WGPUBackendType_D3D11;
+    pub const D3D12: i32 = raw::WGPUBackendType_WGPUBackendType_D3D12;
+    pub const Metal: i32 = raw::WGPUBackendType_WGPUBackendType_Metal;
+    pub const Vulkan: i32 = raw::WGPUBackendType_WGPUBackendType_Vulkan;
+    pub const OpenGL: i32 = raw::WGPUBackendType_WGPUBackendType_OpenGL;
+    pub const OpenGLES: i32 = raw::WGPUBackendType_WGPUBackendType_OpenGLES;
+}
+pub mod WGPUBlendFactor {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Undefined;
+    pub const Zero: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Zero;
+    pub const One: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_One;
+    pub const Src: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Src;
+    pub const OneMinusSrc: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc;
+    pub const SrcAlpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_SrcAlpha;
+    pub const OneMinusSrcAlpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrcAlpha;
+    pub const Dst: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Dst;
+    pub const OneMinusDst: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusDst;
+    pub const DstAlpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_DstAlpha;
+    pub const OneMinusDstAlpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusDstAlpha;
+    pub const SrcAlphaSaturated: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_SrcAlphaSaturated;
+    pub const Constant: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Constant;
+    pub const OneMinusConstant: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusConstant;
+    pub const Src1: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Src1;
+    pub const OneMinusSrc1: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1;
+    pub const Src1Alpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_Src1Alpha;
+    pub const OneMinusSrc1Alpha: i32 = raw::WGPUBlendFactor_WGPUBlendFactor_OneMinusSrc1Alpha;
+}
+pub mod WGPUBlendOperation {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_Undefined;
+    pub const Add: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_Add;
+    pub const Subtract: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_Subtract;
+    pub const ReverseSubtract: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_ReverseSubtract;
+    pub const Min: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_Min;
+    pub const Max: i32 = raw::WGPUBlendOperation_WGPUBlendOperation_Max;
+}
+pub mod WGPUBufferBindingType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const BindingNotUsed: i32 = raw::WGPUBufferBindingType_WGPUBufferBindingType_BindingNotUsed;
+    pub const Undefined: i32 = raw::WGPUBufferBindingType_WGPUBufferBindingType_Undefined;
+    pub const Uniform: i32 = raw::WGPUBufferBindingType_WGPUBufferBindingType_Uniform;
+    pub const Storage: i32 = raw::WGPUBufferBindingType_WGPUBufferBindingType_Storage;
+    pub const ReadOnlyStorage: i32 = raw::WGPUBufferBindingType_WGPUBufferBindingType_ReadOnlyStorage;
+}
+pub mod WGPUBufferMapState {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Unmapped: i32 = raw::WGPUBufferMapState_WGPUBufferMapState_Unmapped;
+    pub const Pending: i32 = raw::WGPUBufferMapState_WGPUBufferMapState_Pending;
+    pub const Mapped: i32 = raw::WGPUBufferMapState_WGPUBufferMapState_Mapped;
+}
+pub mod WGPUCallbackMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const WaitAnyOnly: i32 = raw::WGPUCallbackMode_WGPUCallbackMode_WaitAnyOnly;
+    pub const AllowProcessEvents: i32 = raw::WGPUCallbackMode_WGPUCallbackMode_AllowProcessEvents;
+    pub const AllowSpontaneous: i32 = raw::WGPUCallbackMode_WGPUCallbackMode_AllowSpontaneous;
+}
+pub mod WGPUCompareFunction {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Undefined;
+    pub const Never: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Never;
+    pub const Less: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Less;
+    pub const Equal: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Equal;
+    pub const LessEqual: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_LessEqual;
+    pub const Greater: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Greater;
+    pub const NotEqual: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_NotEqual;
+    pub const GreaterEqual: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_GreaterEqual;
+    pub const Always: i32 = raw::WGPUCompareFunction_WGPUCompareFunction_Always;
+}
+pub mod WGPUCompilationInfoRequestStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPUCompilationInfoRequestStatus_WGPUCompilationInfoRequestStatus_CallbackCancelled;
+}
+pub mod WGPUCompilationMessageType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Error: i32 = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Error;
+    pub const Warning: i32 = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Warning;
+    pub const Info: i32 = raw::WGPUCompilationMessageType_WGPUCompilationMessageType_Info;
+}
+pub mod WGPUCompositeAlphaMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Auto: i32 = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Auto;
+    pub const Opaque: i32 = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Opaque;
+    pub const Premultiplied: i32 = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Premultiplied;
+    pub const Unpremultiplied: i32 = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Unpremultiplied;
+    pub const Inherit: i32 = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Inherit;
+}
+pub mod WGPUCreatePipelineAsyncStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_CallbackCancelled;
+    pub const ValidationError: i32 = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_ValidationError;
+    pub const InternalError: i32 = raw::WGPUCreatePipelineAsyncStatus_WGPUCreatePipelineAsyncStatus_InternalError;
+}
+pub mod WGPUCullMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUCullMode_WGPUCullMode_Undefined;
+    pub const None: i32 = raw::WGPUCullMode_WGPUCullMode_None;
+    pub const Front: i32 = raw::WGPUCullMode_WGPUCullMode_Front;
+    pub const Back: i32 = raw::WGPUCullMode_WGPUCullMode_Back;
+}
+pub mod WGPUDeviceLostReason {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Unknown: i32 = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_Unknown;
+    pub const Destroyed: i32 = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_Destroyed;
+    pub const CallbackCancelled: i32 = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_CallbackCancelled;
+    pub const FailedCreation: i32 = raw::WGPUDeviceLostReason_WGPUDeviceLostReason_FailedCreation;
+}
+pub mod WGPUErrorFilter {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Validation: i32 = raw::WGPUErrorFilter_WGPUErrorFilter_Validation;
+    pub const OutOfMemory: i32 = raw::WGPUErrorFilter_WGPUErrorFilter_OutOfMemory;
+    pub const Internal: i32 = raw::WGPUErrorFilter_WGPUErrorFilter_Internal;
+}
+pub mod WGPUErrorType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const NoError: i32 = raw::WGPUErrorType_WGPUErrorType_NoError;
+    pub const Validation: i32 = raw::WGPUErrorType_WGPUErrorType_Validation;
+    pub const OutOfMemory: i32 = raw::WGPUErrorType_WGPUErrorType_OutOfMemory;
+    pub const Internal: i32 = raw::WGPUErrorType_WGPUErrorType_Internal;
+    pub const Unknown: i32 = raw::WGPUErrorType_WGPUErrorType_Unknown;
+}
+pub mod WGPUExternalTextureRotation {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Rotate0Degrees: i32 = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate0Degrees;
+    pub const Rotate90Degrees: i32 = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate90Degrees;
+    pub const Rotate180Degrees: i32 = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate180Degrees;
+    pub const Rotate270Degrees: i32 = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate270Degrees;
+}
+pub mod WGPUFeatureLevel {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUFeatureLevel_WGPUFeatureLevel_Undefined;
+    pub const Compatibility: i32 = raw::WGPUFeatureLevel_WGPUFeatureLevel_Compatibility;
+    pub const Core: i32 = raw::WGPUFeatureLevel_WGPUFeatureLevel_Core;
+}
+pub mod WGPUFeatureName {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const DepthClipControl: i32 = raw::WGPUFeatureName_WGPUFeatureName_DepthClipControl;
+    pub const Depth32FloatStencil8: i32 = raw::WGPUFeatureName_WGPUFeatureName_Depth32FloatStencil8;
+    pub const TimestampQuery: i32 = raw::WGPUFeatureName_WGPUFeatureName_TimestampQuery;
+    pub const TextureCompressionBC: i32 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionBC;
+    pub const TextureCompressionBCSliced3D: i32 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionBCSliced3D;
+    pub const TextureCompressionETC2: i32 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionETC2;
+    pub const TextureCompressionASTC: i32 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionASTC;
+    pub const TextureCompressionASTCSliced3D: i32 = raw::WGPUFeatureName_WGPUFeatureName_TextureCompressionASTCSliced3D;
+    pub const IndirectFirstInstance: i32 = raw::WGPUFeatureName_WGPUFeatureName_IndirectFirstInstance;
+    pub const ShaderF16: i32 = raw::WGPUFeatureName_WGPUFeatureName_ShaderF16;
+    pub const RG11B10UfloatRenderable: i32 = raw::WGPUFeatureName_WGPUFeatureName_RG11B10UfloatRenderable;
+    pub const BGRA8UnormStorage: i32 = raw::WGPUFeatureName_WGPUFeatureName_BGRA8UnormStorage;
+    pub const Float32Filterable: i32 = raw::WGPUFeatureName_WGPUFeatureName_Float32Filterable;
+    pub const Float32Blendable: i32 = raw::WGPUFeatureName_WGPUFeatureName_Float32Blendable;
+    pub const ClipDistances: i32 = raw::WGPUFeatureName_WGPUFeatureName_ClipDistances;
+    pub const DualSourceBlending: i32 = raw::WGPUFeatureName_WGPUFeatureName_DualSourceBlending;
+    pub const Subgroups: i32 = raw::WGPUFeatureName_WGPUFeatureName_Subgroups;
+    pub const CoreFeaturesAndLimits: i32 = raw::WGPUFeatureName_WGPUFeatureName_CoreFeaturesAndLimits;
+    pub const DawnInternalUsages: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnInternalUsages;
+    pub const DawnMultiPlanarFormats: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnMultiPlanarFormats;
+    pub const DawnNative: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnNative;
+    pub const ChromiumExperimentalTimestampQueryInsidePasses: i32 = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalTimestampQueryInsidePasses;
+    pub const ImplicitDeviceSynchronization: i32 = raw::WGPUFeatureName_WGPUFeatureName_ImplicitDeviceSynchronization;
+    pub const TransientAttachments: i32 = raw::WGPUFeatureName_WGPUFeatureName_TransientAttachments;
+    pub const MSAARenderToSingleSampled: i32 = raw::WGPUFeatureName_WGPUFeatureName_MSAARenderToSingleSampled;
+    pub const D3D11MultithreadProtected: i32 = raw::WGPUFeatureName_WGPUFeatureName_D3D11MultithreadProtected;
+    pub const ANGLETextureSharing: i32 = raw::WGPUFeatureName_WGPUFeatureName_ANGLETextureSharing;
+    pub const PixelLocalStorageCoherent: i32 = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageCoherent;
+    pub const PixelLocalStorageNonCoherent: i32 = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageNonCoherent;
+    pub const Unorm16TextureFormats: i32 = raw::WGPUFeatureName_WGPUFeatureName_Unorm16TextureFormats;
+    pub const Snorm16TextureFormats: i32 = raw::WGPUFeatureName_WGPUFeatureName_Snorm16TextureFormats;
+    pub const MultiPlanarFormatExtendedUsages: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatExtendedUsages;
+    pub const MultiPlanarFormatP010: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP010;
+    pub const HostMappedPointer: i32 = raw::WGPUFeatureName_WGPUFeatureName_HostMappedPointer;
+    pub const MultiPlanarRenderTargets: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarRenderTargets;
+    pub const MultiPlanarFormatNv12a: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv12a;
+    pub const FramebufferFetch: i32 = raw::WGPUFeatureName_WGPUFeatureName_FramebufferFetch;
+    pub const BufferMapExtendedUsages: i32 = raw::WGPUFeatureName_WGPUFeatureName_BufferMapExtendedUsages;
+    pub const AdapterPropertiesMemoryHeaps: i32 = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesMemoryHeaps;
+    pub const AdapterPropertiesD3D: i32 = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesD3D;
+    pub const AdapterPropertiesVk: i32 = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesVk;
+    pub const R8UnormStorage: i32 = raw::WGPUFeatureName_WGPUFeatureName_R8UnormStorage;
+    pub const DawnFormatCapabilities: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnFormatCapabilities;
+    pub const DawnDrmFormatCapabilities: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnDrmFormatCapabilities;
+    pub const Norm16TextureFormats: i32 = raw::WGPUFeatureName_WGPUFeatureName_Norm16TextureFormats;
+    pub const MultiPlanarFormatNv16: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv16;
+    pub const MultiPlanarFormatNv24: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv24;
+    pub const MultiPlanarFormatP210: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP210;
+    pub const MultiPlanarFormatP410: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP410;
+    pub const SharedTextureMemoryVkDedicatedAllocation: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryVkDedicatedAllocation;
+    pub const SharedTextureMemoryAHardwareBuffer: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryAHardwareBuffer;
+    pub const SharedTextureMemoryDmaBuf: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDmaBuf;
+    pub const SharedTextureMemoryOpaqueFD: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryOpaqueFD;
+    pub const SharedTextureMemoryZirconHandle: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryZirconHandle;
+    pub const SharedTextureMemoryDXGISharedHandle: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDXGISharedHandle;
+    pub const SharedTextureMemoryD3D11Texture2D: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryD3D11Texture2D;
+    pub const SharedTextureMemoryIOSurface: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryIOSurface;
+    pub const SharedTextureMemoryEGLImage: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryEGLImage;
+    pub const SharedFenceVkSemaphoreOpaqueFD: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreOpaqueFD;
+    pub const SharedFenceSyncFD: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceSyncFD;
+    pub const SharedFenceVkSemaphoreZirconHandle: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreZirconHandle;
+    pub const SharedFenceDXGISharedHandle: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceDXGISharedHandle;
+    pub const SharedFenceMTLSharedEvent: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceMTLSharedEvent;
+    pub const SharedBufferMemoryD3D12Resource: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedBufferMemoryD3D12Resource;
+    pub const StaticSamplers: i32 = raw::WGPUFeatureName_WGPUFeatureName_StaticSamplers;
+    pub const YCbCrVulkanSamplers: i32 = raw::WGPUFeatureName_WGPUFeatureName_YCbCrVulkanSamplers;
+    pub const ShaderModuleCompilationOptions: i32 = raw::WGPUFeatureName_WGPUFeatureName_ShaderModuleCompilationOptions;
+    pub const DawnLoadResolveTexture: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnLoadResolveTexture;
+    pub const DawnPartialLoadResolveTexture: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnPartialLoadResolveTexture;
+    pub const MultiDrawIndirect: i32 = raw::WGPUFeatureName_WGPUFeatureName_MultiDrawIndirect;
+    pub const DawnTexelCopyBufferRowAlignment: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnTexelCopyBufferRowAlignment;
+    pub const FlexibleTextureViews: i32 = raw::WGPUFeatureName_WGPUFeatureName_FlexibleTextureViews;
+    pub const ChromiumExperimentalSubgroupMatrix: i32 = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalSubgroupMatrix;
+    pub const SharedFenceEGLSync: i32 = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceEGLSync;
+    pub const DawnDeviceAllocatorControl: i32 = raw::WGPUFeatureName_WGPUFeatureName_DawnDeviceAllocatorControl;
+}
+pub mod WGPUFilterMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUFilterMode_WGPUFilterMode_Undefined;
+    pub const Nearest: i32 = raw::WGPUFilterMode_WGPUFilterMode_Nearest;
+    pub const Linear: i32 = raw::WGPUFilterMode_WGPUFilterMode_Linear;
+}
+pub mod WGPUFrontFace {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUFrontFace_WGPUFrontFace_Undefined;
+    pub const CCW: i32 = raw::WGPUFrontFace_WGPUFrontFace_CCW;
+    pub const CW: i32 = raw::WGPUFrontFace_WGPUFrontFace_CW;
+}
+pub mod WGPUIndexFormat {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUIndexFormat_WGPUIndexFormat_Undefined;
+    pub const Uint16: i32 = raw::WGPUIndexFormat_WGPUIndexFormat_Uint16;
+    pub const Uint32: i32 = raw::WGPUIndexFormat_WGPUIndexFormat_Uint32;
+}
+pub mod WGPULoadOp {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPULoadOp_WGPULoadOp_Undefined;
+    pub const Load: i32 = raw::WGPULoadOp_WGPULoadOp_Load;
+    pub const Clear: i32 = raw::WGPULoadOp_WGPULoadOp_Clear;
+    pub const ExpandResolveTexture: i32 = raw::WGPULoadOp_WGPULoadOp_ExpandResolveTexture;
+}
+pub mod WGPULoggingType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Verbose: i32 = raw::WGPULoggingType_WGPULoggingType_Verbose;
+    pub const Info: i32 = raw::WGPULoggingType_WGPULoggingType_Info;
+    pub const Warning: i32 = raw::WGPULoggingType_WGPULoggingType_Warning;
+    pub const Error: i32 = raw::WGPULoggingType_WGPULoggingType_Error;
+}
+pub mod WGPUMapAsyncStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_CallbackCancelled;
+    pub const Error: i32 = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Error;
+    pub const Aborted: i32 = raw::WGPUMapAsyncStatus_WGPUMapAsyncStatus_Aborted;
+}
+pub mod WGPUMipmapFilterMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Undefined;
+    pub const Nearest: i32 = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Nearest;
+    pub const Linear: i32 = raw::WGPUMipmapFilterMode_WGPUMipmapFilterMode_Linear;
+}
+pub mod WGPUOptionalBool {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const False: i32 = raw::WGPUOptionalBool_WGPUOptionalBool_False;
+    pub const True: i32 = raw::WGPUOptionalBool_WGPUOptionalBool_True;
+    pub const Undefined: i32 = raw::WGPUOptionalBool_WGPUOptionalBool_Undefined;
+}
+pub mod WGPUPopErrorScopeStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_CallbackCancelled;
+    pub const Error: i32 = raw::WGPUPopErrorScopeStatus_WGPUPopErrorScopeStatus_Error;
+}
+pub mod WGPUPowerPreference {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUPowerPreference_WGPUPowerPreference_Undefined;
+    pub const LowPower: i32 = raw::WGPUPowerPreference_WGPUPowerPreference_LowPower;
+    pub const HighPerformance: i32 = raw::WGPUPowerPreference_WGPUPowerPreference_HighPerformance;
+}
+pub mod WGPUPredefinedColorSpace {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const SRGB: i32 = raw::WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_SRGB;
+    pub const DisplayP3: i32 = raw::WGPUPredefinedColorSpace_WGPUPredefinedColorSpace_DisplayP3;
+}
+pub mod WGPUPresentMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUPresentMode_WGPUPresentMode_Undefined;
+    pub const Fifo: i32 = raw::WGPUPresentMode_WGPUPresentMode_Fifo;
+    pub const FifoRelaxed: i32 = raw::WGPUPresentMode_WGPUPresentMode_FifoRelaxed;
+    pub const Immediate: i32 = raw::WGPUPresentMode_WGPUPresentMode_Immediate;
+    pub const Mailbox: i32 = raw::WGPUPresentMode_WGPUPresentMode_Mailbox;
+}
+pub mod WGPUPrimitiveTopology {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_Undefined;
+    pub const PointList: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_PointList;
+    pub const LineList: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineList;
+    pub const LineStrip: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_LineStrip;
+    pub const TriangleList: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleList;
+    pub const TriangleStrip: i32 = raw::WGPUPrimitiveTopology_WGPUPrimitiveTopology_TriangleStrip;
+}
+pub mod WGPUQueryType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Occlusion: i32 = raw::WGPUQueryType_WGPUQueryType_Occlusion;
+    pub const Timestamp: i32 = raw::WGPUQueryType_WGPUQueryType_Timestamp;
+}
+pub mod WGPUQueueWorkDoneStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_CallbackCancelled;
+    pub const Error: i32 = raw::WGPUQueueWorkDoneStatus_WGPUQueueWorkDoneStatus_Error;
+}
+pub mod WGPURequestAdapterStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_CallbackCancelled;
+    pub const Unavailable: i32 = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Unavailable;
+    pub const Error: i32 = raw::WGPURequestAdapterStatus_WGPURequestAdapterStatus_Error;
+}
+pub mod WGPURequestDeviceStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_Success;
+    pub const CallbackCancelled: i32 = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_CallbackCancelled;
+    pub const Error: i32 = raw::WGPURequestDeviceStatus_WGPURequestDeviceStatus_Error;
+}
+pub mod WGPUSType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const ShaderSourceSPIRV: i32 = raw::WGPUSType_WGPUSType_ShaderSourceSPIRV;
+    pub const ShaderSourceWGSL: i32 = raw::WGPUSType_WGPUSType_ShaderSourceWGSL;
+    pub const RenderPassMaxDrawCount: i32 = raw::WGPUSType_WGPUSType_RenderPassMaxDrawCount;
+    pub const SurfaceSourceMetalLayer: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceMetalLayer;
+    pub const SurfaceSourceWindowsHWND: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceWindowsHWND;
+    pub const SurfaceSourceXlibWindow: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceXlibWindow;
+    pub const SurfaceSourceWaylandSurface: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceWaylandSurface;
+    pub const SurfaceSourceAndroidNativeWindow: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceAndroidNativeWindow;
+    pub const SurfaceSourceXCBWindow: i32 = raw::WGPUSType_WGPUSType_SurfaceSourceXCBWindow;
+    pub const SurfaceColorManagement: i32 = raw::WGPUSType_WGPUSType_SurfaceColorManagement;
+    pub const RequestAdapterWebXROptions: i32 = raw::WGPUSType_WGPUSType_RequestAdapterWebXROptions;
+    pub const AdapterPropertiesSubgroups: i32 = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroups;
+    pub const BindGroupLayoutEntryArraySize: i32 = raw::WGPUSType_WGPUSType_BindGroupLayoutEntryArraySize;
+    pub const TextureBindingViewDimensionDescriptor: i32 = raw::WGPUSType_WGPUSType_TextureBindingViewDimensionDescriptor;
+    pub const EmscriptenSurfaceSourceCanvasHTMLSelector: i32 = raw::WGPUSType_WGPUSType_EmscriptenSurfaceSourceCanvasHTMLSelector;
+    pub const SurfaceDescriptorFromWindowsCoreWindow: i32 = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsCoreWindow;
+    pub const ExternalTextureBindingEntry: i32 = raw::WGPUSType_WGPUSType_ExternalTextureBindingEntry;
+    pub const ExternalTextureBindingLayout: i32 = raw::WGPUSType_WGPUSType_ExternalTextureBindingLayout;
+    pub const SurfaceDescriptorFromWindowsUWPSwapChainPanel: i32 = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsUWPSwapChainPanel;
+    pub const DawnTextureInternalUsageDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnTextureInternalUsageDescriptor;
+    pub const DawnEncoderInternalUsageDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnEncoderInternalUsageDescriptor;
+    pub const DawnInstanceDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnInstanceDescriptor;
+    pub const DawnCacheDeviceDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnCacheDeviceDescriptor;
+    pub const DawnAdapterPropertiesPowerPreference: i32 = raw::WGPUSType_WGPUSType_DawnAdapterPropertiesPowerPreference;
+    pub const DawnBufferDescriptorErrorInfoFromWireClient: i32 = raw::WGPUSType_WGPUSType_DawnBufferDescriptorErrorInfoFromWireClient;
+    pub const DawnTogglesDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnTogglesDescriptor;
+    pub const DawnShaderModuleSPIRVOptionsDescriptor: i32 = raw::WGPUSType_WGPUSType_DawnShaderModuleSPIRVOptionsDescriptor;
+    pub const RequestAdapterOptionsLUID: i32 = raw::WGPUSType_WGPUSType_RequestAdapterOptionsLUID;
+    pub const RequestAdapterOptionsGetGLProc: i32 = raw::WGPUSType_WGPUSType_RequestAdapterOptionsGetGLProc;
+    pub const RequestAdapterOptionsD3D11Device: i32 = raw::WGPUSType_WGPUSType_RequestAdapterOptionsD3D11Device;
+    pub const DawnRenderPassColorAttachmentRenderToSingleSampled: i32 = raw::WGPUSType_WGPUSType_DawnRenderPassColorAttachmentRenderToSingleSampled;
+    pub const RenderPassPixelLocalStorage: i32 = raw::WGPUSType_WGPUSType_RenderPassPixelLocalStorage;
+    pub const PipelineLayoutPixelLocalStorage: i32 = raw::WGPUSType_WGPUSType_PipelineLayoutPixelLocalStorage;
+    pub const BufferHostMappedPointer: i32 = raw::WGPUSType_WGPUSType_BufferHostMappedPointer;
+    pub const AdapterPropertiesMemoryHeaps: i32 = raw::WGPUSType_WGPUSType_AdapterPropertiesMemoryHeaps;
+    pub const AdapterPropertiesD3D: i32 = raw::WGPUSType_WGPUSType_AdapterPropertiesD3D;
+    pub const AdapterPropertiesVk: i32 = raw::WGPUSType_WGPUSType_AdapterPropertiesVk;
+    pub const DawnWireWGSLControl: i32 = raw::WGPUSType_WGPUSType_DawnWireWGSLControl;
+    pub const DawnWGSLBlocklist: i32 = raw::WGPUSType_WGPUSType_DawnWGSLBlocklist;
+    pub const DawnDrmFormatCapabilities: i32 = raw::WGPUSType_WGPUSType_DawnDrmFormatCapabilities;
+    pub const ShaderModuleCompilationOptions: i32 = raw::WGPUSType_WGPUSType_ShaderModuleCompilationOptions;
+    pub const ColorTargetStateExpandResolveTextureDawn: i32 = raw::WGPUSType_WGPUSType_ColorTargetStateExpandResolveTextureDawn;
+    pub const RenderPassDescriptorExpandResolveRect: i32 = raw::WGPUSType_WGPUSType_RenderPassDescriptorExpandResolveRect;
+    pub const SharedTextureMemoryVkDedicatedAllocationDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkDedicatedAllocationDescriptor;
+    pub const SharedTextureMemoryAHardwareBufferDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferDescriptor;
+    pub const SharedTextureMemoryDmaBufDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryDmaBufDescriptor;
+    pub const SharedTextureMemoryOpaqueFDDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryOpaqueFDDescriptor;
+    pub const SharedTextureMemoryZirconHandleDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryZirconHandleDescriptor;
+    pub const SharedTextureMemoryDXGISharedHandleDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryDXGISharedHandleDescriptor;
+    pub const SharedTextureMemoryD3D11Texture2DDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3D11Texture2DDescriptor;
+    pub const SharedTextureMemoryIOSurfaceDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryIOSurfaceDescriptor;
+    pub const SharedTextureMemoryEGLImageDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryEGLImageDescriptor;
+    pub const SharedTextureMemoryInitializedBeginState: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedBeginState;
+    pub const SharedTextureMemoryInitializedEndState: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedEndState;
+    pub const SharedTextureMemoryVkImageLayoutBeginState: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutBeginState;
+    pub const SharedTextureMemoryVkImageLayoutEndState: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutEndState;
+    pub const SharedTextureMemoryD3DSwapchainBeginState: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3DSwapchainBeginState;
+    pub const SharedFenceVkSemaphoreOpaqueFDDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDDescriptor;
+    pub const SharedFenceVkSemaphoreOpaqueFDExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDExportInfo;
+    pub const SharedFenceSyncFDDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceSyncFDDescriptor;
+    pub const SharedFenceSyncFDExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceSyncFDExportInfo;
+    pub const SharedFenceVkSemaphoreZirconHandleDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleDescriptor;
+    pub const SharedFenceVkSemaphoreZirconHandleExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleExportInfo;
+    pub const SharedFenceDXGISharedHandleDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleDescriptor;
+    pub const SharedFenceDXGISharedHandleExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleExportInfo;
+    pub const SharedFenceMTLSharedEventDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventDescriptor;
+    pub const SharedFenceMTLSharedEventExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventExportInfo;
+    pub const SharedBufferMemoryD3D12ResourceDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedBufferMemoryD3D12ResourceDescriptor;
+    pub const StaticSamplerBindingLayout: i32 = raw::WGPUSType_WGPUSType_StaticSamplerBindingLayout;
+    pub const YCbCrVkDescriptor: i32 = raw::WGPUSType_WGPUSType_YCbCrVkDescriptor;
+    pub const SharedTextureMemoryAHardwareBufferProperties: i32 = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferProperties;
+    pub const AHardwareBufferProperties: i32 = raw::WGPUSType_WGPUSType_AHardwareBufferProperties;
+    pub const DawnTexelCopyBufferRowAlignmentLimits: i32 = raw::WGPUSType_WGPUSType_DawnTexelCopyBufferRowAlignmentLimits;
+    pub const AdapterPropertiesSubgroupMatrixConfigs: i32 = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroupMatrixConfigs;
+    pub const SharedFenceEGLSyncDescriptor: i32 = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncDescriptor;
+    pub const SharedFenceEGLSyncExportInfo: i32 = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncExportInfo;
+    pub const DawnInjectedInvalidSType: i32 = raw::WGPUSType_WGPUSType_DawnInjectedInvalidSType;
+    pub const DawnCompilationMessageUtf16: i32 = raw::WGPUSType_WGPUSType_DawnCompilationMessageUtf16;
+    pub const DawnFakeBufferOOMForTesting: i32 = raw::WGPUSType_WGPUSType_DawnFakeBufferOOMForTesting;
+    pub const SurfaceDescriptorFromWindowsWinUISwapChainPanel: i32 = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsWinUISwapChainPanel;
+    pub const DawnDeviceAllocatorControl: i32 = raw::WGPUSType_WGPUSType_DawnDeviceAllocatorControl;
+    pub const DawnHostMappedPointerLimits: i32 = raw::WGPUSType_WGPUSType_DawnHostMappedPointerLimits;
+    pub const RenderPassDescriptorResolveRect: i32 = raw::WGPUSType_WGPUSType_RenderPassDescriptorResolveRect;
+}
+pub mod WGPUSamplerBindingType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const BindingNotUsed: i32 = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_BindingNotUsed;
+    pub const Undefined: i32 = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Undefined;
+    pub const Filtering: i32 = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Filtering;
+    pub const NonFiltering: i32 = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_NonFiltering;
+    pub const Comparison: i32 = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Comparison;
+}
+pub mod WGPUSharedFenceType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const VkSemaphoreOpaqueFD: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreOpaqueFD;
+    pub const SyncFD: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_SyncFD;
+    pub const VkSemaphoreZirconHandle: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreZirconHandle;
+    pub const DXGISharedHandle: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_DXGISharedHandle;
+    pub const MTLSharedEvent: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_MTLSharedEvent;
+    pub const EGLSync: i32 = raw::WGPUSharedFenceType_WGPUSharedFenceType_EGLSync;
+}
+pub mod WGPUStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUStatus_WGPUStatus_Success;
+    pub const Error: i32 = raw::WGPUStatus_WGPUStatus_Error;
+}
+pub mod WGPUStencilOperation {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_Undefined;
+    pub const Keep: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_Keep;
+    pub const Zero: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_Zero;
+    pub const Replace: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_Replace;
+    pub const Invert: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_Invert;
+    pub const IncrementClamp: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_IncrementClamp;
+    pub const DecrementClamp: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_DecrementClamp;
+    pub const IncrementWrap: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_IncrementWrap;
+    pub const DecrementWrap: i32 = raw::WGPUStencilOperation_WGPUStencilOperation_DecrementWrap;
+}
+pub mod WGPUStorageTextureAccess {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const BindingNotUsed: i32 = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_BindingNotUsed;
+    pub const Undefined: i32 = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_Undefined;
+    pub const WriteOnly: i32 = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_WriteOnly;
+    pub const ReadOnly: i32 = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadOnly;
+    pub const ReadWrite: i32 = raw::WGPUStorageTextureAccess_WGPUStorageTextureAccess_ReadWrite;
+}
+pub mod WGPUStoreOp {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUStoreOp_WGPUStoreOp_Undefined;
+    pub const Store: i32 = raw::WGPUStoreOp_WGPUStoreOp_Store;
+    pub const Discard: i32 = raw::WGPUStoreOp_WGPUStoreOp_Discard;
+}
+pub mod WGPUSubgroupMatrixComponentType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const F32: i32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F32;
+    pub const F16: i32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F16;
+    pub const U32: i32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_U32;
+    pub const I32: i32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_I32;
+}
+pub mod WGPUSurfaceGetCurrentTextureStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const SuccessOptimal: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal;
+    pub const SuccessSuboptimal: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal;
+    pub const Timeout: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Timeout;
+    pub const Outdated: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Outdated;
+    pub const Lost: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Lost;
+    pub const Error: i32 = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_Error;
+}
+pub mod WGPUTextureAspect {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_Undefined;
+    pub const All: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_All;
+    pub const StencilOnly: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_StencilOnly;
+    pub const DepthOnly: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_DepthOnly;
+    pub const Plane0Only: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_Plane0Only;
+    pub const Plane1Only: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_Plane1Only;
+    pub const Plane2Only: i32 = raw::WGPUTextureAspect_WGPUTextureAspect_Plane2Only;
+}
+pub mod WGPUTextureDimension {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUTextureDimension_WGPUTextureDimension_Undefined;
+    pub const D1: i32 = raw::WGPUTextureDimension_WGPUTextureDimension_1D;
+    pub const D2: i32 = raw::WGPUTextureDimension_WGPUTextureDimension_2D;
+    pub const D3: i32 = raw::WGPUTextureDimension_WGPUTextureDimension_3D;
+}
+pub mod WGPUTextureFormat {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Undefined;
+    pub const R8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8Unorm;
+    pub const R8Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8Snorm;
+    pub const R8Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8Uint;
+    pub const R8Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8Sint;
+    pub const R16Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R16Uint;
+    pub const R16Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R16Sint;
+    pub const R16Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R16Float;
+    pub const RG8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Unorm;
+    pub const RG8Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Snorm;
+    pub const RG8Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Uint;
+    pub const RG8Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG8Sint;
+    pub const R32Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R32Float;
+    pub const R32Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R32Uint;
+    pub const R32Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R32Sint;
+    pub const RG16Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Uint;
+    pub const RG16Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Sint;
+    pub const RG16Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Float;
+    pub const RGBA8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Unorm;
+    pub const RGBA8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8UnormSrgb;
+    pub const RGBA8Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Snorm;
+    pub const RGBA8Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Uint;
+    pub const RGBA8Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA8Sint;
+    pub const BGRA8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BGRA8Unorm;
+    pub const BGRA8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BGRA8UnormSrgb;
+    pub const RGB10A2Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGB10A2Uint;
+    pub const RGB10A2Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGB10A2Unorm;
+    pub const RG11B10Ufloat: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG11B10Ufloat;
+    pub const RGB9E5Ufloat: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGB9E5Ufloat;
+    pub const RG32Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Float;
+    pub const RG32Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Uint;
+    pub const RG32Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG32Sint;
+    pub const RGBA16Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Uint;
+    pub const RGBA16Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Sint;
+    pub const RGBA16Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Float;
+    pub const RGBA32Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Float;
+    pub const RGBA32Uint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Uint;
+    pub const RGBA32Sint: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA32Sint;
+    pub const Stencil8: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Stencil8;
+    pub const Depth16Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth16Unorm;
+    pub const Depth24Plus: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth24Plus;
+    pub const Depth24PlusStencil8: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth24PlusStencil8;
+    pub const Depth32Float: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth32Float;
+    pub const Depth32FloatStencil8: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_Depth32FloatStencil8;
+    pub const BC1RGBAUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC1RGBAUnorm;
+    pub const BC1RGBAUnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC1RGBAUnormSrgb;
+    pub const BC2RGBAUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC2RGBAUnorm;
+    pub const BC2RGBAUnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC2RGBAUnormSrgb;
+    pub const BC3RGBAUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC3RGBAUnorm;
+    pub const BC3RGBAUnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC3RGBAUnormSrgb;
+    pub const BC4RUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC4RUnorm;
+    pub const BC4RSnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC4RSnorm;
+    pub const BC5RGUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC5RGUnorm;
+    pub const BC5RGSnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC5RGSnorm;
+    pub const BC6HRGBUfloat: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC6HRGBUfloat;
+    pub const BC6HRGBFloat: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC6HRGBFloat;
+    pub const BC7RGBAUnorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC7RGBAUnorm;
+    pub const BC7RGBAUnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_BC7RGBAUnormSrgb;
+    pub const ETC2RGB8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8Unorm;
+    pub const ETC2RGB8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8UnormSrgb;
+    pub const ETC2RGB8A1Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8A1Unorm;
+    pub const ETC2RGB8A1UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGB8A1UnormSrgb;
+    pub const ETC2RGBA8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGBA8Unorm;
+    pub const ETC2RGBA8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ETC2RGBA8UnormSrgb;
+    pub const EACR11Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_EACR11Unorm;
+    pub const EACR11Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_EACR11Snorm;
+    pub const EACRG11Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_EACRG11Unorm;
+    pub const EACRG11Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_EACRG11Snorm;
+    pub const ASTC4x4Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC4x4Unorm;
+    pub const ASTC4x4UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC4x4UnormSrgb;
+    pub const ASTC5x4Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x4Unorm;
+    pub const ASTC5x4UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x4UnormSrgb;
+    pub const ASTC5x5Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x5Unorm;
+    pub const ASTC5x5UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC5x5UnormSrgb;
+    pub const ASTC6x5Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x5Unorm;
+    pub const ASTC6x5UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x5UnormSrgb;
+    pub const ASTC6x6Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x6Unorm;
+    pub const ASTC6x6UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC6x6UnormSrgb;
+    pub const ASTC8x5Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x5Unorm;
+    pub const ASTC8x5UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x5UnormSrgb;
+    pub const ASTC8x6Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x6Unorm;
+    pub const ASTC8x6UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x6UnormSrgb;
+    pub const ASTC8x8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x8Unorm;
+    pub const ASTC8x8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC8x8UnormSrgb;
+    pub const ASTC10x5Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x5Unorm;
+    pub const ASTC10x5UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x5UnormSrgb;
+    pub const ASTC10x6Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x6Unorm;
+    pub const ASTC10x6UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x6UnormSrgb;
+    pub const ASTC10x8Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x8Unorm;
+    pub const ASTC10x8UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x8UnormSrgb;
+    pub const ASTC10x10Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x10Unorm;
+    pub const ASTC10x10UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC10x10UnormSrgb;
+    pub const ASTC12x10Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x10Unorm;
+    pub const ASTC12x10UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x10UnormSrgb;
+    pub const ASTC12x12Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12Unorm;
+    pub const ASTC12x12UnormSrgb: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12UnormSrgb;
+    pub const R16Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R16Unorm;
+    pub const RG16Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Unorm;
+    pub const RGBA16Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Unorm;
+    pub const R16Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R16Snorm;
+    pub const RG16Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Snorm;
+    pub const RGBA16Snorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Snorm;
+    pub const R8BG8Biplanar420Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar420Unorm;
+    pub const R10X6BG10X6Biplanar420Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm;
+    pub const R8BG8A8Triplanar420Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8A8Triplanar420Unorm;
+    pub const R8BG8Biplanar422Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar422Unorm;
+    pub const R8BG8Biplanar444Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar444Unorm;
+    pub const R10X6BG10X6Biplanar422Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm;
+    pub const R10X6BG10X6Biplanar444Unorm: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm;
+    pub const External: i32 = raw::WGPUTextureFormat_WGPUTextureFormat_External;
+}
+pub mod WGPUTextureSampleType {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const BindingNotUsed: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_BindingNotUsed;
+    pub const Undefined: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_Undefined;
+    pub const Float: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_Float;
+    pub const UnfilterableFloat: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_UnfilterableFloat;
+    pub const Depth: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_Depth;
+    pub const Sint: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_Sint;
+    pub const Uint: i32 = raw::WGPUTextureSampleType_WGPUTextureSampleType_Uint;
+}
+pub mod WGPUTextureViewDimension {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_Undefined;
+    pub const D1: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_1D;
+    pub const D2: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_2D;
+    pub const D2Array: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_2DArray;
+    pub const Cube: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_Cube;
+    pub const CubeArray: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_CubeArray;
+    pub const D3: i32 = raw::WGPUTextureViewDimension_WGPUTextureViewDimension_3D;
+}
+pub mod WGPUToneMappingMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Standard: i32 = raw::WGPUToneMappingMode_WGPUToneMappingMode_Standard;
+    pub const Extended: i32 = raw::WGPUToneMappingMode_WGPUToneMappingMode_Extended;
+}
+pub mod WGPUVertexFormat {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Uint8: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8;
+    pub const Uint8x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8x2;
+    pub const Uint8x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint8x4;
+    pub const Sint8: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8;
+    pub const Sint8x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8x2;
+    pub const Sint8x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint8x4;
+    pub const Unorm8: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8;
+    pub const Unorm8x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x2;
+    pub const Unorm8x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x4;
+    pub const Snorm8: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8;
+    pub const Snorm8x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8x2;
+    pub const Snorm8x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm8x4;
+    pub const Uint16: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16;
+    pub const Uint16x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16x2;
+    pub const Uint16x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint16x4;
+    pub const Sint16: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16;
+    pub const Sint16x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16x2;
+    pub const Sint16x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint16x4;
+    pub const Unorm16: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16;
+    pub const Unorm16x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16x2;
+    pub const Unorm16x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm16x4;
+    pub const Snorm16: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16;
+    pub const Snorm16x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16x2;
+    pub const Snorm16x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Snorm16x4;
+    pub const Float16: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16;
+    pub const Float16x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16x2;
+    pub const Float16x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float16x4;
+    pub const Float32: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32;
+    pub const Float32x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x2;
+    pub const Float32x3: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x3;
+    pub const Float32x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Float32x4;
+    pub const Uint32: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32;
+    pub const Uint32x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x2;
+    pub const Uint32x3: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x3;
+    pub const Uint32x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Uint32x4;
+    pub const Sint32: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32;
+    pub const Sint32x2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x2;
+    pub const Sint32x3: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x3;
+    pub const Sint32x4: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Sint32x4;
+    pub const Unorm10_10_10_2: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm10_10_10_2;
+    pub const Unorm8x4BGRA: i32 = raw::WGPUVertexFormat_WGPUVertexFormat_Unorm8x4BGRA;
+}
+pub mod WGPUVertexStepMode {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Undefined: i32 = raw::WGPUVertexStepMode_WGPUVertexStepMode_Undefined;
+    pub const Vertex: i32 = raw::WGPUVertexStepMode_WGPUVertexStepMode_Vertex;
+    pub const Instance: i32 = raw::WGPUVertexStepMode_WGPUVertexStepMode_Instance;
+}
+pub mod WGPUWaitStatus {
+    #![allow(non_snake_case)]
+    #![allow(non_upper_case_globals)]
+    use crate::raw;
+    pub const Success: i32 = raw::WGPUWaitStatus_WGPUWaitStatus_Success;
+    pub const TimedOut: i32 = raw::WGPUWaitStatus_WGPUWaitStatus_TimedOut;
+    pub const Error: i32 = raw::WGPUWaitStatus_WGPUWaitStatus_Error;
+}
+pub mod WGPUBufferUsage {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUBufferUsage_None;
+    pub const MAP_READ: u64 = raw::WGPUBufferUsage_MapRead;
+    pub const MAP_WRITE: u64 = raw::WGPUBufferUsage_MapWrite;
+    pub const COPY_SRC: u64 = raw::WGPUBufferUsage_CopySrc;
+    pub const COPY_DST: u64 = raw::WGPUBufferUsage_CopyDst;
+    pub const INDEX: u64 = raw::WGPUBufferUsage_Index;
+    pub const VERTEX: u64 = raw::WGPUBufferUsage_Vertex;
+    pub const UNIFORM: u64 = raw::WGPUBufferUsage_Uniform;
+    pub const STORAGE: u64 = raw::WGPUBufferUsage_Storage;
+    pub const INDIRECT: u64 = raw::WGPUBufferUsage_Indirect;
+    pub const QUERY_RESOLVE: u64 = raw::WGPUBufferUsage_QueryResolve;
+}
+pub mod WGPUColorWriteMask {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUColorWriteMask_None;
+    pub const RED: u64 = raw::WGPUColorWriteMask_Red;
+    pub const GREEN: u64 = raw::WGPUColorWriteMask_Green;
+    pub const BLUE: u64 = raw::WGPUColorWriteMask_Blue;
+    pub const ALPHA: u64 = raw::WGPUColorWriteMask_Alpha;
+    pub const ALL: u64 = raw::WGPUColorWriteMask_All;
+}
+pub mod WGPUHeapProperty {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUHeapProperty_None;
+    pub const DEVICE_LOCAL: u64 = raw::WGPUHeapProperty_DeviceLocal;
+    pub const HOST_VISIBLE: u64 = raw::WGPUHeapProperty_HostVisible;
+    pub const HOST_COHERENT: u64 = raw::WGPUHeapProperty_HostCoherent;
+    pub const HOST_UNCACHED: u64 = raw::WGPUHeapProperty_HostUncached;
+    pub const HOST_CACHED: u64 = raw::WGPUHeapProperty_HostCached;
+}
+pub mod WGPUMapMode {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUMapMode_None;
+    pub const READ: u64 = raw::WGPUMapMode_Read;
+    pub const WRITE: u64 = raw::WGPUMapMode_Write;
+}
+pub mod WGPUShaderStage {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUShaderStage_None;
+    pub const VERTEX: u64 = raw::WGPUShaderStage_Vertex;
+    pub const FRAGMENT: u64 = raw::WGPUShaderStage_Fragment;
+    pub const COMPUTE: u64 = raw::WGPUShaderStage_Compute;
+}
+pub mod WGPUTextureUsage {
+    #![allow(non_snake_case)]
+    use crate::raw;
+    pub const NONE: u64 = raw::WGPUTextureUsage_None;
+    pub const COPY_SRC: u64 = raw::WGPUTextureUsage_CopySrc;
+    pub const COPY_DST: u64 = raw::WGPUTextureUsage_CopyDst;
+    pub const TEXTURE_BINDING: u64 = raw::WGPUTextureUsage_TextureBinding;
+    pub const STORAGE_BINDING: u64 = raw::WGPUTextureUsage_StorageBinding;
+    pub const RENDER_ATTACHMENT: u64 = raw::WGPUTextureUsage_RenderAttachment;
+    pub const TRANSIENT_ATTACHMENT: u64 = raw::WGPUTextureUsage_TransientAttachment;
+    pub const STORAGE_ATTACHMENT: u64 = raw::WGPUTextureUsage_StorageAttachment;
 }
 pub use raw::WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER;
 pub use raw::WGPUAHardwareBufferProperties;
@@ -2160,3 +1353,12 @@ pub use raw::WGPUTextureView;
 pub use raw::wgpuTextureViewAddRef;
 pub use raw::wgpuTextureViewRelease;
 pub use raw::wgpuTextureViewSetLabel;
+pub use raw::wgpuAdapterInfoFreeMembers;
+pub use raw::wgpuAdapterPropertiesMemoryHeapsFreeMembers;
+pub use raw::wgpuAdapterPropertiesSubgroupMatrixConfigsFreeMembers;
+pub use raw::wgpuDawnDrmFormatCapabilitiesFreeMembers;
+pub use raw::wgpuSharedBufferMemoryEndAccessStateFreeMembers;
+pub use raw::wgpuSharedTextureMemoryEndAccessStateFreeMembers;
+pub use raw::wgpuSupportedFeaturesFreeMembers;
+pub use raw::wgpuSupportedWGSLLanguageFeaturesFreeMembers;
+pub use raw::wgpuSurfaceCapabilitiesFreeMembers;

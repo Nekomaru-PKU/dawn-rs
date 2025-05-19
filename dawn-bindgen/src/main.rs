@@ -1,6 +1,6 @@
 mod common;
 mod dawn_sys;
-// mod dawn_rs;
+mod dawn_rs;
 
 fn main() {
     let args = std::env::args().collect::<Vec<_>>();
@@ -26,9 +26,9 @@ fn main() {
     save_token_stream_to_file(
         dawn_sys::generate_lib(&json),
         workspace_path!("dawn-sys/generated/lib.rs"));
-    // save_token_stream_to_file(
-    //     dawn_rs::generate_lib(&yaml),
-    //     workspace_path!("dawn-rs/generated/lib.rs"));
+    save_token_stream_to_file(
+        dawn_rs::generate_lib(&json),
+        workspace_path!("dawn-rs/generated/lib.rs"));
 }
 
 fn save_bindings_to_file(path: &str) {

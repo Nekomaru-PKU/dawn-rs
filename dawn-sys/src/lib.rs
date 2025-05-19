@@ -22,7 +22,7 @@ pub use raw::{
 impl WGPUStringView {
     pub fn from_bytes(bytes: &[u8]) -> Self {
         WGPUStringView {
-            data: bytes.as_ptr() as _,
+            data: bytes.as_ptr().cast(),
             length: bytes.len(),
         }
     }
@@ -30,7 +30,7 @@ impl WGPUStringView {
     pub fn as_bytes(&self) -> &[u8] {
         unsafe {
             core::slice::from_raw_parts(
-                self.data as _,
+                self.data.cast(),
                 self.length)
         }
     }
