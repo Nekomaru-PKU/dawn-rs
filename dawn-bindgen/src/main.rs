@@ -1,53 +1,48 @@
 mod common;
-mod dawn;
 mod dawn_sys;
-
-use proc_macro2::TokenStream;
+// mod dawn_rs;
 
 fn main() {
-    #[cfg(feature = "generate-bindings")]
-    generate_bindings_to_file(
-        workspace_path!("dawn-sys/generated/bindings.rs"));
+    let args = std::env::args().collect::<Vec<_>>();
+    let args = args.iter().map(String::as_str).collect::<Vec<_>>();
 
-    let yaml_str = include_str!(
-        workspace_path!("dawn-bindgen/include/webgpu.yml"));
-    let yaml = yaml_rust2::YamlLoader::load_from_str(yaml_str)
-        .expect("failed to parse webgpu.yml")
-        .into_iter()
-        .next()
-        .expect("failed to parse webgpu.yml: no document found");
+    let mut generate_bindings = true;
+    match args.as_slice() {
+        [_] => (),
+        [_, "--skip-bindings"] =>
+            generate_bindings = false,
+        _ => panic!("invalid arguments: {args:?}"),
+    }
+
+    if generate_bindings {
+        save_bindings_to_file(
+            workspace_path!("dawn-sys/generated/bindings.rs"));
+    }
+
+    let json_str = include_str!(
+        workspace_path!("dawn-bindgen/include/dawn.json"));
+    let json = serde_json::from_str(json_str)
+        .expect("failed to parse dawn.json");
     save_token_stream_to_file(
-        dawn_sys::generate_from_yaml(&yaml),
+        dawn_sys::generate_lib(&json),
         workspace_path!("dawn-sys/generated/lib.rs"));
+    // save_token_stream_to_file(
+    //     dawn_rs::generate_lib(&yaml),
+    //     workspace_path!("dawn-rs/generated/lib.rs"));
 }
 
-#[cfg(feature = "generate-bindings")]
-fn generate_bindings_to_file(path: &str) {
-    std::fs::write(
-        workspace_path!("dawn-bindgen/include/webgpu-no-docs.h"),
-        include_str!(workspace_path!("dawn-bindgen/include/webgpu.h"))
-            .lines()
-            .filter(|line| !{
-                let line = line.trim_start();
-                line == "*" ||
-                line.starts_with("* ") ||
-                line.starts_with("/*") ||
-                line.ends_with("*/")
-            })
-            .collect::<Vec<_>>()
-            .join("\n"))
-        .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
+fn save_bindings_to_file(path: &str) {
     bindgen::builder()
-        .header(workspace_path!("dawn-bindgen/include/webgpu-no-docs.h"))
+        .header(workspace_path!("dawn-bindgen/include/dawn.h"))
         .use_core()
         .generate()
-        .expect("failed to generate bindings for webgpu.h")
+        .expect("failed to generate bindings for dawn.h")
         .write_to_file(path)
         .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
 }
 
 fn save_token_stream_to_file(
-    token_stream: TokenStream,
+    token_stream: proc_macro2::TokenStream,
     path: &str) {
     let ast = syn::parse2(token_stream)
         .expect("failed to parse generated token stream");

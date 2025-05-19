@@ -4,68 +4,67 @@
     };
 }
 
-#[macro_export] macro_rules! error_yaml_invalid_field {
-    ($field:literal) => {
-        concat!("failed to parse webgpu.yml: invalid `", $field, "` field")
-    };
-}
+pub const E_JSON_STRING_EXPECTED: &str = "failed to parse dawn.json: string expected";
+pub const E_JSON_OBJECT_EXPECTED: &str = "failed to parse dawn.json: object expected";
+pub const E_JSON_ARRAY_EXPECTED: &str = "failed to parse dawn.json: array expected";
 
 use proc_macro2::TokenStream;
-use yaml_rust2::Yaml;
+use quote::quote;
 
-pub fn handle_invalid_ident(ident: &str) -> String {
-    if let Some(prefix) = ident.get(..2) && ["1D", "2D", "3D"].contains(&prefix) {
-        format!("D{}{}", &ident[..1], &ident[2..])
-    } else {
-        ident.to_owned()
-    }
-}
-
-pub fn get_name_from_yaml(yaml: &Yaml) -> &str {
-    yaml["name"]
-        .as_str()
-        .expect(error_yaml_invalid_field!("name"))
-}
-
-pub fn generate_section_from_yaml<F>(
-    yaml: &Yaml,
+pub fn generate_section<F>(
+    data: &serde_json::Value,
     name: &str,
     generate: F)
- -> TokenStream
+ -> proc_macro2::TokenStream
 where
-    F: Fn(&Yaml) -> TokenStream, {
-    let section = yaml[name]
-        .as_vec()
-        .unwrap_or_else(|| panic!("failed to parse webgpu.yml: invalid `{name}` field"));
-    let mut out = TokenStream::new();
-    for item in section {
-        out.extend(generate(item));
-    }
-    out
+    F: Fn(&Name, &serde_json::Value) -> TokenStream, {
+    let data = data.as_object()
+        .expect(E_JSON_OBJECT_EXPECTED);
+    let items = data.iter()
+        .filter(|&(_, data)| data["category"].as_str() == Some(name))
+        .map(|(name, data)| generate(&Name(name.clone()), data));
+    quote!(#(#items)*)
 }
 
-pub fn snake_case_to_pascal_case(s: &str) -> String {
-    if let Some(stripped) = s.strip_prefix("_10_10_2") {
-        return format!("{stripped}10_10_2");
+pub struct Name(String);
+impl Name {
+    pub fn new(name: String) -> Self {
+        Self(name)
     }
 
-    let mut out = String::new();
-    let mut start = true;
-    for c in s.chars() {
-        match (c, start) {
-            ('_', true) => out.push('_'),
-            ('_', false) => start = true,
-            (_, true) => {
-                out.push(c.to_ascii_uppercase());
-                start = false;
-            },
-            (_, false) => out.push(c),
+    pub fn handle_invalid_ident(self) -> Self {
+        let Self(ref s) = self;
+        if let Some(prefix) = s.get(..2) && ["1D", "2D", "3D"].contains(&prefix) {
+            Self(format!("D{}{}", &s[..1], &s[2..]))
+        } else {
+            self
         }
     }
-    out
-}
 
-pub fn snake_case_to_screaming_snake_case(s: &str) -> String {
-    s.chars().map(|c| c.to_ascii_uppercase()).collect()
-}
+    pub fn words(&self) -> impl Iterator<Item = &str> {
+        self.0.split_whitespace()
+    }
 
+    pub fn screaming_snake_case(&self) -> String {
+        self.words()
+            .map(|word| word.to_ascii_uppercase())
+            .collect::<Vec<_>>()
+            .join("_")
+    }
+
+    pub fn pascal_case(&self) -> String {
+        self.words()
+            .map(|word| {
+                let first_chaer = word
+                    .chars()
+                    .next()
+                    .expect("unexpected empty word")
+                    .to_ascii_uppercase();
+                Some(first_chaer)
+                    .into_iter()
+                    .chain(word.chars().skip(1))
+                    .collect::<String>()})
+            .collect::<Vec<_>>()
+            .join("")
+    }
+}

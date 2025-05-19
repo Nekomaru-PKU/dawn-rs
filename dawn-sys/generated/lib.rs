@@ -9,6 +9,35 @@
         strum::IntoStaticStr
     )
 )]
+#[repr(i32)]
+pub enum WGPUWGSLLanguageFeatureName {
+    ReadonlyAndReadwriteStorageTextures = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures,
+    Packed4x8IntegerDotProduct = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct,
+    UnrestrictedPointerParameters = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_UnrestrictedPointerParameters,
+    PointerCompositeAccess = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerCompositeAccess,
+    SizedBindingArray = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_SizedBindingArray,
+    ChromiumTestingUnimplemented = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented,
+    ChromiumTestingUnsafeExperimental = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental,
+    ChromiumTestingExperimental = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental,
+    ChromiumTestingShippedWithKillswitch = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShippedWithKillswitch,
+    ChromiumTestingShipped = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShipped,
+}
+impl WGPUWGSLLanguageFeatureName {
+    pub fn to_str(self) -> &'static str {
+        self.into()
+    }
+}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(
+    feature = "strum",
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
+)]
 #[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
 pub enum WGPUAdapterType {
@@ -41,6 +70,28 @@ pub enum WGPUAddressMode {
     MirrorRepeat = raw::WGPUAddressMode_WGPUAddressMode_MirrorRepeat,
 }
 impl WGPUAddressMode {
+    pub fn to_str(self) -> &'static str {
+        self.into()
+    }
+}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(
+    feature = "strum",
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
+)]
+#[repr(i32)]
+pub enum WGPUAlphaMode {
+    Opaque = raw::WGPUAlphaMode_WGPUAlphaMode_Opaque,
+    Premultiplied = raw::WGPUAlphaMode_WGPUAlphaMode_Premultiplied,
+    Unpremultiplied = raw::WGPUAlphaMode_WGPUAlphaMode_Unpremultiplied,
+}
+impl WGPUAlphaMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
@@ -291,15 +342,10 @@ impl WGPUCompilationMessageType {
 )]
 #[repr(i32)]
 pub enum WGPUCompositeAlphaMode {
-    /// Lets the WebGPU implementation choose the best mode (supported, and with the best performance) between @ref WGPUCompositeAlphaMode_Opaque or @ref WGPUCompositeAlphaMode_Inherit.
     Auto = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Auto,
-    /// The alpha component of the image is ignored and teated as if it is always 1.0.
     Opaque = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Opaque,
-    /// The alpha component is respected and non-alpha components are assumed to be already multiplied with the alpha component. For example, (0.5, 0, 0, 0.5) is semi-transparent bright red.
     Premultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Premultiplied,
-    /// The alpha component is respected and non-alpha components are assumed to NOT be already multiplied with the alpha component. For example, (1.0, 0, 0, 0.5) is semi-transparent bright red.
     Unpremultiplied = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Unpremultiplied,
-    /// The handling of the alpha component is unknown to WebGPU and should be handled by the application using system-specific APIs. This mode may be unavailable (for example on Wasm).
     Inherit = raw::WGPUCompositeAlphaMode_WGPUCompositeAlphaMode_Inherit,
 }
 impl WGPUCompositeAlphaMode {
@@ -437,12 +483,32 @@ impl WGPUErrorType {
     )
 )]
 #[repr(i32)]
+pub enum WGPUExternalTextureRotation {
+    Rotate0Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate0Degrees,
+    Rotate90Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate90Degrees,
+    Rotate180Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate180Degrees,
+    Rotate270Degrees = raw::WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate270Degrees,
+}
+impl WGPUExternalTextureRotation {
+    pub fn to_str(self) -> &'static str {
+        self.into()
+    }
+}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(
+    feature = "strum",
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
+)]
+#[repr(i32)]
 pub enum WGPUFeatureLevel {
-    /// Indicates no value is passed for this argument.
     Undefined = raw::WGPUFeatureLevel_WGPUFeatureLevel_Undefined,
-    /// Compatibility profile which can be supported on OpenGL ES 3.1 and D3D11.
     Compatibility = raw::WGPUFeatureLevel_WGPUFeatureLevel_Compatibility,
-    /// Core profile which can be supported on Vulkan/Metal/D3D12 (at least).
     Core = raw::WGPUFeatureLevel_WGPUFeatureLevel_Core,
 }
 impl WGPUFeatureLevel {
@@ -480,6 +546,64 @@ pub enum WGPUFeatureName {
     ClipDistances = raw::WGPUFeatureName_WGPUFeatureName_ClipDistances,
     DualSourceBlending = raw::WGPUFeatureName_WGPUFeatureName_DualSourceBlending,
     Subgroups = raw::WGPUFeatureName_WGPUFeatureName_Subgroups,
+    CoreFeaturesAndLimits = raw::WGPUFeatureName_WGPUFeatureName_CoreFeaturesAndLimits,
+    DawnInternalUsages = raw::WGPUFeatureName_WGPUFeatureName_DawnInternalUsages,
+    DawnMultiPlanarFormats = raw::WGPUFeatureName_WGPUFeatureName_DawnMultiPlanarFormats,
+    DawnNative = raw::WGPUFeatureName_WGPUFeatureName_DawnNative,
+    ChromiumExperimentalTimestampQueryInsidePasses = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalTimestampQueryInsidePasses,
+    ImplicitDeviceSynchronization = raw::WGPUFeatureName_WGPUFeatureName_ImplicitDeviceSynchronization,
+    TransientAttachments = raw::WGPUFeatureName_WGPUFeatureName_TransientAttachments,
+    MSAARenderToSingleSampled = raw::WGPUFeatureName_WGPUFeatureName_MSAARenderToSingleSampled,
+    D3D11MultithreadProtected = raw::WGPUFeatureName_WGPUFeatureName_D3D11MultithreadProtected,
+    ANGLETextureSharing = raw::WGPUFeatureName_WGPUFeatureName_ANGLETextureSharing,
+    PixelLocalStorageCoherent = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageCoherent,
+    PixelLocalStorageNonCoherent = raw::WGPUFeatureName_WGPUFeatureName_PixelLocalStorageNonCoherent,
+    Unorm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Unorm16TextureFormats,
+    Snorm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Snorm16TextureFormats,
+    MultiPlanarFormatExtendedUsages = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatExtendedUsages,
+    MultiPlanarFormatP010 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP010,
+    HostMappedPointer = raw::WGPUFeatureName_WGPUFeatureName_HostMappedPointer,
+    MultiPlanarRenderTargets = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarRenderTargets,
+    MultiPlanarFormatNv12a = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv12a,
+    FramebufferFetch = raw::WGPUFeatureName_WGPUFeatureName_FramebufferFetch,
+    BufferMapExtendedUsages = raw::WGPUFeatureName_WGPUFeatureName_BufferMapExtendedUsages,
+    AdapterPropertiesMemoryHeaps = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesMemoryHeaps,
+    AdapterPropertiesD3D = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesD3D,
+    AdapterPropertiesVk = raw::WGPUFeatureName_WGPUFeatureName_AdapterPropertiesVk,
+    R8UnormStorage = raw::WGPUFeatureName_WGPUFeatureName_R8UnormStorage,
+    DawnFormatCapabilities = raw::WGPUFeatureName_WGPUFeatureName_DawnFormatCapabilities,
+    DawnDrmFormatCapabilities = raw::WGPUFeatureName_WGPUFeatureName_DawnDrmFormatCapabilities,
+    Norm16TextureFormats = raw::WGPUFeatureName_WGPUFeatureName_Norm16TextureFormats,
+    MultiPlanarFormatNv16 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv16,
+    MultiPlanarFormatNv24 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv24,
+    MultiPlanarFormatP210 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP210,
+    MultiPlanarFormatP410 = raw::WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP410,
+    SharedTextureMemoryVkDedicatedAllocation = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryVkDedicatedAllocation,
+    SharedTextureMemoryAHardwareBuffer = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryAHardwareBuffer,
+    SharedTextureMemoryDmaBuf = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDmaBuf,
+    SharedTextureMemoryOpaqueFD = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryOpaqueFD,
+    SharedTextureMemoryZirconHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryZirconHandle,
+    SharedTextureMemoryDXGISharedHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDXGISharedHandle,
+    SharedTextureMemoryD3D11Texture2D = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryD3D11Texture2D,
+    SharedTextureMemoryIOSurface = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryIOSurface,
+    SharedTextureMemoryEGLImage = raw::WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryEGLImage,
+    SharedFenceVkSemaphoreOpaqueFD = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreOpaqueFD,
+    SharedFenceSyncFD = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceSyncFD,
+    SharedFenceVkSemaphoreZirconHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreZirconHandle,
+    SharedFenceDXGISharedHandle = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceDXGISharedHandle,
+    SharedFenceMTLSharedEvent = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceMTLSharedEvent,
+    SharedBufferMemoryD3D12Resource = raw::WGPUFeatureName_WGPUFeatureName_SharedBufferMemoryD3D12Resource,
+    StaticSamplers = raw::WGPUFeatureName_WGPUFeatureName_StaticSamplers,
+    YCbCrVulkanSamplers = raw::WGPUFeatureName_WGPUFeatureName_YCbCrVulkanSamplers,
+    ShaderModuleCompilationOptions = raw::WGPUFeatureName_WGPUFeatureName_ShaderModuleCompilationOptions,
+    DawnLoadResolveTexture = raw::WGPUFeatureName_WGPUFeatureName_DawnLoadResolveTexture,
+    DawnPartialLoadResolveTexture = raw::WGPUFeatureName_WGPUFeatureName_DawnPartialLoadResolveTexture,
+    MultiDrawIndirect = raw::WGPUFeatureName_WGPUFeatureName_MultiDrawIndirect,
+    DawnTexelCopyBufferRowAlignment = raw::WGPUFeatureName_WGPUFeatureName_DawnTexelCopyBufferRowAlignment,
+    FlexibleTextureViews = raw::WGPUFeatureName_WGPUFeatureName_FlexibleTextureViews,
+    ChromiumExperimentalSubgroupMatrix = raw::WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalSubgroupMatrix,
+    SharedFenceEGLSync = raw::WGPUFeatureName_WGPUFeatureName_SharedFenceEGLSync,
+    DawnDeviceAllocatorControl = raw::WGPUFeatureName_WGPUFeatureName_DawnDeviceAllocatorControl,
 }
 impl WGPUFeatureName {
     pub fn to_str(self) -> &'static str {
@@ -564,12 +688,13 @@ impl WGPUIndexFormat {
     )
 )]
 #[repr(i32)]
-pub enum WGPUInstanceFeatureName {
-    TimedWaitAnyEnable = raw::WGPUInstanceFeatureName_WGPUInstanceFeatureName_TimedWaitAnyEnable,
-    ShaderSourceSPIRV = raw::WGPUInstanceFeatureName_WGPUInstanceFeatureName_ShaderSourceSPIRV,
-    MultipleDevicesPerAdapter = raw::WGPUInstanceFeatureName_WGPUInstanceFeatureName_MultipleDevicesPerAdapter,
+pub enum WGPULoadOp {
+    Undefined = raw::WGPULoadOp_WGPULoadOp_Undefined,
+    Load = raw::WGPULoadOp_WGPULoadOp_Load,
+    Clear = raw::WGPULoadOp_WGPULoadOp_Clear,
+    ExpandResolveTexture = raw::WGPULoadOp_WGPULoadOp_ExpandResolveTexture,
 }
-impl WGPUInstanceFeatureName {
+impl WGPULoadOp {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
@@ -585,13 +710,15 @@ impl WGPUInstanceFeatureName {
         strum::IntoStaticStr
     )
 )]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
-pub enum WGPULoadOp {
-    Undefined = raw::WGPULoadOp_WGPULoadOp_Undefined,
-    Load = raw::WGPULoadOp_WGPULoadOp_Load,
-    Clear = raw::WGPULoadOp_WGPULoadOp_Clear,
+pub enum WGPULoggingType {
+    Verbose = raw::WGPULoggingType_WGPULoggingType_Verbose,
+    Info = raw::WGPULoggingType_WGPULoggingType_Info,
+    Warning = raw::WGPULoggingType_WGPULoggingType_Warning,
+    Error = raw::WGPULoggingType_WGPULoggingType_Error,
 }
-impl WGPULoadOp {
+impl WGPULoggingType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
@@ -743,31 +870,10 @@ impl WGPUPredefinedColorSpace {
 )]
 #[repr(i32)]
 pub enum WGPUPresentMode {
-    /// Present mode is not specified. Use the default.
     Undefined = raw::WGPUPresentMode_WGPUPresentMode_Undefined,
-    /**
-The presentation of the image to the user waits for the next vertical blanking period to update in a first-in, first-out manner.
-
-Tearing cannot be observed and frame-loop will be limited to the display's refresh rate.
-
-This is the only mode that's always available.*/
     Fifo = raw::WGPUPresentMode_WGPUPresentMode_Fifo,
-    /**
-The presentation of the image to the user tries to wait for the next vertical blanking period but may decide to not wait if a frame is presented late.
-
-Tearing can sometimes be observed but late-frame don't produce a full-frame stutter in the presentation.
-
-This is still a first-in, first-out mechanism so a frame-loop will be limited to the display's refresh rate.*/
     FifoRelaxed = raw::WGPUPresentMode_WGPUPresentMode_FifoRelaxed,
-    /**
-The presentation of the image to the user is updated immediately without waiting for a vertical blank.
-
-Tearing can be observed but latency is minimized.*/
     Immediate = raw::WGPUPresentMode_WGPUPresentMode_Immediate,
-    /**
-The presentation of the image to the user waits for the next vertical blanking period to update to the latest provided image.
-
-Tearing cannot be observed and a frame-loop is not limited to the display's refresh rate.*/
     Mailbox = raw::WGPUPresentMode_WGPUPresentMode_Mailbox,
 }
 impl WGPUPresentMode {
@@ -917,6 +1023,78 @@ pub enum WGPUSType {
     SurfaceSourceXCBWindow = raw::WGPUSType_WGPUSType_SurfaceSourceXCBWindow,
     SurfaceColorManagement = raw::WGPUSType_WGPUSType_SurfaceColorManagement,
     RequestAdapterWebXROptions = raw::WGPUSType_WGPUSType_RequestAdapterWebXROptions,
+    AdapterPropertiesSubgroups = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroups,
+    BindGroupLayoutEntryArraySize = raw::WGPUSType_WGPUSType_BindGroupLayoutEntryArraySize,
+    TextureBindingViewDimensionDescriptor = raw::WGPUSType_WGPUSType_TextureBindingViewDimensionDescriptor,
+    EmscriptenSurfaceSourceCanvasHTMLSelector = raw::WGPUSType_WGPUSType_EmscriptenSurfaceSourceCanvasHTMLSelector,
+    SurfaceDescriptorFromWindowsCoreWindow = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsCoreWindow,
+    ExternalTextureBindingEntry = raw::WGPUSType_WGPUSType_ExternalTextureBindingEntry,
+    ExternalTextureBindingLayout = raw::WGPUSType_WGPUSType_ExternalTextureBindingLayout,
+    SurfaceDescriptorFromWindowsUWPSwapChainPanel = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsUWPSwapChainPanel,
+    DawnTextureInternalUsageDescriptor = raw::WGPUSType_WGPUSType_DawnTextureInternalUsageDescriptor,
+    DawnEncoderInternalUsageDescriptor = raw::WGPUSType_WGPUSType_DawnEncoderInternalUsageDescriptor,
+    DawnInstanceDescriptor = raw::WGPUSType_WGPUSType_DawnInstanceDescriptor,
+    DawnCacheDeviceDescriptor = raw::WGPUSType_WGPUSType_DawnCacheDeviceDescriptor,
+    DawnAdapterPropertiesPowerPreference = raw::WGPUSType_WGPUSType_DawnAdapterPropertiesPowerPreference,
+    DawnBufferDescriptorErrorInfoFromWireClient = raw::WGPUSType_WGPUSType_DawnBufferDescriptorErrorInfoFromWireClient,
+    DawnTogglesDescriptor = raw::WGPUSType_WGPUSType_DawnTogglesDescriptor,
+    DawnShaderModuleSPIRVOptionsDescriptor = raw::WGPUSType_WGPUSType_DawnShaderModuleSPIRVOptionsDescriptor,
+    RequestAdapterOptionsLUID = raw::WGPUSType_WGPUSType_RequestAdapterOptionsLUID,
+    RequestAdapterOptionsGetGLProc = raw::WGPUSType_WGPUSType_RequestAdapterOptionsGetGLProc,
+    RequestAdapterOptionsD3D11Device = raw::WGPUSType_WGPUSType_RequestAdapterOptionsD3D11Device,
+    DawnRenderPassColorAttachmentRenderToSingleSampled = raw::WGPUSType_WGPUSType_DawnRenderPassColorAttachmentRenderToSingleSampled,
+    RenderPassPixelLocalStorage = raw::WGPUSType_WGPUSType_RenderPassPixelLocalStorage,
+    PipelineLayoutPixelLocalStorage = raw::WGPUSType_WGPUSType_PipelineLayoutPixelLocalStorage,
+    BufferHostMappedPointer = raw::WGPUSType_WGPUSType_BufferHostMappedPointer,
+    AdapterPropertiesMemoryHeaps = raw::WGPUSType_WGPUSType_AdapterPropertiesMemoryHeaps,
+    AdapterPropertiesD3D = raw::WGPUSType_WGPUSType_AdapterPropertiesD3D,
+    AdapterPropertiesVk = raw::WGPUSType_WGPUSType_AdapterPropertiesVk,
+    DawnWireWGSLControl = raw::WGPUSType_WGPUSType_DawnWireWGSLControl,
+    DawnWGSLBlocklist = raw::WGPUSType_WGPUSType_DawnWGSLBlocklist,
+    DawnDrmFormatCapabilities = raw::WGPUSType_WGPUSType_DawnDrmFormatCapabilities,
+    ShaderModuleCompilationOptions = raw::WGPUSType_WGPUSType_ShaderModuleCompilationOptions,
+    ColorTargetStateExpandResolveTextureDawn = raw::WGPUSType_WGPUSType_ColorTargetStateExpandResolveTextureDawn,
+    RenderPassDescriptorExpandResolveRect = raw::WGPUSType_WGPUSType_RenderPassDescriptorExpandResolveRect,
+    SharedTextureMemoryVkDedicatedAllocationDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkDedicatedAllocationDescriptor,
+    SharedTextureMemoryAHardwareBufferDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferDescriptor,
+    SharedTextureMemoryDmaBufDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryDmaBufDescriptor,
+    SharedTextureMemoryOpaqueFDDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryOpaqueFDDescriptor,
+    SharedTextureMemoryZirconHandleDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryZirconHandleDescriptor,
+    SharedTextureMemoryDXGISharedHandleDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryDXGISharedHandleDescriptor,
+    SharedTextureMemoryD3D11Texture2DDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3D11Texture2DDescriptor,
+    SharedTextureMemoryIOSurfaceDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryIOSurfaceDescriptor,
+    SharedTextureMemoryEGLImageDescriptor = raw::WGPUSType_WGPUSType_SharedTextureMemoryEGLImageDescriptor,
+    SharedTextureMemoryInitializedBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedBeginState,
+    SharedTextureMemoryInitializedEndState = raw::WGPUSType_WGPUSType_SharedTextureMemoryInitializedEndState,
+    SharedTextureMemoryVkImageLayoutBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutBeginState,
+    SharedTextureMemoryVkImageLayoutEndState = raw::WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutEndState,
+    SharedTextureMemoryD3DSwapchainBeginState = raw::WGPUSType_WGPUSType_SharedTextureMemoryD3DSwapchainBeginState,
+    SharedFenceVkSemaphoreOpaqueFDDescriptor = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDDescriptor,
+    SharedFenceVkSemaphoreOpaqueFDExportInfo = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDExportInfo,
+    SharedFenceSyncFDDescriptor = raw::WGPUSType_WGPUSType_SharedFenceSyncFDDescriptor,
+    SharedFenceSyncFDExportInfo = raw::WGPUSType_WGPUSType_SharedFenceSyncFDExportInfo,
+    SharedFenceVkSemaphoreZirconHandleDescriptor = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleDescriptor,
+    SharedFenceVkSemaphoreZirconHandleExportInfo = raw::WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleExportInfo,
+    SharedFenceDXGISharedHandleDescriptor = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleDescriptor,
+    SharedFenceDXGISharedHandleExportInfo = raw::WGPUSType_WGPUSType_SharedFenceDXGISharedHandleExportInfo,
+    SharedFenceMTLSharedEventDescriptor = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventDescriptor,
+    SharedFenceMTLSharedEventExportInfo = raw::WGPUSType_WGPUSType_SharedFenceMTLSharedEventExportInfo,
+    SharedBufferMemoryD3D12ResourceDescriptor = raw::WGPUSType_WGPUSType_SharedBufferMemoryD3D12ResourceDescriptor,
+    StaticSamplerBindingLayout = raw::WGPUSType_WGPUSType_StaticSamplerBindingLayout,
+    YCbCrVkDescriptor = raw::WGPUSType_WGPUSType_YCbCrVkDescriptor,
+    SharedTextureMemoryAHardwareBufferProperties = raw::WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferProperties,
+    AHardwareBufferProperties = raw::WGPUSType_WGPUSType_AHardwareBufferProperties,
+    DawnTexelCopyBufferRowAlignmentLimits = raw::WGPUSType_WGPUSType_DawnTexelCopyBufferRowAlignmentLimits,
+    AdapterPropertiesSubgroupMatrixConfigs = raw::WGPUSType_WGPUSType_AdapterPropertiesSubgroupMatrixConfigs,
+    SharedFenceEGLSyncDescriptor = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncDescriptor,
+    SharedFenceEGLSyncExportInfo = raw::WGPUSType_WGPUSType_SharedFenceEGLSyncExportInfo,
+    DawnInjectedInvalidSType = raw::WGPUSType_WGPUSType_DawnInjectedInvalidSType,
+    DawnCompilationMessageUtf16 = raw::WGPUSType_WGPUSType_DawnCompilationMessageUtf16,
+    DawnFakeBufferOOMForTesting = raw::WGPUSType_WGPUSType_DawnFakeBufferOOMForTesting,
+    SurfaceDescriptorFromWindowsWinUISwapChainPanel = raw::WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsWinUISwapChainPanel,
+    DawnDeviceAllocatorControl = raw::WGPUSType_WGPUSType_DawnDeviceAllocatorControl,
+    DawnHostMappedPointerLimits = raw::WGPUSType_WGPUSType_DawnHostMappedPointerLimits,
+    RenderPassDescriptorResolveRect = raw::WGPUSType_WGPUSType_RenderPassDescriptorResolveRect,
 }
 impl WGPUSType {
     pub fn to_str(self) -> &'static str {
@@ -944,6 +1122,32 @@ pub enum WGPUSamplerBindingType {
     Comparison = raw::WGPUSamplerBindingType_WGPUSamplerBindingType_Comparison,
 }
 impl WGPUSamplerBindingType {
+    pub fn to_str(self) -> &'static str {
+        self.into()
+    }
+}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(
+    feature = "strum",
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
+)]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
+#[repr(i32)]
+pub enum WGPUSharedFenceType {
+    VkSemaphoreOpaqueFD = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreOpaqueFD,
+    SyncFD = raw::WGPUSharedFenceType_WGPUSharedFenceType_SyncFD,
+    VkSemaphoreZirconHandle = raw::WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreZirconHandle,
+    DXGISharedHandle = raw::WGPUSharedFenceType_WGPUSharedFenceType_DXGISharedHandle,
+    MTLSharedEvent = raw::WGPUSharedFenceType_WGPUSharedFenceType_MTLSharedEvent,
+    EGLSync = raw::WGPUSharedFenceType_WGPUSharedFenceType_EGLSync,
+}
+impl WGPUSharedFenceType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
@@ -1057,6 +1261,30 @@ impl WGPUStoreOp {
 )]
 #[cfg_attr(feature = "strum", derive(strum::EnumIs))]
 #[repr(i32)]
+pub enum WGPUSubgroupMatrixComponentType {
+    F32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F32,
+    F16 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F16,
+    U32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_U32,
+    I32 = raw::WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_I32,
+}
+impl WGPUSubgroupMatrixComponentType {
+    pub fn to_str(self) -> &'static str {
+        self.into()
+    }
+}
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(
+    feature = "strum",
+    derive(
+        strum::Display,
+        strum::EnumString,
+        strum::EnumIter,
+        strum::FromRepr,
+        strum::IntoStaticStr
+    )
+)]
+#[cfg_attr(feature = "strum", derive(strum::EnumIs))]
+#[repr(i32)]
 pub enum WGPUSurfaceGetCurrentTextureStatus {
     SuccessOptimal = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal,
     SuccessSuboptimal = raw::WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal,
@@ -1087,6 +1315,9 @@ pub enum WGPUTextureAspect {
     All = raw::WGPUTextureAspect_WGPUTextureAspect_All,
     StencilOnly = raw::WGPUTextureAspect_WGPUTextureAspect_StencilOnly,
     DepthOnly = raw::WGPUTextureAspect_WGPUTextureAspect_DepthOnly,
+    Plane0Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane0Only,
+    Plane1Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane1Only,
+    Plane2Only = raw::WGPUTextureAspect_WGPUTextureAspect_Plane2Only,
 }
 impl WGPUTextureAspect {
     pub fn to_str(self) -> &'static str {
@@ -1225,6 +1456,20 @@ pub enum WGPUTextureFormat {
     ASTC12x10UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x10UnormSrgb,
     ASTC12x12Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12Unorm,
     ASTC12x12UnormSrgb = raw::WGPUTextureFormat_WGPUTextureFormat_ASTC12x12UnormSrgb,
+    R16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R16Unorm,
+    RG16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Unorm,
+    RGBA16Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Unorm,
+    R16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_R16Snorm,
+    RG16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RG16Snorm,
+    RGBA16Snorm = raw::WGPUTextureFormat_WGPUTextureFormat_RGBA16Snorm,
+    R8BG8Biplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar420Unorm,
+    R10X6BG10X6Biplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm,
+    R8BG8A8Triplanar420Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8A8Triplanar420Unorm,
+    R8BG8Biplanar422Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar422Unorm,
+    R8BG8Biplanar444Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar444Unorm,
+    R10X6BG10X6Biplanar422Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm,
+    R10X6BG10X6Biplanar444Unorm = raw::WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm,
+    External = raw::WGPUTextureFormat_WGPUTextureFormat_External,
 }
 impl WGPUTextureFormat {
     pub fn to_str(self) -> &'static str {
@@ -1410,34 +1655,11 @@ impl WGPUWaitStatus {
         self.into()
     }
 }
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
-#[repr(i32)]
-pub enum WGPUWGSLLanguageFeatureName {
-    ReadonlyAndReadwriteStorageTextures = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures,
-    Packed4x8IntegerDotProduct = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct,
-    UnrestrictedPointerParameters = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_UnrestrictedPointerParameters,
-    PointerCompositeAccess = raw::WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerCompositeAccess,
-}
-impl WGPUWGSLLanguageFeatureName {
-    pub fn to_str(self) -> &'static str {
-        self.into()
-    }
-}
 bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] #[repr(transparent)] pub struct
-    WGPUBufferUsage : WGPUFlags { const NONE = raw::WGPUBufferUsage_None; const MAP_READ
-    = raw::WGPUBufferUsage_MapRead; const MAP_WRITE = raw::WGPUBufferUsage_MapWrite;
-    const COPY_SRC = raw::WGPUBufferUsage_CopySrc; const COPY_DST =
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUBufferUsage :
+    WGPUFlags { const NONE = raw::WGPUBufferUsage_None; const MAP_READ =
+    raw::WGPUBufferUsage_MapRead; const MAP_WRITE = raw::WGPUBufferUsage_MapWrite; const
+    COPY_SRC = raw::WGPUBufferUsage_CopySrc; const COPY_DST =
     raw::WGPUBufferUsage_CopyDst; const INDEX = raw::WGPUBufferUsage_Index; const VERTEX
     = raw::WGPUBufferUsage_Vertex; const UNIFORM = raw::WGPUBufferUsage_Uniform; const
     STORAGE = raw::WGPUBufferUsage_Storage; const INDIRECT =
@@ -1445,43 +1667,63 @@ bitflags::bitflags! {
     raw::WGPUBufferUsage_QueryResolve; }
 }
 bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] #[repr(transparent)] pub struct
-    WGPUColorWriteMask : WGPUFlags { const NONE = raw::WGPUColorWriteMask_None; const RED
-    = raw::WGPUColorWriteMask_Red; const GREEN = raw::WGPUColorWriteMask_Green; const
-    BLUE = raw::WGPUColorWriteMask_Blue; const ALPHA = raw::WGPUColorWriteMask_Alpha;
-    const ALL = raw::WGPUColorWriteMask_All; }
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUColorWriteMask :
+    WGPUFlags { const NONE = raw::WGPUColorWriteMask_None; const RED =
+    raw::WGPUColorWriteMask_Red; const GREEN = raw::WGPUColorWriteMask_Green; const BLUE
+    = raw::WGPUColorWriteMask_Blue; const ALPHA = raw::WGPUColorWriteMask_Alpha; const
+    ALL = raw::WGPUColorWriteMask_All; }
 }
 bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] #[repr(transparent)] pub struct
-    WGPUMapMode : WGPUFlags { const NONE = raw::WGPUMapMode_None; const READ =
-    raw::WGPUMapMode_Read; const WRITE = raw::WGPUMapMode_Write; }
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUHeapProperty :
+    WGPUFlags { const NONE = raw::WGPUHeapProperty_None; const DEVICE_LOCAL =
+    raw::WGPUHeapProperty_DeviceLocal; const HOST_VISIBLE =
+    raw::WGPUHeapProperty_HostVisible; const HOST_COHERENT =
+    raw::WGPUHeapProperty_HostCoherent; const HOST_UNCACHED =
+    raw::WGPUHeapProperty_HostUncached; const HOST_CACHED =
+    raw::WGPUHeapProperty_HostCached; }
 }
 bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] #[repr(transparent)] pub struct
-    WGPUShaderStage : WGPUFlags { const NONE = raw::WGPUShaderStage_None; const VERTEX =
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUMapMode : WGPUFlags
+    { const NONE = raw::WGPUMapMode_None; const READ = raw::WGPUMapMode_Read; const WRITE
+    = raw::WGPUMapMode_Write; }
+}
+bitflags::bitflags! {
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUShaderStage :
+    WGPUFlags { const NONE = raw::WGPUShaderStage_None; const VERTEX =
     raw::WGPUShaderStage_Vertex; const FRAGMENT = raw::WGPUShaderStage_Fragment; const
     COMPUTE = raw::WGPUShaderStage_Compute; }
 }
 bitflags::bitflags! {
-    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] #[repr(transparent)] pub struct
-    WGPUTextureUsage : WGPUFlags { const NONE = raw::WGPUTextureUsage_None; const
-    COPY_SRC = raw::WGPUTextureUsage_CopySrc; const COPY_DST =
-    raw::WGPUTextureUsage_CopyDst; const TEXTURE_BINDING =
-    raw::WGPUTextureUsage_TextureBinding; const STORAGE_BINDING =
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)] pub struct WGPUTextureUsage :
+    WGPUFlags { const NONE = raw::WGPUTextureUsage_None; const COPY_SRC =
+    raw::WGPUTextureUsage_CopySrc; const COPY_DST = raw::WGPUTextureUsage_CopyDst; const
+    TEXTURE_BINDING = raw::WGPUTextureUsage_TextureBinding; const STORAGE_BINDING =
     raw::WGPUTextureUsage_StorageBinding; const RENDER_ATTACHMENT =
-    raw::WGPUTextureUsage_RenderAttachment; }
+    raw::WGPUTextureUsage_RenderAttachment; const TRANSIENT_ATTACHMENT =
+    raw::WGPUTextureUsage_TransientAttachment; const STORAGE_ATTACHMENT =
+    raw::WGPUTextureUsage_StorageAttachment; }
 }
+pub use raw::WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER;
+pub use raw::WGPUAHardwareBufferProperties;
 pub use raw::WGPUAdapterInfo;
+pub use raw::WGPUAdapterPropertiesD3D;
+pub use raw::WGPUAdapterPropertiesMemoryHeaps;
+pub use raw::WGPUAdapterPropertiesSubgroupMatrixConfigs;
+pub use raw::WGPUAdapterPropertiesSubgroups;
+pub use raw::WGPUAdapterPropertiesVk;
 pub use raw::WGPUBindGroupDescriptor;
 pub use raw::WGPUBindGroupEntry;
 pub use raw::WGPUBindGroupLayoutDescriptor;
 pub use raw::WGPUBindGroupLayoutEntry;
+pub use raw::WGPUBindGroupLayoutEntryArraySize;
 pub use raw::WGPUBlendComponent;
 pub use raw::WGPUBlendState;
 pub use raw::WGPUBufferBindingLayout;
 pub use raw::WGPUBufferDescriptor;
+pub use raw::WGPUBufferHostMappedPointer;
 pub use raw::WGPUColor;
 pub use raw::WGPUColorTargetState;
+pub use raw::WGPUColorTargetStateExpandResolveTextureDawn;
 pub use raw::WGPUCommandBufferDescriptor;
 pub use raw::WGPUCommandEncoderDescriptor;
 pub use raw::WGPUCompilationInfo;
@@ -1490,19 +1732,49 @@ pub use raw::WGPUComputePassDescriptor;
 pub use raw::WGPUComputePipelineDescriptor;
 pub use raw::WGPUComputeState;
 pub use raw::WGPUConstantEntry;
+pub use raw::WGPUCopyTextureForBrowserOptions;
+pub use raw::WGPUDawnWGSLBlocklist;
+pub use raw::WGPUDawnAdapterPropertiesPowerPreference;
+pub use raw::WGPUDawnBufferDescriptorErrorInfoFromWireClient;
+pub use raw::WGPUDawnCacheDeviceDescriptor;
+pub use raw::WGPUDawnCompilationMessageUtf16;
+pub use raw::WGPUDawnDeviceAllocatorControl;
+pub use raw::WGPUDawnDrmFormatCapabilities;
+pub use raw::WGPUDawnDrmFormatProperties;
+pub use raw::WGPUDawnEncoderInternalUsageDescriptor;
+pub use raw::WGPUDawnFakeBufferOOMForTesting;
+pub use raw::WGPUDawnFormatCapabilities;
+pub use raw::WGPUDawnHostMappedPointerLimits;
+pub use raw::WGPUDawnInjectedInvalidSType;
+pub use raw::WGPUDawnRenderPassColorAttachmentRenderToSingleSampled;
+pub use raw::WGPUDawnShaderModuleSPIRVOptionsDescriptor;
+pub use raw::WGPUDawnTexelCopyBufferRowAlignmentLimits;
+pub use raw::WGPUDawnTextureInternalUsageDescriptor;
+pub use raw::WGPUDawnTogglesDescriptor;
+pub use raw::WGPUDawnWireWGSLControl;
 pub use raw::WGPUDepthStencilState;
 pub use raw::WGPUDeviceDescriptor;
+pub use raw::WGPUEmscriptenSurfaceSourceCanvasHTMLSelector;
+pub use raw::WGPUExtent2D;
 pub use raw::WGPUExtent3D;
+pub use raw::WGPUExternalTextureBindingEntry;
+pub use raw::WGPUExternalTextureBindingLayout;
+pub use raw::WGPUExternalTextureDescriptor;
 pub use raw::WGPUFragmentState;
 pub use raw::WGPUFuture;
 pub use raw::WGPUFutureWaitInfo;
+pub use raw::WGPUImageCopyExternalTexture;
+pub use raw::WGPUInstanceCapabilities;
 pub use raw::WGPUInstanceDescriptor;
-pub use raw::WGPUInstanceLimits;
 pub use raw::WGPULimits;
+pub use raw::WGPUMemoryHeapInfo;
 pub use raw::WGPUMultisampleState;
+pub use raw::WGPUOrigin2D;
 pub use raw::WGPUOrigin3D;
 pub use raw::WGPUPassTimestampWrites;
 pub use raw::WGPUPipelineLayoutDescriptor;
+pub use raw::WGPUPipelineLayoutPixelLocalStorage;
+pub use raw::WGPUPipelineLayoutStorageAttachment;
 pub use raw::WGPUPrimitiveState;
 pub use raw::WGPUQuerySetDescriptor;
 pub use raw::WGPUQueueDescriptor;
@@ -1511,40 +1783,87 @@ pub use raw::WGPURenderBundleEncoderDescriptor;
 pub use raw::WGPURenderPassColorAttachment;
 pub use raw::WGPURenderPassDepthStencilAttachment;
 pub use raw::WGPURenderPassDescriptor;
+pub use raw::WGPURenderPassDescriptorExpandResolveRect;
+pub use raw::WGPURenderPassDescriptorResolveRect;
 pub use raw::WGPURenderPassMaxDrawCount;
+pub use raw::WGPURenderPassPixelLocalStorage;
+pub use raw::WGPURenderPassStorageAttachment;
 pub use raw::WGPURenderPipelineDescriptor;
-pub use raw::WGPURequestAdapterOptions;
 pub use raw::WGPURequestAdapterWebXROptions;
+pub use raw::WGPURequestAdapterOptions;
 pub use raw::WGPUSamplerBindingLayout;
 pub use raw::WGPUSamplerDescriptor;
+pub use raw::WGPUShaderModuleCompilationOptions;
 pub use raw::WGPUShaderModuleDescriptor;
 pub use raw::WGPUShaderSourceSPIRV;
 pub use raw::WGPUShaderSourceWGSL;
+pub use raw::WGPUSharedBufferMemoryBeginAccessDescriptor;
+pub use raw::WGPUSharedBufferMemoryDescriptor;
+pub use raw::WGPUSharedBufferMemoryEndAccessState;
+pub use raw::WGPUSharedBufferMemoryProperties;
+pub use raw::WGPUSharedFenceDXGISharedHandleDescriptor;
+pub use raw::WGPUSharedFenceDXGISharedHandleExportInfo;
+pub use raw::WGPUSharedFenceEGLSyncDescriptor;
+pub use raw::WGPUSharedFenceEGLSyncExportInfo;
+pub use raw::WGPUSharedFenceMTLSharedEventDescriptor;
+pub use raw::WGPUSharedFenceMTLSharedEventExportInfo;
+pub use raw::WGPUSharedFenceDescriptor;
+pub use raw::WGPUSharedFenceExportInfo;
+pub use raw::WGPUSharedFenceSyncFDDescriptor;
+pub use raw::WGPUSharedFenceSyncFDExportInfo;
+pub use raw::WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor;
+pub use raw::WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo;
+pub use raw::WGPUSharedFenceVkSemaphoreZirconHandleDescriptor;
+pub use raw::WGPUSharedFenceVkSemaphoreZirconHandleExportInfo;
+pub use raw::WGPUSharedTextureMemoryD3DSwapchainBeginState;
+pub use raw::WGPUSharedTextureMemoryDXGISharedHandleDescriptor;
+pub use raw::WGPUSharedTextureMemoryEGLImageDescriptor;
+pub use raw::WGPUSharedTextureMemoryIOSurfaceDescriptor;
+pub use raw::WGPUSharedTextureMemoryAHardwareBufferDescriptor;
+pub use raw::WGPUSharedTextureMemoryAHardwareBufferProperties;
+pub use raw::WGPUSharedTextureMemoryBeginAccessDescriptor;
+pub use raw::WGPUSharedTextureMemoryDescriptor;
+pub use raw::WGPUSharedTextureMemoryDmaBufDescriptor;
+pub use raw::WGPUSharedTextureMemoryDmaBufPlane;
+pub use raw::WGPUSharedTextureMemoryEndAccessState;
+pub use raw::WGPUSharedTextureMemoryOpaqueFDDescriptor;
+pub use raw::WGPUSharedTextureMemoryProperties;
+pub use raw::WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor;
+pub use raw::WGPUSharedTextureMemoryVkImageLayoutBeginState;
+pub use raw::WGPUSharedTextureMemoryVkImageLayoutEndState;
+pub use raw::WGPUSharedTextureMemoryZirconHandleDescriptor;
+pub use raw::WGPUStaticSamplerBindingLayout;
 pub use raw::WGPUStencilFaceState;
 pub use raw::WGPUStorageTextureBindingLayout;
-pub use raw::WGPUSupportedFeatures;
-pub use raw::WGPUSupportedInstanceFeatures;
+pub use raw::WGPUStringView;
+pub use raw::WGPUSubgroupMatrixConfig;
 pub use raw::WGPUSupportedWGSLLanguageFeatures;
+pub use raw::WGPUSupportedFeatures;
 pub use raw::WGPUSurfaceCapabilities;
 pub use raw::WGPUSurfaceColorManagement;
 pub use raw::WGPUSurfaceConfiguration;
 pub use raw::WGPUSurfaceDescriptor;
+pub use raw::WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel;
+pub use raw::WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel;
+pub use raw::WGPUSurfaceDescriptorFromWindowsCoreWindow;
+pub use raw::WGPUSurfaceSourceXCBWindow;
 pub use raw::WGPUSurfaceSourceAndroidNativeWindow;
 pub use raw::WGPUSurfaceSourceMetalLayer;
 pub use raw::WGPUSurfaceSourceWaylandSurface;
 pub use raw::WGPUSurfaceSourceWindowsHWND;
-pub use raw::WGPUSurfaceSourceXCBWindow;
 pub use raw::WGPUSurfaceSourceXlibWindow;
 pub use raw::WGPUSurfaceTexture;
 pub use raw::WGPUTexelCopyBufferInfo;
 pub use raw::WGPUTexelCopyBufferLayout;
 pub use raw::WGPUTexelCopyTextureInfo;
 pub use raw::WGPUTextureBindingLayout;
+pub use raw::WGPUTextureBindingViewDimensionDescriptor;
 pub use raw::WGPUTextureDescriptor;
 pub use raw::WGPUTextureViewDescriptor;
 pub use raw::WGPUVertexAttribute;
 pub use raw::WGPUVertexBufferLayout;
 pub use raw::WGPUVertexState;
+pub use raw::WGPUYCbCrVkDescriptor;
 pub use raw::WGPUBufferMapCallback;
 pub use raw::WGPUBufferMapCallbackInfo;
 pub use raw::WGPUCompilationInfoCallback;
@@ -1555,6 +1874,8 @@ pub use raw::WGPUCreateRenderPipelineAsyncCallback;
 pub use raw::WGPUCreateRenderPipelineAsyncCallbackInfo;
 pub use raw::WGPUDeviceLostCallback;
 pub use raw::WGPUDeviceLostCallbackInfo;
+pub use raw::WGPULoggingCallback;
+pub use raw::WGPULoggingCallbackInfo;
 pub use raw::WGPUPopErrorScopeCallback;
 pub use raw::WGPUPopErrorScopeCallbackInfo;
 pub use raw::WGPUQueueWorkDoneCallback;
@@ -1566,17 +1887,23 @@ pub use raw::WGPURequestDeviceCallbackInfo;
 pub use raw::WGPUUncapturedErrorCallback;
 pub use raw::WGPUUncapturedErrorCallbackInfo;
 pub use raw::wgpuCreateInstance;
-pub use raw::wgpuGetInstanceFeatures;
-pub use raw::wgpuGetInstanceLimits;
-pub use raw::wgpuHasInstanceFeature;
+pub use raw::wgpuGetInstanceCapabilities;
+pub use raw::wgpuGetProcAddress;
+pub use raw::WGPUCallback;
+pub use raw::WGPUDawnLoadCacheDataFunction;
+pub use raw::WGPUDawnStoreCacheDataFunction;
+pub use raw::WGPUProc;
 pub use raw::WGPUAdapter;
 pub use raw::wgpuAdapterAddRef;
 pub use raw::wgpuAdapterRelease;
+pub use raw::wgpuAdapterGetInstance;
 pub use raw::wgpuAdapterGetLimits;
+pub use raw::wgpuAdapterGetInfo;
 pub use raw::wgpuAdapterHasFeature;
 pub use raw::wgpuAdapterGetFeatures;
-pub use raw::wgpuAdapterGetInfo;
 pub use raw::wgpuAdapterRequestDevice;
+pub use raw::wgpuAdapterCreateDevice;
+pub use raw::wgpuAdapterGetFormatCapabilities;
 pub use raw::WGPUBindGroup;
 pub use raw::wgpuBindGroupAddRef;
 pub use raw::wgpuBindGroupRelease;
@@ -1591,8 +1918,8 @@ pub use raw::wgpuBufferRelease;
 pub use raw::wgpuBufferMapAsync;
 pub use raw::wgpuBufferGetMappedRange;
 pub use raw::wgpuBufferGetConstMappedRange;
-pub use raw::wgpuBufferReadMappedRange;
 pub use raw::wgpuBufferWriteMappedRange;
+pub use raw::wgpuBufferReadMappedRange;
 pub use raw::wgpuBufferSetLabel;
 pub use raw::wgpuBufferGetUsage;
 pub use raw::wgpuBufferGetSize;
@@ -1614,10 +1941,12 @@ pub use raw::wgpuCommandEncoderCopyBufferToTexture;
 pub use raw::wgpuCommandEncoderCopyTextureToBuffer;
 pub use raw::wgpuCommandEncoderCopyTextureToTexture;
 pub use raw::wgpuCommandEncoderClearBuffer;
+pub use raw::wgpuCommandEncoderInjectValidationError;
 pub use raw::wgpuCommandEncoderInsertDebugMarker;
 pub use raw::wgpuCommandEncoderPopDebugGroup;
 pub use raw::wgpuCommandEncoderPushDebugGroup;
 pub use raw::wgpuCommandEncoderResolveQuerySet;
+pub use raw::wgpuCommandEncoderWriteBuffer;
 pub use raw::wgpuCommandEncoderWriteTimestamp;
 pub use raw::wgpuCommandEncoderSetLabel;
 pub use raw::WGPUComputePassEncoder;
@@ -1628,10 +1957,12 @@ pub use raw::wgpuComputePassEncoderPopDebugGroup;
 pub use raw::wgpuComputePassEncoderPushDebugGroup;
 pub use raw::wgpuComputePassEncoderSetPipeline;
 pub use raw::wgpuComputePassEncoderSetBindGroup;
+pub use raw::wgpuComputePassEncoderWriteTimestamp;
 pub use raw::wgpuComputePassEncoderDispatchWorkgroups;
 pub use raw::wgpuComputePassEncoderDispatchWorkgroupsIndirect;
 pub use raw::wgpuComputePassEncoderEnd;
 pub use raw::wgpuComputePassEncoderSetLabel;
+pub use raw::wgpuComputePassEncoderSetImmediateData;
 pub use raw::WGPUComputePipeline;
 pub use raw::wgpuComputePipelineAddRef;
 pub use raw::wgpuComputePipelineRelease;
@@ -1643,9 +1974,12 @@ pub use raw::wgpuDeviceRelease;
 pub use raw::wgpuDeviceCreateBindGroup;
 pub use raw::wgpuDeviceCreateBindGroupLayout;
 pub use raw::wgpuDeviceCreateBuffer;
+pub use raw::wgpuDeviceCreateErrorBuffer;
 pub use raw::wgpuDeviceCreateCommandEncoder;
 pub use raw::wgpuDeviceCreateComputePipeline;
 pub use raw::wgpuDeviceCreateComputePipelineAsync;
+pub use raw::wgpuDeviceCreateExternalTexture;
+pub use raw::wgpuDeviceCreateErrorExternalTexture;
 pub use raw::wgpuDeviceCreatePipelineLayout;
 pub use raw::wgpuDeviceCreateQuerySet;
 pub use raw::wgpuDeviceCreateRenderPipelineAsync;
@@ -1653,26 +1987,45 @@ pub use raw::wgpuDeviceCreateRenderBundleEncoder;
 pub use raw::wgpuDeviceCreateRenderPipeline;
 pub use raw::wgpuDeviceCreateSampler;
 pub use raw::wgpuDeviceCreateShaderModule;
+pub use raw::wgpuDeviceCreateErrorShaderModule;
 pub use raw::wgpuDeviceCreateTexture;
+pub use raw::wgpuDeviceImportSharedBufferMemory;
+pub use raw::wgpuDeviceImportSharedTextureMemory;
+pub use raw::wgpuDeviceImportSharedFence;
+pub use raw::wgpuDeviceCreateErrorTexture;
 pub use raw::wgpuDeviceDestroy;
-pub use raw::wgpuDeviceGetLostFuture;
+pub use raw::wgpuDeviceGetAHardwareBufferProperties;
 pub use raw::wgpuDeviceGetLimits;
+pub use raw::wgpuDeviceGetLostFuture;
 pub use raw::wgpuDeviceHasFeature;
 pub use raw::wgpuDeviceGetFeatures;
 pub use raw::wgpuDeviceGetAdapterInfo;
+pub use raw::wgpuDeviceGetAdapter;
 pub use raw::wgpuDeviceGetQueue;
+pub use raw::wgpuDeviceInjectError;
+pub use raw::wgpuDeviceForceLoss;
+pub use raw::wgpuDeviceTick;
+pub use raw::wgpuDeviceSetLoggingCallback;
 pub use raw::wgpuDevicePushErrorScope;
 pub use raw::wgpuDevicePopErrorScope;
 pub use raw::wgpuDeviceSetLabel;
+pub use raw::wgpuDeviceValidateTextureDescriptor;
+pub use raw::WGPUExternalTexture;
+pub use raw::wgpuExternalTextureAddRef;
+pub use raw::wgpuExternalTextureRelease;
+pub use raw::wgpuExternalTextureSetLabel;
+pub use raw::wgpuExternalTextureDestroy;
+pub use raw::wgpuExternalTextureExpire;
+pub use raw::wgpuExternalTextureRefresh;
 pub use raw::WGPUInstance;
 pub use raw::wgpuInstanceAddRef;
 pub use raw::wgpuInstanceRelease;
 pub use raw::wgpuInstanceCreateSurface;
-pub use raw::wgpuInstanceGetWGSLLanguageFeatures;
-pub use raw::wgpuInstanceHasWGSLLanguageFeature;
 pub use raw::wgpuInstanceProcessEvents;
-pub use raw::wgpuInstanceRequestAdapter;
 pub use raw::wgpuInstanceWaitAny;
+pub use raw::wgpuInstanceRequestAdapter;
+pub use raw::wgpuInstanceHasWGSLLanguageFeature;
+pub use raw::wgpuInstanceGetWGSLLanguageFeatures;
 pub use raw::WGPUPipelineLayout;
 pub use raw::wgpuPipelineLayoutAddRef;
 pub use raw::wgpuPipelineLayoutRelease;
@@ -1691,6 +2044,8 @@ pub use raw::wgpuQueueSubmit;
 pub use raw::wgpuQueueOnSubmittedWorkDone;
 pub use raw::wgpuQueueWriteBuffer;
 pub use raw::wgpuQueueWriteTexture;
+pub use raw::wgpuQueueCopyTextureForBrowser;
+pub use raw::wgpuQueueCopyExternalTextureForBrowser;
 pub use raw::wgpuQueueSetLabel;
 pub use raw::WGPURenderBundle;
 pub use raw::wgpuRenderBundleAddRef;
@@ -1712,6 +2067,7 @@ pub use raw::wgpuRenderBundleEncoderSetVertexBuffer;
 pub use raw::wgpuRenderBundleEncoderSetIndexBuffer;
 pub use raw::wgpuRenderBundleEncoderFinish;
 pub use raw::wgpuRenderBundleEncoderSetLabel;
+pub use raw::wgpuRenderBundleEncoderSetImmediateData;
 pub use raw::WGPURenderPassEncoder;
 pub use raw::wgpuRenderPassEncoderAddRef;
 pub use raw::wgpuRenderPassEncoderRelease;
@@ -1721,6 +2077,8 @@ pub use raw::wgpuRenderPassEncoderDraw;
 pub use raw::wgpuRenderPassEncoderDrawIndexed;
 pub use raw::wgpuRenderPassEncoderDrawIndirect;
 pub use raw::wgpuRenderPassEncoderDrawIndexedIndirect;
+pub use raw::wgpuRenderPassEncoderMultiDrawIndirect;
+pub use raw::wgpuRenderPassEncoderMultiDrawIndexedIndirect;
 pub use raw::wgpuRenderPassEncoderExecuteBundles;
 pub use raw::wgpuRenderPassEncoderInsertDebugMarker;
 pub use raw::wgpuRenderPassEncoderPopDebugGroup;
@@ -1733,8 +2091,11 @@ pub use raw::wgpuRenderPassEncoderSetVertexBuffer;
 pub use raw::wgpuRenderPassEncoderSetIndexBuffer;
 pub use raw::wgpuRenderPassEncoderBeginOcclusionQuery;
 pub use raw::wgpuRenderPassEncoderEndOcclusionQuery;
+pub use raw::wgpuRenderPassEncoderWriteTimestamp;
+pub use raw::wgpuRenderPassEncoderPixelLocalStorageBarrier;
 pub use raw::wgpuRenderPassEncoderEnd;
 pub use raw::wgpuRenderPassEncoderSetLabel;
+pub use raw::wgpuRenderPassEncoderSetImmediateData;
 pub use raw::WGPURenderPipeline;
 pub use raw::wgpuRenderPipelineAddRef;
 pub use raw::wgpuRenderPipelineRelease;
@@ -1749,6 +2110,28 @@ pub use raw::wgpuShaderModuleAddRef;
 pub use raw::wgpuShaderModuleRelease;
 pub use raw::wgpuShaderModuleGetCompilationInfo;
 pub use raw::wgpuShaderModuleSetLabel;
+pub use raw::WGPUSharedBufferMemory;
+pub use raw::wgpuSharedBufferMemoryAddRef;
+pub use raw::wgpuSharedBufferMemoryRelease;
+pub use raw::wgpuSharedBufferMemorySetLabel;
+pub use raw::wgpuSharedBufferMemoryGetProperties;
+pub use raw::wgpuSharedBufferMemoryCreateBuffer;
+pub use raw::wgpuSharedBufferMemoryBeginAccess;
+pub use raw::wgpuSharedBufferMemoryEndAccess;
+pub use raw::wgpuSharedBufferMemoryIsDeviceLost;
+pub use raw::WGPUSharedFence;
+pub use raw::wgpuSharedFenceAddRef;
+pub use raw::wgpuSharedFenceRelease;
+pub use raw::wgpuSharedFenceExportInfo;
+pub use raw::WGPUSharedTextureMemory;
+pub use raw::wgpuSharedTextureMemoryAddRef;
+pub use raw::wgpuSharedTextureMemoryRelease;
+pub use raw::wgpuSharedTextureMemorySetLabel;
+pub use raw::wgpuSharedTextureMemoryGetProperties;
+pub use raw::wgpuSharedTextureMemoryCreateTexture;
+pub use raw::wgpuSharedTextureMemoryBeginAccess;
+pub use raw::wgpuSharedTextureMemoryEndAccess;
+pub use raw::wgpuSharedTextureMemoryIsDeviceLost;
 pub use raw::WGPUSurface;
 pub use raw::wgpuSurfaceAddRef;
 pub use raw::wgpuSurfaceRelease;
@@ -1762,6 +2145,7 @@ pub use raw::WGPUTexture;
 pub use raw::wgpuTextureAddRef;
 pub use raw::wgpuTextureRelease;
 pub use raw::wgpuTextureCreateView;
+pub use raw::wgpuTextureCreateErrorView;
 pub use raw::wgpuTextureSetLabel;
 pub use raw::wgpuTextureGetWidth;
 pub use raw::wgpuTextureGetHeight;

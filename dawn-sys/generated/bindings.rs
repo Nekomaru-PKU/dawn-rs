@@ -1097,6 +1097,12 @@ pub struct WGPUDeviceImpl {
 pub type WGPUDevice = *mut WGPUDeviceImpl;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUExternalTextureImpl {
+    _unused: [u8; 0],
+}
+pub type WGPUExternalTexture = *mut WGPUExternalTextureImpl;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUInstanceImpl {
     _unused: [u8; 0],
 }
@@ -1157,6 +1163,24 @@ pub struct WGPUShaderModuleImpl {
 pub type WGPUShaderModule = *mut WGPUShaderModuleImpl;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedBufferMemoryImpl {
+    _unused: [u8; 0],
+}
+pub type WGPUSharedBufferMemory = *mut WGPUSharedBufferMemoryImpl;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceImpl {
+    _unused: [u8; 0],
+}
+pub type WGPUSharedFence = *mut WGPUSharedFenceImpl;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryImpl {
+    _unused: [u8; 0],
+}
+pub type WGPUSharedTextureMemory = *mut WGPUSharedTextureMemoryImpl;
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUSurfaceImpl {
     _unused: [u8; 0],
 }
@@ -1185,6 +1209,11 @@ pub const WGPUAddressMode_WGPUAddressMode_Repeat: WGPUAddressMode = 2;
 pub const WGPUAddressMode_WGPUAddressMode_MirrorRepeat: WGPUAddressMode = 3;
 pub const WGPUAddressMode_WGPUAddressMode_Force32: WGPUAddressMode = 2147483647;
 pub type WGPUAddressMode = ::core::ffi::c_int;
+pub const WGPUAlphaMode_WGPUAlphaMode_Opaque: WGPUAlphaMode = 1;
+pub const WGPUAlphaMode_WGPUAlphaMode_Premultiplied: WGPUAlphaMode = 2;
+pub const WGPUAlphaMode_WGPUAlphaMode_Unpremultiplied: WGPUAlphaMode = 3;
+pub const WGPUAlphaMode_WGPUAlphaMode_Force32: WGPUAlphaMode = 2147483647;
+pub type WGPUAlphaMode = ::core::ffi::c_int;
 pub const WGPUBackendType_WGPUBackendType_Undefined: WGPUBackendType = 0;
 pub const WGPUBackendType_WGPUBackendType_Null: WGPUBackendType = 1;
 pub const WGPUBackendType_WGPUBackendType_WebGPU: WGPUBackendType = 2;
@@ -1311,6 +1340,17 @@ pub const WGPUErrorType_WGPUErrorType_Internal: WGPUErrorType = 4;
 pub const WGPUErrorType_WGPUErrorType_Unknown: WGPUErrorType = 5;
 pub const WGPUErrorType_WGPUErrorType_Force32: WGPUErrorType = 2147483647;
 pub type WGPUErrorType = ::core::ffi::c_int;
+pub const WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate0Degrees:
+    WGPUExternalTextureRotation = 1;
+pub const WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate90Degrees:
+    WGPUExternalTextureRotation = 2;
+pub const WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate180Degrees:
+    WGPUExternalTextureRotation = 3;
+pub const WGPUExternalTextureRotation_WGPUExternalTextureRotation_Rotate270Degrees:
+    WGPUExternalTextureRotation = 4;
+pub const WGPUExternalTextureRotation_WGPUExternalTextureRotation_Force32:
+    WGPUExternalTextureRotation = 2147483647;
+pub type WGPUExternalTextureRotation = ::core::ffi::c_int;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Undefined: WGPUFeatureLevel = 0;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Compatibility: WGPUFeatureLevel = 1;
 pub const WGPUFeatureLevel_WGPUFeatureLevel_Core: WGPUFeatureLevel = 2;
@@ -1333,6 +1373,71 @@ pub const WGPUFeatureName_WGPUFeatureName_Float32Blendable: WGPUFeatureName = 14
 pub const WGPUFeatureName_WGPUFeatureName_ClipDistances: WGPUFeatureName = 15;
 pub const WGPUFeatureName_WGPUFeatureName_DualSourceBlending: WGPUFeatureName = 16;
 pub const WGPUFeatureName_WGPUFeatureName_Subgroups: WGPUFeatureName = 17;
+pub const WGPUFeatureName_WGPUFeatureName_CoreFeaturesAndLimits: WGPUFeatureName = 18;
+pub const WGPUFeatureName_WGPUFeatureName_DawnInternalUsages: WGPUFeatureName = 327680;
+pub const WGPUFeatureName_WGPUFeatureName_DawnMultiPlanarFormats: WGPUFeatureName = 327681;
+pub const WGPUFeatureName_WGPUFeatureName_DawnNative: WGPUFeatureName = 327682;
+pub const WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalTimestampQueryInsidePasses:
+    WGPUFeatureName = 327683;
+pub const WGPUFeatureName_WGPUFeatureName_ImplicitDeviceSynchronization: WGPUFeatureName = 327684;
+pub const WGPUFeatureName_WGPUFeatureName_TransientAttachments: WGPUFeatureName = 327686;
+pub const WGPUFeatureName_WGPUFeatureName_MSAARenderToSingleSampled: WGPUFeatureName = 327687;
+pub const WGPUFeatureName_WGPUFeatureName_D3D11MultithreadProtected: WGPUFeatureName = 327688;
+pub const WGPUFeatureName_WGPUFeatureName_ANGLETextureSharing: WGPUFeatureName = 327689;
+pub const WGPUFeatureName_WGPUFeatureName_PixelLocalStorageCoherent: WGPUFeatureName = 327690;
+pub const WGPUFeatureName_WGPUFeatureName_PixelLocalStorageNonCoherent: WGPUFeatureName = 327691;
+pub const WGPUFeatureName_WGPUFeatureName_Unorm16TextureFormats: WGPUFeatureName = 327692;
+pub const WGPUFeatureName_WGPUFeatureName_Snorm16TextureFormats: WGPUFeatureName = 327693;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatExtendedUsages: WGPUFeatureName = 327694;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP010: WGPUFeatureName = 327695;
+pub const WGPUFeatureName_WGPUFeatureName_HostMappedPointer: WGPUFeatureName = 327696;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarRenderTargets: WGPUFeatureName = 327697;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv12a: WGPUFeatureName = 327698;
+pub const WGPUFeatureName_WGPUFeatureName_FramebufferFetch: WGPUFeatureName = 327699;
+pub const WGPUFeatureName_WGPUFeatureName_BufferMapExtendedUsages: WGPUFeatureName = 327700;
+pub const WGPUFeatureName_WGPUFeatureName_AdapterPropertiesMemoryHeaps: WGPUFeatureName = 327701;
+pub const WGPUFeatureName_WGPUFeatureName_AdapterPropertiesD3D: WGPUFeatureName = 327702;
+pub const WGPUFeatureName_WGPUFeatureName_AdapterPropertiesVk: WGPUFeatureName = 327703;
+pub const WGPUFeatureName_WGPUFeatureName_R8UnormStorage: WGPUFeatureName = 327704;
+pub const WGPUFeatureName_WGPUFeatureName_DawnFormatCapabilities: WGPUFeatureName = 327705;
+pub const WGPUFeatureName_WGPUFeatureName_DawnDrmFormatCapabilities: WGPUFeatureName = 327706;
+pub const WGPUFeatureName_WGPUFeatureName_Norm16TextureFormats: WGPUFeatureName = 327707;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv16: WGPUFeatureName = 327708;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatNv24: WGPUFeatureName = 327709;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP210: WGPUFeatureName = 327710;
+pub const WGPUFeatureName_WGPUFeatureName_MultiPlanarFormatP410: WGPUFeatureName = 327711;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryVkDedicatedAllocation:
+    WGPUFeatureName = 327712;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryAHardwareBuffer: WGPUFeatureName =
+    327713;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDmaBuf: WGPUFeatureName = 327714;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryOpaqueFD: WGPUFeatureName = 327715;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryZirconHandle: WGPUFeatureName = 327716;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryDXGISharedHandle: WGPUFeatureName =
+    327717;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryD3D11Texture2D: WGPUFeatureName =
+    327718;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryIOSurface: WGPUFeatureName = 327719;
+pub const WGPUFeatureName_WGPUFeatureName_SharedTextureMemoryEGLImage: WGPUFeatureName = 327720;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreOpaqueFD: WGPUFeatureName = 327721;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceSyncFD: WGPUFeatureName = 327722;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceVkSemaphoreZirconHandle: WGPUFeatureName =
+    327723;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceDXGISharedHandle: WGPUFeatureName = 327724;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceMTLSharedEvent: WGPUFeatureName = 327725;
+pub const WGPUFeatureName_WGPUFeatureName_SharedBufferMemoryD3D12Resource: WGPUFeatureName = 327726;
+pub const WGPUFeatureName_WGPUFeatureName_StaticSamplers: WGPUFeatureName = 327727;
+pub const WGPUFeatureName_WGPUFeatureName_YCbCrVulkanSamplers: WGPUFeatureName = 327728;
+pub const WGPUFeatureName_WGPUFeatureName_ShaderModuleCompilationOptions: WGPUFeatureName = 327729;
+pub const WGPUFeatureName_WGPUFeatureName_DawnLoadResolveTexture: WGPUFeatureName = 327730;
+pub const WGPUFeatureName_WGPUFeatureName_DawnPartialLoadResolveTexture: WGPUFeatureName = 327731;
+pub const WGPUFeatureName_WGPUFeatureName_MultiDrawIndirect: WGPUFeatureName = 327732;
+pub const WGPUFeatureName_WGPUFeatureName_DawnTexelCopyBufferRowAlignment: WGPUFeatureName = 327733;
+pub const WGPUFeatureName_WGPUFeatureName_FlexibleTextureViews: WGPUFeatureName = 327734;
+pub const WGPUFeatureName_WGPUFeatureName_ChromiumExperimentalSubgroupMatrix: WGPUFeatureName =
+    327735;
+pub const WGPUFeatureName_WGPUFeatureName_SharedFenceEGLSync: WGPUFeatureName = 327736;
+pub const WGPUFeatureName_WGPUFeatureName_DawnDeviceAllocatorControl: WGPUFeatureName = 327737;
 pub const WGPUFeatureName_WGPUFeatureName_Force32: WGPUFeatureName = 2147483647;
 pub type WGPUFeatureName = ::core::ffi::c_int;
 pub const WGPUFilterMode_WGPUFilterMode_Undefined: WGPUFilterMode = 0;
@@ -1350,20 +1455,18 @@ pub const WGPUIndexFormat_WGPUIndexFormat_Uint16: WGPUIndexFormat = 1;
 pub const WGPUIndexFormat_WGPUIndexFormat_Uint32: WGPUIndexFormat = 2;
 pub const WGPUIndexFormat_WGPUIndexFormat_Force32: WGPUIndexFormat = 2147483647;
 pub type WGPUIndexFormat = ::core::ffi::c_int;
-pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_TimedWaitAnyEnable:
-    WGPUInstanceFeatureName = 1;
-pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_ShaderSourceSPIRV:
-    WGPUInstanceFeatureName = 2;
-pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_MultipleDevicesPerAdapter:
-    WGPUInstanceFeatureName = 3;
-pub const WGPUInstanceFeatureName_WGPUInstanceFeatureName_Force32: WGPUInstanceFeatureName =
-    2147483647;
-pub type WGPUInstanceFeatureName = ::core::ffi::c_int;
 pub const WGPULoadOp_WGPULoadOp_Undefined: WGPULoadOp = 0;
 pub const WGPULoadOp_WGPULoadOp_Load: WGPULoadOp = 1;
 pub const WGPULoadOp_WGPULoadOp_Clear: WGPULoadOp = 2;
+pub const WGPULoadOp_WGPULoadOp_ExpandResolveTexture: WGPULoadOp = 327683;
 pub const WGPULoadOp_WGPULoadOp_Force32: WGPULoadOp = 2147483647;
 pub type WGPULoadOp = ::core::ffi::c_int;
+pub const WGPULoggingType_WGPULoggingType_Verbose: WGPULoggingType = 1;
+pub const WGPULoggingType_WGPULoggingType_Info: WGPULoggingType = 2;
+pub const WGPULoggingType_WGPULoggingType_Warning: WGPULoggingType = 3;
+pub const WGPULoggingType_WGPULoggingType_Error: WGPULoggingType = 4;
+pub const WGPULoggingType_WGPULoggingType_Force32: WGPULoggingType = 2147483647;
+pub type WGPULoggingType = ::core::ffi::c_int;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Success: WGPUMapAsyncStatus = 1;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_CallbackCancelled: WGPUMapAsyncStatus = 2;
 pub const WGPUMapAsyncStatus_WGPUMapAsyncStatus_Error: WGPUMapAsyncStatus = 3;
@@ -1447,6 +1550,14 @@ pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Comparison: WGPUSamplerB
 pub const WGPUSamplerBindingType_WGPUSamplerBindingType_Force32: WGPUSamplerBindingType =
     2147483647;
 pub type WGPUSamplerBindingType = ::core::ffi::c_int;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreOpaqueFD: WGPUSharedFenceType = 1;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_SyncFD: WGPUSharedFenceType = 2;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_VkSemaphoreZirconHandle: WGPUSharedFenceType = 3;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_DXGISharedHandle: WGPUSharedFenceType = 4;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_MTLSharedEvent: WGPUSharedFenceType = 5;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_EGLSync: WGPUSharedFenceType = 6;
+pub const WGPUSharedFenceType_WGPUSharedFenceType_Force32: WGPUSharedFenceType = 2147483647;
+pub type WGPUSharedFenceType = ::core::ffi::c_int;
 pub const WGPUStatus_WGPUStatus_Success: WGPUStatus = 1;
 pub const WGPUStatus_WGPUStatus_Error: WGPUStatus = 2;
 pub const WGPUStatus_WGPUStatus_Force32: WGPUStatus = 2147483647;
@@ -1487,8 +1598,93 @@ pub const WGPUSType_WGPUSType_SurfaceSourceAndroidNativeWindow: WGPUSType = 8;
 pub const WGPUSType_WGPUSType_SurfaceSourceXCBWindow: WGPUSType = 9;
 pub const WGPUSType_WGPUSType_SurfaceColorManagement: WGPUSType = 10;
 pub const WGPUSType_WGPUSType_RequestAdapterWebXROptions: WGPUSType = 11;
+pub const WGPUSType_WGPUSType_AdapterPropertiesSubgroups: WGPUSType = 12;
+pub const WGPUSType_WGPUSType_BindGroupLayoutEntryArraySize: WGPUSType = 13;
+pub const WGPUSType_WGPUSType_TextureBindingViewDimensionDescriptor: WGPUSType = 131072;
+pub const WGPUSType_WGPUSType_EmscriptenSurfaceSourceCanvasHTMLSelector: WGPUSType = 262144;
+pub const WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsCoreWindow: WGPUSType = 327680;
+pub const WGPUSType_WGPUSType_ExternalTextureBindingEntry: WGPUSType = 327681;
+pub const WGPUSType_WGPUSType_ExternalTextureBindingLayout: WGPUSType = 327682;
+pub const WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsUWPSwapChainPanel: WGPUSType = 327683;
+pub const WGPUSType_WGPUSType_DawnTextureInternalUsageDescriptor: WGPUSType = 327684;
+pub const WGPUSType_WGPUSType_DawnEncoderInternalUsageDescriptor: WGPUSType = 327685;
+pub const WGPUSType_WGPUSType_DawnInstanceDescriptor: WGPUSType = 327686;
+pub const WGPUSType_WGPUSType_DawnCacheDeviceDescriptor: WGPUSType = 327687;
+pub const WGPUSType_WGPUSType_DawnAdapterPropertiesPowerPreference: WGPUSType = 327688;
+pub const WGPUSType_WGPUSType_DawnBufferDescriptorErrorInfoFromWireClient: WGPUSType = 327689;
+pub const WGPUSType_WGPUSType_DawnTogglesDescriptor: WGPUSType = 327690;
+pub const WGPUSType_WGPUSType_DawnShaderModuleSPIRVOptionsDescriptor: WGPUSType = 327691;
+pub const WGPUSType_WGPUSType_RequestAdapterOptionsLUID: WGPUSType = 327692;
+pub const WGPUSType_WGPUSType_RequestAdapterOptionsGetGLProc: WGPUSType = 327693;
+pub const WGPUSType_WGPUSType_RequestAdapterOptionsD3D11Device: WGPUSType = 327694;
+pub const WGPUSType_WGPUSType_DawnRenderPassColorAttachmentRenderToSingleSampled: WGPUSType =
+    327695;
+pub const WGPUSType_WGPUSType_RenderPassPixelLocalStorage: WGPUSType = 327696;
+pub const WGPUSType_WGPUSType_PipelineLayoutPixelLocalStorage: WGPUSType = 327697;
+pub const WGPUSType_WGPUSType_BufferHostMappedPointer: WGPUSType = 327698;
+pub const WGPUSType_WGPUSType_AdapterPropertiesMemoryHeaps: WGPUSType = 327699;
+pub const WGPUSType_WGPUSType_AdapterPropertiesD3D: WGPUSType = 327700;
+pub const WGPUSType_WGPUSType_AdapterPropertiesVk: WGPUSType = 327701;
+pub const WGPUSType_WGPUSType_DawnWireWGSLControl: WGPUSType = 327702;
+pub const WGPUSType_WGPUSType_DawnWGSLBlocklist: WGPUSType = 327703;
+pub const WGPUSType_WGPUSType_DawnDrmFormatCapabilities: WGPUSType = 327704;
+pub const WGPUSType_WGPUSType_ShaderModuleCompilationOptions: WGPUSType = 327705;
+pub const WGPUSType_WGPUSType_ColorTargetStateExpandResolveTextureDawn: WGPUSType = 327706;
+pub const WGPUSType_WGPUSType_RenderPassDescriptorExpandResolveRect: WGPUSType = 327707;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryVkDedicatedAllocationDescriptor: WGPUSType =
+    327708;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferDescriptor: WGPUSType = 327709;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryDmaBufDescriptor: WGPUSType = 327710;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryOpaqueFDDescriptor: WGPUSType = 327711;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryZirconHandleDescriptor: WGPUSType = 327712;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryDXGISharedHandleDescriptor: WGPUSType = 327713;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryD3D11Texture2DDescriptor: WGPUSType = 327714;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryIOSurfaceDescriptor: WGPUSType = 327715;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryEGLImageDescriptor: WGPUSType = 327716;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryInitializedBeginState: WGPUSType = 327717;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryInitializedEndState: WGPUSType = 327718;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutBeginState: WGPUSType = 327719;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryVkImageLayoutEndState: WGPUSType = 327720;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryD3DSwapchainBeginState: WGPUSType = 327721;
+pub const WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDDescriptor: WGPUSType = 327722;
+pub const WGPUSType_WGPUSType_SharedFenceVkSemaphoreOpaqueFDExportInfo: WGPUSType = 327723;
+pub const WGPUSType_WGPUSType_SharedFenceSyncFDDescriptor: WGPUSType = 327724;
+pub const WGPUSType_WGPUSType_SharedFenceSyncFDExportInfo: WGPUSType = 327725;
+pub const WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleDescriptor: WGPUSType = 327726;
+pub const WGPUSType_WGPUSType_SharedFenceVkSemaphoreZirconHandleExportInfo: WGPUSType = 327727;
+pub const WGPUSType_WGPUSType_SharedFenceDXGISharedHandleDescriptor: WGPUSType = 327728;
+pub const WGPUSType_WGPUSType_SharedFenceDXGISharedHandleExportInfo: WGPUSType = 327729;
+pub const WGPUSType_WGPUSType_SharedFenceMTLSharedEventDescriptor: WGPUSType = 327730;
+pub const WGPUSType_WGPUSType_SharedFenceMTLSharedEventExportInfo: WGPUSType = 327731;
+pub const WGPUSType_WGPUSType_SharedBufferMemoryD3D12ResourceDescriptor: WGPUSType = 327732;
+pub const WGPUSType_WGPUSType_StaticSamplerBindingLayout: WGPUSType = 327733;
+pub const WGPUSType_WGPUSType_YCbCrVkDescriptor: WGPUSType = 327734;
+pub const WGPUSType_WGPUSType_SharedTextureMemoryAHardwareBufferProperties: WGPUSType = 327735;
+pub const WGPUSType_WGPUSType_AHardwareBufferProperties: WGPUSType = 327736;
+pub const WGPUSType_WGPUSType_DawnTexelCopyBufferRowAlignmentLimits: WGPUSType = 327738;
+pub const WGPUSType_WGPUSType_AdapterPropertiesSubgroupMatrixConfigs: WGPUSType = 327739;
+pub const WGPUSType_WGPUSType_SharedFenceEGLSyncDescriptor: WGPUSType = 327740;
+pub const WGPUSType_WGPUSType_SharedFenceEGLSyncExportInfo: WGPUSType = 327741;
+pub const WGPUSType_WGPUSType_DawnInjectedInvalidSType: WGPUSType = 327742;
+pub const WGPUSType_WGPUSType_DawnCompilationMessageUtf16: WGPUSType = 327743;
+pub const WGPUSType_WGPUSType_DawnFakeBufferOOMForTesting: WGPUSType = 327744;
+pub const WGPUSType_WGPUSType_SurfaceDescriptorFromWindowsWinUISwapChainPanel: WGPUSType = 327745;
+pub const WGPUSType_WGPUSType_DawnDeviceAllocatorControl: WGPUSType = 327746;
+pub const WGPUSType_WGPUSType_DawnHostMappedPointerLimits: WGPUSType = 327747;
+pub const WGPUSType_WGPUSType_RenderPassDescriptorResolveRect: WGPUSType = 327748;
 pub const WGPUSType_WGPUSType_Force32: WGPUSType = 2147483647;
 pub type WGPUSType = ::core::ffi::c_int;
+pub const WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F32:
+    WGPUSubgroupMatrixComponentType = 1;
+pub const WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_F16:
+    WGPUSubgroupMatrixComponentType = 2;
+pub const WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_U32:
+    WGPUSubgroupMatrixComponentType = 3;
+pub const WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_I32:
+    WGPUSubgroupMatrixComponentType = 4;
+pub const WGPUSubgroupMatrixComponentType_WGPUSubgroupMatrixComponentType_Force32:
+    WGPUSubgroupMatrixComponentType = 2147483647;
+pub type WGPUSubgroupMatrixComponentType = ::core::ffi::c_int;
 pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal:
     WGPUSurfaceGetCurrentTextureStatus = 1;
 pub const WGPUSurfaceGetCurrentTextureStatus_WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal : WGPUSurfaceGetCurrentTextureStatus = 2 ;
@@ -1507,6 +1703,9 @@ pub const WGPUTextureAspect_WGPUTextureAspect_Undefined: WGPUTextureAspect = 0;
 pub const WGPUTextureAspect_WGPUTextureAspect_All: WGPUTextureAspect = 1;
 pub const WGPUTextureAspect_WGPUTextureAspect_StencilOnly: WGPUTextureAspect = 2;
 pub const WGPUTextureAspect_WGPUTextureAspect_DepthOnly: WGPUTextureAspect = 3;
+pub const WGPUTextureAspect_WGPUTextureAspect_Plane0Only: WGPUTextureAspect = 327680;
+pub const WGPUTextureAspect_WGPUTextureAspect_Plane1Only: WGPUTextureAspect = 327681;
+pub const WGPUTextureAspect_WGPUTextureAspect_Plane2Only: WGPUTextureAspect = 327682;
 pub const WGPUTextureAspect_WGPUTextureAspect_Force32: WGPUTextureAspect = 2147483647;
 pub type WGPUTextureAspect = ::core::ffi::c_int;
 pub const WGPUTextureDimension_WGPUTextureDimension_Undefined: WGPUTextureDimension = 0;
@@ -1611,6 +1810,23 @@ pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x10Unorm: WGPUTextureFormat 
 pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x10UnormSrgb: WGPUTextureFormat = 93;
 pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x12Unorm: WGPUTextureFormat = 94;
 pub const WGPUTextureFormat_WGPUTextureFormat_ASTC12x12UnormSrgb: WGPUTextureFormat = 95;
+pub const WGPUTextureFormat_WGPUTextureFormat_R16Unorm: WGPUTextureFormat = 327680;
+pub const WGPUTextureFormat_WGPUTextureFormat_RG16Unorm: WGPUTextureFormat = 327681;
+pub const WGPUTextureFormat_WGPUTextureFormat_RGBA16Unorm: WGPUTextureFormat = 327682;
+pub const WGPUTextureFormat_WGPUTextureFormat_R16Snorm: WGPUTextureFormat = 327683;
+pub const WGPUTextureFormat_WGPUTextureFormat_RG16Snorm: WGPUTextureFormat = 327684;
+pub const WGPUTextureFormat_WGPUTextureFormat_RGBA16Snorm: WGPUTextureFormat = 327685;
+pub const WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar420Unorm: WGPUTextureFormat = 327686;
+pub const WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm: WGPUTextureFormat =
+    327687;
+pub const WGPUTextureFormat_WGPUTextureFormat_R8BG8A8Triplanar420Unorm: WGPUTextureFormat = 327688;
+pub const WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar422Unorm: WGPUTextureFormat = 327689;
+pub const WGPUTextureFormat_WGPUTextureFormat_R8BG8Biplanar444Unorm: WGPUTextureFormat = 327690;
+pub const WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm: WGPUTextureFormat =
+    327691;
+pub const WGPUTextureFormat_WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm: WGPUTextureFormat =
+    327692;
+pub const WGPUTextureFormat_WGPUTextureFormat_External: WGPUTextureFormat = 327693;
 pub const WGPUTextureFormat_WGPUTextureFormat_Force32: WGPUTextureFormat = 2147483647;
 pub type WGPUTextureFormat = ::core::ffi::c_int;
 pub const WGPUTextureSampleType_WGPUTextureSampleType_BindingNotUsed: WGPUTextureSampleType = 0;
@@ -1696,6 +1912,16 @@ pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_UnrestrictedPo
     WGPUWGSLLanguageFeatureName = 3;
 pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_PointerCompositeAccess:
     WGPUWGSLLanguageFeatureName = 4;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_SizedBindingArray:
+    WGPUWGSLLanguageFeatureName = 5;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented:
+    WGPUWGSLLanguageFeatureName = 327680;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental : WGPUWGSLLanguageFeatureName = 327681 ;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental:
+    WGPUWGSLLanguageFeatureName = 327682;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShippedWithKillswitch : WGPUWGSLLanguageFeatureName = 327683 ;
+pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_ChromiumTestingShipped:
+    WGPUWGSLLanguageFeatureName = 327684;
 pub const WGPUWGSLLanguageFeatureName_WGPUWGSLLanguageFeatureName_Force32:
     WGPUWGSLLanguageFeatureName = 2147483647;
 pub type WGPUWGSLLanguageFeatureName = ::core::ffi::c_int;
@@ -1718,6 +1944,13 @@ pub const WGPUColorWriteMask_Green: WGPUColorWriteMask = 2;
 pub const WGPUColorWriteMask_Blue: WGPUColorWriteMask = 4;
 pub const WGPUColorWriteMask_Alpha: WGPUColorWriteMask = 8;
 pub const WGPUColorWriteMask_All: WGPUColorWriteMask = 15;
+pub type WGPUHeapProperty = WGPUFlags;
+pub const WGPUHeapProperty_None: WGPUHeapProperty = 0;
+pub const WGPUHeapProperty_DeviceLocal: WGPUHeapProperty = 1;
+pub const WGPUHeapProperty_HostVisible: WGPUHeapProperty = 2;
+pub const WGPUHeapProperty_HostCoherent: WGPUHeapProperty = 4;
+pub const WGPUHeapProperty_HostUncached: WGPUHeapProperty = 8;
+pub const WGPUHeapProperty_HostCached: WGPUHeapProperty = 16;
 pub type WGPUMapMode = WGPUFlags;
 pub const WGPUMapMode_None: WGPUMapMode = 0;
 pub const WGPUMapMode_Read: WGPUMapMode = 1;
@@ -1734,6 +1967,28 @@ pub const WGPUTextureUsage_CopyDst: WGPUTextureUsage = 2;
 pub const WGPUTextureUsage_TextureBinding: WGPUTextureUsage = 4;
 pub const WGPUTextureUsage_StorageBinding: WGPUTextureUsage = 8;
 pub const WGPUTextureUsage_RenderAttachment: WGPUTextureUsage = 16;
+pub const WGPUTextureUsage_TransientAttachment: WGPUTextureUsage = 32;
+pub const WGPUTextureUsage_StorageAttachment: WGPUTextureUsage = 64;
+pub type WGPUCallback =
+    ::core::option::Option<unsafe extern "C" fn(userdata: *mut ::core::ffi::c_void)>;
+pub type WGPUDawnLoadCacheDataFunction = ::core::option::Option<
+    unsafe extern "C" fn(
+        key: *const ::core::ffi::c_void,
+        keySize: usize,
+        value: *mut ::core::ffi::c_void,
+        valueSize: usize,
+        userdata: *mut ::core::ffi::c_void,
+    ) -> usize,
+>;
+pub type WGPUDawnStoreCacheDataFunction = ::core::option::Option<
+    unsafe extern "C" fn(
+        key: *const ::core::ffi::c_void,
+        keySize: usize,
+        value: *const ::core::ffi::c_void,
+        valueSize: usize,
+        userdata: *mut ::core::ffi::c_void,
+    ),
+>;
 pub type WGPUProc = ::core::option::Option<unsafe extern "C" fn()>;
 pub type WGPUBufferMapCallback = ::core::option::Option<
     unsafe extern "C" fn(
@@ -1778,6 +2033,14 @@ pub type WGPUDeviceLostCallback = ::core::option::Option<
         userdata2: *mut ::core::ffi::c_void,
     ),
 >;
+pub type WGPULoggingCallback = ::core::option::Option<
+    unsafe extern "C" fn(
+        type_: WGPULoggingType,
+        message: WGPUStringView,
+        userdata1: *mut ::core::ffi::c_void,
+        userdata2: *mut ::core::ffi::c_void,
+    ),
+>;
 pub type WGPUPopErrorScopeCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUPopErrorScopeStatus,
@@ -1790,7 +2053,6 @@ pub type WGPUPopErrorScopeCallback = ::core::option::Option<
 pub type WGPUQueueWorkDoneCallback = ::core::option::Option<
     unsafe extern "C" fn(
         status: WGPUQueueWorkDoneStatus,
-        message: WGPUStringView,
         userdata1: *mut ::core::ffi::c_void,
         userdata2: *mut ::core::ffi::c_void,
     ),
@@ -1969,6 +2231,29 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPULoggingCallbackInfo {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub callback: WGPULoggingCallback,
+    pub userdata1: *mut ::core::ffi::c_void,
+    pub userdata2: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPULoggingCallbackInfo"]
+        [::core::mem::size_of::<WGPULoggingCallbackInfo>() - 32usize];
+    ["Alignment of WGPULoggingCallbackInfo"]
+        [::core::mem::align_of::<WGPULoggingCallbackInfo>() - 8usize];
+    ["Offset of field: WGPULoggingCallbackInfo::nextInChain"]
+        [::core::mem::offset_of!(WGPULoggingCallbackInfo, nextInChain) - 0usize];
+    ["Offset of field: WGPULoggingCallbackInfo::callback"]
+        [::core::mem::offset_of!(WGPULoggingCallbackInfo, callback) - 8usize];
+    ["Offset of field: WGPULoggingCallbackInfo::userdata1"]
+        [::core::mem::offset_of!(WGPULoggingCallbackInfo, userdata1) - 16usize];
+    ["Offset of field: WGPULoggingCallbackInfo::userdata2"]
+        [::core::mem::offset_of!(WGPULoggingCallbackInfo, userdata2) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUPopErrorScopeCallbackInfo {
     pub nextInChain: *mut WGPUChainedStruct,
     pub mode: WGPUCallbackMode,
@@ -2096,75 +2381,74 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUAdapterInfo {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub vendor: WGPUStringView,
-    pub architecture: WGPUStringView,
-    pub device: WGPUStringView,
-    pub description: WGPUStringView,
-    pub backendType: WGPUBackendType,
-    pub adapterType: WGPUAdapterType,
-    pub vendorID: u32,
-    pub deviceID: u32,
+pub struct WGPUAdapterPropertiesD3D {
+    pub chain: WGPUChainedStruct,
+    pub shaderModel: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUAdapterPropertiesD3D"]
+        [::core::mem::size_of::<WGPUAdapterPropertiesD3D>() - 24usize];
+    ["Alignment of WGPUAdapterPropertiesD3D"]
+        [::core::mem::align_of::<WGPUAdapterPropertiesD3D>() - 8usize];
+    ["Offset of field: WGPUAdapterPropertiesD3D::chain"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesD3D, chain) - 0usize];
+    ["Offset of field: WGPUAdapterPropertiesD3D::shaderModel"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesD3D, shaderModel) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUAdapterPropertiesSubgroups {
+    pub chain: WGPUChainedStruct,
     pub subgroupMinSize: u32,
     pub subgroupMaxSize: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUAdapterInfo"][::core::mem::size_of::<WGPUAdapterInfo>() - 96usize];
-    ["Alignment of WGPUAdapterInfo"][::core::mem::align_of::<WGPUAdapterInfo>() - 8usize];
-    ["Offset of field: WGPUAdapterInfo::nextInChain"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, nextInChain) - 0usize];
-    ["Offset of field: WGPUAdapterInfo::vendor"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, vendor) - 8usize];
-    ["Offset of field: WGPUAdapterInfo::architecture"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, architecture) - 24usize];
-    ["Offset of field: WGPUAdapterInfo::device"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, device) - 40usize];
-    ["Offset of field: WGPUAdapterInfo::description"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, description) - 56usize];
-    ["Offset of field: WGPUAdapterInfo::backendType"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, backendType) - 72usize];
-    ["Offset of field: WGPUAdapterInfo::adapterType"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, adapterType) - 76usize];
-    ["Offset of field: WGPUAdapterInfo::vendorID"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, vendorID) - 80usize];
-    ["Offset of field: WGPUAdapterInfo::deviceID"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, deviceID) - 84usize];
-    ["Offset of field: WGPUAdapterInfo::subgroupMinSize"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMinSize) - 88usize];
-    ["Offset of field: WGPUAdapterInfo::subgroupMaxSize"]
-        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMaxSize) - 92usize];
+    ["Size of WGPUAdapterPropertiesSubgroups"]
+        [::core::mem::size_of::<WGPUAdapterPropertiesSubgroups>() - 24usize];
+    ["Alignment of WGPUAdapterPropertiesSubgroups"]
+        [::core::mem::align_of::<WGPUAdapterPropertiesSubgroups>() - 8usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroups::chain"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesSubgroups, chain) - 0usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroups::subgroupMinSize"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesSubgroups, subgroupMinSize) - 16usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroups::subgroupMaxSize"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesSubgroups, subgroupMaxSize) - 20usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUBindGroupEntry {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub binding: u32,
-    pub buffer: WGPUBuffer,
-    pub offset: u64,
-    pub size: u64,
-    pub sampler: WGPUSampler,
-    pub textureView: WGPUTextureView,
+pub struct WGPUAdapterPropertiesVk {
+    pub chain: WGPUChainedStruct,
+    pub driverVersion: u32,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBindGroupEntry"][::core::mem::size_of::<WGPUBindGroupEntry>() - 56usize];
-    ["Alignment of WGPUBindGroupEntry"][::core::mem::align_of::<WGPUBindGroupEntry>() - 8usize];
-    ["Offset of field: WGPUBindGroupEntry::nextInChain"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, nextInChain) - 0usize];
-    ["Offset of field: WGPUBindGroupEntry::binding"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, binding) - 8usize];
-    ["Offset of field: WGPUBindGroupEntry::buffer"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, buffer) - 16usize];
-    ["Offset of field: WGPUBindGroupEntry::offset"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, offset) - 24usize];
-    ["Offset of field: WGPUBindGroupEntry::size"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, size) - 32usize];
-    ["Offset of field: WGPUBindGroupEntry::sampler"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, sampler) - 40usize];
-    ["Offset of field: WGPUBindGroupEntry::textureView"]
-        [::core::mem::offset_of!(WGPUBindGroupEntry, textureView) - 48usize];
+    ["Size of WGPUAdapterPropertiesVk"]
+        [::core::mem::size_of::<WGPUAdapterPropertiesVk>() - 24usize];
+    ["Alignment of WGPUAdapterPropertiesVk"]
+        [::core::mem::align_of::<WGPUAdapterPropertiesVk>() - 8usize];
+    ["Offset of field: WGPUAdapterPropertiesVk::chain"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesVk, chain) - 0usize];
+    ["Offset of field: WGPUAdapterPropertiesVk::driverVersion"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesVk, driverVersion) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUBindGroupLayoutEntryArraySize {
+    pub chain: WGPUChainedStruct,
+    pub arraySize: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUBindGroupLayoutEntryArraySize"]
+        [::core::mem::size_of::<WGPUBindGroupLayoutEntryArraySize>() - 24usize];
+    ["Alignment of WGPUBindGroupLayoutEntryArraySize"]
+        [::core::mem::align_of::<WGPUBindGroupLayoutEntryArraySize>() - 8usize];
+    ["Offset of field: WGPUBindGroupLayoutEntryArraySize::chain"]
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntryArraySize, chain) - 0usize];
+    ["Offset of field: WGPUBindGroupLayoutEntryArraySize::arraySize"]
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntryArraySize, arraySize) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2209,27 +2493,26 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUBufferDescriptor {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub usage: WGPUBufferUsage,
-    pub size: u64,
-    pub mappedAtCreation: WGPUBool,
+pub struct WGPUBufferHostMappedPointer {
+    pub chain: WGPUChainedStruct,
+    pub pointer: *mut ::core::ffi::c_void,
+    pub disposeCallback: WGPUCallback,
+    pub userdata: *mut ::core::ffi::c_void,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBufferDescriptor"][::core::mem::size_of::<WGPUBufferDescriptor>() - 48usize];
-    ["Alignment of WGPUBufferDescriptor"][::core::mem::align_of::<WGPUBufferDescriptor>() - 8usize];
-    ["Offset of field: WGPUBufferDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUBufferDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUBufferDescriptor::label"]
-        [::core::mem::offset_of!(WGPUBufferDescriptor, label) - 8usize];
-    ["Offset of field: WGPUBufferDescriptor::usage"]
-        [::core::mem::offset_of!(WGPUBufferDescriptor, usage) - 24usize];
-    ["Offset of field: WGPUBufferDescriptor::size"]
-        [::core::mem::offset_of!(WGPUBufferDescriptor, size) - 32usize];
-    ["Offset of field: WGPUBufferDescriptor::mappedAtCreation"]
-        [::core::mem::offset_of!(WGPUBufferDescriptor, mappedAtCreation) - 40usize];
+    ["Size of WGPUBufferHostMappedPointer"]
+        [::core::mem::size_of::<WGPUBufferHostMappedPointer>() - 40usize];
+    ["Alignment of WGPUBufferHostMappedPointer"]
+        [::core::mem::align_of::<WGPUBufferHostMappedPointer>() - 8usize];
+    ["Offset of field: WGPUBufferHostMappedPointer::chain"]
+        [::core::mem::offset_of!(WGPUBufferHostMappedPointer, chain) - 0usize];
+    ["Offset of field: WGPUBufferHostMappedPointer::pointer"]
+        [::core::mem::offset_of!(WGPUBufferHostMappedPointer, pointer) - 16usize];
+    ["Offset of field: WGPUBufferHostMappedPointer::disposeCallback"]
+        [::core::mem::offset_of!(WGPUBufferHostMappedPointer, disposeCallback) - 24usize];
+    ["Offset of field: WGPUBufferHostMappedPointer::userdata"]
+        [::core::mem::offset_of!(WGPUBufferHostMappedPointer, userdata) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2250,6 +2533,23 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUColorTargetStateExpandResolveTextureDawn {
+    pub chain: WGPUChainedStruct,
+    pub enabled: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUColorTargetStateExpandResolveTextureDawn"]
+        [::core::mem::size_of::<WGPUColorTargetStateExpandResolveTextureDawn>() - 24usize];
+    ["Alignment of WGPUColorTargetStateExpandResolveTextureDawn"]
+        [::core::mem::align_of::<WGPUColorTargetStateExpandResolveTextureDawn>() - 8usize];
+    ["Offset of field: WGPUColorTargetStateExpandResolveTextureDawn::chain"]
+        [::core::mem::offset_of!(WGPUColorTargetStateExpandResolveTextureDawn, chain) - 0usize];
+    ["Offset of field: WGPUColorTargetStateExpandResolveTextureDawn::enabled"]
+        [::core::mem::offset_of!(WGPUColorTargetStateExpandResolveTextureDawn, enabled) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUCommandBufferDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
     pub label: WGPUStringView,
@@ -2264,54 +2564,6 @@ const _: () = {
         [::core::mem::offset_of!(WGPUCommandBufferDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUCommandBufferDescriptor::label"]
         [::core::mem::offset_of!(WGPUCommandBufferDescriptor, label) - 8usize];
-};
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct WGPUCommandEncoderDescriptor {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-}
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of WGPUCommandEncoderDescriptor"]
-        [::core::mem::size_of::<WGPUCommandEncoderDescriptor>() - 24usize];
-    ["Alignment of WGPUCommandEncoderDescriptor"]
-        [::core::mem::align_of::<WGPUCommandEncoderDescriptor>() - 8usize];
-    ["Offset of field: WGPUCommandEncoderDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUCommandEncoderDescriptor::label"]
-        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, label) - 8usize];
-};
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct WGPUCompilationMessage {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub message: WGPUStringView,
-    pub type_: WGPUCompilationMessageType,
-    pub lineNum: u64,
-    pub linePos: u64,
-    pub offset: u64,
-    pub length: u64,
-}
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of WGPUCompilationMessage"][::core::mem::size_of::<WGPUCompilationMessage>() - 64usize];
-    ["Alignment of WGPUCompilationMessage"]
-        [::core::mem::align_of::<WGPUCompilationMessage>() - 8usize];
-    ["Offset of field: WGPUCompilationMessage::nextInChain"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, nextInChain) - 0usize];
-    ["Offset of field: WGPUCompilationMessage::message"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, message) - 8usize];
-    ["Offset of field: WGPUCompilationMessage::type_"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, type_) - 24usize];
-    ["Offset of field: WGPUCompilationMessage::lineNum"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, lineNum) - 32usize];
-    ["Offset of field: WGPUCompilationMessage::linePos"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, linePos) - 40usize];
-    ["Offset of field: WGPUCompilationMessage::offset"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, offset) - 48usize];
-    ["Offset of field: WGPUCompilationMessage::length"]
-        [::core::mem::offset_of!(WGPUCompilationMessage, length) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2333,6 +2585,427 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUCopyTextureForBrowserOptions {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub flipY: WGPUBool,
+    pub needsColorSpaceConversion: WGPUBool,
+    pub srcAlphaMode: WGPUAlphaMode,
+    pub srcTransferFunctionParameters: *const f32,
+    pub conversionMatrix: *const f32,
+    pub dstTransferFunctionParameters: *const f32,
+    pub dstAlphaMode: WGPUAlphaMode,
+    pub internalUsage: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUCopyTextureForBrowserOptions"]
+        [::core::mem::size_of::<WGPUCopyTextureForBrowserOptions>() - 56usize];
+    ["Alignment of WGPUCopyTextureForBrowserOptions"]
+        [::core::mem::align_of::<WGPUCopyTextureForBrowserOptions>() - 8usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::nextInChain"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, nextInChain) - 0usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::flipY"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, flipY) - 8usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::needsColorSpaceConversion"][::core::mem::offset_of!(
+        WGPUCopyTextureForBrowserOptions,
+        needsColorSpaceConversion
+    ) - 12usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::srcAlphaMode"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, srcAlphaMode) - 16usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::srcTransferFunctionParameters"][::core::mem::offset_of!(
+        WGPUCopyTextureForBrowserOptions,
+        srcTransferFunctionParameters
+    )
+        - 24usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::conversionMatrix"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, conversionMatrix) - 32usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::dstTransferFunctionParameters"][::core::mem::offset_of!(
+        WGPUCopyTextureForBrowserOptions,
+        dstTransferFunctionParameters
+    )
+        - 40usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::dstAlphaMode"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, dstAlphaMode) - 48usize];
+    ["Offset of field: WGPUCopyTextureForBrowserOptions::internalUsage"]
+        [::core::mem::offset_of!(WGPUCopyTextureForBrowserOptions, internalUsage) - 52usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnAdapterPropertiesPowerPreference {
+    pub chain: WGPUChainedStruct,
+    pub powerPreference: WGPUPowerPreference,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnAdapterPropertiesPowerPreference"]
+        [::core::mem::size_of::<WGPUDawnAdapterPropertiesPowerPreference>() - 24usize];
+    ["Alignment of WGPUDawnAdapterPropertiesPowerPreference"]
+        [::core::mem::align_of::<WGPUDawnAdapterPropertiesPowerPreference>() - 8usize];
+    ["Offset of field: WGPUDawnAdapterPropertiesPowerPreference::chain"]
+        [::core::mem::offset_of!(WGPUDawnAdapterPropertiesPowerPreference, chain) - 0usize];
+    ["Offset of field: WGPUDawnAdapterPropertiesPowerPreference::powerPreference"][::core::mem::offset_of!(
+        WGPUDawnAdapterPropertiesPowerPreference,
+        powerPreference
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnBufferDescriptorErrorInfoFromWireClient {
+    pub chain: WGPUChainedStruct,
+    pub outOfMemory: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnBufferDescriptorErrorInfoFromWireClient"]
+        [::core::mem::size_of::<WGPUDawnBufferDescriptorErrorInfoFromWireClient>() - 24usize];
+    ["Alignment of WGPUDawnBufferDescriptorErrorInfoFromWireClient"]
+        [::core::mem::align_of::<WGPUDawnBufferDescriptorErrorInfoFromWireClient>() - 8usize];
+    ["Offset of field: WGPUDawnBufferDescriptorErrorInfoFromWireClient::chain"]
+        [::core::mem::offset_of!(WGPUDawnBufferDescriptorErrorInfoFromWireClient, chain) - 0usize];
+    ["Offset of field: WGPUDawnBufferDescriptorErrorInfoFromWireClient::outOfMemory"][::core::mem::offset_of!(
+        WGPUDawnBufferDescriptorErrorInfoFromWireClient,
+        outOfMemory
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnCacheDeviceDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub isolationKey: WGPUStringView,
+    pub loadDataFunction: WGPUDawnLoadCacheDataFunction,
+    pub storeDataFunction: WGPUDawnStoreCacheDataFunction,
+    pub functionUserdata: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnCacheDeviceDescriptor"]
+        [::core::mem::size_of::<WGPUDawnCacheDeviceDescriptor>() - 56usize];
+    ["Alignment of WGPUDawnCacheDeviceDescriptor"]
+        [::core::mem::align_of::<WGPUDawnCacheDeviceDescriptor>() - 8usize];
+    ["Offset of field: WGPUDawnCacheDeviceDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUDawnCacheDeviceDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUDawnCacheDeviceDescriptor::isolationKey"]
+        [::core::mem::offset_of!(WGPUDawnCacheDeviceDescriptor, isolationKey) - 16usize];
+    ["Offset of field: WGPUDawnCacheDeviceDescriptor::loadDataFunction"]
+        [::core::mem::offset_of!(WGPUDawnCacheDeviceDescriptor, loadDataFunction) - 32usize];
+    ["Offset of field: WGPUDawnCacheDeviceDescriptor::storeDataFunction"]
+        [::core::mem::offset_of!(WGPUDawnCacheDeviceDescriptor, storeDataFunction) - 40usize];
+    ["Offset of field: WGPUDawnCacheDeviceDescriptor::functionUserdata"]
+        [::core::mem::offset_of!(WGPUDawnCacheDeviceDescriptor, functionUserdata) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnCompilationMessageUtf16 {
+    pub chain: WGPUChainedStruct,
+    pub linePos: u64,
+    pub offset: u64,
+    pub length: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnCompilationMessageUtf16"]
+        [::core::mem::size_of::<WGPUDawnCompilationMessageUtf16>() - 40usize];
+    ["Alignment of WGPUDawnCompilationMessageUtf16"]
+        [::core::mem::align_of::<WGPUDawnCompilationMessageUtf16>() - 8usize];
+    ["Offset of field: WGPUDawnCompilationMessageUtf16::chain"]
+        [::core::mem::offset_of!(WGPUDawnCompilationMessageUtf16, chain) - 0usize];
+    ["Offset of field: WGPUDawnCompilationMessageUtf16::linePos"]
+        [::core::mem::offset_of!(WGPUDawnCompilationMessageUtf16, linePos) - 16usize];
+    ["Offset of field: WGPUDawnCompilationMessageUtf16::offset"]
+        [::core::mem::offset_of!(WGPUDawnCompilationMessageUtf16, offset) - 24usize];
+    ["Offset of field: WGPUDawnCompilationMessageUtf16::length"]
+        [::core::mem::offset_of!(WGPUDawnCompilationMessageUtf16, length) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnDeviceAllocatorControl {
+    pub chain: WGPUChainedStruct,
+    pub allocatorHeapBlockSize: usize,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnDeviceAllocatorControl"]
+        [::core::mem::size_of::<WGPUDawnDeviceAllocatorControl>() - 24usize];
+    ["Alignment of WGPUDawnDeviceAllocatorControl"]
+        [::core::mem::align_of::<WGPUDawnDeviceAllocatorControl>() - 8usize];
+    ["Offset of field: WGPUDawnDeviceAllocatorControl::chain"]
+        [::core::mem::offset_of!(WGPUDawnDeviceAllocatorControl, chain) - 0usize];
+    ["Offset of field: WGPUDawnDeviceAllocatorControl::allocatorHeapBlockSize"]
+        [::core::mem::offset_of!(WGPUDawnDeviceAllocatorControl, allocatorHeapBlockSize) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnDrmFormatProperties {
+    pub modifier: u64,
+    pub modifierPlaneCount: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnDrmFormatProperties"]
+        [::core::mem::size_of::<WGPUDawnDrmFormatProperties>() - 16usize];
+    ["Alignment of WGPUDawnDrmFormatProperties"]
+        [::core::mem::align_of::<WGPUDawnDrmFormatProperties>() - 8usize];
+    ["Offset of field: WGPUDawnDrmFormatProperties::modifier"]
+        [::core::mem::offset_of!(WGPUDawnDrmFormatProperties, modifier) - 0usize];
+    ["Offset of field: WGPUDawnDrmFormatProperties::modifierPlaneCount"]
+        [::core::mem::offset_of!(WGPUDawnDrmFormatProperties, modifierPlaneCount) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnEncoderInternalUsageDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub useInternalUsages: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnEncoderInternalUsageDescriptor"]
+        [::core::mem::size_of::<WGPUDawnEncoderInternalUsageDescriptor>() - 24usize];
+    ["Alignment of WGPUDawnEncoderInternalUsageDescriptor"]
+        [::core::mem::align_of::<WGPUDawnEncoderInternalUsageDescriptor>() - 8usize];
+    ["Offset of field: WGPUDawnEncoderInternalUsageDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUDawnEncoderInternalUsageDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUDawnEncoderInternalUsageDescriptor::useInternalUsages"][::core::mem::offset_of!(
+        WGPUDawnEncoderInternalUsageDescriptor,
+        useInternalUsages
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnFakeBufferOOMForTesting {
+    pub chain: WGPUChainedStruct,
+    pub fakeOOMAtWireClientMap: WGPUBool,
+    pub fakeOOMAtNativeMap: WGPUBool,
+    pub fakeOOMAtDevice: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnFakeBufferOOMForTesting"]
+        [::core::mem::size_of::<WGPUDawnFakeBufferOOMForTesting>() - 32usize];
+    ["Alignment of WGPUDawnFakeBufferOOMForTesting"]
+        [::core::mem::align_of::<WGPUDawnFakeBufferOOMForTesting>() - 8usize];
+    ["Offset of field: WGPUDawnFakeBufferOOMForTesting::chain"]
+        [::core::mem::offset_of!(WGPUDawnFakeBufferOOMForTesting, chain) - 0usize];
+    ["Offset of field: WGPUDawnFakeBufferOOMForTesting::fakeOOMAtWireClientMap"][::core::mem::offset_of!(
+        WGPUDawnFakeBufferOOMForTesting,
+        fakeOOMAtWireClientMap
+    ) - 16usize];
+    ["Offset of field: WGPUDawnFakeBufferOOMForTesting::fakeOOMAtNativeMap"]
+        [::core::mem::offset_of!(WGPUDawnFakeBufferOOMForTesting, fakeOOMAtNativeMap) - 20usize];
+    ["Offset of field: WGPUDawnFakeBufferOOMForTesting::fakeOOMAtDevice"]
+        [::core::mem::offset_of!(WGPUDawnFakeBufferOOMForTesting, fakeOOMAtDevice) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnHostMappedPointerLimits {
+    pub chain: WGPUChainedStruct,
+    pub hostMappedPointerAlignment: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnHostMappedPointerLimits"]
+        [::core::mem::size_of::<WGPUDawnHostMappedPointerLimits>() - 24usize];
+    ["Alignment of WGPUDawnHostMappedPointerLimits"]
+        [::core::mem::align_of::<WGPUDawnHostMappedPointerLimits>() - 8usize];
+    ["Offset of field: WGPUDawnHostMappedPointerLimits::chain"]
+        [::core::mem::offset_of!(WGPUDawnHostMappedPointerLimits, chain) - 0usize];
+    ["Offset of field: WGPUDawnHostMappedPointerLimits::hostMappedPointerAlignment"][::core::mem::offset_of!(
+        WGPUDawnHostMappedPointerLimits,
+        hostMappedPointerAlignment
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnInjectedInvalidSType {
+    pub chain: WGPUChainedStruct,
+    pub invalidSType: WGPUSType,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnInjectedInvalidSType"]
+        [::core::mem::size_of::<WGPUDawnInjectedInvalidSType>() - 24usize];
+    ["Alignment of WGPUDawnInjectedInvalidSType"]
+        [::core::mem::align_of::<WGPUDawnInjectedInvalidSType>() - 8usize];
+    ["Offset of field: WGPUDawnInjectedInvalidSType::chain"]
+        [::core::mem::offset_of!(WGPUDawnInjectedInvalidSType, chain) - 0usize];
+    ["Offset of field: WGPUDawnInjectedInvalidSType::invalidSType"]
+        [::core::mem::offset_of!(WGPUDawnInjectedInvalidSType, invalidSType) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnRenderPassColorAttachmentRenderToSingleSampled {
+    pub chain: WGPUChainedStruct,
+    pub implicitSampleCount: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnRenderPassColorAttachmentRenderToSingleSampled"][::core::mem::size_of::<
+        WGPUDawnRenderPassColorAttachmentRenderToSingleSampled,
+    >() - 24usize];
+    ["Alignment of WGPUDawnRenderPassColorAttachmentRenderToSingleSampled"][::core::mem::align_of::<
+        WGPUDawnRenderPassColorAttachmentRenderToSingleSampled,
+    >() - 8usize];
+    ["Offset of field: WGPUDawnRenderPassColorAttachmentRenderToSingleSampled::chain"][::core::mem::offset_of!(
+        WGPUDawnRenderPassColorAttachmentRenderToSingleSampled,
+        chain
+    ) - 0usize];
+    ["Offset of field: WGPUDawnRenderPassColorAttachmentRenderToSingleSampled::implicitSampleCount"] [:: core :: mem :: offset_of ! (WGPUDawnRenderPassColorAttachmentRenderToSingleSampled , implicitSampleCount) - 16usize] ;
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnShaderModuleSPIRVOptionsDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub allowNonUniformDerivatives: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnShaderModuleSPIRVOptionsDescriptor"]
+        [::core::mem::size_of::<WGPUDawnShaderModuleSPIRVOptionsDescriptor>() - 24usize];
+    ["Alignment of WGPUDawnShaderModuleSPIRVOptionsDescriptor"]
+        [::core::mem::align_of::<WGPUDawnShaderModuleSPIRVOptionsDescriptor>() - 8usize];
+    ["Offset of field: WGPUDawnShaderModuleSPIRVOptionsDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUDawnShaderModuleSPIRVOptionsDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUDawnShaderModuleSPIRVOptionsDescriptor::allowNonUniformDerivatives"][::core::mem::offset_of!(
+        WGPUDawnShaderModuleSPIRVOptionsDescriptor,
+        allowNonUniformDerivatives
+    )
+        - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnTexelCopyBufferRowAlignmentLimits {
+    pub chain: WGPUChainedStruct,
+    pub minTexelCopyBufferRowAlignment: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnTexelCopyBufferRowAlignmentLimits"]
+        [::core::mem::size_of::<WGPUDawnTexelCopyBufferRowAlignmentLimits>() - 24usize];
+    ["Alignment of WGPUDawnTexelCopyBufferRowAlignmentLimits"]
+        [::core::mem::align_of::<WGPUDawnTexelCopyBufferRowAlignmentLimits>() - 8usize];
+    ["Offset of field: WGPUDawnTexelCopyBufferRowAlignmentLimits::chain"]
+        [::core::mem::offset_of!(WGPUDawnTexelCopyBufferRowAlignmentLimits, chain) - 0usize];
+    ["Offset of field: WGPUDawnTexelCopyBufferRowAlignmentLimits::minTexelCopyBufferRowAlignment"] [:: core :: mem :: offset_of ! (WGPUDawnTexelCopyBufferRowAlignmentLimits , minTexelCopyBufferRowAlignment) - 16usize] ;
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnTextureInternalUsageDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub internalUsage: WGPUTextureUsage,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnTextureInternalUsageDescriptor"]
+        [::core::mem::size_of::<WGPUDawnTextureInternalUsageDescriptor>() - 24usize];
+    ["Alignment of WGPUDawnTextureInternalUsageDescriptor"]
+        [::core::mem::align_of::<WGPUDawnTextureInternalUsageDescriptor>() - 8usize];
+    ["Offset of field: WGPUDawnTextureInternalUsageDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUDawnTextureInternalUsageDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUDawnTextureInternalUsageDescriptor::internalUsage"]
+        [::core::mem::offset_of!(WGPUDawnTextureInternalUsageDescriptor, internalUsage) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnTogglesDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub enabledToggleCount: usize,
+    pub enabledToggles: *const *const ::core::ffi::c_char,
+    pub disabledToggleCount: usize,
+    pub disabledToggles: *const *const ::core::ffi::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnTogglesDescriptor"]
+        [::core::mem::size_of::<WGPUDawnTogglesDescriptor>() - 48usize];
+    ["Alignment of WGPUDawnTogglesDescriptor"]
+        [::core::mem::align_of::<WGPUDawnTogglesDescriptor>() - 8usize];
+    ["Offset of field: WGPUDawnTogglesDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUDawnTogglesDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUDawnTogglesDescriptor::enabledToggleCount"]
+        [::core::mem::offset_of!(WGPUDawnTogglesDescriptor, enabledToggleCount) - 16usize];
+    ["Offset of field: WGPUDawnTogglesDescriptor::enabledToggles"]
+        [::core::mem::offset_of!(WGPUDawnTogglesDescriptor, enabledToggles) - 24usize];
+    ["Offset of field: WGPUDawnTogglesDescriptor::disabledToggleCount"]
+        [::core::mem::offset_of!(WGPUDawnTogglesDescriptor, disabledToggleCount) - 32usize];
+    ["Offset of field: WGPUDawnTogglesDescriptor::disabledToggles"]
+        [::core::mem::offset_of!(WGPUDawnTogglesDescriptor, disabledToggles) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnWGSLBlocklist {
+    pub chain: WGPUChainedStruct,
+    pub blocklistedFeatureCount: usize,
+    pub blocklistedFeatures: *const *const ::core::ffi::c_char,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnWGSLBlocklist"][::core::mem::size_of::<WGPUDawnWGSLBlocklist>() - 32usize];
+    ["Alignment of WGPUDawnWGSLBlocklist"]
+        [::core::mem::align_of::<WGPUDawnWGSLBlocklist>() - 8usize];
+    ["Offset of field: WGPUDawnWGSLBlocklist::chain"]
+        [::core::mem::offset_of!(WGPUDawnWGSLBlocklist, chain) - 0usize];
+    ["Offset of field: WGPUDawnWGSLBlocklist::blocklistedFeatureCount"]
+        [::core::mem::offset_of!(WGPUDawnWGSLBlocklist, blocklistedFeatureCount) - 16usize];
+    ["Offset of field: WGPUDawnWGSLBlocklist::blocklistedFeatures"]
+        [::core::mem::offset_of!(WGPUDawnWGSLBlocklist, blocklistedFeatures) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnWireWGSLControl {
+    pub chain: WGPUChainedStruct,
+    pub enableExperimental: WGPUBool,
+    pub enableUnsafe: WGPUBool,
+    pub enableTesting: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnWireWGSLControl"]
+        [::core::mem::size_of::<WGPUDawnWireWGSLControl>() - 32usize];
+    ["Alignment of WGPUDawnWireWGSLControl"]
+        [::core::mem::align_of::<WGPUDawnWireWGSLControl>() - 8usize];
+    ["Offset of field: WGPUDawnWireWGSLControl::chain"]
+        [::core::mem::offset_of!(WGPUDawnWireWGSLControl, chain) - 0usize];
+    ["Offset of field: WGPUDawnWireWGSLControl::enableExperimental"]
+        [::core::mem::offset_of!(WGPUDawnWireWGSLControl, enableExperimental) - 16usize];
+    ["Offset of field: WGPUDawnWireWGSLControl::enableUnsafe"]
+        [::core::mem::offset_of!(WGPUDawnWireWGSLControl, enableUnsafe) - 20usize];
+    ["Offset of field: WGPUDawnWireWGSLControl::enableTesting"]
+        [::core::mem::offset_of!(WGPUDawnWireWGSLControl, enableTesting) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUEmscriptenSurfaceSourceCanvasHTMLSelector {
+    pub chain: WGPUChainedStruct,
+    pub selector: WGPUStringView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUEmscriptenSurfaceSourceCanvasHTMLSelector"]
+        [::core::mem::size_of::<WGPUEmscriptenSurfaceSourceCanvasHTMLSelector>() - 32usize];
+    ["Alignment of WGPUEmscriptenSurfaceSourceCanvasHTMLSelector"]
+        [::core::mem::align_of::<WGPUEmscriptenSurfaceSourceCanvasHTMLSelector>() - 8usize];
+    ["Offset of field: WGPUEmscriptenSurfaceSourceCanvasHTMLSelector::chain"]
+        [::core::mem::offset_of!(WGPUEmscriptenSurfaceSourceCanvasHTMLSelector, chain) - 0usize];
+    ["Offset of field: WGPUEmscriptenSurfaceSourceCanvasHTMLSelector::selector"][::core::mem::offset_of!(
+        WGPUEmscriptenSurfaceSourceCanvasHTMLSelector,
+        selector
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUExtent2D {
+    pub width: u32,
+    pub height: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUExtent2D"][::core::mem::size_of::<WGPUExtent2D>() - 8usize];
+    ["Alignment of WGPUExtent2D"][::core::mem::align_of::<WGPUExtent2D>() - 4usize];
+    ["Offset of field: WGPUExtent2D::width"][::core::mem::offset_of!(WGPUExtent2D, width) - 0usize];
+    ["Offset of field: WGPUExtent2D::height"]
+        [::core::mem::offset_of!(WGPUExtent2D, height) - 4usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUExtent3D {
     pub width: u32,
     pub height: u32,
@@ -2350,6 +3023,37 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUExternalTextureBindingEntry {
+    pub chain: WGPUChainedStruct,
+    pub externalTexture: WGPUExternalTexture,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUExternalTextureBindingEntry"]
+        [::core::mem::size_of::<WGPUExternalTextureBindingEntry>() - 24usize];
+    ["Alignment of WGPUExternalTextureBindingEntry"]
+        [::core::mem::align_of::<WGPUExternalTextureBindingEntry>() - 8usize];
+    ["Offset of field: WGPUExternalTextureBindingEntry::chain"]
+        [::core::mem::offset_of!(WGPUExternalTextureBindingEntry, chain) - 0usize];
+    ["Offset of field: WGPUExternalTextureBindingEntry::externalTexture"]
+        [::core::mem::offset_of!(WGPUExternalTextureBindingEntry, externalTexture) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUExternalTextureBindingLayout {
+    pub chain: WGPUChainedStruct,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUExternalTextureBindingLayout"]
+        [::core::mem::size_of::<WGPUExternalTextureBindingLayout>() - 16usize];
+    ["Alignment of WGPUExternalTextureBindingLayout"]
+        [::core::mem::align_of::<WGPUExternalTextureBindingLayout>() - 8usize];
+    ["Offset of field: WGPUExternalTextureBindingLayout::chain"]
+        [::core::mem::offset_of!(WGPUExternalTextureBindingLayout, chain) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUFuture {
     pub id: u64,
 }
@@ -2361,126 +3065,52 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUInstanceLimits {
+pub struct WGPUInstanceCapabilities {
     pub nextInChain: *mut WGPUChainedStruct,
+    pub timedWaitAnyEnable: WGPUBool,
     pub timedWaitAnyMaxCount: usize,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUInstanceLimits"][::core::mem::size_of::<WGPUInstanceLimits>() - 16usize];
-    ["Alignment of WGPUInstanceLimits"][::core::mem::align_of::<WGPUInstanceLimits>() - 8usize];
-    ["Offset of field: WGPUInstanceLimits::nextInChain"]
-        [::core::mem::offset_of!(WGPUInstanceLimits, nextInChain) - 0usize];
-    ["Offset of field: WGPUInstanceLimits::timedWaitAnyMaxCount"]
-        [::core::mem::offset_of!(WGPUInstanceLimits, timedWaitAnyMaxCount) - 8usize];
+    ["Size of WGPUInstanceCapabilities"]
+        [::core::mem::size_of::<WGPUInstanceCapabilities>() - 24usize];
+    ["Alignment of WGPUInstanceCapabilities"]
+        [::core::mem::align_of::<WGPUInstanceCapabilities>() - 8usize];
+    ["Offset of field: WGPUInstanceCapabilities::nextInChain"]
+        [::core::mem::offset_of!(WGPUInstanceCapabilities, nextInChain) - 0usize];
+    ["Offset of field: WGPUInstanceCapabilities::timedWaitAnyEnable"]
+        [::core::mem::offset_of!(WGPUInstanceCapabilities, timedWaitAnyEnable) - 8usize];
+    ["Offset of field: WGPUInstanceCapabilities::timedWaitAnyMaxCount"]
+        [::core::mem::offset_of!(WGPUInstanceCapabilities, timedWaitAnyMaxCount) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPULimits {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub maxTextureDimension1D: u32,
-    pub maxTextureDimension2D: u32,
-    pub maxTextureDimension3D: u32,
-    pub maxTextureArrayLayers: u32,
-    pub maxBindGroups: u32,
-    pub maxBindGroupsPlusVertexBuffers: u32,
-    pub maxBindingsPerBindGroup: u32,
-    pub maxDynamicUniformBuffersPerPipelineLayout: u32,
-    pub maxDynamicStorageBuffersPerPipelineLayout: u32,
-    pub maxSampledTexturesPerShaderStage: u32,
-    pub maxSamplersPerShaderStage: u32,
-    pub maxStorageBuffersPerShaderStage: u32,
-    pub maxStorageTexturesPerShaderStage: u32,
-    pub maxUniformBuffersPerShaderStage: u32,
-    pub maxUniformBufferBindingSize: u64,
-    pub maxStorageBufferBindingSize: u64,
-    pub minUniformBufferOffsetAlignment: u32,
-    pub minStorageBufferOffsetAlignment: u32,
-    pub maxVertexBuffers: u32,
-    pub maxBufferSize: u64,
-    pub maxVertexAttributes: u32,
-    pub maxVertexBufferArrayStride: u32,
-    pub maxInterStageShaderVariables: u32,
-    pub maxColorAttachments: u32,
-    pub maxColorAttachmentBytesPerSample: u32,
-    pub maxComputeWorkgroupStorageSize: u32,
-    pub maxComputeInvocationsPerWorkgroup: u32,
-    pub maxComputeWorkgroupSizeX: u32,
-    pub maxComputeWorkgroupSizeY: u32,
-    pub maxComputeWorkgroupSizeZ: u32,
-    pub maxComputeWorkgroupsPerDimension: u32,
-    pub maxImmediateSize: u32,
+pub struct WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER {
+    pub unused: WGPUBool,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPULimits"][::core::mem::size_of::<WGPULimits>() - 152usize];
-    ["Alignment of WGPULimits"][::core::mem::align_of::<WGPULimits>() - 8usize];
-    ["Offset of field: WGPULimits::nextInChain"]
-        [::core::mem::offset_of!(WGPULimits, nextInChain) - 0usize];
-    ["Offset of field: WGPULimits::maxTextureDimension1D"]
-        [::core::mem::offset_of!(WGPULimits, maxTextureDimension1D) - 8usize];
-    ["Offset of field: WGPULimits::maxTextureDimension2D"]
-        [::core::mem::offset_of!(WGPULimits, maxTextureDimension2D) - 12usize];
-    ["Offset of field: WGPULimits::maxTextureDimension3D"]
-        [::core::mem::offset_of!(WGPULimits, maxTextureDimension3D) - 16usize];
-    ["Offset of field: WGPULimits::maxTextureArrayLayers"]
-        [::core::mem::offset_of!(WGPULimits, maxTextureArrayLayers) - 20usize];
-    ["Offset of field: WGPULimits::maxBindGroups"]
-        [::core::mem::offset_of!(WGPULimits, maxBindGroups) - 24usize];
-    ["Offset of field: WGPULimits::maxBindGroupsPlusVertexBuffers"]
-        [::core::mem::offset_of!(WGPULimits, maxBindGroupsPlusVertexBuffers) - 28usize];
-    ["Offset of field: WGPULimits::maxBindingsPerBindGroup"]
-        [::core::mem::offset_of!(WGPULimits, maxBindingsPerBindGroup) - 32usize];
-    ["Offset of field: WGPULimits::maxDynamicUniformBuffersPerPipelineLayout"]
-        [::core::mem::offset_of!(WGPULimits, maxDynamicUniformBuffersPerPipelineLayout) - 36usize];
-    ["Offset of field: WGPULimits::maxDynamicStorageBuffersPerPipelineLayout"]
-        [::core::mem::offset_of!(WGPULimits, maxDynamicStorageBuffersPerPipelineLayout) - 40usize];
-    ["Offset of field: WGPULimits::maxSampledTexturesPerShaderStage"]
-        [::core::mem::offset_of!(WGPULimits, maxSampledTexturesPerShaderStage) - 44usize];
-    ["Offset of field: WGPULimits::maxSamplersPerShaderStage"]
-        [::core::mem::offset_of!(WGPULimits, maxSamplersPerShaderStage) - 48usize];
-    ["Offset of field: WGPULimits::maxStorageBuffersPerShaderStage"]
-        [::core::mem::offset_of!(WGPULimits, maxStorageBuffersPerShaderStage) - 52usize];
-    ["Offset of field: WGPULimits::maxStorageTexturesPerShaderStage"]
-        [::core::mem::offset_of!(WGPULimits, maxStorageTexturesPerShaderStage) - 56usize];
-    ["Offset of field: WGPULimits::maxUniformBuffersPerShaderStage"]
-        [::core::mem::offset_of!(WGPULimits, maxUniformBuffersPerShaderStage) - 60usize];
-    ["Offset of field: WGPULimits::maxUniformBufferBindingSize"]
-        [::core::mem::offset_of!(WGPULimits, maxUniformBufferBindingSize) - 64usize];
-    ["Offset of field: WGPULimits::maxStorageBufferBindingSize"]
-        [::core::mem::offset_of!(WGPULimits, maxStorageBufferBindingSize) - 72usize];
-    ["Offset of field: WGPULimits::minUniformBufferOffsetAlignment"]
-        [::core::mem::offset_of!(WGPULimits, minUniformBufferOffsetAlignment) - 80usize];
-    ["Offset of field: WGPULimits::minStorageBufferOffsetAlignment"]
-        [::core::mem::offset_of!(WGPULimits, minStorageBufferOffsetAlignment) - 84usize];
-    ["Offset of field: WGPULimits::maxVertexBuffers"]
-        [::core::mem::offset_of!(WGPULimits, maxVertexBuffers) - 88usize];
-    ["Offset of field: WGPULimits::maxBufferSize"]
-        [::core::mem::offset_of!(WGPULimits, maxBufferSize) - 96usize];
-    ["Offset of field: WGPULimits::maxVertexAttributes"]
-        [::core::mem::offset_of!(WGPULimits, maxVertexAttributes) - 104usize];
-    ["Offset of field: WGPULimits::maxVertexBufferArrayStride"]
-        [::core::mem::offset_of!(WGPULimits, maxVertexBufferArrayStride) - 108usize];
-    ["Offset of field: WGPULimits::maxInterStageShaderVariables"]
-        [::core::mem::offset_of!(WGPULimits, maxInterStageShaderVariables) - 112usize];
-    ["Offset of field: WGPULimits::maxColorAttachments"]
-        [::core::mem::offset_of!(WGPULimits, maxColorAttachments) - 116usize];
-    ["Offset of field: WGPULimits::maxColorAttachmentBytesPerSample"]
-        [::core::mem::offset_of!(WGPULimits, maxColorAttachmentBytesPerSample) - 120usize];
-    ["Offset of field: WGPULimits::maxComputeWorkgroupStorageSize"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupStorageSize) - 124usize];
-    ["Offset of field: WGPULimits::maxComputeInvocationsPerWorkgroup"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeInvocationsPerWorkgroup) - 128usize];
-    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeX"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeX) - 132usize];
-    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeY"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeY) - 136usize];
-    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeZ"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeZ) - 140usize];
-    ["Offset of field: WGPULimits::maxComputeWorkgroupsPerDimension"]
-        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupsPerDimension) - 144usize];
-    ["Offset of field: WGPULimits::maxImmediateSize"]
-        [::core::mem::offset_of!(WGPULimits, maxImmediateSize) - 148usize];
+    ["Size of WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER"]
+        [::core::mem::size_of::<WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER>() - 4usize];
+    ["Alignment of WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER"]
+        [::core::mem::align_of::<WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER>() - 4usize];
+    ["Offset of field: WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER::unused"]
+        [::core::mem::offset_of!(WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER, unused) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUMemoryHeapInfo {
+    pub properties: WGPUHeapProperty,
+    pub size: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUMemoryHeapInfo"][::core::mem::size_of::<WGPUMemoryHeapInfo>() - 16usize];
+    ["Alignment of WGPUMemoryHeapInfo"][::core::mem::align_of::<WGPUMemoryHeapInfo>() - 8usize];
+    ["Offset of field: WGPUMemoryHeapInfo::properties"]
+        [::core::mem::offset_of!(WGPUMemoryHeapInfo, properties) - 0usize];
+    ["Offset of field: WGPUMemoryHeapInfo::size"]
+        [::core::mem::offset_of!(WGPUMemoryHeapInfo, size) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2502,6 +3132,19 @@ const _: () = {
         [::core::mem::offset_of!(WGPUMultisampleState, mask) - 12usize];
     ["Offset of field: WGPUMultisampleState::alphaToCoverageEnabled"]
         [::core::mem::offset_of!(WGPUMultisampleState, alphaToCoverageEnabled) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUOrigin2D {
+    pub x: u32,
+    pub y: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUOrigin2D"][::core::mem::size_of::<WGPUOrigin2D>() - 8usize];
+    ["Alignment of WGPUOrigin2D"][::core::mem::align_of::<WGPUOrigin2D>() - 4usize];
+    ["Offset of field: WGPUOrigin2D::x"][::core::mem::offset_of!(WGPUOrigin2D, x) - 0usize];
+    ["Offset of field: WGPUOrigin2D::y"][::core::mem::offset_of!(WGPUOrigin2D, y) - 4usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2543,29 +3186,23 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUPipelineLayoutDescriptor {
+pub struct WGPUPipelineLayoutStorageAttachment {
     pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub bindGroupLayoutCount: usize,
-    pub bindGroupLayouts: *const WGPUBindGroupLayout,
-    pub immediateSize: u32,
+    pub offset: u64,
+    pub format: WGPUTextureFormat,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUPipelineLayoutDescriptor"]
-        [::core::mem::size_of::<WGPUPipelineLayoutDescriptor>() - 48usize];
-    ["Alignment of WGPUPipelineLayoutDescriptor"]
-        [::core::mem::align_of::<WGPUPipelineLayoutDescriptor>() - 8usize];
-    ["Offset of field: WGPUPipelineLayoutDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUPipelineLayoutDescriptor::label"]
-        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, label) - 8usize];
-    ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayoutCount"]
-        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayoutCount) - 24usize];
-    ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayouts"]
-        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayouts) - 32usize];
-    ["Offset of field: WGPUPipelineLayoutDescriptor::immediateSize"]
-        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, immediateSize) - 40usize];
+    ["Size of WGPUPipelineLayoutStorageAttachment"]
+        [::core::mem::size_of::<WGPUPipelineLayoutStorageAttachment>() - 24usize];
+    ["Alignment of WGPUPipelineLayoutStorageAttachment"]
+        [::core::mem::align_of::<WGPUPipelineLayoutStorageAttachment>() - 8usize];
+    ["Offset of field: WGPUPipelineLayoutStorageAttachment::nextInChain"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutStorageAttachment, nextInChain) - 0usize];
+    ["Offset of field: WGPUPipelineLayoutStorageAttachment::offset"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutStorageAttachment, offset) - 8usize];
+    ["Offset of field: WGPUPipelineLayoutStorageAttachment::format"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutStorageAttachment, format) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2728,6 +3365,64 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPURenderPassDescriptorExpandResolveRect {
+    pub chain: WGPUChainedStruct,
+    pub x: u32,
+    pub y: u32,
+    pub width: u32,
+    pub height: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPURenderPassDescriptorExpandResolveRect"]
+        [::core::mem::size_of::<WGPURenderPassDescriptorExpandResolveRect>() - 32usize];
+    ["Alignment of WGPURenderPassDescriptorExpandResolveRect"]
+        [::core::mem::align_of::<WGPURenderPassDescriptorExpandResolveRect>() - 8usize];
+    ["Offset of field: WGPURenderPassDescriptorExpandResolveRect::chain"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorExpandResolveRect, chain) - 0usize];
+    ["Offset of field: WGPURenderPassDescriptorExpandResolveRect::x"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorExpandResolveRect, x) - 16usize];
+    ["Offset of field: WGPURenderPassDescriptorExpandResolveRect::y"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorExpandResolveRect, y) - 20usize];
+    ["Offset of field: WGPURenderPassDescriptorExpandResolveRect::width"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorExpandResolveRect, width) - 24usize];
+    ["Offset of field: WGPURenderPassDescriptorExpandResolveRect::height"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorExpandResolveRect, height) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPURenderPassDescriptorResolveRect {
+    pub chain: WGPUChainedStruct,
+    pub colorOffsetX: u32,
+    pub colorOffsetY: u32,
+    pub resolveOffsetX: u32,
+    pub resolveOffsetY: u32,
+    pub width: u32,
+    pub height: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPURenderPassDescriptorResolveRect"]
+        [::core::mem::size_of::<WGPURenderPassDescriptorResolveRect>() - 40usize];
+    ["Alignment of WGPURenderPassDescriptorResolveRect"]
+        [::core::mem::align_of::<WGPURenderPassDescriptorResolveRect>() - 8usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::chain"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, chain) - 0usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::colorOffsetX"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, colorOffsetX) - 16usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::colorOffsetY"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, colorOffsetY) - 20usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::resolveOffsetX"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, resolveOffsetX) - 24usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::resolveOffsetY"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, resolveOffsetY) - 28usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::width"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, width) - 32usize];
+    ["Offset of field: WGPURenderPassDescriptorResolveRect::height"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptorResolveRect, height) - 36usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPURenderPassMaxDrawCount {
     pub chain: WGPUChainedStruct,
     pub maxDrawCount: u64,
@@ -2779,49 +3474,20 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUSamplerDescriptor {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub addressModeU: WGPUAddressMode,
-    pub addressModeV: WGPUAddressMode,
-    pub addressModeW: WGPUAddressMode,
-    pub magFilter: WGPUFilterMode,
-    pub minFilter: WGPUFilterMode,
-    pub mipmapFilter: WGPUMipmapFilterMode,
-    pub lodMinClamp: f32,
-    pub lodMaxClamp: f32,
-    pub compare: WGPUCompareFunction,
-    pub maxAnisotropy: u16,
+pub struct WGPUShaderModuleCompilationOptions {
+    pub chain: WGPUChainedStruct,
+    pub strictMath: WGPUBool,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUSamplerDescriptor"][::core::mem::size_of::<WGPUSamplerDescriptor>() - 64usize];
-    ["Alignment of WGPUSamplerDescriptor"]
-        [::core::mem::align_of::<WGPUSamplerDescriptor>() - 8usize];
-    ["Offset of field: WGPUSamplerDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUSamplerDescriptor::label"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, label) - 8usize];
-    ["Offset of field: WGPUSamplerDescriptor::addressModeU"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeU) - 24usize];
-    ["Offset of field: WGPUSamplerDescriptor::addressModeV"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeV) - 28usize];
-    ["Offset of field: WGPUSamplerDescriptor::addressModeW"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeW) - 32usize];
-    ["Offset of field: WGPUSamplerDescriptor::magFilter"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, magFilter) - 36usize];
-    ["Offset of field: WGPUSamplerDescriptor::minFilter"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, minFilter) - 40usize];
-    ["Offset of field: WGPUSamplerDescriptor::mipmapFilter"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, mipmapFilter) - 44usize];
-    ["Offset of field: WGPUSamplerDescriptor::lodMinClamp"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMinClamp) - 48usize];
-    ["Offset of field: WGPUSamplerDescriptor::lodMaxClamp"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMaxClamp) - 52usize];
-    ["Offset of field: WGPUSamplerDescriptor::compare"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, compare) - 56usize];
-    ["Offset of field: WGPUSamplerDescriptor::maxAnisotropy"]
-        [::core::mem::offset_of!(WGPUSamplerDescriptor, maxAnisotropy) - 60usize];
+    ["Size of WGPUShaderModuleCompilationOptions"]
+        [::core::mem::size_of::<WGPUShaderModuleCompilationOptions>() - 24usize];
+    ["Alignment of WGPUShaderModuleCompilationOptions"]
+        [::core::mem::align_of::<WGPUShaderModuleCompilationOptions>() - 8usize];
+    ["Offset of field: WGPUShaderModuleCompilationOptions::chain"]
+        [::core::mem::offset_of!(WGPUShaderModuleCompilationOptions, chain) - 0usize];
+    ["Offset of field: WGPUShaderModuleCompilationOptions::strictMath"]
+        [::core::mem::offset_of!(WGPUShaderModuleCompilationOptions, strictMath) - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2856,6 +3522,592 @@ const _: () = {
         [::core::mem::offset_of!(WGPUShaderSourceWGSL, chain) - 0usize];
     ["Offset of field: WGPUShaderSourceWGSL::code"]
         [::core::mem::offset_of!(WGPUShaderSourceWGSL, code) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedBufferMemoryBeginAccessDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub initialized: WGPUBool,
+    pub fenceCount: usize,
+    pub fences: *const WGPUSharedFence,
+    pub signaledValues: *const u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedBufferMemoryBeginAccessDescriptor"]
+        [::core::mem::size_of::<WGPUSharedBufferMemoryBeginAccessDescriptor>() - 40usize];
+    ["Alignment of WGPUSharedBufferMemoryBeginAccessDescriptor"]
+        [::core::mem::align_of::<WGPUSharedBufferMemoryBeginAccessDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryBeginAccessDescriptor::nextInChain"][::core::mem::offset_of!(
+        WGPUSharedBufferMemoryBeginAccessDescriptor,
+        nextInChain
+    ) - 0usize];
+    ["Offset of field: WGPUSharedBufferMemoryBeginAccessDescriptor::initialized"][::core::mem::offset_of!(
+        WGPUSharedBufferMemoryBeginAccessDescriptor,
+        initialized
+    ) - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryBeginAccessDescriptor::fenceCount"][::core::mem::offset_of!(
+        WGPUSharedBufferMemoryBeginAccessDescriptor,
+        fenceCount
+    ) - 16usize];
+    ["Offset of field: WGPUSharedBufferMemoryBeginAccessDescriptor::fences"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryBeginAccessDescriptor, fences) - 24usize];
+    ["Offset of field: WGPUSharedBufferMemoryBeginAccessDescriptor::signaledValues"][::core::mem::offset_of!(
+        WGPUSharedBufferMemoryBeginAccessDescriptor,
+        signaledValues
+    ) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedBufferMemoryDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedBufferMemoryDescriptor"]
+        [::core::mem::size_of::<WGPUSharedBufferMemoryDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedBufferMemoryDescriptor"]
+        [::core::mem::align_of::<WGPUSharedBufferMemoryDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedBufferMemoryDescriptor::label"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryDescriptor, label) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedBufferMemoryEndAccessState {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub initialized: WGPUBool,
+    pub fenceCount: usize,
+    pub fences: *const WGPUSharedFence,
+    pub signaledValues: *const u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedBufferMemoryEndAccessState"]
+        [::core::mem::size_of::<WGPUSharedBufferMemoryEndAccessState>() - 40usize];
+    ["Alignment of WGPUSharedBufferMemoryEndAccessState"]
+        [::core::mem::align_of::<WGPUSharedBufferMemoryEndAccessState>() - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryEndAccessState::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryEndAccessState, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedBufferMemoryEndAccessState::initialized"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryEndAccessState, initialized) - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryEndAccessState::fenceCount"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryEndAccessState, fenceCount) - 16usize];
+    ["Offset of field: WGPUSharedBufferMemoryEndAccessState::fences"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryEndAccessState, fences) - 24usize];
+    ["Offset of field: WGPUSharedBufferMemoryEndAccessState::signaledValues"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryEndAccessState, signaledValues) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedBufferMemoryProperties {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub usage: WGPUBufferUsage,
+    pub size: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedBufferMemoryProperties"]
+        [::core::mem::size_of::<WGPUSharedBufferMemoryProperties>() - 24usize];
+    ["Alignment of WGPUSharedBufferMemoryProperties"]
+        [::core::mem::align_of::<WGPUSharedBufferMemoryProperties>() - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryProperties::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryProperties, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedBufferMemoryProperties::usage"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryProperties, usage) - 8usize];
+    ["Offset of field: WGPUSharedBufferMemoryProperties::size"]
+        [::core::mem::offset_of!(WGPUSharedBufferMemoryProperties, size) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceDXGISharedHandleDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceDXGISharedHandleDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceDXGISharedHandleDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceDXGISharedHandleDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceDXGISharedHandleDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceDXGISharedHandleDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceDXGISharedHandleDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceDXGISharedHandleDescriptor::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceDXGISharedHandleDescriptor, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceDXGISharedHandleExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub handle: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceDXGISharedHandleExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceDXGISharedHandleExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceDXGISharedHandleExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceDXGISharedHandleExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceDXGISharedHandleExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceDXGISharedHandleExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceDXGISharedHandleExportInfo::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceDXGISharedHandleExportInfo, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceEGLSyncDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub sync: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceEGLSyncDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceEGLSyncDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceEGLSyncDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceEGLSyncDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceEGLSyncDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceEGLSyncDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceEGLSyncDescriptor::sync"]
+        [::core::mem::offset_of!(WGPUSharedFenceEGLSyncDescriptor, sync) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceEGLSyncExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub sync: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceEGLSyncExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceEGLSyncExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceEGLSyncExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceEGLSyncExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceEGLSyncExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceEGLSyncExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceEGLSyncExportInfo::sync"]
+        [::core::mem::offset_of!(WGPUSharedFenceEGLSyncExportInfo, sync) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceMTLSharedEventDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub sharedEvent: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceMTLSharedEventDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceMTLSharedEventDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceMTLSharedEventDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceMTLSharedEventDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceMTLSharedEventDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceMTLSharedEventDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceMTLSharedEventDescriptor::sharedEvent"]
+        [::core::mem::offset_of!(WGPUSharedFenceMTLSharedEventDescriptor, sharedEvent) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceMTLSharedEventExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub sharedEvent: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceMTLSharedEventExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceMTLSharedEventExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceMTLSharedEventExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceMTLSharedEventExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceMTLSharedEventExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceMTLSharedEventExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceMTLSharedEventExportInfo::sharedEvent"]
+        [::core::mem::offset_of!(WGPUSharedFenceMTLSharedEventExportInfo, sharedEvent) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceSyncFDDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: ::core::ffi::c_int,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceSyncFDDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceSyncFDDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceSyncFDDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceSyncFDDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceSyncFDDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceSyncFDDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceSyncFDDescriptor::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceSyncFDDescriptor, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceSyncFDExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub handle: ::core::ffi::c_int,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceSyncFDExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceSyncFDExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceSyncFDExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceSyncFDExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceSyncFDExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceSyncFDExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceSyncFDExportInfo::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceSyncFDExportInfo, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: ::core::ffi::c_int,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub handle: ::core::ffi::c_int,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo::handle"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo, handle) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceVkSemaphoreZirconHandleDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceVkSemaphoreZirconHandleDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceVkSemaphoreZirconHandleDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceVkSemaphoreZirconHandleDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceVkSemaphoreZirconHandleDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreZirconHandleDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreZirconHandleDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreZirconHandleDescriptor::handle"][::core::mem::offset_of!(
+        WGPUSharedFenceVkSemaphoreZirconHandleDescriptor,
+        handle
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceVkSemaphoreZirconHandleExportInfo {
+    pub chain: WGPUChainedStruct,
+    pub handle: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceVkSemaphoreZirconHandleExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceVkSemaphoreZirconHandleExportInfo>() - 24usize];
+    ["Alignment of WGPUSharedFenceVkSemaphoreZirconHandleExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceVkSemaphoreZirconHandleExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreZirconHandleExportInfo::chain"]
+        [::core::mem::offset_of!(WGPUSharedFenceVkSemaphoreZirconHandleExportInfo, chain) - 0usize];
+    ["Offset of field: WGPUSharedFenceVkSemaphoreZirconHandleExportInfo::handle"][::core::mem::offset_of!(
+        WGPUSharedFenceVkSemaphoreZirconHandleExportInfo,
+        handle
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryAHardwareBufferDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: *mut ::core::ffi::c_void,
+    pub useExternalFormat: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryAHardwareBufferDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryAHardwareBufferDescriptor>() - 32usize];
+    ["Alignment of WGPUSharedTextureMemoryAHardwareBufferDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryAHardwareBufferDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryAHardwareBufferDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryAHardwareBufferDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryAHardwareBufferDescriptor::handle"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryAHardwareBufferDescriptor,
+        handle
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryAHardwareBufferDescriptor::useExternalFormat"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryAHardwareBufferDescriptor,
+        useExternalFormat
+    )
+        - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryD3DSwapchainBeginState {
+    pub chain: WGPUChainedStruct,
+    pub isSwapchain: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryD3DSwapchainBeginState"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryD3DSwapchainBeginState>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryD3DSwapchainBeginState"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryD3DSwapchainBeginState>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryD3DSwapchainBeginState::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryD3DSwapchainBeginState, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryD3DSwapchainBeginState::isSwapchain"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryD3DSwapchainBeginState,
+        isSwapchain
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryDmaBufPlane {
+    pub fd: ::core::ffi::c_int,
+    pub offset: u64,
+    pub stride: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryDmaBufPlane"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryDmaBufPlane>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryDmaBufPlane"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryDmaBufPlane>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufPlane::fd"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufPlane, fd) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufPlane::offset"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufPlane, offset) - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufPlane::stride"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufPlane, stride) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryDXGISharedHandleDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub handle: *mut ::core::ffi::c_void,
+    pub useKeyedMutex: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryDXGISharedHandleDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryDXGISharedHandleDescriptor>() - 32usize];
+    ["Alignment of WGPUSharedTextureMemoryDXGISharedHandleDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryDXGISharedHandleDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryDXGISharedHandleDescriptor::chain"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryDXGISharedHandleDescriptor,
+        chain
+    ) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryDXGISharedHandleDescriptor::handle"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryDXGISharedHandleDescriptor,
+        handle
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryDXGISharedHandleDescriptor::useKeyedMutex"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryDXGISharedHandleDescriptor,
+        useKeyedMutex
+    )
+        - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryEGLImageDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub image: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryEGLImageDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryEGLImageDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryEGLImageDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryEGLImageDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryEGLImageDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEGLImageDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryEGLImageDescriptor::image"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEGLImageDescriptor, image) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryIOSurfaceDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub ioSurface: *mut ::core::ffi::c_void,
+    pub allowStorageBinding: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryIOSurfaceDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryIOSurfaceDescriptor>() - 32usize];
+    ["Alignment of WGPUSharedTextureMemoryIOSurfaceDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryIOSurfaceDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryIOSurfaceDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryIOSurfaceDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryIOSurfaceDescriptor::ioSurface"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryIOSurfaceDescriptor, ioSurface) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryIOSurfaceDescriptor::allowStorageBinding"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryIOSurfaceDescriptor,
+        allowStorageBinding
+    )
+        - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryOpaqueFDDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub vkImageCreateInfo: *const ::core::ffi::c_void,
+    pub memoryFD: ::core::ffi::c_int,
+    pub memoryTypeIndex: u32,
+    pub allocationSize: u64,
+    pub dedicatedAllocation: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryOpaqueFDDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryOpaqueFDDescriptor>() - 48usize];
+    ["Alignment of WGPUSharedTextureMemoryOpaqueFDDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryOpaqueFDDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryOpaqueFDDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::vkImageCreateInfo"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryOpaqueFDDescriptor,
+        vkImageCreateInfo
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::memoryFD"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryOpaqueFDDescriptor, memoryFD) - 24usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::memoryTypeIndex"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryOpaqueFDDescriptor,
+        memoryTypeIndex
+    ) - 28usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::allocationSize"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryOpaqueFDDescriptor,
+        allocationSize
+    ) - 32usize];
+    ["Offset of field: WGPUSharedTextureMemoryOpaqueFDDescriptor::dedicatedAllocation"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryOpaqueFDDescriptor,
+        dedicatedAllocation
+    )
+        - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub dedicatedAllocation: WGPUBool,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor"][::core::mem::size_of::<
+        WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor,
+    >() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor"][::core::mem::align_of::<
+        WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor,
+    >() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor::chain"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor,
+        chain
+    ) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor::dedicatedAllocation"] [:: core :: mem :: offset_of ! (WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor , dedicatedAllocation) - 16usize] ;
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryVkImageLayoutBeginState {
+    pub chain: WGPUChainedStruct,
+    pub oldLayout: i32,
+    pub newLayout: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryVkImageLayoutBeginState"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryVkImageLayoutBeginState>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryVkImageLayoutBeginState"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryVkImageLayoutBeginState>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutBeginState::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryVkImageLayoutBeginState, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutBeginState::oldLayout"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryVkImageLayoutBeginState,
+        oldLayout
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutBeginState::newLayout"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryVkImageLayoutBeginState,
+        newLayout
+    ) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryVkImageLayoutEndState {
+    pub chain: WGPUChainedStruct,
+    pub oldLayout: i32,
+    pub newLayout: i32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryVkImageLayoutEndState"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryVkImageLayoutEndState>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryVkImageLayoutEndState"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryVkImageLayoutEndState>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutEndState::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryVkImageLayoutEndState, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutEndState::oldLayout"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryVkImageLayoutEndState,
+        oldLayout
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryVkImageLayoutEndState::newLayout"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryVkImageLayoutEndState,
+        newLayout
+    ) - 20usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryZirconHandleDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub memoryFD: u32,
+    pub allocationSize: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryZirconHandleDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryZirconHandleDescriptor>() - 32usize];
+    ["Alignment of WGPUSharedTextureMemoryZirconHandleDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryZirconHandleDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryZirconHandleDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryZirconHandleDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryZirconHandleDescriptor::memoryFD"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryZirconHandleDescriptor,
+        memoryFD
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryZirconHandleDescriptor::allocationSize"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryZirconHandleDescriptor,
+        allocationSize
+    ) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUStaticSamplerBindingLayout {
+    pub chain: WGPUChainedStruct,
+    pub sampler: WGPUSampler,
+    pub sampledTextureBinding: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUStaticSamplerBindingLayout"]
+        [::core::mem::size_of::<WGPUStaticSamplerBindingLayout>() - 32usize];
+    ["Alignment of WGPUStaticSamplerBindingLayout"]
+        [::core::mem::align_of::<WGPUStaticSamplerBindingLayout>() - 8usize];
+    ["Offset of field: WGPUStaticSamplerBindingLayout::chain"]
+        [::core::mem::offset_of!(WGPUStaticSamplerBindingLayout, chain) - 0usize];
+    ["Offset of field: WGPUStaticSamplerBindingLayout::sampler"]
+        [::core::mem::offset_of!(WGPUStaticSamplerBindingLayout, sampler) - 16usize];
+    ["Offset of field: WGPUStaticSamplerBindingLayout::sampledTextureBinding"]
+        [::core::mem::offset_of!(WGPUStaticSamplerBindingLayout, sampledTextureBinding) - 24usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2903,6 +4155,32 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUSubgroupMatrixConfig {
+    pub componentType: WGPUSubgroupMatrixComponentType,
+    pub resultComponentType: WGPUSubgroupMatrixComponentType,
+    pub M: u32,
+    pub N: u32,
+    pub K: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSubgroupMatrixConfig"]
+        [::core::mem::size_of::<WGPUSubgroupMatrixConfig>() - 20usize];
+    ["Alignment of WGPUSubgroupMatrixConfig"]
+        [::core::mem::align_of::<WGPUSubgroupMatrixConfig>() - 4usize];
+    ["Offset of field: WGPUSubgroupMatrixConfig::componentType"]
+        [::core::mem::offset_of!(WGPUSubgroupMatrixConfig, componentType) - 0usize];
+    ["Offset of field: WGPUSubgroupMatrixConfig::resultComponentType"]
+        [::core::mem::offset_of!(WGPUSubgroupMatrixConfig, resultComponentType) - 4usize];
+    ["Offset of field: WGPUSubgroupMatrixConfig::M"]
+        [::core::mem::offset_of!(WGPUSubgroupMatrixConfig, M) - 8usize];
+    ["Offset of field: WGPUSubgroupMatrixConfig::N"]
+        [::core::mem::offset_of!(WGPUSubgroupMatrixConfig, N) - 12usize];
+    ["Offset of field: WGPUSubgroupMatrixConfig::K"]
+        [::core::mem::offset_of!(WGPUSubgroupMatrixConfig, K) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUSupportedFeatures {
     pub featureCount: usize,
     pub features: *const WGPUFeatureName,
@@ -2916,23 +4194,6 @@ const _: () = {
         [::core::mem::offset_of!(WGPUSupportedFeatures, featureCount) - 0usize];
     ["Offset of field: WGPUSupportedFeatures::features"]
         [::core::mem::offset_of!(WGPUSupportedFeatures, features) - 8usize];
-};
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct WGPUSupportedInstanceFeatures {
-    pub featureCount: usize,
-    pub features: *const WGPUInstanceFeatureName,
-}
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of WGPUSupportedInstanceFeatures"]
-        [::core::mem::size_of::<WGPUSupportedInstanceFeatures>() - 16usize];
-    ["Alignment of WGPUSupportedInstanceFeatures"]
-        [::core::mem::align_of::<WGPUSupportedInstanceFeatures>() - 8usize];
-    ["Offset of field: WGPUSupportedInstanceFeatures::featureCount"]
-        [::core::mem::offset_of!(WGPUSupportedInstanceFeatures, featureCount) - 0usize];
-    ["Offset of field: WGPUSupportedInstanceFeatures::features"]
-        [::core::mem::offset_of!(WGPUSupportedInstanceFeatures, features) - 8usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3046,6 +4307,67 @@ const _: () = {
         [::core::mem::offset_of!(WGPUSurfaceConfiguration, alphaMode) - 56usize];
     ["Offset of field: WGPUSurfaceConfiguration::presentMode"]
         [::core::mem::offset_of!(WGPUSurfaceConfiguration, presentMode) - 60usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSurfaceDescriptorFromWindowsCoreWindow {
+    pub chain: WGPUChainedStruct,
+    pub coreWindow: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSurfaceDescriptorFromWindowsCoreWindow"]
+        [::core::mem::size_of::<WGPUSurfaceDescriptorFromWindowsCoreWindow>() - 24usize];
+    ["Alignment of WGPUSurfaceDescriptorFromWindowsCoreWindow"]
+        [::core::mem::align_of::<WGPUSurfaceDescriptorFromWindowsCoreWindow>() - 8usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsCoreWindow::chain"]
+        [::core::mem::offset_of!(WGPUSurfaceDescriptorFromWindowsCoreWindow, chain) - 0usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsCoreWindow::coreWindow"]
+        [::core::mem::offset_of!(WGPUSurfaceDescriptorFromWindowsCoreWindow, coreWindow) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel {
+    pub chain: WGPUChainedStruct,
+    pub swapChainPanel: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel"]
+        [::core::mem::size_of::<WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel>() - 24usize];
+    ["Alignment of WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel"]
+        [::core::mem::align_of::<WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel>() - 8usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel::chain"][::core::mem::offset_of!(
+        WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel,
+        chain
+    ) - 0usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel::swapChainPanel"][::core::mem::offset_of!(
+        WGPUSurfaceDescriptorFromWindowsUWPSwapChainPanel,
+        swapChainPanel
+    )
+        - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel {
+    pub chain: WGPUChainedStruct,
+    pub swapChainPanel: *mut ::core::ffi::c_void,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel"]
+        [::core::mem::size_of::<WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel>() - 24usize];
+    ["Alignment of WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel"]
+        [::core::mem::align_of::<WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel>() - 8usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel::chain"][::core::mem::offset_of!(
+        WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel,
+        chain
+    ) - 0usize];
+    ["Offset of field: WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel::swapChainPanel"][::core::mem::offset_of!(
+        WGPUSurfaceDescriptorFromWindowsWinUISwapChainPanel,
+        swapChainPanel
+    )
+        - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3224,44 +4546,23 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUTextureViewDescriptor {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub format: WGPUTextureFormat,
-    pub dimension: WGPUTextureViewDimension,
-    pub baseMipLevel: u32,
-    pub mipLevelCount: u32,
-    pub baseArrayLayer: u32,
-    pub arrayLayerCount: u32,
-    pub aspect: WGPUTextureAspect,
-    pub usage: WGPUTextureUsage,
+pub struct WGPUTextureBindingViewDimensionDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub textureBindingViewDimension: WGPUTextureViewDimension,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUTextureViewDescriptor"]
-        [::core::mem::size_of::<WGPUTextureViewDescriptor>() - 64usize];
-    ["Alignment of WGPUTextureViewDescriptor"]
-        [::core::mem::align_of::<WGPUTextureViewDescriptor>() - 8usize];
-    ["Offset of field: WGPUTextureViewDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUTextureViewDescriptor::label"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, label) - 8usize];
-    ["Offset of field: WGPUTextureViewDescriptor::format"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, format) - 24usize];
-    ["Offset of field: WGPUTextureViewDescriptor::dimension"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, dimension) - 28usize];
-    ["Offset of field: WGPUTextureViewDescriptor::baseMipLevel"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseMipLevel) - 32usize];
-    ["Offset of field: WGPUTextureViewDescriptor::mipLevelCount"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, mipLevelCount) - 36usize];
-    ["Offset of field: WGPUTextureViewDescriptor::baseArrayLayer"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseArrayLayer) - 40usize];
-    ["Offset of field: WGPUTextureViewDescriptor::arrayLayerCount"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, arrayLayerCount) - 44usize];
-    ["Offset of field: WGPUTextureViewDescriptor::aspect"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, aspect) - 48usize];
-    ["Offset of field: WGPUTextureViewDescriptor::usage"]
-        [::core::mem::offset_of!(WGPUTextureViewDescriptor, usage) - 56usize];
+    ["Size of WGPUTextureBindingViewDimensionDescriptor"]
+        [::core::mem::size_of::<WGPUTextureBindingViewDimensionDescriptor>() - 24usize];
+    ["Alignment of WGPUTextureBindingViewDimensionDescriptor"]
+        [::core::mem::align_of::<WGPUTextureBindingViewDimensionDescriptor>() - 8usize];
+    ["Offset of field: WGPUTextureBindingViewDimensionDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUTextureBindingViewDimensionDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUTextureBindingViewDimensionDescriptor::textureBindingViewDimension"][::core::mem::offset_of!(
+        WGPUTextureBindingViewDimensionDescriptor,
+        textureBindingViewDimension
+    )
+        - 16usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3286,29 +4587,138 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUBindGroupDescriptor {
-    pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub layout: WGPUBindGroupLayout,
-    pub entryCount: usize,
-    pub entries: *const WGPUBindGroupEntry,
+pub struct WGPUYCbCrVkDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub vkFormat: u32,
+    pub vkYCbCrModel: u32,
+    pub vkYCbCrRange: u32,
+    pub vkComponentSwizzleRed: u32,
+    pub vkComponentSwizzleGreen: u32,
+    pub vkComponentSwizzleBlue: u32,
+    pub vkComponentSwizzleAlpha: u32,
+    pub vkXChromaOffset: u32,
+    pub vkYChromaOffset: u32,
+    pub vkChromaFilter: WGPUFilterMode,
+    pub forceExplicitReconstruction: WGPUBool,
+    pub externalFormat: u64,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUBindGroupDescriptor"]
-        [::core::mem::size_of::<WGPUBindGroupDescriptor>() - 48usize];
-    ["Alignment of WGPUBindGroupDescriptor"]
-        [::core::mem::align_of::<WGPUBindGroupDescriptor>() - 8usize];
-    ["Offset of field: WGPUBindGroupDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUBindGroupDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUBindGroupDescriptor::label"]
-        [::core::mem::offset_of!(WGPUBindGroupDescriptor, label) - 8usize];
-    ["Offset of field: WGPUBindGroupDescriptor::layout"]
-        [::core::mem::offset_of!(WGPUBindGroupDescriptor, layout) - 24usize];
-    ["Offset of field: WGPUBindGroupDescriptor::entryCount"]
-        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entryCount) - 32usize];
-    ["Offset of field: WGPUBindGroupDescriptor::entries"]
-        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entries) - 40usize];
+    ["Size of WGPUYCbCrVkDescriptor"][::core::mem::size_of::<WGPUYCbCrVkDescriptor>() - 72usize];
+    ["Alignment of WGPUYCbCrVkDescriptor"]
+        [::core::mem::align_of::<WGPUYCbCrVkDescriptor>() - 8usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkFormat"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkFormat) - 16usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkYCbCrModel"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkYCbCrModel) - 20usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkYCbCrRange"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkYCbCrRange) - 24usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkComponentSwizzleRed"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkComponentSwizzleRed) - 28usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkComponentSwizzleGreen"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkComponentSwizzleGreen) - 32usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkComponentSwizzleBlue"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkComponentSwizzleBlue) - 36usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkComponentSwizzleAlpha"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkComponentSwizzleAlpha) - 40usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkXChromaOffset"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkXChromaOffset) - 44usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkYChromaOffset"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkYChromaOffset) - 48usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::vkChromaFilter"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, vkChromaFilter) - 52usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::forceExplicitReconstruction"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, forceExplicitReconstruction) - 56usize];
+    ["Offset of field: WGPUYCbCrVkDescriptor::externalFormat"]
+        [::core::mem::offset_of!(WGPUYCbCrVkDescriptor, externalFormat) - 64usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUAdapterPropertiesMemoryHeaps {
+    pub chain: WGPUChainedStruct,
+    pub heapCount: usize,
+    pub heapInfo: *const WGPUMemoryHeapInfo,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUAdapterPropertiesMemoryHeaps"]
+        [::core::mem::size_of::<WGPUAdapterPropertiesMemoryHeaps>() - 32usize];
+    ["Alignment of WGPUAdapterPropertiesMemoryHeaps"]
+        [::core::mem::align_of::<WGPUAdapterPropertiesMemoryHeaps>() - 8usize];
+    ["Offset of field: WGPUAdapterPropertiesMemoryHeaps::chain"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesMemoryHeaps, chain) - 0usize];
+    ["Offset of field: WGPUAdapterPropertiesMemoryHeaps::heapCount"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesMemoryHeaps, heapCount) - 16usize];
+    ["Offset of field: WGPUAdapterPropertiesMemoryHeaps::heapInfo"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesMemoryHeaps, heapInfo) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUAdapterPropertiesSubgroupMatrixConfigs {
+    pub chain: WGPUChainedStruct,
+    pub configCount: usize,
+    pub configs: *const WGPUSubgroupMatrixConfig,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUAdapterPropertiesSubgroupMatrixConfigs"]
+        [::core::mem::size_of::<WGPUAdapterPropertiesSubgroupMatrixConfigs>() - 32usize];
+    ["Alignment of WGPUAdapterPropertiesSubgroupMatrixConfigs"]
+        [::core::mem::align_of::<WGPUAdapterPropertiesSubgroupMatrixConfigs>() - 8usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroupMatrixConfigs::chain"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesSubgroupMatrixConfigs, chain) - 0usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroupMatrixConfigs::configCount"][::core::mem::offset_of!(
+        WGPUAdapterPropertiesSubgroupMatrixConfigs,
+        configCount
+    ) - 16usize];
+    ["Offset of field: WGPUAdapterPropertiesSubgroupMatrixConfigs::configs"]
+        [::core::mem::offset_of!(WGPUAdapterPropertiesSubgroupMatrixConfigs, configs) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUAHardwareBufferProperties {
+    pub yCbCrInfo: WGPUYCbCrVkDescriptor,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUAHardwareBufferProperties"]
+        [::core::mem::size_of::<WGPUAHardwareBufferProperties>() - 72usize];
+    ["Alignment of WGPUAHardwareBufferProperties"]
+        [::core::mem::align_of::<WGPUAHardwareBufferProperties>() - 8usize];
+    ["Offset of field: WGPUAHardwareBufferProperties::yCbCrInfo"]
+        [::core::mem::offset_of!(WGPUAHardwareBufferProperties, yCbCrInfo) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUBindGroupEntry {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub binding: u32,
+    pub buffer: WGPUBuffer,
+    pub offset: u64,
+    pub size: u64,
+    pub sampler: WGPUSampler,
+    pub textureView: WGPUTextureView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUBindGroupEntry"][::core::mem::size_of::<WGPUBindGroupEntry>() - 56usize];
+    ["Alignment of WGPUBindGroupEntry"][::core::mem::align_of::<WGPUBindGroupEntry>() - 8usize];
+    ["Offset of field: WGPUBindGroupEntry::nextInChain"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, nextInChain) - 0usize];
+    ["Offset of field: WGPUBindGroupEntry::binding"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, binding) - 8usize];
+    ["Offset of field: WGPUBindGroupEntry::buffer"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, buffer) - 16usize];
+    ["Offset of field: WGPUBindGroupEntry::offset"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, offset) - 24usize];
+    ["Offset of field: WGPUBindGroupEntry::size"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, size) - 32usize];
+    ["Offset of field: WGPUBindGroupEntry::sampler"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, sampler) - 40usize];
+    ["Offset of field: WGPUBindGroupEntry::textureView"]
+        [::core::mem::offset_of!(WGPUBindGroupEntry, textureView) - 48usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3316,7 +4726,6 @@ pub struct WGPUBindGroupLayoutEntry {
     pub nextInChain: *mut WGPUChainedStruct,
     pub binding: u32,
     pub visibility: WGPUShaderStage,
-    pub bindingArraySize: u32,
     pub buffer: WGPUBufferBindingLayout,
     pub sampler: WGPUSamplerBindingLayout,
     pub texture: WGPUTextureBindingLayout,
@@ -3325,7 +4734,7 @@ pub struct WGPUBindGroupLayoutEntry {
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
     ["Size of WGPUBindGroupLayoutEntry"]
-        [::core::mem::size_of::<WGPUBindGroupLayoutEntry>() - 120usize];
+        [::core::mem::size_of::<WGPUBindGroupLayoutEntry>() - 112usize];
     ["Alignment of WGPUBindGroupLayoutEntry"]
         [::core::mem::align_of::<WGPUBindGroupLayoutEntry>() - 8usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::nextInChain"]
@@ -3334,16 +4743,14 @@ const _: () = {
         [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, binding) - 8usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::visibility"]
         [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, visibility) - 16usize];
-    ["Offset of field: WGPUBindGroupLayoutEntry::bindingArraySize"]
-        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, bindingArraySize) - 24usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::buffer"]
-        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, buffer) - 32usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, buffer) - 24usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::sampler"]
-        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, sampler) - 56usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, sampler) - 48usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::texture"]
-        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, texture) - 72usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, texture) - 64usize];
     ["Offset of field: WGPUBindGroupLayoutEntry::storageTexture"]
-        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, storageTexture) - 96usize];
+        [::core::mem::offset_of!(WGPUBindGroupLayoutEntry, storageTexture) - 88usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3362,21 +4769,75 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUCompilationInfo {
+pub struct WGPUBufferDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
-    pub messageCount: usize,
-    pub messages: *const WGPUCompilationMessage,
+    pub label: WGPUStringView,
+    pub usage: WGPUBufferUsage,
+    pub size: u64,
+    pub mappedAtCreation: WGPUBool,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUCompilationInfo"][::core::mem::size_of::<WGPUCompilationInfo>() - 24usize];
-    ["Alignment of WGPUCompilationInfo"][::core::mem::align_of::<WGPUCompilationInfo>() - 8usize];
-    ["Offset of field: WGPUCompilationInfo::nextInChain"]
-        [::core::mem::offset_of!(WGPUCompilationInfo, nextInChain) - 0usize];
-    ["Offset of field: WGPUCompilationInfo::messageCount"]
-        [::core::mem::offset_of!(WGPUCompilationInfo, messageCount) - 8usize];
-    ["Offset of field: WGPUCompilationInfo::messages"]
-        [::core::mem::offset_of!(WGPUCompilationInfo, messages) - 16usize];
+    ["Size of WGPUBufferDescriptor"][::core::mem::size_of::<WGPUBufferDescriptor>() - 48usize];
+    ["Alignment of WGPUBufferDescriptor"][::core::mem::align_of::<WGPUBufferDescriptor>() - 8usize];
+    ["Offset of field: WGPUBufferDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUBufferDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUBufferDescriptor::label"]
+        [::core::mem::offset_of!(WGPUBufferDescriptor, label) - 8usize];
+    ["Offset of field: WGPUBufferDescriptor::usage"]
+        [::core::mem::offset_of!(WGPUBufferDescriptor, usage) - 24usize];
+    ["Offset of field: WGPUBufferDescriptor::size"]
+        [::core::mem::offset_of!(WGPUBufferDescriptor, size) - 32usize];
+    ["Offset of field: WGPUBufferDescriptor::mappedAtCreation"]
+        [::core::mem::offset_of!(WGPUBufferDescriptor, mappedAtCreation) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUCommandEncoderDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUCommandEncoderDescriptor"]
+        [::core::mem::size_of::<WGPUCommandEncoderDescriptor>() - 24usize];
+    ["Alignment of WGPUCommandEncoderDescriptor"]
+        [::core::mem::align_of::<WGPUCommandEncoderDescriptor>() - 8usize];
+    ["Offset of field: WGPUCommandEncoderDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUCommandEncoderDescriptor::label"]
+        [::core::mem::offset_of!(WGPUCommandEncoderDescriptor, label) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUCompilationMessage {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub message: WGPUStringView,
+    pub type_: WGPUCompilationMessageType,
+    pub lineNum: u64,
+    pub linePos: u64,
+    pub offset: u64,
+    pub length: u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUCompilationMessage"][::core::mem::size_of::<WGPUCompilationMessage>() - 64usize];
+    ["Alignment of WGPUCompilationMessage"]
+        [::core::mem::align_of::<WGPUCompilationMessage>() - 8usize];
+    ["Offset of field: WGPUCompilationMessage::nextInChain"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, nextInChain) - 0usize];
+    ["Offset of field: WGPUCompilationMessage::message"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, message) - 8usize];
+    ["Offset of field: WGPUCompilationMessage::type_"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, type_) - 24usize];
+    ["Offset of field: WGPUCompilationMessage::lineNum"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, lineNum) - 32usize];
+    ["Offset of field: WGPUCompilationMessage::linePos"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, linePos) - 40usize];
+    ["Offset of field: WGPUCompilationMessage::offset"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, offset) - 48usize];
+    ["Offset of field: WGPUCompilationMessage::length"]
+        [::core::mem::offset_of!(WGPUCompilationMessage, length) - 56usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3424,6 +4885,26 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUDawnDrmFormatCapabilities {
+    pub chain: WGPUChainedStruct,
+    pub propertiesCount: usize,
+    pub properties: *const WGPUDawnDrmFormatProperties,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDawnDrmFormatCapabilities"]
+        [::core::mem::size_of::<WGPUDawnDrmFormatCapabilities>() - 32usize];
+    ["Alignment of WGPUDawnDrmFormatCapabilities"]
+        [::core::mem::align_of::<WGPUDawnDrmFormatCapabilities>() - 8usize];
+    ["Offset of field: WGPUDawnDrmFormatCapabilities::chain"]
+        [::core::mem::offset_of!(WGPUDawnDrmFormatCapabilities, chain) - 0usize];
+    ["Offset of field: WGPUDawnDrmFormatCapabilities::propertiesCount"]
+        [::core::mem::offset_of!(WGPUDawnDrmFormatCapabilities, propertiesCount) - 16usize];
+    ["Offset of field: WGPUDawnDrmFormatCapabilities::properties"]
+        [::core::mem::offset_of!(WGPUDawnDrmFormatCapabilities, properties) - 24usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUDepthStencilState {
     pub nextInChain: *mut WGPUChainedStruct,
     pub format: WGPUTextureFormat,
@@ -3467,36 +4948,64 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPUDeviceDescriptor {
+pub struct WGPUExternalTextureDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
     pub label: WGPUStringView,
-    pub requiredFeatureCount: usize,
-    pub requiredFeatures: *const WGPUFeatureName,
-    pub requiredLimits: *const WGPULimits,
-    pub defaultQueue: WGPUQueueDescriptor,
-    pub deviceLostCallbackInfo: WGPUDeviceLostCallbackInfo,
-    pub uncapturedErrorCallbackInfo: WGPUUncapturedErrorCallbackInfo,
+    pub plane0: WGPUTextureView,
+    pub plane1: WGPUTextureView,
+    pub cropOrigin: WGPUOrigin2D,
+    pub cropSize: WGPUExtent2D,
+    pub apparentSize: WGPUExtent2D,
+    pub doYuvToRgbConversionOnly: WGPUBool,
+    pub yuvToRgbConversionMatrix: *const f32,
+    pub srcTransferFunctionParameters: *const f32,
+    pub dstTransferFunctionParameters: *const f32,
+    pub gamutConversionMatrix: *const f32,
+    pub mirrored: WGPUBool,
+    pub rotation: WGPUExternalTextureRotation,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPUDeviceDescriptor"][::core::mem::size_of::<WGPUDeviceDescriptor>() - 144usize];
-    ["Alignment of WGPUDeviceDescriptor"][::core::mem::align_of::<WGPUDeviceDescriptor>() - 8usize];
-    ["Offset of field: WGPUDeviceDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUDeviceDescriptor::label"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, label) - 8usize];
-    ["Offset of field: WGPUDeviceDescriptor::requiredFeatureCount"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatureCount) - 24usize];
-    ["Offset of field: WGPUDeviceDescriptor::requiredFeatures"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatures) - 32usize];
-    ["Offset of field: WGPUDeviceDescriptor::requiredLimits"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredLimits) - 40usize];
-    ["Offset of field: WGPUDeviceDescriptor::defaultQueue"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, defaultQueue) - 48usize];
-    ["Offset of field: WGPUDeviceDescriptor::deviceLostCallbackInfo"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, deviceLostCallbackInfo) - 72usize];
-    ["Offset of field: WGPUDeviceDescriptor::uncapturedErrorCallbackInfo"]
-        [::core::mem::offset_of!(WGPUDeviceDescriptor, uncapturedErrorCallbackInfo) - 112usize];
+    ["Size of WGPUExternalTextureDescriptor"]
+        [::core::mem::size_of::<WGPUExternalTextureDescriptor>() - 112usize];
+    ["Alignment of WGPUExternalTextureDescriptor"]
+        [::core::mem::align_of::<WGPUExternalTextureDescriptor>() - 8usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::label"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, label) - 8usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::plane0"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, plane0) - 24usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::plane1"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, plane1) - 32usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::cropOrigin"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, cropOrigin) - 40usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::cropSize"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, cropSize) - 48usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::apparentSize"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, apparentSize) - 56usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::doYuvToRgbConversionOnly"][::core::mem::offset_of!(
+        WGPUExternalTextureDescriptor,
+        doYuvToRgbConversionOnly
+    ) - 64usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::yuvToRgbConversionMatrix"][::core::mem::offset_of!(
+        WGPUExternalTextureDescriptor,
+        yuvToRgbConversionMatrix
+    ) - 72usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::srcTransferFunctionParameters"][::core::mem::offset_of!(
+        WGPUExternalTextureDescriptor,
+        srcTransferFunctionParameters
+    ) - 80usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::dstTransferFunctionParameters"][::core::mem::offset_of!(
+        WGPUExternalTextureDescriptor,
+        dstTransferFunctionParameters
+    ) - 88usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::gamutConversionMatrix"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, gamutConversionMatrix) - 96usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::mirrored"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, mirrored) - 104usize];
+    ["Offset of field: WGPUExternalTextureDescriptor::rotation"]
+        [::core::mem::offset_of!(WGPUExternalTextureDescriptor, rotation) - 108usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3515,11 +5024,32 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUImageCopyExternalTexture {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub externalTexture: WGPUExternalTexture,
+    pub origin: WGPUOrigin3D,
+    pub naturalSize: WGPUExtent2D,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUImageCopyExternalTexture"]
+        [::core::mem::size_of::<WGPUImageCopyExternalTexture>() - 40usize];
+    ["Alignment of WGPUImageCopyExternalTexture"]
+        [::core::mem::align_of::<WGPUImageCopyExternalTexture>() - 8usize];
+    ["Offset of field: WGPUImageCopyExternalTexture::nextInChain"]
+        [::core::mem::offset_of!(WGPUImageCopyExternalTexture, nextInChain) - 0usize];
+    ["Offset of field: WGPUImageCopyExternalTexture::externalTexture"]
+        [::core::mem::offset_of!(WGPUImageCopyExternalTexture, externalTexture) - 8usize];
+    ["Offset of field: WGPUImageCopyExternalTexture::origin"]
+        [::core::mem::offset_of!(WGPUImageCopyExternalTexture, origin) - 16usize];
+    ["Offset of field: WGPUImageCopyExternalTexture::naturalSize"]
+        [::core::mem::offset_of!(WGPUImageCopyExternalTexture, naturalSize) - 28usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUInstanceDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
-    pub requiredFeatureCount: usize,
-    pub requiredFeatures: *const WGPUInstanceFeatureName,
-    pub requiredLimits: *const WGPUInstanceLimits,
+    pub capabilities: WGPUInstanceCapabilities,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
@@ -3528,12 +5058,158 @@ const _: () = {
         [::core::mem::align_of::<WGPUInstanceDescriptor>() - 8usize];
     ["Offset of field: WGPUInstanceDescriptor::nextInChain"]
         [::core::mem::offset_of!(WGPUInstanceDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPUInstanceDescriptor::requiredFeatureCount"]
-        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatureCount) - 8usize];
-    ["Offset of field: WGPUInstanceDescriptor::requiredFeatures"]
-        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredFeatures) - 16usize];
-    ["Offset of field: WGPUInstanceDescriptor::requiredLimits"]
-        [::core::mem::offset_of!(WGPUInstanceDescriptor, requiredLimits) - 24usize];
+    ["Offset of field: WGPUInstanceDescriptor::capabilities"]
+        [::core::mem::offset_of!(WGPUInstanceDescriptor, capabilities) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPULimits {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub maxTextureDimension1D: u32,
+    pub maxTextureDimension2D: u32,
+    pub maxTextureDimension3D: u32,
+    pub maxTextureArrayLayers: u32,
+    pub maxBindGroups: u32,
+    pub maxBindGroupsPlusVertexBuffers: u32,
+    pub maxBindingsPerBindGroup: u32,
+    pub maxDynamicUniformBuffersPerPipelineLayout: u32,
+    pub maxDynamicStorageBuffersPerPipelineLayout: u32,
+    pub maxSampledTexturesPerShaderStage: u32,
+    pub maxSamplersPerShaderStage: u32,
+    pub maxStorageBuffersPerShaderStage: u32,
+    pub maxStorageTexturesPerShaderStage: u32,
+    pub maxUniformBuffersPerShaderStage: u32,
+    pub maxUniformBufferBindingSize: u64,
+    pub maxStorageBufferBindingSize: u64,
+    pub minUniformBufferOffsetAlignment: u32,
+    pub minStorageBufferOffsetAlignment: u32,
+    pub maxVertexBuffers: u32,
+    pub maxBufferSize: u64,
+    pub maxVertexAttributes: u32,
+    pub maxVertexBufferArrayStride: u32,
+    pub maxInterStageShaderVariables: u32,
+    pub maxColorAttachments: u32,
+    pub maxColorAttachmentBytesPerSample: u32,
+    pub maxComputeWorkgroupStorageSize: u32,
+    pub maxComputeInvocationsPerWorkgroup: u32,
+    pub maxComputeWorkgroupSizeX: u32,
+    pub maxComputeWorkgroupSizeY: u32,
+    pub maxComputeWorkgroupSizeZ: u32,
+    pub maxComputeWorkgroupsPerDimension: u32,
+    pub maxImmediateSize: u32,
+    pub maxStorageBuffersInVertexStage: u32,
+    pub maxStorageTexturesInVertexStage: u32,
+    pub maxStorageBuffersInFragmentStage: u32,
+    pub maxStorageTexturesInFragmentStage: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPULimits"][::core::mem::size_of::<WGPULimits>() - 168usize];
+    ["Alignment of WGPULimits"][::core::mem::align_of::<WGPULimits>() - 8usize];
+    ["Offset of field: WGPULimits::nextInChain"]
+        [::core::mem::offset_of!(WGPULimits, nextInChain) - 0usize];
+    ["Offset of field: WGPULimits::maxTextureDimension1D"]
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension1D) - 8usize];
+    ["Offset of field: WGPULimits::maxTextureDimension2D"]
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension2D) - 12usize];
+    ["Offset of field: WGPULimits::maxTextureDimension3D"]
+        [::core::mem::offset_of!(WGPULimits, maxTextureDimension3D) - 16usize];
+    ["Offset of field: WGPULimits::maxTextureArrayLayers"]
+        [::core::mem::offset_of!(WGPULimits, maxTextureArrayLayers) - 20usize];
+    ["Offset of field: WGPULimits::maxBindGroups"]
+        [::core::mem::offset_of!(WGPULimits, maxBindGroups) - 24usize];
+    ["Offset of field: WGPULimits::maxBindGroupsPlusVertexBuffers"]
+        [::core::mem::offset_of!(WGPULimits, maxBindGroupsPlusVertexBuffers) - 28usize];
+    ["Offset of field: WGPULimits::maxBindingsPerBindGroup"]
+        [::core::mem::offset_of!(WGPULimits, maxBindingsPerBindGroup) - 32usize];
+    ["Offset of field: WGPULimits::maxDynamicUniformBuffersPerPipelineLayout"]
+        [::core::mem::offset_of!(WGPULimits, maxDynamicUniformBuffersPerPipelineLayout) - 36usize];
+    ["Offset of field: WGPULimits::maxDynamicStorageBuffersPerPipelineLayout"]
+        [::core::mem::offset_of!(WGPULimits, maxDynamicStorageBuffersPerPipelineLayout) - 40usize];
+    ["Offset of field: WGPULimits::maxSampledTexturesPerShaderStage"]
+        [::core::mem::offset_of!(WGPULimits, maxSampledTexturesPerShaderStage) - 44usize];
+    ["Offset of field: WGPULimits::maxSamplersPerShaderStage"]
+        [::core::mem::offset_of!(WGPULimits, maxSamplersPerShaderStage) - 48usize];
+    ["Offset of field: WGPULimits::maxStorageBuffersPerShaderStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageBuffersPerShaderStage) - 52usize];
+    ["Offset of field: WGPULimits::maxStorageTexturesPerShaderStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageTexturesPerShaderStage) - 56usize];
+    ["Offset of field: WGPULimits::maxUniformBuffersPerShaderStage"]
+        [::core::mem::offset_of!(WGPULimits, maxUniformBuffersPerShaderStage) - 60usize];
+    ["Offset of field: WGPULimits::maxUniformBufferBindingSize"]
+        [::core::mem::offset_of!(WGPULimits, maxUniformBufferBindingSize) - 64usize];
+    ["Offset of field: WGPULimits::maxStorageBufferBindingSize"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageBufferBindingSize) - 72usize];
+    ["Offset of field: WGPULimits::minUniformBufferOffsetAlignment"]
+        [::core::mem::offset_of!(WGPULimits, minUniformBufferOffsetAlignment) - 80usize];
+    ["Offset of field: WGPULimits::minStorageBufferOffsetAlignment"]
+        [::core::mem::offset_of!(WGPULimits, minStorageBufferOffsetAlignment) - 84usize];
+    ["Offset of field: WGPULimits::maxVertexBuffers"]
+        [::core::mem::offset_of!(WGPULimits, maxVertexBuffers) - 88usize];
+    ["Offset of field: WGPULimits::maxBufferSize"]
+        [::core::mem::offset_of!(WGPULimits, maxBufferSize) - 96usize];
+    ["Offset of field: WGPULimits::maxVertexAttributes"]
+        [::core::mem::offset_of!(WGPULimits, maxVertexAttributes) - 104usize];
+    ["Offset of field: WGPULimits::maxVertexBufferArrayStride"]
+        [::core::mem::offset_of!(WGPULimits, maxVertexBufferArrayStride) - 108usize];
+    ["Offset of field: WGPULimits::maxInterStageShaderVariables"]
+        [::core::mem::offset_of!(WGPULimits, maxInterStageShaderVariables) - 112usize];
+    ["Offset of field: WGPULimits::maxColorAttachments"]
+        [::core::mem::offset_of!(WGPULimits, maxColorAttachments) - 116usize];
+    ["Offset of field: WGPULimits::maxColorAttachmentBytesPerSample"]
+        [::core::mem::offset_of!(WGPULimits, maxColorAttachmentBytesPerSample) - 120usize];
+    ["Offset of field: WGPULimits::maxComputeWorkgroupStorageSize"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupStorageSize) - 124usize];
+    ["Offset of field: WGPULimits::maxComputeInvocationsPerWorkgroup"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeInvocationsPerWorkgroup) - 128usize];
+    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeX"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeX) - 132usize];
+    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeY"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeY) - 136usize];
+    ["Offset of field: WGPULimits::maxComputeWorkgroupSizeZ"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupSizeZ) - 140usize];
+    ["Offset of field: WGPULimits::maxComputeWorkgroupsPerDimension"]
+        [::core::mem::offset_of!(WGPULimits, maxComputeWorkgroupsPerDimension) - 144usize];
+    ["Offset of field: WGPULimits::maxImmediateSize"]
+        [::core::mem::offset_of!(WGPULimits, maxImmediateSize) - 148usize];
+    ["Offset of field: WGPULimits::maxStorageBuffersInVertexStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageBuffersInVertexStage) - 152usize];
+    ["Offset of field: WGPULimits::maxStorageTexturesInVertexStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageTexturesInVertexStage) - 156usize];
+    ["Offset of field: WGPULimits::maxStorageBuffersInFragmentStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageBuffersInFragmentStage) - 160usize];
+    ["Offset of field: WGPULimits::maxStorageTexturesInFragmentStage"]
+        [::core::mem::offset_of!(WGPULimits, maxStorageTexturesInFragmentStage) - 164usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUPipelineLayoutPixelLocalStorage {
+    pub chain: WGPUChainedStruct,
+    pub totalPixelLocalStorageSize: u64,
+    pub storageAttachmentCount: usize,
+    pub storageAttachments: *const WGPUPipelineLayoutStorageAttachment,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUPipelineLayoutPixelLocalStorage"]
+        [::core::mem::size_of::<WGPUPipelineLayoutPixelLocalStorage>() - 40usize];
+    ["Alignment of WGPUPipelineLayoutPixelLocalStorage"]
+        [::core::mem::align_of::<WGPUPipelineLayoutPixelLocalStorage>() - 8usize];
+    ["Offset of field: WGPUPipelineLayoutPixelLocalStorage::chain"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutPixelLocalStorage, chain) - 0usize];
+    ["Offset of field: WGPUPipelineLayoutPixelLocalStorage::totalPixelLocalStorageSize"][::core::mem::offset_of!(
+        WGPUPipelineLayoutPixelLocalStorage,
+        totalPixelLocalStorageSize
+    )
+        - 16usize];
+    ["Offset of field: WGPUPipelineLayoutPixelLocalStorage::storageAttachmentCount"][::core::mem::offset_of!(
+        WGPUPipelineLayoutPixelLocalStorage,
+        storageAttachmentCount
+    ) - 24usize];
+    ["Offset of field: WGPUPipelineLayoutPixelLocalStorage::storageAttachments"][::core::mem::offset_of!(
+        WGPUPipelineLayoutPixelLocalStorage,
+        storageAttachments
+    ) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3569,6 +5245,35 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPURenderPassStorageAttachment {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub offset: u64,
+    pub storage: WGPUTextureView,
+    pub loadOp: WGPULoadOp,
+    pub storeOp: WGPUStoreOp,
+    pub clearValue: WGPUColor,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPURenderPassStorageAttachment"]
+        [::core::mem::size_of::<WGPURenderPassStorageAttachment>() - 64usize];
+    ["Alignment of WGPURenderPassStorageAttachment"]
+        [::core::mem::align_of::<WGPURenderPassStorageAttachment>() - 8usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::nextInChain"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, nextInChain) - 0usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::offset"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, offset) - 8usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::storage"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, storage) - 16usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::loadOp"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, loadOp) - 24usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::storeOp"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, storeOp) - 28usize];
+    ["Offset of field: WGPURenderPassStorageAttachment::clearValue"]
+        [::core::mem::offset_of!(WGPURenderPassStorageAttachment, clearValue) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPURequestAdapterOptions {
     pub nextInChain: *mut WGPUChainedStruct,
     pub featureLevel: WGPUFeatureLevel,
@@ -3598,6 +5303,52 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUSamplerDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub addressModeU: WGPUAddressMode,
+    pub addressModeV: WGPUAddressMode,
+    pub addressModeW: WGPUAddressMode,
+    pub magFilter: WGPUFilterMode,
+    pub minFilter: WGPUFilterMode,
+    pub mipmapFilter: WGPUMipmapFilterMode,
+    pub lodMinClamp: f32,
+    pub lodMaxClamp: f32,
+    pub compare: WGPUCompareFunction,
+    pub maxAnisotropy: u16,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSamplerDescriptor"][::core::mem::size_of::<WGPUSamplerDescriptor>() - 64usize];
+    ["Alignment of WGPUSamplerDescriptor"]
+        [::core::mem::align_of::<WGPUSamplerDescriptor>() - 8usize];
+    ["Offset of field: WGPUSamplerDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUSamplerDescriptor::label"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, label) - 8usize];
+    ["Offset of field: WGPUSamplerDescriptor::addressModeU"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeU) - 24usize];
+    ["Offset of field: WGPUSamplerDescriptor::addressModeV"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeV) - 28usize];
+    ["Offset of field: WGPUSamplerDescriptor::addressModeW"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, addressModeW) - 32usize];
+    ["Offset of field: WGPUSamplerDescriptor::magFilter"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, magFilter) - 36usize];
+    ["Offset of field: WGPUSamplerDescriptor::minFilter"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, minFilter) - 40usize];
+    ["Offset of field: WGPUSamplerDescriptor::mipmapFilter"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, mipmapFilter) - 44usize];
+    ["Offset of field: WGPUSamplerDescriptor::lodMinClamp"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMinClamp) - 48usize];
+    ["Offset of field: WGPUSamplerDescriptor::lodMaxClamp"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, lodMaxClamp) - 52usize];
+    ["Offset of field: WGPUSamplerDescriptor::compare"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, compare) - 56usize];
+    ["Offset of field: WGPUSamplerDescriptor::maxAnisotropy"]
+        [::core::mem::offset_of!(WGPUSamplerDescriptor, maxAnisotropy) - 60usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUShaderModuleDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
     pub label: WGPUStringView,
@@ -3612,6 +5363,153 @@ const _: () = {
         [::core::mem::offset_of!(WGPUShaderModuleDescriptor, nextInChain) - 0usize];
     ["Offset of field: WGPUShaderModuleDescriptor::label"]
         [::core::mem::offset_of!(WGPUShaderModuleDescriptor, label) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceDescriptor"]
+        [::core::mem::size_of::<WGPUSharedFenceDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedFenceDescriptor"]
+        [::core::mem::align_of::<WGPUSharedFenceDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedFenceDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedFenceDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedFenceDescriptor::label"]
+        [::core::mem::offset_of!(WGPUSharedFenceDescriptor, label) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedFenceExportInfo {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub type_: WGPUSharedFenceType,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedFenceExportInfo"]
+        [::core::mem::size_of::<WGPUSharedFenceExportInfo>() - 16usize];
+    ["Alignment of WGPUSharedFenceExportInfo"]
+        [::core::mem::align_of::<WGPUSharedFenceExportInfo>() - 8usize];
+    ["Offset of field: WGPUSharedFenceExportInfo::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedFenceExportInfo, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedFenceExportInfo::type_"]
+        [::core::mem::offset_of!(WGPUSharedFenceExportInfo, type_) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryAHardwareBufferProperties {
+    pub chain: WGPUChainedStruct,
+    pub yCbCrInfo: WGPUYCbCrVkDescriptor,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryAHardwareBufferProperties"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryAHardwareBufferProperties>() - 88usize];
+    ["Alignment of WGPUSharedTextureMemoryAHardwareBufferProperties"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryAHardwareBufferProperties>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryAHardwareBufferProperties::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryAHardwareBufferProperties, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryAHardwareBufferProperties::yCbCrInfo"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryAHardwareBufferProperties,
+        yCbCrInfo
+    ) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryBeginAccessDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub concurrentRead: WGPUBool,
+    pub initialized: WGPUBool,
+    pub fenceCount: usize,
+    pub fences: *const WGPUSharedFence,
+    pub signaledValues: *const u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryBeginAccessDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryBeginAccessDescriptor>() - 40usize];
+    ["Alignment of WGPUSharedTextureMemoryBeginAccessDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryBeginAccessDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::nextInChain"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryBeginAccessDescriptor,
+        nextInChain
+    ) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::concurrentRead"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryBeginAccessDescriptor,
+        concurrentRead
+    ) - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::initialized"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryBeginAccessDescriptor,
+        initialized
+    ) - 12usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::fenceCount"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryBeginAccessDescriptor,
+        fenceCount
+    ) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::fences"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryBeginAccessDescriptor, fences) - 24usize];
+    ["Offset of field: WGPUSharedTextureMemoryBeginAccessDescriptor::signaledValues"][::core::mem::offset_of!(
+        WGPUSharedTextureMemoryBeginAccessDescriptor,
+        signaledValues
+    ) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryDmaBufDescriptor {
+    pub chain: WGPUChainedStruct,
+    pub size: WGPUExtent3D,
+    pub drmFormat: u32,
+    pub drmModifier: u64,
+    pub planeCount: usize,
+    pub planes: *const WGPUSharedTextureMemoryDmaBufPlane,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryDmaBufDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryDmaBufDescriptor>() - 56usize];
+    ["Alignment of WGPUSharedTextureMemoryDmaBufDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryDmaBufDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::chain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, chain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::size"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, size) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::drmFormat"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, drmFormat) - 28usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::drmModifier"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, drmModifier) - 32usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::planeCount"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, planeCount) - 40usize];
+    ["Offset of field: WGPUSharedTextureMemoryDmaBufDescriptor::planes"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDmaBufDescriptor, planes) - 48usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryEndAccessState {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub initialized: WGPUBool,
+    pub fenceCount: usize,
+    pub fences: *const WGPUSharedFence,
+    pub signaledValues: *const u64,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryEndAccessState"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryEndAccessState>() - 40usize];
+    ["Alignment of WGPUSharedTextureMemoryEndAccessState"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryEndAccessState>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryEndAccessState::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEndAccessState, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryEndAccessState::initialized"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEndAccessState, initialized) - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryEndAccessState::fenceCount"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEndAccessState, fenceCount) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryEndAccessState::fences"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEndAccessState, fences) - 24usize];
+    ["Offset of field: WGPUSharedTextureMemoryEndAccessState::signaledValues"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryEndAccessState, signaledValues) - 32usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3711,6 +5609,47 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUTextureViewDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub format: WGPUTextureFormat,
+    pub dimension: WGPUTextureViewDimension,
+    pub baseMipLevel: u32,
+    pub mipLevelCount: u32,
+    pub baseArrayLayer: u32,
+    pub arrayLayerCount: u32,
+    pub aspect: WGPUTextureAspect,
+    pub usage: WGPUTextureUsage,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUTextureViewDescriptor"]
+        [::core::mem::size_of::<WGPUTextureViewDescriptor>() - 64usize];
+    ["Alignment of WGPUTextureViewDescriptor"]
+        [::core::mem::align_of::<WGPUTextureViewDescriptor>() - 8usize];
+    ["Offset of field: WGPUTextureViewDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUTextureViewDescriptor::label"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, label) - 8usize];
+    ["Offset of field: WGPUTextureViewDescriptor::format"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, format) - 24usize];
+    ["Offset of field: WGPUTextureViewDescriptor::dimension"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, dimension) - 28usize];
+    ["Offset of field: WGPUTextureViewDescriptor::baseMipLevel"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseMipLevel) - 32usize];
+    ["Offset of field: WGPUTextureViewDescriptor::mipLevelCount"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, mipLevelCount) - 36usize];
+    ["Offset of field: WGPUTextureViewDescriptor::baseArrayLayer"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, baseArrayLayer) - 40usize];
+    ["Offset of field: WGPUTextureViewDescriptor::arrayLayerCount"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, arrayLayerCount) - 44usize];
+    ["Offset of field: WGPUTextureViewDescriptor::aspect"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, aspect) - 48usize];
+    ["Offset of field: WGPUTextureViewDescriptor::usage"]
+        [::core::mem::offset_of!(WGPUTextureViewDescriptor, usage) - 56usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUVertexBufferLayout {
     pub nextInChain: *mut WGPUChainedStruct,
     pub stepMode: WGPUVertexStepMode,
@@ -3733,6 +5672,74 @@ const _: () = {
         [::core::mem::offset_of!(WGPUVertexBufferLayout, attributeCount) - 24usize];
     ["Offset of field: WGPUVertexBufferLayout::attributes"]
         [::core::mem::offset_of!(WGPUVertexBufferLayout, attributes) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUAdapterInfo {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub vendor: WGPUStringView,
+    pub architecture: WGPUStringView,
+    pub device: WGPUStringView,
+    pub description: WGPUStringView,
+    pub backendType: WGPUBackendType,
+    pub adapterType: WGPUAdapterType,
+    pub vendorID: u32,
+    pub deviceID: u32,
+    pub subgroupMinSize: u32,
+    pub subgroupMaxSize: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUAdapterInfo"][::core::mem::size_of::<WGPUAdapterInfo>() - 96usize];
+    ["Alignment of WGPUAdapterInfo"][::core::mem::align_of::<WGPUAdapterInfo>() - 8usize];
+    ["Offset of field: WGPUAdapterInfo::nextInChain"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, nextInChain) - 0usize];
+    ["Offset of field: WGPUAdapterInfo::vendor"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, vendor) - 8usize];
+    ["Offset of field: WGPUAdapterInfo::architecture"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, architecture) - 24usize];
+    ["Offset of field: WGPUAdapterInfo::device"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, device) - 40usize];
+    ["Offset of field: WGPUAdapterInfo::description"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, description) - 56usize];
+    ["Offset of field: WGPUAdapterInfo::backendType"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, backendType) - 72usize];
+    ["Offset of field: WGPUAdapterInfo::adapterType"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, adapterType) - 76usize];
+    ["Offset of field: WGPUAdapterInfo::vendorID"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, vendorID) - 80usize];
+    ["Offset of field: WGPUAdapterInfo::deviceID"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, deviceID) - 84usize];
+    ["Offset of field: WGPUAdapterInfo::subgroupMinSize"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMinSize) - 88usize];
+    ["Offset of field: WGPUAdapterInfo::subgroupMaxSize"]
+        [::core::mem::offset_of!(WGPUAdapterInfo, subgroupMaxSize) - 92usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUBindGroupDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub layout: WGPUBindGroupLayout,
+    pub entryCount: usize,
+    pub entries: *const WGPUBindGroupEntry,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUBindGroupDescriptor"]
+        [::core::mem::size_of::<WGPUBindGroupDescriptor>() - 48usize];
+    ["Alignment of WGPUBindGroupDescriptor"]
+        [::core::mem::align_of::<WGPUBindGroupDescriptor>() - 8usize];
+    ["Offset of field: WGPUBindGroupDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUBindGroupDescriptor::label"]
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, label) - 8usize];
+    ["Offset of field: WGPUBindGroupDescriptor::layout"]
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, layout) - 24usize];
+    ["Offset of field: WGPUBindGroupDescriptor::entryCount"]
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entryCount) - 32usize];
+    ["Offset of field: WGPUBindGroupDescriptor::entries"]
+        [::core::mem::offset_of!(WGPUBindGroupDescriptor, entries) - 40usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3780,6 +5787,24 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPUCompilationInfo {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub messageCount: usize,
+    pub messages: *const WGPUCompilationMessage,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUCompilationInfo"][::core::mem::size_of::<WGPUCompilationInfo>() - 24usize];
+    ["Alignment of WGPUCompilationInfo"][::core::mem::align_of::<WGPUCompilationInfo>() - 8usize];
+    ["Offset of field: WGPUCompilationInfo::nextInChain"]
+        [::core::mem::offset_of!(WGPUCompilationInfo, nextInChain) - 0usize];
+    ["Offset of field: WGPUCompilationInfo::messageCount"]
+        [::core::mem::offset_of!(WGPUCompilationInfo, messageCount) - 8usize];
+    ["Offset of field: WGPUCompilationInfo::messages"]
+        [::core::mem::offset_of!(WGPUCompilationInfo, messages) - 16usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPUComputePipelineDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
     pub label: WGPUStringView,
@@ -3803,35 +5828,143 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct WGPURenderPassDescriptor {
+pub struct WGPUDawnFormatCapabilities {
     pub nextInChain: *mut WGPUChainedStruct,
-    pub label: WGPUStringView,
-    pub colorAttachmentCount: usize,
-    pub colorAttachments: *const WGPURenderPassColorAttachment,
-    pub depthStencilAttachment: *const WGPURenderPassDepthStencilAttachment,
-    pub occlusionQuerySet: WGPUQuerySet,
-    pub timestampWrites: *const WGPUPassTimestampWrites,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
 const _: () = {
-    ["Size of WGPURenderPassDescriptor"]
-        [::core::mem::size_of::<WGPURenderPassDescriptor>() - 64usize];
-    ["Alignment of WGPURenderPassDescriptor"]
-        [::core::mem::align_of::<WGPURenderPassDescriptor>() - 8usize];
-    ["Offset of field: WGPURenderPassDescriptor::nextInChain"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, nextInChain) - 0usize];
-    ["Offset of field: WGPURenderPassDescriptor::label"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, label) - 8usize];
-    ["Offset of field: WGPURenderPassDescriptor::colorAttachmentCount"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachmentCount) - 24usize];
-    ["Offset of field: WGPURenderPassDescriptor::colorAttachments"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachments) - 32usize];
-    ["Offset of field: WGPURenderPassDescriptor::depthStencilAttachment"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, depthStencilAttachment) - 40usize];
-    ["Offset of field: WGPURenderPassDescriptor::occlusionQuerySet"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, occlusionQuerySet) - 48usize];
-    ["Offset of field: WGPURenderPassDescriptor::timestampWrites"]
-        [::core::mem::offset_of!(WGPURenderPassDescriptor, timestampWrites) - 56usize];
+    ["Size of WGPUDawnFormatCapabilities"]
+        [::core::mem::size_of::<WGPUDawnFormatCapabilities>() - 8usize];
+    ["Alignment of WGPUDawnFormatCapabilities"]
+        [::core::mem::align_of::<WGPUDawnFormatCapabilities>() - 8usize];
+    ["Offset of field: WGPUDawnFormatCapabilities::nextInChain"]
+        [::core::mem::offset_of!(WGPUDawnFormatCapabilities, nextInChain) - 0usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUDeviceDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub requiredFeatureCount: usize,
+    pub requiredFeatures: *const WGPUFeatureName,
+    pub requiredLimits: *const WGPULimits,
+    pub defaultQueue: WGPUQueueDescriptor,
+    pub deviceLostCallbackInfo: WGPUDeviceLostCallbackInfo,
+    pub uncapturedErrorCallbackInfo: WGPUUncapturedErrorCallbackInfo,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUDeviceDescriptor"][::core::mem::size_of::<WGPUDeviceDescriptor>() - 144usize];
+    ["Alignment of WGPUDeviceDescriptor"][::core::mem::align_of::<WGPUDeviceDescriptor>() - 8usize];
+    ["Offset of field: WGPUDeviceDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUDeviceDescriptor::label"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, label) - 8usize];
+    ["Offset of field: WGPUDeviceDescriptor::requiredFeatureCount"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatureCount) - 24usize];
+    ["Offset of field: WGPUDeviceDescriptor::requiredFeatures"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredFeatures) - 32usize];
+    ["Offset of field: WGPUDeviceDescriptor::requiredLimits"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, requiredLimits) - 40usize];
+    ["Offset of field: WGPUDeviceDescriptor::defaultQueue"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, defaultQueue) - 48usize];
+    ["Offset of field: WGPUDeviceDescriptor::deviceLostCallbackInfo"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, deviceLostCallbackInfo) - 72usize];
+    ["Offset of field: WGPUDeviceDescriptor::uncapturedErrorCallbackInfo"]
+        [::core::mem::offset_of!(WGPUDeviceDescriptor, uncapturedErrorCallbackInfo) - 112usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUPipelineLayoutDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub bindGroupLayoutCount: usize,
+    pub bindGroupLayouts: *const WGPUBindGroupLayout,
+    pub immediateSize: u32,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUPipelineLayoutDescriptor"]
+        [::core::mem::size_of::<WGPUPipelineLayoutDescriptor>() - 48usize];
+    ["Alignment of WGPUPipelineLayoutDescriptor"]
+        [::core::mem::align_of::<WGPUPipelineLayoutDescriptor>() - 8usize];
+    ["Offset of field: WGPUPipelineLayoutDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUPipelineLayoutDescriptor::label"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, label) - 8usize];
+    ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayoutCount"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayoutCount) - 24usize];
+    ["Offset of field: WGPUPipelineLayoutDescriptor::bindGroupLayouts"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, bindGroupLayouts) - 32usize];
+    ["Offset of field: WGPUPipelineLayoutDescriptor::immediateSize"]
+        [::core::mem::offset_of!(WGPUPipelineLayoutDescriptor, immediateSize) - 40usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPURenderPassPixelLocalStorage {
+    pub chain: WGPUChainedStruct,
+    pub totalPixelLocalStorageSize: u64,
+    pub storageAttachmentCount: usize,
+    pub storageAttachments: *const WGPURenderPassStorageAttachment,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPURenderPassPixelLocalStorage"]
+        [::core::mem::size_of::<WGPURenderPassPixelLocalStorage>() - 40usize];
+    ["Alignment of WGPURenderPassPixelLocalStorage"]
+        [::core::mem::align_of::<WGPURenderPassPixelLocalStorage>() - 8usize];
+    ["Offset of field: WGPURenderPassPixelLocalStorage::chain"]
+        [::core::mem::offset_of!(WGPURenderPassPixelLocalStorage, chain) - 0usize];
+    ["Offset of field: WGPURenderPassPixelLocalStorage::totalPixelLocalStorageSize"][::core::mem::offset_of!(
+        WGPURenderPassPixelLocalStorage,
+        totalPixelLocalStorageSize
+    ) - 16usize];
+    ["Offset of field: WGPURenderPassPixelLocalStorage::storageAttachmentCount"][::core::mem::offset_of!(
+        WGPURenderPassPixelLocalStorage,
+        storageAttachmentCount
+    ) - 24usize];
+    ["Offset of field: WGPURenderPassPixelLocalStorage::storageAttachments"]
+        [::core::mem::offset_of!(WGPURenderPassPixelLocalStorage, storageAttachments) - 32usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryDescriptor"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryDescriptor>() - 24usize];
+    ["Alignment of WGPUSharedTextureMemoryDescriptor"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryDescriptor>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryDescriptor::label"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryDescriptor, label) - 8usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct WGPUSharedTextureMemoryProperties {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub usage: WGPUTextureUsage,
+    pub size: WGPUExtent3D,
+    pub format: WGPUTextureFormat,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPUSharedTextureMemoryProperties"]
+        [::core::mem::size_of::<WGPUSharedTextureMemoryProperties>() - 32usize];
+    ["Alignment of WGPUSharedTextureMemoryProperties"]
+        [::core::mem::align_of::<WGPUSharedTextureMemoryProperties>() - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryProperties::nextInChain"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryProperties, nextInChain) - 0usize];
+    ["Offset of field: WGPUSharedTextureMemoryProperties::usage"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryProperties, usage) - 8usize];
+    ["Offset of field: WGPUSharedTextureMemoryProperties::size"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryProperties, size) - 16usize];
+    ["Offset of field: WGPUSharedTextureMemoryProperties::format"]
+        [::core::mem::offset_of!(WGPUSharedTextureMemoryProperties, format) - 28usize];
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -3895,6 +6028,38 @@ const _: () = {
 };
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct WGPURenderPassDescriptor {
+    pub nextInChain: *mut WGPUChainedStruct,
+    pub label: WGPUStringView,
+    pub colorAttachmentCount: usize,
+    pub colorAttachments: *const WGPURenderPassColorAttachment,
+    pub depthStencilAttachment: *const WGPURenderPassDepthStencilAttachment,
+    pub occlusionQuerySet: WGPUQuerySet,
+    pub timestampWrites: *const WGPUPassTimestampWrites,
+}
+#[allow(clippy::unnecessary_operation, clippy::identity_op)]
+const _: () = {
+    ["Size of WGPURenderPassDescriptor"]
+        [::core::mem::size_of::<WGPURenderPassDescriptor>() - 64usize];
+    ["Alignment of WGPURenderPassDescriptor"]
+        [::core::mem::align_of::<WGPURenderPassDescriptor>() - 8usize];
+    ["Offset of field: WGPURenderPassDescriptor::nextInChain"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, nextInChain) - 0usize];
+    ["Offset of field: WGPURenderPassDescriptor::label"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, label) - 8usize];
+    ["Offset of field: WGPURenderPassDescriptor::colorAttachmentCount"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachmentCount) - 24usize];
+    ["Offset of field: WGPURenderPassDescriptor::colorAttachments"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, colorAttachments) - 32usize];
+    ["Offset of field: WGPURenderPassDescriptor::depthStencilAttachment"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, depthStencilAttachment) - 40usize];
+    ["Offset of field: WGPURenderPassDescriptor::occlusionQuerySet"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, occlusionQuerySet) - 48usize];
+    ["Offset of field: WGPURenderPassDescriptor::timestampWrites"]
+        [::core::mem::offset_of!(WGPURenderPassDescriptor, timestampWrites) - 56usize];
+};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct WGPURenderPipelineDescriptor {
     pub nextInChain: *mut WGPUChainedStruct,
     pub label: WGPUStringView,
@@ -3928,23 +6093,62 @@ const _: () = {
     ["Offset of field: WGPURenderPipelineDescriptor::fragment"]
         [::core::mem::offset_of!(WGPURenderPipelineDescriptor, fragment) - 160usize];
 };
+pub type WGPURenderPassDescriptorMaxDrawCount = WGPURenderPassMaxDrawCount;
+pub type WGPUShaderModuleSPIRVDescriptor = WGPUShaderSourceSPIRV;
+pub type WGPUShaderModuleWGSLDescriptor = WGPUShaderSourceWGSL;
+pub type WGPUSurfaceDescriptorFromAndroidNativeWindow = WGPUSurfaceSourceAndroidNativeWindow;
+pub type WGPUSurfaceDescriptorFromMetalLayer = WGPUSurfaceSourceMetalLayer;
+pub type WGPUSurfaceDescriptorFromWaylandSurface = WGPUSurfaceSourceWaylandSurface;
+pub type WGPUSurfaceDescriptorFromWindowsHWND = WGPUSurfaceSourceWindowsHWND;
+pub type WGPUSurfaceDescriptorFromXcbWindow = WGPUSurfaceSourceXCBWindow;
+pub type WGPUSurfaceDescriptorFromXlibWindow = WGPUSurfaceSourceXlibWindow;
+pub type WGPUProcAdapterInfoFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUAdapterInfo)>;
+pub type WGPUProcAdapterPropertiesMemoryHeapsFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUAdapterPropertiesMemoryHeaps)>;
+pub type WGPUProcAdapterPropertiesSubgroupMatrixConfigsFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUAdapterPropertiesSubgroupMatrixConfigs)>;
 pub type WGPUProcCreateInstance = ::core::option::Option<
     unsafe extern "C" fn(descriptor: *const WGPUInstanceDescriptor) -> WGPUInstance,
 >;
-pub type WGPUProcGetInstanceFeatures =
-    ::core::option::Option<unsafe extern "C" fn(features: *mut WGPUSupportedInstanceFeatures)>;
-pub type WGPUProcGetInstanceLimits =
-    ::core::option::Option<unsafe extern "C" fn(limits: *mut WGPUInstanceLimits) -> WGPUStatus>;
-pub type WGPUProcHasInstanceFeature =
-    ::core::option::Option<unsafe extern "C" fn(feature: WGPUInstanceFeatureName) -> WGPUBool>;
+pub type WGPUProcDawnDrmFormatCapabilitiesFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUDawnDrmFormatCapabilities)>;
+pub type WGPUProcGetInstanceCapabilities = ::core::option::Option<
+    unsafe extern "C" fn(capabilities: *mut WGPUInstanceCapabilities) -> WGPUStatus,
+>;
 pub type WGPUProcGetProcAddress =
     ::core::option::Option<unsafe extern "C" fn(procName: WGPUStringView) -> WGPUProc>;
+pub type WGPUProcSharedBufferMemoryEndAccessStateFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUSharedBufferMemoryEndAccessState)>;
+pub type WGPUProcSharedTextureMemoryEndAccessStateFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUSharedTextureMemoryEndAccessState)>;
+pub type WGPUProcSupportedFeaturesFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUSupportedFeatures)>;
+pub type WGPUProcSupportedWGSLLanguageFeaturesFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUSupportedWGSLLanguageFeatures)>;
+pub type WGPUProcSurfaceCapabilitiesFreeMembers =
+    ::core::option::Option<unsafe extern "C" fn(value: WGPUSurfaceCapabilities)>;
+pub type WGPUProcAdapterCreateDevice = ::core::option::Option<
+    unsafe extern "C" fn(
+        adapter: WGPUAdapter,
+        descriptor: *const WGPUDeviceDescriptor,
+    ) -> WGPUDevice,
+>;
 pub type WGPUProcAdapterGetFeatures = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, features: *mut WGPUSupportedFeatures),
+>;
+pub type WGPUProcAdapterGetFormatCapabilities = ::core::option::Option<
+    unsafe extern "C" fn(
+        adapter: WGPUAdapter,
+        format: WGPUTextureFormat,
+        capabilities: *mut WGPUDawnFormatCapabilities,
+    ) -> WGPUStatus,
 >;
 pub type WGPUProcAdapterGetInfo = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, info: *mut WGPUAdapterInfo) -> WGPUStatus,
 >;
+pub type WGPUProcAdapterGetInstance =
+    ::core::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter) -> WGPUInstance>;
 pub type WGPUProcAdapterGetLimits = ::core::option::Option<
     unsafe extern "C" fn(adapter: WGPUAdapter, limits: *mut WGPULimits) -> WGPUStatus,
 >;
@@ -3954,15 +6158,13 @@ pub type WGPUProcAdapterHasFeature = ::core::option::Option<
 pub type WGPUProcAdapterRequestDevice = ::core::option::Option<
     unsafe extern "C" fn(
         adapter: WGPUAdapter,
-        descriptor: *const WGPUDeviceDescriptor,
+        options: *const WGPUDeviceDescriptor,
         callbackInfo: WGPURequestDeviceCallbackInfo,
     ) -> WGPUFuture,
 >;
 pub type WGPUProcAdapterAddRef = ::core::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
 pub type WGPUProcAdapterRelease =
     ::core::option::Option<unsafe extern "C" fn(adapter: WGPUAdapter)>;
-pub type WGPUProcAdapterInfoFreeMembers =
-    ::core::option::Option<unsafe extern "C" fn(adapterInfo: WGPUAdapterInfo)>;
 pub type WGPUProcBindGroupSetLabel =
     ::core::option::Option<unsafe extern "C" fn(bindGroup: WGPUBindGroup, label: WGPUStringView)>;
 pub type WGPUProcBindGroupAddRef =
@@ -4094,6 +6296,9 @@ pub type WGPUProcCommandEncoderFinish = ::core::option::Option<
         descriptor: *const WGPUCommandBufferDescriptor,
     ) -> WGPUCommandBuffer,
 >;
+pub type WGPUProcCommandEncoderInjectValidationError = ::core::option::Option<
+    unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, message: WGPUStringView),
+>;
 pub type WGPUProcCommandEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, markerLabel: WGPUStringView),
 >;
@@ -4114,6 +6319,15 @@ pub type WGPUProcCommandEncoderResolveQuerySet = ::core::option::Option<
 >;
 pub type WGPUProcCommandEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(commandEncoder: WGPUCommandEncoder, label: WGPUStringView),
+>;
+pub type WGPUProcCommandEncoderWriteBuffer = ::core::option::Option<
+    unsafe extern "C" fn(
+        commandEncoder: WGPUCommandEncoder,
+        buffer: WGPUBuffer,
+        bufferOffset: u64,
+        data: *const u8,
+        size: u64,
+    ),
 >;
 pub type WGPUProcCommandEncoderWriteTimestamp = ::core::option::Option<
     unsafe extern "C" fn(
@@ -4160,11 +6374,26 @@ pub type WGPUProcComputePassEncoderSetBindGroup = ::core::option::Option<
         dynamicOffsets: *const u32,
     ),
 >;
+pub type WGPUProcComputePassEncoderSetImmediateData = ::core::option::Option<
+    unsafe extern "C" fn(
+        computePassEncoder: WGPUComputePassEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
+    ),
+>;
 pub type WGPUProcComputePassEncoderSetLabel = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, label: WGPUStringView),
 >;
 pub type WGPUProcComputePassEncoderSetPipeline = ::core::option::Option<
     unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder, pipeline: WGPUComputePipeline),
+>;
+pub type WGPUProcComputePassEncoderWriteTimestamp = ::core::option::Option<
+    unsafe extern "C" fn(
+        computePassEncoder: WGPUComputePassEncoder,
+        querySet: WGPUQuerySet,
+        queryIndex: u32,
+    ),
 >;
 pub type WGPUProcComputePassEncoderAddRef =
     ::core::option::Option<unsafe extern "C" fn(computePassEncoder: WGPUComputePassEncoder)>;
@@ -4217,6 +6446,30 @@ pub type WGPUProcDeviceCreateComputePipelineAsync = ::core::option::Option<
         callbackInfo: WGPUCreateComputePipelineAsyncCallbackInfo,
     ) -> WGPUFuture,
 >;
+pub type WGPUProcDeviceCreateErrorBuffer = ::core::option::Option<
+    unsafe extern "C" fn(device: WGPUDevice, descriptor: *const WGPUBufferDescriptor) -> WGPUBuffer,
+>;
+pub type WGPUProcDeviceCreateErrorExternalTexture =
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUExternalTexture>;
+pub type WGPUProcDeviceCreateErrorShaderModule = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        descriptor: *const WGPUShaderModuleDescriptor,
+        errorMessage: WGPUStringView,
+    ) -> WGPUShaderModule,
+>;
+pub type WGPUProcDeviceCreateErrorTexture = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        descriptor: *const WGPUTextureDescriptor,
+    ) -> WGPUTexture,
+>;
+pub type WGPUProcDeviceCreateExternalTexture = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        externalTextureDescriptor: *const WGPUExternalTextureDescriptor,
+    ) -> WGPUExternalTexture,
+>;
 pub type WGPUProcDeviceCreatePipelineLayout = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
@@ -4267,8 +6520,20 @@ pub type WGPUProcDeviceCreateTexture = ::core::option::Option<
     ) -> WGPUTexture,
 >;
 pub type WGPUProcDeviceDestroy = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcDeviceForceLoss = ::core::option::Option<
+    unsafe extern "C" fn(device: WGPUDevice, type_: WGPUDeviceLostReason, message: WGPUStringView),
+>;
+pub type WGPUProcDeviceGetAdapter =
+    ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice) -> WGPUAdapter>;
 pub type WGPUProcDeviceGetAdapterInfo = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, adapterInfo: *mut WGPUAdapterInfo) -> WGPUStatus,
+>;
+pub type WGPUProcDeviceGetAHardwareBufferProperties = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        handle: *mut ::core::ffi::c_void,
+        properties: *mut WGPUAHardwareBufferProperties,
+    ) -> WGPUStatus,
 >;
 pub type WGPUProcDeviceGetFeatures = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, features: *mut WGPUSupportedFeatures),
@@ -4283,6 +6548,27 @@ pub type WGPUProcDeviceGetQueue =
 pub type WGPUProcDeviceHasFeature = ::core::option::Option<
     unsafe extern "C" fn(device: WGPUDevice, feature: WGPUFeatureName) -> WGPUBool,
 >;
+pub type WGPUProcDeviceImportSharedBufferMemory = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedBufferMemoryDescriptor,
+    ) -> WGPUSharedBufferMemory,
+>;
+pub type WGPUProcDeviceImportSharedFence = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedFenceDescriptor,
+    ) -> WGPUSharedFence,
+>;
+pub type WGPUProcDeviceImportSharedTextureMemory = ::core::option::Option<
+    unsafe extern "C" fn(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedTextureMemoryDescriptor,
+    ) -> WGPUSharedTextureMemory,
+>;
+pub type WGPUProcDeviceInjectError = ::core::option::Option<
+    unsafe extern "C" fn(device: WGPUDevice, type_: WGPUErrorType, message: WGPUStringView),
+>;
 pub type WGPUProcDevicePopErrorScope = ::core::option::Option<
     unsafe extern "C" fn(
         device: WGPUDevice,
@@ -4293,8 +6579,28 @@ pub type WGPUProcDevicePushErrorScope =
     ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice, filter: WGPUErrorFilter)>;
 pub type WGPUProcDeviceSetLabel =
     ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice, label: WGPUStringView)>;
+pub type WGPUProcDeviceSetLoggingCallback = ::core::option::Option<
+    unsafe extern "C" fn(device: WGPUDevice, callbackInfo: WGPULoggingCallbackInfo),
+>;
+pub type WGPUProcDeviceTick = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcDeviceValidateTextureDescriptor = ::core::option::Option<
+    unsafe extern "C" fn(device: WGPUDevice, descriptor: *const WGPUTextureDescriptor),
+>;
 pub type WGPUProcDeviceAddRef = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
 pub type WGPUProcDeviceRelease = ::core::option::Option<unsafe extern "C" fn(device: WGPUDevice)>;
+pub type WGPUProcExternalTextureDestroy =
+    ::core::option::Option<unsafe extern "C" fn(externalTexture: WGPUExternalTexture)>;
+pub type WGPUProcExternalTextureExpire =
+    ::core::option::Option<unsafe extern "C" fn(externalTexture: WGPUExternalTexture)>;
+pub type WGPUProcExternalTextureRefresh =
+    ::core::option::Option<unsafe extern "C" fn(externalTexture: WGPUExternalTexture)>;
+pub type WGPUProcExternalTextureSetLabel = ::core::option::Option<
+    unsafe extern "C" fn(externalTexture: WGPUExternalTexture, label: WGPUStringView),
+>;
+pub type WGPUProcExternalTextureAddRef =
+    ::core::option::Option<unsafe extern "C" fn(externalTexture: WGPUExternalTexture)>;
+pub type WGPUProcExternalTextureRelease =
+    ::core::option::Option<unsafe extern "C" fn(externalTexture: WGPUExternalTexture)>;
 pub type WGPUProcInstanceCreateSurface = ::core::option::Option<
     unsafe extern "C" fn(
         instance: WGPUInstance,
@@ -4350,6 +6656,24 @@ pub type WGPUProcQuerySetAddRef =
     ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
 pub type WGPUProcQuerySetRelease =
     ::core::option::Option<unsafe extern "C" fn(querySet: WGPUQuerySet)>;
+pub type WGPUProcQueueCopyExternalTextureForBrowser = ::core::option::Option<
+    unsafe extern "C" fn(
+        queue: WGPUQueue,
+        source: *const WGPUImageCopyExternalTexture,
+        destination: *const WGPUTexelCopyTextureInfo,
+        copySize: *const WGPUExtent3D,
+        options: *const WGPUCopyTextureForBrowserOptions,
+    ),
+>;
+pub type WGPUProcQueueCopyTextureForBrowser = ::core::option::Option<
+    unsafe extern "C" fn(
+        queue: WGPUQueue,
+        source: *const WGPUTexelCopyTextureInfo,
+        destination: *const WGPUTexelCopyTextureInfo,
+        copySize: *const WGPUExtent3D,
+        options: *const WGPUCopyTextureForBrowserOptions,
+    ),
+>;
 pub type WGPUProcQueueOnSubmittedWorkDone = ::core::option::Option<
     unsafe extern "C" fn(
         queue: WGPUQueue,
@@ -4445,6 +6769,14 @@ pub type WGPUProcRenderBundleEncoderSetBindGroup = ::core::option::Option<
         dynamicOffsets: *const u32,
     ),
 >;
+pub type WGPUProcRenderBundleEncoderSetImmediateData = ::core::option::Option<
+    unsafe extern "C" fn(
+        renderBundleEncoder: WGPURenderBundleEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
+    ),
+>;
 pub type WGPUProcRenderBundleEncoderSetIndexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
         renderBundleEncoder: WGPURenderBundleEncoder,
@@ -4526,6 +6858,28 @@ pub type WGPUProcRenderPassEncoderExecuteBundles = ::core::option::Option<
 pub type WGPUProcRenderPassEncoderInsertDebugMarker = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, markerLabel: WGPUStringView),
 >;
+pub type WGPUProcRenderPassEncoderMultiDrawIndexedIndirect = ::core::option::Option<
+    unsafe extern "C" fn(
+        renderPassEncoder: WGPURenderPassEncoder,
+        indirectBuffer: WGPUBuffer,
+        indirectOffset: u64,
+        maxDrawCount: u32,
+        drawCountBuffer: WGPUBuffer,
+        drawCountBufferOffset: u64,
+    ),
+>;
+pub type WGPUProcRenderPassEncoderMultiDrawIndirect = ::core::option::Option<
+    unsafe extern "C" fn(
+        renderPassEncoder: WGPURenderPassEncoder,
+        indirectBuffer: WGPUBuffer,
+        indirectOffset: u64,
+        maxDrawCount: u32,
+        drawCountBuffer: WGPUBuffer,
+        drawCountBufferOffset: u64,
+    ),
+>;
+pub type WGPUProcRenderPassEncoderPixelLocalStorageBarrier =
+    ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
 pub type WGPUProcRenderPassEncoderPopDebugGroup =
     ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
 pub type WGPUProcRenderPassEncoderPushDebugGroup = ::core::option::Option<
@@ -4542,6 +6896,14 @@ pub type WGPUProcRenderPassEncoderSetBindGroup = ::core::option::Option<
 >;
 pub type WGPUProcRenderPassEncoderSetBlendConstant = ::core::option::Option<
     unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder, color: *const WGPUColor),
+>;
+pub type WGPUProcRenderPassEncoderSetImmediateData = ::core::option::Option<
+    unsafe extern "C" fn(
+        renderPassEncoder: WGPURenderPassEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
+    ),
 >;
 pub type WGPUProcRenderPassEncoderSetIndexBuffer = ::core::option::Option<
     unsafe extern "C" fn(
@@ -4590,6 +6952,13 @@ pub type WGPUProcRenderPassEncoderSetViewport = ::core::option::Option<
         maxDepth: f32,
     ),
 >;
+pub type WGPUProcRenderPassEncoderWriteTimestamp = ::core::option::Option<
+    unsafe extern "C" fn(
+        renderPassEncoder: WGPURenderPassEncoder,
+        querySet: WGPUQuerySet,
+        queryIndex: u32,
+    ),
+>;
 pub type WGPUProcRenderPassEncoderAddRef =
     ::core::option::Option<unsafe extern "C" fn(renderPassEncoder: WGPURenderPassEncoder)>;
 pub type WGPUProcRenderPassEncoderRelease =
@@ -4625,14 +6994,85 @@ pub type WGPUProcShaderModuleAddRef =
     ::core::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
 pub type WGPUProcShaderModuleRelease =
     ::core::option::Option<unsafe extern "C" fn(shaderModule: WGPUShaderModule)>;
-pub type WGPUProcSupportedFeaturesFreeMembers =
-    ::core::option::Option<unsafe extern "C" fn(supportedFeatures: WGPUSupportedFeatures)>;
-pub type WGPUProcSupportedInstanceFeaturesFreeMembers = ::core::option::Option<
-    unsafe extern "C" fn(supportedInstanceFeatures: WGPUSupportedInstanceFeatures),
+pub type WGPUProcSharedBufferMemoryBeginAccess = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        buffer: WGPUBuffer,
+        descriptor: *const WGPUSharedBufferMemoryBeginAccessDescriptor,
+    ) -> WGPUStatus,
 >;
-pub type WGPUProcSupportedWGSLLanguageFeaturesFreeMembers = ::core::option::Option<
-    unsafe extern "C" fn(supportedWGSLLanguageFeatures: WGPUSupportedWGSLLanguageFeatures),
+pub type WGPUProcSharedBufferMemoryCreateBuffer = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        descriptor: *const WGPUBufferDescriptor,
+    ) -> WGPUBuffer,
 >;
+pub type WGPUProcSharedBufferMemoryEndAccess = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        buffer: WGPUBuffer,
+        descriptor: *mut WGPUSharedBufferMemoryEndAccessState,
+    ) -> WGPUStatus,
+>;
+pub type WGPUProcSharedBufferMemoryGetProperties = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        properties: *mut WGPUSharedBufferMemoryProperties,
+    ) -> WGPUStatus,
+>;
+pub type WGPUProcSharedBufferMemoryIsDeviceLost = ::core::option::Option<
+    unsafe extern "C" fn(sharedBufferMemory: WGPUSharedBufferMemory) -> WGPUBool,
+>;
+pub type WGPUProcSharedBufferMemorySetLabel = ::core::option::Option<
+    unsafe extern "C" fn(sharedBufferMemory: WGPUSharedBufferMemory, label: WGPUStringView),
+>;
+pub type WGPUProcSharedBufferMemoryAddRef =
+    ::core::option::Option<unsafe extern "C" fn(sharedBufferMemory: WGPUSharedBufferMemory)>;
+pub type WGPUProcSharedBufferMemoryRelease =
+    ::core::option::Option<unsafe extern "C" fn(sharedBufferMemory: WGPUSharedBufferMemory)>;
+pub type WGPUProcSharedFenceExportInfo = ::core::option::Option<
+    unsafe extern "C" fn(sharedFence: WGPUSharedFence, info: *mut WGPUSharedFenceExportInfo),
+>;
+pub type WGPUProcSharedFenceAddRef =
+    ::core::option::Option<unsafe extern "C" fn(sharedFence: WGPUSharedFence)>;
+pub type WGPUProcSharedFenceRelease =
+    ::core::option::Option<unsafe extern "C" fn(sharedFence: WGPUSharedFence)>;
+pub type WGPUProcSharedTextureMemoryBeginAccess = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        texture: WGPUTexture,
+        descriptor: *const WGPUSharedTextureMemoryBeginAccessDescriptor,
+    ) -> WGPUStatus,
+>;
+pub type WGPUProcSharedTextureMemoryCreateTexture = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        descriptor: *const WGPUTextureDescriptor,
+    ) -> WGPUTexture,
+>;
+pub type WGPUProcSharedTextureMemoryEndAccess = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        texture: WGPUTexture,
+        descriptor: *mut WGPUSharedTextureMemoryEndAccessState,
+    ) -> WGPUStatus,
+>;
+pub type WGPUProcSharedTextureMemoryGetProperties = ::core::option::Option<
+    unsafe extern "C" fn(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        properties: *mut WGPUSharedTextureMemoryProperties,
+    ) -> WGPUStatus,
+>;
+pub type WGPUProcSharedTextureMemoryIsDeviceLost = ::core::option::Option<
+    unsafe extern "C" fn(sharedTextureMemory: WGPUSharedTextureMemory) -> WGPUBool,
+>;
+pub type WGPUProcSharedTextureMemorySetLabel = ::core::option::Option<
+    unsafe extern "C" fn(sharedTextureMemory: WGPUSharedTextureMemory, label: WGPUStringView),
+>;
+pub type WGPUProcSharedTextureMemoryAddRef =
+    ::core::option::Option<unsafe extern "C" fn(sharedTextureMemory: WGPUSharedTextureMemory)>;
+pub type WGPUProcSharedTextureMemoryRelease =
+    ::core::option::Option<unsafe extern "C" fn(sharedTextureMemory: WGPUSharedTextureMemory)>;
 pub type WGPUProcSurfaceConfigure = ::core::option::Option<
     unsafe extern "C" fn(surface: WGPUSurface, config: *const WGPUSurfaceConfiguration),
 >;
@@ -4647,7 +7087,7 @@ pub type WGPUProcSurfaceGetCurrentTexture = ::core::option::Option<
     unsafe extern "C" fn(surface: WGPUSurface, surfaceTexture: *mut WGPUSurfaceTexture),
 >;
 pub type WGPUProcSurfacePresent =
-    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface) -> WGPUStatus>;
+    ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
 pub type WGPUProcSurfaceSetLabel =
     ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface, label: WGPUStringView)>;
 pub type WGPUProcSurfaceUnconfigure =
@@ -4655,8 +7095,12 @@ pub type WGPUProcSurfaceUnconfigure =
 pub type WGPUProcSurfaceAddRef = ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
 pub type WGPUProcSurfaceRelease =
     ::core::option::Option<unsafe extern "C" fn(surface: WGPUSurface)>;
-pub type WGPUProcSurfaceCapabilitiesFreeMembers =
-    ::core::option::Option<unsafe extern "C" fn(surfaceCapabilities: WGPUSurfaceCapabilities)>;
+pub type WGPUProcTextureCreateErrorView = ::core::option::Option<
+    unsafe extern "C" fn(
+        texture: WGPUTexture,
+        descriptor: *const WGPUTextureViewDescriptor,
+    ) -> WGPUTextureView,
+>;
 pub type WGPUProcTextureCreateView = ::core::option::Option<
     unsafe extern "C" fn(
         texture: WGPUTexture,
@@ -4694,25 +7138,68 @@ pub type WGPUProcTextureViewAddRef =
 pub type WGPUProcTextureViewRelease =
     ::core::option::Option<unsafe extern "C" fn(textureView: WGPUTextureView)>;
 unsafe extern "C" {
+    pub fn wgpuAdapterInfoFreeMembers(value: WGPUAdapterInfo);
+}
+unsafe extern "C" {
+    pub fn wgpuAdapterPropertiesMemoryHeapsFreeMembers(value: WGPUAdapterPropertiesMemoryHeaps);
+}
+unsafe extern "C" {
+    pub fn wgpuAdapterPropertiesSubgroupMatrixConfigsFreeMembers(
+        value: WGPUAdapterPropertiesSubgroupMatrixConfigs,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuCreateInstance(descriptor: *const WGPUInstanceDescriptor) -> WGPUInstance;
 }
 unsafe extern "C" {
-    pub fn wgpuGetInstanceFeatures(features: *mut WGPUSupportedInstanceFeatures);
+    pub fn wgpuDawnDrmFormatCapabilitiesFreeMembers(value: WGPUDawnDrmFormatCapabilities);
 }
 unsafe extern "C" {
-    pub fn wgpuGetInstanceLimits(limits: *mut WGPUInstanceLimits) -> WGPUStatus;
-}
-unsafe extern "C" {
-    pub fn wgpuHasInstanceFeature(feature: WGPUInstanceFeatureName) -> WGPUBool;
+    pub fn wgpuGetInstanceCapabilities(capabilities: *mut WGPUInstanceCapabilities) -> WGPUStatus;
 }
 unsafe extern "C" {
     pub fn wgpuGetProcAddress(procName: WGPUStringView) -> WGPUProc;
 }
 unsafe extern "C" {
+    pub fn wgpuSharedBufferMemoryEndAccessStateFreeMembers(
+        value: WGPUSharedBufferMemoryEndAccessState,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryEndAccessStateFreeMembers(
+        value: WGPUSharedTextureMemoryEndAccessState,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuSupportedFeaturesFreeMembers(value: WGPUSupportedFeatures);
+}
+unsafe extern "C" {
+    pub fn wgpuSupportedWGSLLanguageFeaturesFreeMembers(value: WGPUSupportedWGSLLanguageFeatures);
+}
+unsafe extern "C" {
+    pub fn wgpuSurfaceCapabilitiesFreeMembers(value: WGPUSurfaceCapabilities);
+}
+unsafe extern "C" {
+    pub fn wgpuAdapterCreateDevice(
+        adapter: WGPUAdapter,
+        descriptor: *const WGPUDeviceDescriptor,
+    ) -> WGPUDevice;
+}
+unsafe extern "C" {
     pub fn wgpuAdapterGetFeatures(adapter: WGPUAdapter, features: *mut WGPUSupportedFeatures);
 }
 unsafe extern "C" {
+    pub fn wgpuAdapterGetFormatCapabilities(
+        adapter: WGPUAdapter,
+        format: WGPUTextureFormat,
+        capabilities: *mut WGPUDawnFormatCapabilities,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
     pub fn wgpuAdapterGetInfo(adapter: WGPUAdapter, info: *mut WGPUAdapterInfo) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuAdapterGetInstance(adapter: WGPUAdapter) -> WGPUInstance;
 }
 unsafe extern "C" {
     pub fn wgpuAdapterGetLimits(adapter: WGPUAdapter, limits: *mut WGPULimits) -> WGPUStatus;
@@ -4723,7 +7210,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn wgpuAdapterRequestDevice(
         adapter: WGPUAdapter,
-        descriptor: *const WGPUDeviceDescriptor,
+        options: *const WGPUDeviceDescriptor,
         callbackInfo: WGPURequestDeviceCallbackInfo,
     ) -> WGPUFuture;
 }
@@ -4732,9 +7219,6 @@ unsafe extern "C" {
 }
 unsafe extern "C" {
     pub fn wgpuAdapterRelease(adapter: WGPUAdapter);
-}
-unsafe extern "C" {
-    pub fn wgpuAdapterInfoFreeMembers(adapterInfo: WGPUAdapterInfo);
 }
 unsafe extern "C" {
     pub fn wgpuBindGroupSetLabel(bindGroup: WGPUBindGroup, label: WGPUStringView);
@@ -4887,6 +7371,12 @@ unsafe extern "C" {
     ) -> WGPUCommandBuffer;
 }
 unsafe extern "C" {
+    pub fn wgpuCommandEncoderInjectValidationError(
+        commandEncoder: WGPUCommandEncoder,
+        message: WGPUStringView,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuCommandEncoderInsertDebugMarker(
         commandEncoder: WGPUCommandEncoder,
         markerLabel: WGPUStringView,
@@ -4913,6 +7403,15 @@ unsafe extern "C" {
 }
 unsafe extern "C" {
     pub fn wgpuCommandEncoderSetLabel(commandEncoder: WGPUCommandEncoder, label: WGPUStringView);
+}
+unsafe extern "C" {
+    pub fn wgpuCommandEncoderWriteBuffer(
+        commandEncoder: WGPUCommandEncoder,
+        buffer: WGPUBuffer,
+        bufferOffset: u64,
+        data: *const u8,
+        size: u64,
+    );
 }
 unsafe extern "C" {
     pub fn wgpuCommandEncoderWriteTimestamp(
@@ -4970,6 +7469,14 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
+    pub fn wgpuComputePassEncoderSetImmediateData(
+        computePassEncoder: WGPUComputePassEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuComputePassEncoderSetLabel(
         computePassEncoder: WGPUComputePassEncoder,
         label: WGPUStringView,
@@ -4979,6 +7486,13 @@ unsafe extern "C" {
     pub fn wgpuComputePassEncoderSetPipeline(
         computePassEncoder: WGPUComputePassEncoder,
         pipeline: WGPUComputePipeline,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuComputePassEncoderWriteTimestamp(
+        computePassEncoder: WGPUComputePassEncoder,
+        querySet: WGPUQuerySet,
+        queryIndex: u32,
     );
 }
 unsafe extern "C" {
@@ -5040,6 +7554,34 @@ unsafe extern "C" {
     ) -> WGPUFuture;
 }
 unsafe extern "C" {
+    pub fn wgpuDeviceCreateErrorBuffer(
+        device: WGPUDevice,
+        descriptor: *const WGPUBufferDescriptor,
+    ) -> WGPUBuffer;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceCreateErrorExternalTexture(device: WGPUDevice) -> WGPUExternalTexture;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceCreateErrorShaderModule(
+        device: WGPUDevice,
+        descriptor: *const WGPUShaderModuleDescriptor,
+        errorMessage: WGPUStringView,
+    ) -> WGPUShaderModule;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceCreateErrorTexture(
+        device: WGPUDevice,
+        descriptor: *const WGPUTextureDescriptor,
+    ) -> WGPUTexture;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceCreateExternalTexture(
+        device: WGPUDevice,
+        externalTextureDescriptor: *const WGPUExternalTextureDescriptor,
+    ) -> WGPUExternalTexture;
+}
+unsafe extern "C" {
     pub fn wgpuDeviceCreatePipelineLayout(
         device: WGPUDevice,
         descriptor: *const WGPUPipelineLayoutDescriptor,
@@ -5092,9 +7634,26 @@ unsafe extern "C" {
     pub fn wgpuDeviceDestroy(device: WGPUDevice);
 }
 unsafe extern "C" {
+    pub fn wgpuDeviceForceLoss(
+        device: WGPUDevice,
+        type_: WGPUDeviceLostReason,
+        message: WGPUStringView,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceGetAdapter(device: WGPUDevice) -> WGPUAdapter;
+}
+unsafe extern "C" {
     pub fn wgpuDeviceGetAdapterInfo(
         device: WGPUDevice,
         adapterInfo: *mut WGPUAdapterInfo,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceGetAHardwareBufferProperties(
+        device: WGPUDevice,
+        handle: *mut ::core::ffi::c_void,
+        properties: *mut WGPUAHardwareBufferProperties,
     ) -> WGPUStatus;
 }
 unsafe extern "C" {
@@ -5113,6 +7672,27 @@ unsafe extern "C" {
     pub fn wgpuDeviceHasFeature(device: WGPUDevice, feature: WGPUFeatureName) -> WGPUBool;
 }
 unsafe extern "C" {
+    pub fn wgpuDeviceImportSharedBufferMemory(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedBufferMemoryDescriptor,
+    ) -> WGPUSharedBufferMemory;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceImportSharedFence(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedFenceDescriptor,
+    ) -> WGPUSharedFence;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceImportSharedTextureMemory(
+        device: WGPUDevice,
+        descriptor: *const WGPUSharedTextureMemoryDescriptor,
+    ) -> WGPUSharedTextureMemory;
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceInjectError(device: WGPUDevice, type_: WGPUErrorType, message: WGPUStringView);
+}
+unsafe extern "C" {
     pub fn wgpuDevicePopErrorScope(
         device: WGPUDevice,
         callbackInfo: WGPUPopErrorScopeCallbackInfo,
@@ -5125,10 +7705,40 @@ unsafe extern "C" {
     pub fn wgpuDeviceSetLabel(device: WGPUDevice, label: WGPUStringView);
 }
 unsafe extern "C" {
+    pub fn wgpuDeviceSetLoggingCallback(device: WGPUDevice, callbackInfo: WGPULoggingCallbackInfo);
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceTick(device: WGPUDevice);
+}
+unsafe extern "C" {
+    pub fn wgpuDeviceValidateTextureDescriptor(
+        device: WGPUDevice,
+        descriptor: *const WGPUTextureDescriptor,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuDeviceAddRef(device: WGPUDevice);
 }
 unsafe extern "C" {
     pub fn wgpuDeviceRelease(device: WGPUDevice);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureDestroy(externalTexture: WGPUExternalTexture);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureExpire(externalTexture: WGPUExternalTexture);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureRefresh(externalTexture: WGPUExternalTexture);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureSetLabel(externalTexture: WGPUExternalTexture, label: WGPUStringView);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureAddRef(externalTexture: WGPUExternalTexture);
+}
+unsafe extern "C" {
+    pub fn wgpuExternalTextureRelease(externalTexture: WGPUExternalTexture);
 }
 unsafe extern "C" {
     pub fn wgpuInstanceCreateSurface(
@@ -5198,6 +7808,24 @@ unsafe extern "C" {
 }
 unsafe extern "C" {
     pub fn wgpuQuerySetRelease(querySet: WGPUQuerySet);
+}
+unsafe extern "C" {
+    pub fn wgpuQueueCopyExternalTextureForBrowser(
+        queue: WGPUQueue,
+        source: *const WGPUImageCopyExternalTexture,
+        destination: *const WGPUTexelCopyTextureInfo,
+        copySize: *const WGPUExtent3D,
+        options: *const WGPUCopyTextureForBrowserOptions,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuQueueCopyTextureForBrowser(
+        queue: WGPUQueue,
+        source: *const WGPUTexelCopyTextureInfo,
+        destination: *const WGPUTexelCopyTextureInfo,
+        copySize: *const WGPUExtent3D,
+        options: *const WGPUCopyTextureForBrowserOptions,
+    );
 }
 unsafe extern "C" {
     pub fn wgpuQueueOnSubmittedWorkDone(
@@ -5313,6 +7941,14 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
+    pub fn wgpuRenderBundleEncoderSetImmediateData(
+        renderBundleEncoder: WGPURenderBundleEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuRenderBundleEncoderSetIndexBuffer(
         renderBundleEncoder: WGPURenderBundleEncoder,
         buffer: WGPUBuffer,
@@ -5407,6 +8043,29 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
+    pub fn wgpuRenderPassEncoderMultiDrawIndexedIndirect(
+        renderPassEncoder: WGPURenderPassEncoder,
+        indirectBuffer: WGPUBuffer,
+        indirectOffset: u64,
+        maxDrawCount: u32,
+        drawCountBuffer: WGPUBuffer,
+        drawCountBufferOffset: u64,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuRenderPassEncoderMultiDrawIndirect(
+        renderPassEncoder: WGPURenderPassEncoder,
+        indirectBuffer: WGPUBuffer,
+        indirectOffset: u64,
+        maxDrawCount: u32,
+        drawCountBuffer: WGPUBuffer,
+        drawCountBufferOffset: u64,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuRenderPassEncoderPixelLocalStorageBarrier(renderPassEncoder: WGPURenderPassEncoder);
+}
+unsafe extern "C" {
     pub fn wgpuRenderPassEncoderPopDebugGroup(renderPassEncoder: WGPURenderPassEncoder);
 }
 unsafe extern "C" {
@@ -5428,6 +8087,14 @@ unsafe extern "C" {
     pub fn wgpuRenderPassEncoderSetBlendConstant(
         renderPassEncoder: WGPURenderPassEncoder,
         color: *const WGPUColor,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuRenderPassEncoderSetImmediateData(
+        renderPassEncoder: WGPURenderPassEncoder,
+        offset: u32,
+        data: *const ::core::ffi::c_void,
+        size: usize,
     );
 }
 unsafe extern "C" {
@@ -5487,6 +8154,13 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
+    pub fn wgpuRenderPassEncoderWriteTimestamp(
+        renderPassEncoder: WGPURenderPassEncoder,
+        querySet: WGPUQuerySet,
+        queryIndex: u32,
+    );
+}
+unsafe extern "C" {
     pub fn wgpuRenderPassEncoderAddRef(renderPassEncoder: WGPURenderPassEncoder);
 }
 unsafe extern "C" {
@@ -5532,17 +8206,102 @@ unsafe extern "C" {
     pub fn wgpuShaderModuleRelease(shaderModule: WGPUShaderModule);
 }
 unsafe extern "C" {
-    pub fn wgpuSupportedFeaturesFreeMembers(supportedFeatures: WGPUSupportedFeatures);
+    pub fn wgpuSharedBufferMemoryBeginAccess(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        buffer: WGPUBuffer,
+        descriptor: *const WGPUSharedBufferMemoryBeginAccessDescriptor,
+    ) -> WGPUStatus;
 }
 unsafe extern "C" {
-    pub fn wgpuSupportedInstanceFeaturesFreeMembers(
-        supportedInstanceFeatures: WGPUSupportedInstanceFeatures,
+    pub fn wgpuSharedBufferMemoryCreateBuffer(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        descriptor: *const WGPUBufferDescriptor,
+    ) -> WGPUBuffer;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedBufferMemoryEndAccess(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        buffer: WGPUBuffer,
+        descriptor: *mut WGPUSharedBufferMemoryEndAccessState,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedBufferMemoryGetProperties(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        properties: *mut WGPUSharedBufferMemoryProperties,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedBufferMemoryIsDeviceLost(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+    ) -> WGPUBool;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedBufferMemorySetLabel(
+        sharedBufferMemory: WGPUSharedBufferMemory,
+        label: WGPUStringView,
     );
 }
 unsafe extern "C" {
-    pub fn wgpuSupportedWGSLLanguageFeaturesFreeMembers(
-        supportedWGSLLanguageFeatures: WGPUSupportedWGSLLanguageFeatures,
+    pub fn wgpuSharedBufferMemoryAddRef(sharedBufferMemory: WGPUSharedBufferMemory);
+}
+unsafe extern "C" {
+    pub fn wgpuSharedBufferMemoryRelease(sharedBufferMemory: WGPUSharedBufferMemory);
+}
+unsafe extern "C" {
+    pub fn wgpuSharedFenceExportInfo(
+        sharedFence: WGPUSharedFence,
+        info: *mut WGPUSharedFenceExportInfo,
     );
+}
+unsafe extern "C" {
+    pub fn wgpuSharedFenceAddRef(sharedFence: WGPUSharedFence);
+}
+unsafe extern "C" {
+    pub fn wgpuSharedFenceRelease(sharedFence: WGPUSharedFence);
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryBeginAccess(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        texture: WGPUTexture,
+        descriptor: *const WGPUSharedTextureMemoryBeginAccessDescriptor,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryCreateTexture(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        descriptor: *const WGPUTextureDescriptor,
+    ) -> WGPUTexture;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryEndAccess(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        texture: WGPUTexture,
+        descriptor: *mut WGPUSharedTextureMemoryEndAccessState,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryGetProperties(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        properties: *mut WGPUSharedTextureMemoryProperties,
+    ) -> WGPUStatus;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryIsDeviceLost(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+    ) -> WGPUBool;
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemorySetLabel(
+        sharedTextureMemory: WGPUSharedTextureMemory,
+        label: WGPUStringView,
+    );
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryAddRef(sharedTextureMemory: WGPUSharedTextureMemory);
+}
+unsafe extern "C" {
+    pub fn wgpuSharedTextureMemoryRelease(sharedTextureMemory: WGPUSharedTextureMemory);
 }
 unsafe extern "C" {
     pub fn wgpuSurfaceConfigure(surface: WGPUSurface, config: *const WGPUSurfaceConfiguration);
@@ -5561,7 +8320,7 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
-    pub fn wgpuSurfacePresent(surface: WGPUSurface) -> WGPUStatus;
+    pub fn wgpuSurfacePresent(surface: WGPUSurface);
 }
 unsafe extern "C" {
     pub fn wgpuSurfaceSetLabel(surface: WGPUSurface, label: WGPUStringView);
@@ -5576,7 +8335,10 @@ unsafe extern "C" {
     pub fn wgpuSurfaceRelease(surface: WGPUSurface);
 }
 unsafe extern "C" {
-    pub fn wgpuSurfaceCapabilitiesFreeMembers(surfaceCapabilities: WGPUSurfaceCapabilities);
+    pub fn wgpuTextureCreateErrorView(
+        texture: WGPUTexture,
+        descriptor: *const WGPUTextureViewDescriptor,
+    ) -> WGPUTextureView;
 }
 unsafe extern "C" {
     pub fn wgpuTextureCreateView(

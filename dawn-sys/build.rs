@@ -21,7 +21,7 @@ fn main() {
 
 fn get_env_var_as_path_buf(key: &str) -> PathBuf {
     env::var(key)
-        .expect(&format!("{key} not set"))
+        .unwrap_or_else(|err| panic!("failed to get environment variable `{key}`: {err}"))
         .into()
 }
 

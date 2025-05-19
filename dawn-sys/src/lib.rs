@@ -14,7 +14,6 @@ mod raw {
 include!("../generated/lib.rs");
 
 pub use raw::{
-    WGPUStringView,
     WGPUFlags,
     WGPUBool,
     WGPUChainedStruct,

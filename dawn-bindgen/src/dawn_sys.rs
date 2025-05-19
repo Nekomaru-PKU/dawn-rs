@@ -1,60 +1,46 @@
-use proc_macro2::TokenStream;
-use yaml_rust2::Yaml;
+use crate::common::*;
 
+use proc_macro2::TokenStream;
 use quote::{
     format_ident,
     quote,
 };
 
-use crate::error_yaml_invalid_field;
-use crate::common::{
-    generate_section_from_yaml,
-    get_name_from_yaml,
-    handle_invalid_ident,
-    snake_case_to_pascal_case,
-    snake_case_to_screaming_snake_case,
-};
-
-pub fn generate_lib(yaml: &Yaml) -> TokenStream {
+pub fn generate_lib(data: &serde_json::Value) -> TokenStream {
     let mut out = TokenStream::new();
-    out.extend(generate_section_from_yaml(yaml, "enums", generate_enum));
-    out.extend(generate_section_from_yaml(yaml, "bitflags", generate_bitflag));
-    out.extend(generate_section_from_yaml(yaml, "structs", generate_struct));
-    out.extend(generate_section_from_yaml(yaml, "callbacks", generate_callback));
-    out.extend(generate_section_from_yaml(yaml, "functions", generate_function));
-    out.extend(generate_section_from_yaml(yaml, "objects", generate_object));
+    out.extend(generate_section(data, "enum", generate_enum));
+    out.extend(generate_section(data, "bitmask", generate_bitmask));
+    out.extend(generate_section(data, "structure", generate_struct));
+    out.extend(generate_section(data, "callback function", generate_callback));
+    out.extend(generate_section(data, "function", generate_function));
+    out.extend(generate_section(data, "function pointer", generate_function_pointer));
+    out.extend(generate_section(data, "object", generate_object));
     out
 }
 
-fn generate_enum(yaml: &Yaml) -> TokenStream {
-    let type_name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let type_ident = format_ident!("WGPU{type_name}");
-
-    let items_vec = yaml["entries"]
-        .as_vec()
-        .expect(error_yaml_invalid_field!("entries"));
-    let emit_is =
-        type_name.ends_with("Type") ||
-        type_name.ends_with("Reason") ||
-        type_name.ends_with("Status");
-    let emit_doc = items_vec
+fn generate_enum(name: &Name, data: &serde_json::Value) -> TokenStream {
+    let ident = format_ident!("WGPU{}", name.pascal_case());
+    let items = data["values"]
+        .as_array()
+        .expect(E_JSON_ARRAY_EXPECTED)
         .iter()
-        .all(|item| {
-            item["doc"]
-                .as_str()
-                .map(str::trim)
-                .map(|doc| !doc.is_empty() && doc != "TODO")
-                .unwrap_or(false)
-        });
+        .map(|data| generate_enum_item(name, data));
+
+    let last_word = name
+        .words()
+        .last()
+        .expect("unexpected empty name");
+    let emit_is = [
+        "type",
+        "reason",
+        "status",
+    ].contains(&last_word);
+
     let attr_is = if emit_is {
         quote!(#[cfg_attr(feature = "strum", derive(strum::EnumIs))])
     } else {
         quote!()
     };
-    let items = items_vec
-        .iter()
-        .filter(|&item| !item.is_null())
-        .map(|yaml| generate_enum_item(&type_name, yaml, emit_doc));
 
     quote! {
         #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -66,11 +52,11 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
             strum::IntoStaticStr))]
         #attr_is
         #[repr(i32)]
-        pub enum #type_ident {
+        pub enum #ident {
             #(#items)*
         }
 
-        impl #type_ident {
+        impl #ident {
             pub fn to_str(self) -> &'static str {
                 self.into()
             }
@@ -78,61 +64,35 @@ fn generate_enum(yaml: &Yaml) -> TokenStream {
     }
 }
 
-fn generate_enum_item(type_name: &str, yaml: &Yaml, emit_doc: bool) -> TokenStream {
-    let snake_case_name = get_name_from_yaml(yaml);
-    let name = snake_case_to_pascal_case(
-        &handle_invalid_ident(snake_case_name));
-    let name_raw = snake_case_to_pascal_case(snake_case_name);
-    let ident = format_ident!("{name}");
-    let ident_raw = format_ident!(
-        "WGPU{}_WGPU{}_{}",
-        type_name,
-        type_name,
-        name_raw);
-
-    if emit_doc {
-        let doc = yaml["doc"]
+fn generate_enum_item(type_name: &Name, data: &serde_json::Value) -> TokenStream {
+    let name = Name::new({
+        data["name"]
             .as_str()
-            .expect(error_yaml_invalid_field!("doc"))
-            .replace('"', "")
-            .lines()
-            .map(str::trim)
-            .filter(|line| !line.is_empty())
-            .collect::<Vec<_>>()
-            .join("\n\n");
-        let doc = if doc.contains(
-            "Indicates no value is passed for this argument.") {
-            "Indicates no value is passed for this argument.".into()
-        } else if doc.contains('\n') {
-            format!("\n{}", doc)
-        } else {
-            doc
-        };
-        let doc = format!(" {doc}");
-        quote! {
-            #[doc = #doc]
-            #ident = raw::#ident_raw,
-        }
-    } else {
-        quote!(#ident = raw::#ident_raw,)
-    }
+            .expect(E_JSON_STRING_EXPECTED)
+            .to_owned()
+    });
+    let raw_ident = format_ident!(
+        "WGPU{}_WGPU{}_{}",
+        type_name.pascal_case(),
+        type_name.pascal_case(),
+        name.pascal_case());
+    let ident = format_ident!(
+        "{}",
+        name.handle_invalid_ident().pascal_case());
+    quote!(#ident = raw::#raw_ident,)
 }
 
-fn generate_bitflag(yaml: &Yaml) -> TokenStream {
-    let type_name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let type_ident = format_ident!("WGPU{type_name}");
-
-    let items = yaml["entries"]
-        .as_vec()
-        .expect(error_yaml_invalid_field!("entries"))
+fn generate_bitmask(name: &Name, data: &serde_json::Value) -> TokenStream {
+    let type_ident = format_ident!("WGPU{}", name.pascal_case());
+    let items = data["values"]
+        .as_array()
+        .expect(E_JSON_ARRAY_EXPECTED)
         .iter()
-        .filter(|&item| !item.is_null())
-        .map(|yaml| generate_bitflag_item(&type_name, yaml));
+        .map(|data| generate_bitmask_item(name, data));
 
     quote! {
         bitflags::bitflags! {
             #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-            #[repr(transparent)]
             pub struct #type_ident: WGPUFlags {
                 #(#items)*
             }
@@ -140,49 +100,55 @@ fn generate_bitflag(yaml: &Yaml) -> TokenStream {
     }
 }
 
-fn generate_bitflag_item(type_name: &str, yaml: &Yaml) -> TokenStream {
-    let snake_case_name = get_name_from_yaml(yaml);
-    let name = snake_case_to_screaming_snake_case(snake_case_name);
-    let name_raw = snake_case_to_pascal_case(snake_case_name);
-    let ident = format_ident!("{name}");
-    let ident_raw = format_ident!("WGPU{type_name}_{name_raw}");
-    quote!(const #ident = raw::#ident_raw;)
+fn generate_bitmask_item(type_name: &Name, data: &serde_json::Value) -> TokenStream {
+    let name = Name::new({
+        data["name"]
+            .as_str()
+            .expect(E_JSON_STRING_EXPECTED)
+            .to_owned()
+    });
+    
+    let ident = format_ident!("{}", name.screaming_snake_case());
+    let raw_ident = format_ident!(
+        "WGPU{}_{}",
+        type_name.pascal_case(),
+        name.pascal_case());
+    quote!(const #ident = raw::#raw_ident;)
 }
 
-fn generate_struct(yaml: &Yaml) -> TokenStream {
-    let name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let ident = format_ident!("WGPU{name}");
+fn generate_struct(name: &Name, _: &serde_json::Value) -> TokenStream {
+    let ident = format_ident!("WGPU{}", name.pascal_case());
     quote!(pub use raw::#ident;)
 }
 
-fn generate_callback(yaml: &Yaml) -> TokenStream {
-    let name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let ident = format_ident!("WGPU{name}Callback");
-    let ident_info = format_ident!("WGPU{name}CallbackInfo");
-    quote!{
+fn generate_callback(name: &Name, _: &serde_json::Value) -> TokenStream {
+    let ident = format_ident!("WGPU{}", name.pascal_case());
+    let ident_info = format_ident!("WGPU{}Info", name.pascal_case());
+    quote! {
         pub use raw::#ident;
         pub use raw::#ident_info;
     }
 }
 
-fn generate_function(yaml: &Yaml) -> TokenStream {
-    let name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let ident = format_ident!("wgpu{name}");
+fn generate_function(name: &Name, _: &serde_json::Value) -> TokenStream {
+    let ident = format_ident!("wgpu{}", name.pascal_case());
+    quote!(pub use raw::#ident;)
+}
+fn generate_function_pointer(name: &Name, _: &serde_json::Value) -> TokenStream {
+    let ident = format_ident!("WGPU{}", name.pascal_case());
     quote!(pub use raw::#ident;)
 }
 
-fn generate_object(yaml: &Yaml) -> TokenStream {
-    let type_name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let type_ident = format_ident!("WGPU{type_name}");
-    let method_ident_add_ref = format_ident!("wgpu{type_name}AddRef");
-    let method_ident_release = format_ident!("wgpu{type_name}Release");
-    let methods = yaml["methods"]
-        .as_vec()
-        .expect(error_yaml_invalid_field!("methods"))
+fn generate_object(name: &Name, data: &serde_json::Value) -> TokenStream {
+    let type_ident = format_ident!("WGPU{}", name.pascal_case());
+    let method_ident_add_ref = format_ident!("wgpu{}AddRef", name.pascal_case());
+    let method_ident_release = format_ident!("wgpu{}Release", name.pascal_case());
+    let methods = data["methods"]
+        .as_array()
+        .expect(E_JSON_ARRAY_EXPECTED)
         .iter()
-        .filter(|&item| !item.is_null())
-        .map(|yaml| generate_object_method(&type_name, yaml));
-    quote!{
+        .map(|data| generate_object_method(name, data));
+    quote! {
         pub use raw::#type_ident;
         pub use raw::#method_ident_add_ref;
         pub use raw::#method_ident_release;
@@ -190,8 +156,16 @@ fn generate_object(yaml: &Yaml) -> TokenStream {
     }
 }
 
-fn generate_object_method(type_name: &str, yaml: &Yaml) -> TokenStream {
-    let name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
-    let ident = format_ident!("wgpu{type_name}{name}");
+fn generate_object_method(type_name: &Name, data: &serde_json::Value) -> TokenStream {
+    let name = Name::new({
+        data["name"]
+            .as_str()
+            .expect(E_JSON_STRING_EXPECTED)
+            .to_owned()
+    });
+    let ident = format_ident!(
+        "wgpu{}{}",
+        type_name.pascal_case(),
+        name.pascal_case());
     quote!(pub use raw::#ident;)
 }
