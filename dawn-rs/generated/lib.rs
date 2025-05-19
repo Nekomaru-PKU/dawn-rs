@@ -1,14 +1,5 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum WGSLLanguageFeatureName {
     ReadonlyAndReadwriteStorageTextures = sys::WGPUWGSLLanguageFeatureName::ReadonlyAndReadwriteStorageTextures,
@@ -26,18 +17,24 @@ impl WGSLLanguageFeatureName {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::ReadonlyAndReadwriteStorageTextures,
+            Self::Packed4x8IntegerDotProduct,
+            Self::UnrestrictedPointerParameters,
+            Self::PointerCompositeAccess,
+            Self::SizedBindingArray,
+            Self::ChromiumTestingUnimplemented,
+            Self::ChromiumTestingUnsafeExperimental,
+            Self::ChromiumTestingExperimental,
+            Self::ChromiumTestingShippedWithKillswitch,
+            Self::ChromiumTestingShipped,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum AdapterType {
     DiscreteGPU = sys::WGPUAdapterType::DiscreteGPU,
@@ -49,18 +46,12 @@ impl AdapterType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::DiscreteGPU, Self::IntegratedGPU, Self::CPU, Self::Unknown].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum AddressMode {
     Undefined = sys::WGPUAddressMode::Undefined,
@@ -72,18 +63,13 @@ impl AddressMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::ClampToEdge, Self::Repeat, Self::MirrorRepeat]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum AlphaMode {
     Opaque = sys::WGPUAlphaMode::Opaque,
@@ -94,18 +80,12 @@ impl AlphaMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Opaque, Self::Premultiplied, Self::Unpremultiplied].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum BackendType {
     Undefined = sys::WGPUBackendType::Undefined,
@@ -122,18 +102,23 @@ impl BackendType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::Null,
+            Self::WebGPU,
+            Self::D3D11,
+            Self::D3D12,
+            Self::Metal,
+            Self::Vulkan,
+            Self::OpenGL,
+            Self::OpenGLES,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum BlendFactor {
     Undefined = sys::WGPUBlendFactor::Undefined,
@@ -159,18 +144,32 @@ impl BlendFactor {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::Zero,
+            Self::One,
+            Self::Src,
+            Self::OneMinusSrc,
+            Self::SrcAlpha,
+            Self::OneMinusSrcAlpha,
+            Self::Dst,
+            Self::OneMinusDst,
+            Self::DstAlpha,
+            Self::OneMinusDstAlpha,
+            Self::SrcAlphaSaturated,
+            Self::Constant,
+            Self::OneMinusConstant,
+            Self::Src1,
+            Self::OneMinusSrc1,
+            Self::Src1Alpha,
+            Self::OneMinusSrc1Alpha,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum BlendOperation {
     Undefined = sys::WGPUBlendOperation::Undefined,
@@ -184,18 +183,20 @@ impl BlendOperation {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::Add,
+            Self::Subtract,
+            Self::ReverseSubtract,
+            Self::Min,
+            Self::Max,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum BufferBindingType {
     BindingNotUsed = sys::WGPUBufferBindingType::BindingNotUsed,
@@ -208,18 +209,19 @@ impl BufferBindingType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::BindingNotUsed,
+            Self::Undefined,
+            Self::Uniform,
+            Self::Storage,
+            Self::ReadOnlyStorage,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum BufferMapState {
     Unmapped = sys::WGPUBufferMapState::Unmapped,
@@ -230,18 +232,12 @@ impl BufferMapState {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Unmapped, Self::Pending, Self::Mapped].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum CallbackMode {
     WaitAnyOnly = sys::WGPUCallbackMode::WaitAnyOnly,
@@ -252,18 +248,12 @@ impl CallbackMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::WaitAnyOnly, Self::AllowProcessEvents, Self::AllowSpontaneous].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum CompareFunction {
     Undefined = sys::WGPUCompareFunction::Undefined,
@@ -280,18 +270,23 @@ impl CompareFunction {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::Never,
+            Self::Less,
+            Self::Equal,
+            Self::LessEqual,
+            Self::Greater,
+            Self::NotEqual,
+            Self::GreaterEqual,
+            Self::Always,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum CompilationMessageType {
     Error = sys::WGPUCompilationMessageType::Error,
@@ -302,18 +297,12 @@ impl CompilationMessageType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Error, Self::Warning, Self::Info].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum CompositeAlphaMode {
     Auto = sys::WGPUCompositeAlphaMode::Auto,
@@ -326,18 +315,19 @@ impl CompositeAlphaMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Auto,
+            Self::Opaque,
+            Self::Premultiplied,
+            Self::Unpremultiplied,
+            Self::Inherit,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum CullMode {
     Undefined = sys::WGPUCullMode::Undefined,
@@ -349,18 +339,12 @@ impl CullMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::None, Self::Front, Self::Back].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum ErrorFilter {
     Validation = sys::WGPUErrorFilter::Validation,
@@ -371,18 +355,12 @@ impl ErrorFilter {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Validation, Self::OutOfMemory, Self::Internal].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum ExternalTextureRotation {
     Rotate0Degrees = sys::WGPUExternalTextureRotation::Rotate0Degrees,
@@ -394,18 +372,18 @@ impl ExternalTextureRotation {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Rotate0Degrees,
+            Self::Rotate90Degrees,
+            Self::Rotate180Degrees,
+            Self::Rotate270Degrees,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum FeatureLevel {
     Undefined = sys::WGPUFeatureLevel::Undefined,
@@ -416,18 +394,12 @@ impl FeatureLevel {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Compatibility, Self::Core].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum FeatureName {
     DepthClipControl = sys::WGPUFeatureName::DepthClipControl,
@@ -510,18 +482,89 @@ impl FeatureName {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::DepthClipControl,
+            Self::Depth32FloatStencil8,
+            Self::TimestampQuery,
+            Self::TextureCompressionBC,
+            Self::TextureCompressionBCSliced3D,
+            Self::TextureCompressionETC2,
+            Self::TextureCompressionASTC,
+            Self::TextureCompressionASTCSliced3D,
+            Self::IndirectFirstInstance,
+            Self::ShaderF16,
+            Self::RG11B10UfloatRenderable,
+            Self::BGRA8UnormStorage,
+            Self::Float32Filterable,
+            Self::Float32Blendable,
+            Self::ClipDistances,
+            Self::DualSourceBlending,
+            Self::Subgroups,
+            Self::CoreFeaturesAndLimits,
+            Self::DawnInternalUsages,
+            Self::DawnMultiPlanarFormats,
+            Self::DawnNative,
+            Self::ChromiumExperimentalTimestampQueryInsidePasses,
+            Self::ImplicitDeviceSynchronization,
+            Self::TransientAttachments,
+            Self::MSAARenderToSingleSampled,
+            Self::D3D11MultithreadProtected,
+            Self::ANGLETextureSharing,
+            Self::PixelLocalStorageCoherent,
+            Self::PixelLocalStorageNonCoherent,
+            Self::Unorm16TextureFormats,
+            Self::Snorm16TextureFormats,
+            Self::MultiPlanarFormatExtendedUsages,
+            Self::MultiPlanarFormatP010,
+            Self::HostMappedPointer,
+            Self::MultiPlanarRenderTargets,
+            Self::MultiPlanarFormatNv12a,
+            Self::FramebufferFetch,
+            Self::BufferMapExtendedUsages,
+            Self::AdapterPropertiesMemoryHeaps,
+            Self::AdapterPropertiesD3D,
+            Self::AdapterPropertiesVk,
+            Self::R8UnormStorage,
+            Self::DawnFormatCapabilities,
+            Self::DawnDrmFormatCapabilities,
+            Self::Norm16TextureFormats,
+            Self::MultiPlanarFormatNv16,
+            Self::MultiPlanarFormatNv24,
+            Self::MultiPlanarFormatP210,
+            Self::MultiPlanarFormatP410,
+            Self::SharedTextureMemoryVkDedicatedAllocation,
+            Self::SharedTextureMemoryAHardwareBuffer,
+            Self::SharedTextureMemoryDmaBuf,
+            Self::SharedTextureMemoryOpaqueFD,
+            Self::SharedTextureMemoryZirconHandle,
+            Self::SharedTextureMemoryDXGISharedHandle,
+            Self::SharedTextureMemoryD3D11Texture2D,
+            Self::SharedTextureMemoryIOSurface,
+            Self::SharedTextureMemoryEGLImage,
+            Self::SharedFenceVkSemaphoreOpaqueFD,
+            Self::SharedFenceSyncFD,
+            Self::SharedFenceVkSemaphoreZirconHandle,
+            Self::SharedFenceDXGISharedHandle,
+            Self::SharedFenceMTLSharedEvent,
+            Self::SharedBufferMemoryD3D12Resource,
+            Self::StaticSamplers,
+            Self::YCbCrVulkanSamplers,
+            Self::ShaderModuleCompilationOptions,
+            Self::DawnLoadResolveTexture,
+            Self::DawnPartialLoadResolveTexture,
+            Self::MultiDrawIndirect,
+            Self::DawnTexelCopyBufferRowAlignment,
+            Self::FlexibleTextureViews,
+            Self::ChromiumExperimentalSubgroupMatrix,
+            Self::SharedFenceEGLSync,
+            Self::DawnDeviceAllocatorControl,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum FilterMode {
     Undefined = sys::WGPUFilterMode::Undefined,
@@ -532,18 +575,12 @@ impl FilterMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Nearest, Self::Linear].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum FrontFace {
     Undefined = sys::WGPUFrontFace::Undefined,
@@ -554,18 +591,12 @@ impl FrontFace {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::CCW, Self::CW].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum IndexFormat {
     Undefined = sys::WGPUIndexFormat::Undefined,
@@ -576,18 +607,12 @@ impl IndexFormat {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Uint16, Self::Uint32].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum LoadOp {
     Undefined = sys::WGPULoadOp::Undefined,
@@ -599,18 +624,13 @@ impl LoadOp {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Load, Self::Clear, Self::ExpandResolveTexture]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum LoggingType {
     Verbose = sys::WGPULoggingType::Verbose,
@@ -622,18 +642,12 @@ impl LoggingType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Verbose, Self::Info, Self::Warning, Self::Error].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum MipmapFilterMode {
     Undefined = sys::WGPUMipmapFilterMode::Undefined,
@@ -644,18 +658,12 @@ impl MipmapFilterMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Nearest, Self::Linear].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum OptionalBool {
     False = sys::WGPUOptionalBool::False,
@@ -666,18 +674,12 @@ impl OptionalBool {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::False, Self::True, Self::Undefined].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum PowerPreference {
     Undefined = sys::WGPUPowerPreference::Undefined,
@@ -688,18 +690,12 @@ impl PowerPreference {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::LowPower, Self::HighPerformance].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum PredefinedColorSpace {
     SRGB = sys::WGPUPredefinedColorSpace::SRGB,
@@ -709,18 +705,12 @@ impl PredefinedColorSpace {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::SRGB, Self::DisplayP3].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum PresentMode {
     Undefined = sys::WGPUPresentMode::Undefined,
@@ -733,18 +723,13 @@ impl PresentMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Fifo, Self::FifoRelaxed, Self::Immediate, Self::Mailbox]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum PrimitiveTopology {
     Undefined = sys::WGPUPrimitiveTopology::Undefined,
@@ -758,18 +743,20 @@ impl PrimitiveTopology {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::PointList,
+            Self::LineList,
+            Self::LineStrip,
+            Self::TriangleList,
+            Self::TriangleStrip,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum QueryType {
     Occlusion = sys::WGPUQueryType::Occlusion,
@@ -779,18 +766,12 @@ impl QueryType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Occlusion, Self::Timestamp].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum SType {
     ShaderSourceSPIRV = sys::WGPUSType::ShaderSourceSPIRV,
@@ -881,18 +862,97 @@ impl SType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::ShaderSourceSPIRV,
+            Self::ShaderSourceWGSL,
+            Self::RenderPassMaxDrawCount,
+            Self::SurfaceSourceMetalLayer,
+            Self::SurfaceSourceWindowsHWND,
+            Self::SurfaceSourceXlibWindow,
+            Self::SurfaceSourceWaylandSurface,
+            Self::SurfaceSourceAndroidNativeWindow,
+            Self::SurfaceSourceXCBWindow,
+            Self::SurfaceColorManagement,
+            Self::RequestAdapterWebXROptions,
+            Self::AdapterPropertiesSubgroups,
+            Self::BindGroupLayoutEntryArraySize,
+            Self::TextureBindingViewDimensionDescriptor,
+            Self::EmscriptenSurfaceSourceCanvasHTMLSelector,
+            Self::SurfaceDescriptorFromWindowsCoreWindow,
+            Self::ExternalTextureBindingEntry,
+            Self::ExternalTextureBindingLayout,
+            Self::SurfaceDescriptorFromWindowsUWPSwapChainPanel,
+            Self::DawnTextureInternalUsageDescriptor,
+            Self::DawnEncoderInternalUsageDescriptor,
+            Self::DawnInstanceDescriptor,
+            Self::DawnCacheDeviceDescriptor,
+            Self::DawnAdapterPropertiesPowerPreference,
+            Self::DawnBufferDescriptorErrorInfoFromWireClient,
+            Self::DawnTogglesDescriptor,
+            Self::DawnShaderModuleSPIRVOptionsDescriptor,
+            Self::RequestAdapterOptionsLUID,
+            Self::RequestAdapterOptionsGetGLProc,
+            Self::RequestAdapterOptionsD3D11Device,
+            Self::DawnRenderPassColorAttachmentRenderToSingleSampled,
+            Self::RenderPassPixelLocalStorage,
+            Self::PipelineLayoutPixelLocalStorage,
+            Self::BufferHostMappedPointer,
+            Self::AdapterPropertiesMemoryHeaps,
+            Self::AdapterPropertiesD3D,
+            Self::AdapterPropertiesVk,
+            Self::DawnWireWGSLControl,
+            Self::DawnWGSLBlocklist,
+            Self::DawnDrmFormatCapabilities,
+            Self::ShaderModuleCompilationOptions,
+            Self::ColorTargetStateExpandResolveTextureDawn,
+            Self::RenderPassDescriptorExpandResolveRect,
+            Self::SharedTextureMemoryVkDedicatedAllocationDescriptor,
+            Self::SharedTextureMemoryAHardwareBufferDescriptor,
+            Self::SharedTextureMemoryDmaBufDescriptor,
+            Self::SharedTextureMemoryOpaqueFDDescriptor,
+            Self::SharedTextureMemoryZirconHandleDescriptor,
+            Self::SharedTextureMemoryDXGISharedHandleDescriptor,
+            Self::SharedTextureMemoryD3D11Texture2DDescriptor,
+            Self::SharedTextureMemoryIOSurfaceDescriptor,
+            Self::SharedTextureMemoryEGLImageDescriptor,
+            Self::SharedTextureMemoryInitializedBeginState,
+            Self::SharedTextureMemoryInitializedEndState,
+            Self::SharedTextureMemoryVkImageLayoutBeginState,
+            Self::SharedTextureMemoryVkImageLayoutEndState,
+            Self::SharedTextureMemoryD3DSwapchainBeginState,
+            Self::SharedFenceVkSemaphoreOpaqueFDDescriptor,
+            Self::SharedFenceVkSemaphoreOpaqueFDExportInfo,
+            Self::SharedFenceSyncFDDescriptor,
+            Self::SharedFenceSyncFDExportInfo,
+            Self::SharedFenceVkSemaphoreZirconHandleDescriptor,
+            Self::SharedFenceVkSemaphoreZirconHandleExportInfo,
+            Self::SharedFenceDXGISharedHandleDescriptor,
+            Self::SharedFenceDXGISharedHandleExportInfo,
+            Self::SharedFenceMTLSharedEventDescriptor,
+            Self::SharedFenceMTLSharedEventExportInfo,
+            Self::SharedBufferMemoryD3D12ResourceDescriptor,
+            Self::StaticSamplerBindingLayout,
+            Self::YCbCrVkDescriptor,
+            Self::SharedTextureMemoryAHardwareBufferProperties,
+            Self::AHardwareBufferProperties,
+            Self::DawnTexelCopyBufferRowAlignmentLimits,
+            Self::AdapterPropertiesSubgroupMatrixConfigs,
+            Self::SharedFenceEGLSyncDescriptor,
+            Self::SharedFenceEGLSyncExportInfo,
+            Self::DawnInjectedInvalidSType,
+            Self::DawnCompilationMessageUtf16,
+            Self::DawnFakeBufferOOMForTesting,
+            Self::SurfaceDescriptorFromWindowsWinUISwapChainPanel,
+            Self::DawnDeviceAllocatorControl,
+            Self::DawnHostMappedPointerLimits,
+            Self::RenderPassDescriptorResolveRect,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum SamplerBindingType {
     BindingNotUsed = sys::WGPUSamplerBindingType::BindingNotUsed,
@@ -905,18 +965,19 @@ impl SamplerBindingType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::BindingNotUsed,
+            Self::Undefined,
+            Self::Filtering,
+            Self::NonFiltering,
+            Self::Comparison,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum SharedFenceType {
     VkSemaphoreOpaqueFD = sys::WGPUSharedFenceType::VkSemaphoreOpaqueFD,
@@ -930,18 +991,20 @@ impl SharedFenceType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::VkSemaphoreOpaqueFD,
+            Self::SyncFD,
+            Self::VkSemaphoreZirconHandle,
+            Self::DXGISharedHandle,
+            Self::MTLSharedEvent,
+            Self::EGLSync,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum StencilOperation {
     Undefined = sys::WGPUStencilOperation::Undefined,
@@ -958,18 +1021,23 @@ impl StencilOperation {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::Keep,
+            Self::Zero,
+            Self::Replace,
+            Self::Invert,
+            Self::IncrementClamp,
+            Self::DecrementClamp,
+            Self::IncrementWrap,
+            Self::DecrementWrap,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum StorageTextureAccess {
     BindingNotUsed = sys::WGPUStorageTextureAccess::BindingNotUsed,
@@ -982,18 +1050,19 @@ impl StorageTextureAccess {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::BindingNotUsed,
+            Self::Undefined,
+            Self::WriteOnly,
+            Self::ReadOnly,
+            Self::ReadWrite,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum StoreOp {
     Undefined = sys::WGPUStoreOp::Undefined,
@@ -1004,18 +1073,12 @@ impl StoreOp {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Store, Self::Discard].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum SubgroupMatrixComponentType {
     F32 = sys::WGPUSubgroupMatrixComponentType::F32,
@@ -1027,18 +1090,12 @@ impl SubgroupMatrixComponentType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::F32, Self::F16, Self::U32, Self::I32].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum TextureAspect {
     Undefined = sys::WGPUTextureAspect::Undefined,
@@ -1053,18 +1110,21 @@ impl TextureAspect {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::All,
+            Self::StencilOnly,
+            Self::DepthOnly,
+            Self::Plane0Only,
+            Self::Plane1Only,
+            Self::Plane2Only,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum TextureDimension {
     Undefined = sys::WGPUTextureDimension::Undefined,
@@ -1076,18 +1136,12 @@ impl TextureDimension {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::D1, Self::D2, Self::D3].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum TextureFormat {
     Undefined = sys::WGPUTextureFormat::Undefined,
@@ -1205,18 +1259,124 @@ impl TextureFormat {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::R8Unorm,
+            Self::R8Snorm,
+            Self::R8Uint,
+            Self::R8Sint,
+            Self::R16Uint,
+            Self::R16Sint,
+            Self::R16Float,
+            Self::RG8Unorm,
+            Self::RG8Snorm,
+            Self::RG8Uint,
+            Self::RG8Sint,
+            Self::R32Float,
+            Self::R32Uint,
+            Self::R32Sint,
+            Self::RG16Uint,
+            Self::RG16Sint,
+            Self::RG16Float,
+            Self::RGBA8Unorm,
+            Self::RGBA8UnormSrgb,
+            Self::RGBA8Snorm,
+            Self::RGBA8Uint,
+            Self::RGBA8Sint,
+            Self::BGRA8Unorm,
+            Self::BGRA8UnormSrgb,
+            Self::RGB10A2Uint,
+            Self::RGB10A2Unorm,
+            Self::RG11B10Ufloat,
+            Self::RGB9E5Ufloat,
+            Self::RG32Float,
+            Self::RG32Uint,
+            Self::RG32Sint,
+            Self::RGBA16Uint,
+            Self::RGBA16Sint,
+            Self::RGBA16Float,
+            Self::RGBA32Float,
+            Self::RGBA32Uint,
+            Self::RGBA32Sint,
+            Self::Stencil8,
+            Self::Depth16Unorm,
+            Self::Depth24Plus,
+            Self::Depth24PlusStencil8,
+            Self::Depth32Float,
+            Self::Depth32FloatStencil8,
+            Self::BC1RGBAUnorm,
+            Self::BC1RGBAUnormSrgb,
+            Self::BC2RGBAUnorm,
+            Self::BC2RGBAUnormSrgb,
+            Self::BC3RGBAUnorm,
+            Self::BC3RGBAUnormSrgb,
+            Self::BC4RUnorm,
+            Self::BC4RSnorm,
+            Self::BC5RGUnorm,
+            Self::BC5RGSnorm,
+            Self::BC6HRGBUfloat,
+            Self::BC6HRGBFloat,
+            Self::BC7RGBAUnorm,
+            Self::BC7RGBAUnormSrgb,
+            Self::ETC2RGB8Unorm,
+            Self::ETC2RGB8UnormSrgb,
+            Self::ETC2RGB8A1Unorm,
+            Self::ETC2RGB8A1UnormSrgb,
+            Self::ETC2RGBA8Unorm,
+            Self::ETC2RGBA8UnormSrgb,
+            Self::EACR11Unorm,
+            Self::EACR11Snorm,
+            Self::EACRG11Unorm,
+            Self::EACRG11Snorm,
+            Self::ASTC4x4Unorm,
+            Self::ASTC4x4UnormSrgb,
+            Self::ASTC5x4Unorm,
+            Self::ASTC5x4UnormSrgb,
+            Self::ASTC5x5Unorm,
+            Self::ASTC5x5UnormSrgb,
+            Self::ASTC6x5Unorm,
+            Self::ASTC6x5UnormSrgb,
+            Self::ASTC6x6Unorm,
+            Self::ASTC6x6UnormSrgb,
+            Self::ASTC8x5Unorm,
+            Self::ASTC8x5UnormSrgb,
+            Self::ASTC8x6Unorm,
+            Self::ASTC8x6UnormSrgb,
+            Self::ASTC8x8Unorm,
+            Self::ASTC8x8UnormSrgb,
+            Self::ASTC10x5Unorm,
+            Self::ASTC10x5UnormSrgb,
+            Self::ASTC10x6Unorm,
+            Self::ASTC10x6UnormSrgb,
+            Self::ASTC10x8Unorm,
+            Self::ASTC10x8UnormSrgb,
+            Self::ASTC10x10Unorm,
+            Self::ASTC10x10UnormSrgb,
+            Self::ASTC12x10Unorm,
+            Self::ASTC12x10UnormSrgb,
+            Self::ASTC12x12Unorm,
+            Self::ASTC12x12UnormSrgb,
+            Self::R16Unorm,
+            Self::RG16Unorm,
+            Self::RGBA16Unorm,
+            Self::R16Snorm,
+            Self::RG16Snorm,
+            Self::RGBA16Snorm,
+            Self::R8BG8Biplanar420Unorm,
+            Self::R10X6BG10X6Biplanar420Unorm,
+            Self::R8BG8A8Triplanar420Unorm,
+            Self::R8BG8Biplanar422Unorm,
+            Self::R8BG8Biplanar444Unorm,
+            Self::R10X6BG10X6Biplanar422Unorm,
+            Self::R10X6BG10X6Biplanar444Unorm,
+            Self::External,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum TextureSampleType {
     BindingNotUsed = sys::WGPUTextureSampleType::BindingNotUsed,
@@ -1231,18 +1391,21 @@ impl TextureSampleType {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::BindingNotUsed,
+            Self::Undefined,
+            Self::Float,
+            Self::UnfilterableFloat,
+            Self::Depth,
+            Self::Sint,
+            Self::Uint,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum TextureViewDimension {
     Undefined = sys::WGPUTextureViewDimension::Undefined,
@@ -1257,18 +1420,21 @@ impl TextureViewDimension {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Undefined,
+            Self::D1,
+            Self::D2,
+            Self::D2Array,
+            Self::Cube,
+            Self::CubeArray,
+            Self::D3,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum ToneMappingMode {
     Standard = sys::WGPUToneMappingMode::Standard,
@@ -1278,18 +1444,12 @@ impl ToneMappingMode {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Standard, Self::Extended].into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum VertexFormat {
     Uint8 = sys::WGPUVertexFormat::Uint8,
@@ -1338,18 +1498,55 @@ impl VertexFormat {
     pub fn to_str(self) -> &'static str {
         self.into()
     }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [
+            Self::Uint8,
+            Self::Uint8x2,
+            Self::Uint8x4,
+            Self::Sint8,
+            Self::Sint8x2,
+            Self::Sint8x4,
+            Self::Unorm8,
+            Self::Unorm8x2,
+            Self::Unorm8x4,
+            Self::Snorm8,
+            Self::Snorm8x2,
+            Self::Snorm8x4,
+            Self::Uint16,
+            Self::Uint16x2,
+            Self::Uint16x4,
+            Self::Sint16,
+            Self::Sint16x2,
+            Self::Sint16x4,
+            Self::Unorm16,
+            Self::Unorm16x2,
+            Self::Unorm16x4,
+            Self::Snorm16,
+            Self::Snorm16x2,
+            Self::Snorm16x4,
+            Self::Float16,
+            Self::Float16x2,
+            Self::Float16x4,
+            Self::Float32,
+            Self::Float32x2,
+            Self::Float32x3,
+            Self::Float32x4,
+            Self::Uint32,
+            Self::Uint32x2,
+            Self::Uint32x3,
+            Self::Uint32x4,
+            Self::Sint32,
+            Self::Sint32x2,
+            Self::Sint32x3,
+            Self::Sint32x4,
+            Self::Unorm10_10_10_2,
+            Self::Unorm8x4BGRA,
+        ]
+            .into_iter()
+    }
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-#[cfg_attr(
-    feature = "strum",
-    derive(
-        strum::Display,
-        strum::EnumString,
-        strum::EnumIter,
-        strum::FromRepr,
-        strum::IntoStaticStr
-    )
-)]
+#[derive(strum::Display, strum::EnumString, strum::FromRepr, strum::IntoStaticStr)]
 #[repr(i32)]
 pub enum VertexStepMode {
     Undefined = sys::WGPUVertexStepMode::Undefined,
@@ -1359,6 +1556,9 @@ pub enum VertexStepMode {
 impl VertexStepMode {
     pub fn to_str(self) -> &'static str {
         self.into()
+    }
+    pub fn iter() -> impl Iterator<Item = Self> {
+        [Self::Undefined, Self::Vertex, Self::Instance].into_iter()
     }
 }
 bitflags::bitflags! {

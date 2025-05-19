@@ -42,24 +42,43 @@ fn generate_enum(name: &Name, data: &serde_json::Value) -> TokenStream {
             let ident = format_ident!(
                 "{}",
                 name.handle_invalid_ident().pascal_case());
-            quote!(#ident = sys::#type_raw_ident::#ident,)
+            quote!(#ident = sys::#type_raw_ident::#ident)
+        });
+    let iters = data["values"]
+        .as_array()
+        .expect(E_JSON_ARRAY_EXPECTED)
+        .iter()
+        .map(|data| {
+            let name = Name::new({
+                data["name"]
+                    .as_str()
+                    .expect(E_JSON_STRING_EXPECTED)
+                    .to_owned()
+            });
+            let ident = format_ident!(
+                "{}",
+                name.handle_invalid_ident().pascal_case());
+            quote!(Self::#ident)
         });
     quote! {
         #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-        #[cfg_attr(feature = "strum", derive(
+        #[derive(
             strum::Display,
             strum::EnumString,
-            strum::EnumIter,
             strum::FromRepr,
-            strum::IntoStaticStr))]
+            strum::IntoStaticStr)]
         #[repr(i32)]
         pub enum #type_ident {
-            #(#items)*
+            #(#items),*
         }
 
         impl #type_ident {
             pub fn to_str(self) -> &'static str {
                 self.into()
+            }
+
+            pub fn iter() -> impl Iterator<Item = Self> {
+                [ #(#iters),*].into_iter()
             }
         }
     }
