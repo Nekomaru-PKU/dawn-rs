@@ -15,7 +15,7 @@ use crate::common::{
     snake_case_to_screaming_snake_case,
 };
 
-pub fn generate_from_yaml(yaml: &Yaml) -> TokenStream {
+pub fn generate_lib(yaml: &Yaml) -> TokenStream {
     let mut out = TokenStream::new();
     out.extend(generate_section_from_yaml(yaml, "enums", generate_enum));
     out.extend(generate_section_from_yaml(yaml, "bitflags", generate_bitflag));
@@ -174,16 +174,20 @@ fn generate_function(yaml: &Yaml) -> TokenStream {
 fn generate_object(yaml: &Yaml) -> TokenStream {
     let type_name = snake_case_to_pascal_case(get_name_from_yaml(yaml));
     let type_ident = format_ident!("WGPU{type_name}");
-
-    let mut out = quote!(pub use raw::#type_ident;);
-    yaml["methods"]
+    let method_ident_add_ref = format_ident!("wgpu{type_name}AddRef");
+    let method_ident_release = format_ident!("wgpu{type_name}Release");
+    let methods = yaml["methods"]
         .as_vec()
         .expect(error_yaml_invalid_field!("methods"))
         .iter()
         .filter(|&item| !item.is_null())
-        .map(|yaml| generate_object_method(&type_name, yaml))
-        .for_each(|item| out.extend(item));
-    out
+        .map(|yaml| generate_object_method(&type_name, yaml));
+    quote!{
+        pub use raw::#type_ident;
+        pub use raw::#method_ident_add_ref;
+        pub use raw::#method_ident_release;
+        #(#methods)*
+    }
 }
 
 fn generate_object_method(type_name: &str, yaml: &Yaml) -> TokenStream {
