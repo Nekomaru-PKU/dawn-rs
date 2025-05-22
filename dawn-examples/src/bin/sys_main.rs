@@ -39,7 +39,7 @@ fn main() {
 
 unsafe extern "C" fn on_device_error(
     _device: *const WGPUDevice,
-    _ty: i32,
+    _ty: WGPUErrorType,
     message: WGPUStringView,
     _userdata1: *mut ffi::c_void,
     _userdata2: *mut ffi::c_void) {
@@ -47,12 +47,12 @@ unsafe extern "C" fn on_device_error(
 }
 
 unsafe extern "C" fn on_request_adapter(
-    status: i32,
+    status: WGPURequestAdapterStatus,
     adapter: WGPUAdapter,
     message: WGPUStringView,
     userdata1: *mut ffi::c_void,
     _userdata2: *mut ffi::c_void) {
-    if status == WGPURequestAdapterStatus::Success {
+    if status == WGPURequestAdapterStatus_Success {
         let result_ptr = userdata1 as *mut WGPUAdapter;
         if !result_ptr.is_null() {
             unsafe {
@@ -67,12 +67,12 @@ unsafe extern "C" fn on_request_adapter(
 }
 
 unsafe extern "C" fn on_request_device(
-    status: i32,
+    status: WGPURequestDeviceStatus,
     device: WGPUDevice,
     message: WGPUStringView,
     userdata1: *mut ffi::c_void,
     _userdata2: *mut ffi::c_void) {
-    if status == WGPURequestDeviceStatus::Success {
+    if status == WGPURequestDeviceStatus_Success {
         let result_ptr = userdata1 as *mut WGPUDevice;
         if !result_ptr.is_null() {
             unsafe {
@@ -116,7 +116,7 @@ impl App {
         },
     ];
 
-    const K_SWAPCHAIN_FORMAT: i32 = WGPUTextureFormat::BGRA8Unorm;
+    const K_SWAPCHAIN_FORMAT: WGPUTextureFormat = WGPUTextureFormat_BGRA8Unorm;
 
     fn new(
         hinstance: *mut ffi::c_void,
@@ -131,7 +131,7 @@ impl App {
         eprintln!("creating surface ...");
         let mut surface_desc_0 = WGPUSurfaceSourceWindowsHWND {
             chain: WGPUChainedStruct {
-                sType: WGPUSType::SurfaceSourceWindowsHWND,
+                sType: WGPUSType_SurfaceSourceWindowsHWND,
                 next: ptr::null_mut(),
             },
             hwnd,
@@ -153,15 +153,15 @@ impl App {
         let mut adapter: WGPUAdapter = ptr::null_mut();
         let adapter_options = WGPURequestAdapterOptions {
             nextInChain: ptr::null_mut(),
-            featureLevel: WGPUFeatureLevel::Core,
-            powerPreference: WGPUPowerPreference::HighPerformance,
+            featureLevel: WGPUFeatureLevel_Core,
+            powerPreference: WGPUPowerPreference_HighPerformance,
             forceFallbackAdapter: 0,
-            backendType: WGPUBackendType::Undefined,
+            backendType: WGPUBackendType_Undefined,
             compatibleSurface: surface,
         };
         let adapter_callback_info = WGPURequestAdapterCallbackInfo {
             nextInChain: ptr::null_mut(),
-            mode: WGPUCallbackMode::WaitAnyOnly,
+            mode: WGPUCallbackMode_WaitAnyOnly,
             callback: Some(on_request_adapter),
             userdata1: ptr::from_mut(&mut adapter).cast(),
             userdata2: ptr::null_mut(),
@@ -183,7 +183,7 @@ impl App {
                 &mut wait,
                 0)
         };
-        assert!(status == WGPUWaitStatus::Success);
+        assert!(status == WGPUWaitStatus_Success);
 
         let mut adapter_info = unsafe {
             mem::zeroed()
@@ -191,7 +191,7 @@ impl App {
         let status = unsafe {
             wgpuAdapterGetInfo(adapter, &mut adapter_info)
         };
-        assert!(status == WGPUWaitStatus::Success);
+        assert!(status == WGPUStatus_Success);
         eprintln!("adapter: {}", String::from_utf8_lossy(adapter_info.device.as_bytes()));
         unsafe { wgpuAdapterInfoFreeMembers(adapter_info) };
 
@@ -208,7 +208,7 @@ impl App {
         let mut device: WGPUDevice = ptr::null_mut();
         let device_callback = WGPURequestDeviceCallbackInfo {
             nextInChain: ptr::null_mut(),
-            mode: WGPUCallbackMode::WaitAnyOnly,
+            mode: WGPUCallbackMode_WaitAnyOnly,
             callback: Some(on_request_device),
             userdata1: ptr::from_mut(&mut device).cast(),
             userdata2: ptr::null_mut(),
@@ -230,7 +230,7 @@ impl App {
                 &mut wait,
                 0)
         };
-        assert!(status == WGPUWaitStatus::Success);
+        assert!(status == WGPUWaitStatus_Success);
 
         let queue = unsafe {
             wgpuDeviceGetQueue(device)
@@ -243,7 +243,7 @@ impl App {
                 length: 0,
             },
             size: (Self::K_VERTEX_STRIDE * Self::K_VERTEX_DATA.len()) as _,
-            usage: WGPUBufferUsage::VERTEX | WGPUBufferUsage::COPY_DST,
+            usage: WGPUBufferUsage_Vertex | WGPUBufferUsage_CopyDst,
             mappedAtCreation: WGPU_FALSE,
             nextInChain: ptr::null_mut(),
         };

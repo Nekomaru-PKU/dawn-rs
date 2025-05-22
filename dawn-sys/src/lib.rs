@@ -1,30 +1,29 @@
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 #![doc = include_str!("../README.md")]
+#![expect(non_snake_case)]
+#![expect(non_upper_case_globals)]
 
-mod raw {
-    #![allow(clippy::all)]
-    #![allow(non_camel_case_types)]
-    #![allow(non_snake_case)]
-    #![allow(non_upper_case_globals)]
-    #![allow(unused)]
-
-    include!("../generated/bindings.rs");
-}
-
+include!("../generated/bindings.rs");
 include!("../generated/lib.rs");
 
-pub use raw::{
-    WGPUFlags,
-    WGPUBool,
-    WGPUChainedStruct,
-};
-
 impl WGPUStringView {
+    pub fn empty() -> Self {
+        Self {
+            data: core::ptr::null(),
+            length: 0,
+        }
+    }
+
     pub fn from_bytes(bytes: &[u8]) -> Self {
-        WGPUStringView {
+        Self {
             data: bytes.as_ptr().cast(),
             length: bytes.len(),
         }
+    }
+
+    #[expect(clippy::should_implement_trait, reason = "WGPUStringView::from_str never fails")]
+    pub fn from_str(s: &str) -> Self {
+        Self::from_bytes(s.as_bytes())
     }
 
     pub fn as_bytes(&self) -> &[u8] {
@@ -33,6 +32,11 @@ impl WGPUStringView {
                 self.data.cast(),
                 self.length)
         }
+    }
+
+    #[cfg(feature = "std")]
+    pub fn to_string_lossy(&self) -> String {
+        String::from_utf8_lossy(self.as_bytes()).into_owned()
     }
 }
 
