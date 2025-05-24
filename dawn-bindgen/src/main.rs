@@ -157,6 +157,7 @@ fn save_bindings_to_file(path: &str) {
             is_bitfield: false,
             is_global: false,
         })
+        .blocklist_type("WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER")
         .generate()
         .expect("failed to generate bindings for dawn.h")
         .write_to_file(output_path.display().to_string())

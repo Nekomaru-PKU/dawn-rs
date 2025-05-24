@@ -3835,20 +3835,6 @@ impl Default for WGPUInstanceCapabilities {
 }
 #[repr(C)]
 #[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
-pub struct WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER {
-    pub unused: WGPUBool,
-}
-#[allow(clippy::unnecessary_operation, clippy::identity_op)]
-const _: () = {
-    ["Size of WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER"]
-        [::core::mem::size_of::<WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER>() - 4usize];
-    ["Alignment of WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER"]
-        [::core::mem::align_of::<WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER>() - 4usize];
-    ["Offset of field: WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER::unused"]
-        [::core::mem::offset_of!(WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER, unused) - 0usize];
-};
-#[repr(C)]
-#[derive(Debug, Default, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
 pub struct WGPUMemoryHeapInfo {
     pub properties: WGPUHeapProperty,
     pub size: u64,
