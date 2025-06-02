@@ -1,6 +1,6 @@
 [package]
 name = "dawn-sys"
-version = "0.4.1"
+version = "0.4.2"
 edition = { workspace = true }
 description = "Unsafe Rust bindings for Dawn, the open-source and cross-platform implementation of the WebGPU standard that powers Google Chrome, Microsoft Edge and other Chromium browsers."
 categories = ["external-ffi-bindings"]
