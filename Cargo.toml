@@ -4,7 +4,6 @@ members = [
     "dawn-bindgen",
     "dawn-sys",
     "dawn-rs",
-    "dawn-examples",
 ]
 
 [workspace.package]
