@@ -1,6 +1,6 @@
 [package]
 name = "dawn-sys"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
 license = "BSD-3-Clause"
 authors = { workspace = true }
@@ -10,8 +10,8 @@ description = "Unsafe Rust bindings for Dawn, the open-source and cross-platform
 categories = ["external-ffi-bindings"]
 keywords = ["dawn", "webgpu", "wgpu", "vulkan", "metal"]
 
-[dev-dependencies]
-winsafe = { version = "0.0.24", features = ["gui"] }
-
 [dependencies]
 bitflags = "2.9.1"
+
+[dev-dependencies]
+winsafe = { version = "0.0.24", features = ["gui"] }

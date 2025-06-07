@@ -260,19 +260,19 @@ mod dawn_sys {
             }
         }
 
-        for &name in EXTRA_EXPORT_TYPES {
-            exports.push(format_ident!("WGPU{}", name));
+        for export in EXTRA_EXPORT_TYPES {
+            exports.push(format_ident!("WGPU{}", export));
         }
 
-        for &name in EXTRA_EXPORT_FUNCTIONS {
-            exports.push(format_ident!("wgpu{}", name));
-            exports.push(format_ident!("WGPUProc{}", name));
+        for export in EXTRA_EXPORT_FUNCTIONS {
+            exports.push(format_ident!("wgpu{}", export));
+            exports.push(format_ident!("WGPUProc{}", export));
         }
 
-        for &name in EXCLUDE_EXPORTS {
+        for exclude in EXCLUDE_EXPORTS {
             let pos = exports
                 .iter()
-                .position(|ident| ident == &name)
+                .position(|export| export == exclude)
                 .expect("missing export in EXCLUDE_EXPORTS");
             exports.remove(pos);
         }
