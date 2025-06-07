@@ -1,179 +1,40 @@
-#![cfg(not(doc))]
-
-fn main() {
-    let args = std::env::args().collect::<Vec<_>>();
-    let args = args.iter().map(String::as_str).collect::<Vec<_>>();
-
-    let mut skip_bindings = false;
-    match args.as_slice() {
-        [_] => (),
-        [_, "--skip-bindings"] =>
-            skip_bindings = true,
-        _ => panic!("invalid arguments: {args:?}"),
-    }
-
-    if !skip_bindings {
-        save_bindings_to_file(
-            workspace_path!("dawn-sys/generated/bindings.rs"));
-    }
-
-    let json_str = include_str!(
-        workspace_path!("dawn-bindgen/include/dawn.json"));
-    let json = serde_json::from_str(json_str)
-        .expect("failed to parse dawn.json");
-    save_token_stream_to_file(
-        dawn_sys::generate_lib(&json),
-        workspace_path!("dawn-sys/generated/lib.rs"));
-    // save_token_stream_to_file(
-    //     dawn_rs::generate_lib(&json),
-    //     workspace_path!("dawn-rs/generated/lib.rs"));
+macro_rules! workspace_path {
+    ($path:literal) => (concat!(env!("CARGO_MANIFEST_DIR"), "/../", $path));
 }
 
-fn save_bindings_to_file(path: &str) {
-    let header_main = include_str!(workspace_path!("dawn-bindgen/include/dawn.h"))
-        .lines()
-        .filter(|line| {
-            !line.starts_with("#include") &&
-            !line.starts_with("#pragma")
-        });
-    let header_stdint = "
-        typedef signed char        int8_t;
-        typedef short              int16_t;
-        typedef int                int32_t;
-        typedef long long          int64_t;
-        typedef unsigned char      uint8_t;
-        typedef unsigned short     uint16_t;
-        typedef unsigned int       uint32_t;
-        typedef unsigned long long uint64_t;
+use proc_macro2::TokenStream;
+use serde_json::Value as JsonValue;
 
-        typedef signed char        int_least8_t;
-        typedef short              int_least16_t;
-        typedef int                int_least32_t;
-        typedef long long          int_least64_t;
-        typedef unsigned char      uint_least8_t;
-        typedef unsigned short     uint_least16_t;
-        typedef unsigned int       uint_least32_t;
-        typedef unsigned long long uint_least64_t;
+use quote::quote;
+use quote::format_ident;
 
-        typedef signed char        int_fast8_t;
-        typedef int                int_fast16_t;
-        typedef int                int_fast32_t;
-        typedef long long          int_fast64_t;
-        typedef unsigned char      uint_fast8_t;
-        typedef unsigned int       uint_fast16_t;
-        typedef unsigned int       uint_fast32_t;
-        typedef unsigned long long uint_fast64_t;
+const DAWN_JSON: &str = include_str!(
+    workspace_path!("dawn-bindgen/include/dawn.json"));
+const DAWN_ITEM_CATEGORIES: &[&str] = &[
+    "bitmask",
+    "callback function",
+    "callback info",
+    "constant",
+    "enum",
+    "function pointer",
+    "function",
+    "object",
+    "structure",
+    "typedef",
+];
 
-        typedef long long          intmax_t;
-        typedef unsigned long long uintmax_t;
-
-        #define INT8_MIN         (-127i8 - 1)
-        #define INT16_MIN        (-32767i16 - 1)
-        #define INT32_MIN        (-2147483647i32 - 1)
-        #define INT64_MIN        (-9223372036854775807i64 - 1)
-        #define INT8_MAX         127i8
-        #define INT16_MAX        32767i16
-        #define INT32_MAX        2147483647i32
-        #define INT64_MAX        9223372036854775807i64
-        #define UINT8_MAX        0xffui8
-        #define UINT16_MAX       0xffffui16
-        #define UINT32_MAX       0xffffffffui32
-        #define UINT64_MAX       0xffffffffffffffffui64
-
-        #define INT_LEAST8_MIN   INT8_MIN
-        #define INT_LEAST16_MIN  INT16_MIN
-        #define INT_LEAST32_MIN  INT32_MIN
-        #define INT_LEAST64_MIN  INT64_MIN
-        #define INT_LEAST8_MAX   INT8_MAX
-        #define INT_LEAST16_MAX  INT16_MAX
-        #define INT_LEAST32_MAX  INT32_MAX
-        #define INT_LEAST64_MAX  INT64_MAX
-        #define UINT_LEAST8_MAX  UINT8_MAX
-        #define UINT_LEAST16_MAX UINT16_MAX
-        #define UINT_LEAST32_MAX UINT32_MAX
-        #define UINT_LEAST64_MAX UINT64_MAX
-
-        #define INT_FAST8_MIN    INT8_MIN
-        #define INT_FAST16_MIN   INT32_MIN
-        #define INT_FAST32_MIN   INT32_MIN
-        #define INT_FAST64_MIN   INT64_MIN
-        #define INT_FAST8_MAX    INT8_MAX
-        #define INT_FAST16_MAX   INT32_MAX
-        #define INT_FAST32_MAX   INT32_MAX
-        #define INT_FAST64_MAX   INT64_MAX
-        #define UINT_FAST8_MAX   UINT8_MAX
-        #define UINT_FAST16_MAX  UINT32_MAX
-        #define UINT_FAST32_MAX  UINT32_MAX
-        #define UINT_FAST64_MAX  UINT64_MAX
-
-        #ifdef _WIN64
-            #define INTPTR_MIN   INT64_MIN
-            #define INTPTR_MAX   INT64_MAX
-            #define UINTPTR_MAX  UINT64_MAX
-        #else
-            #define INTPTR_MIN   INT32_MIN
-            #define INTPTR_MAX   INT32_MAX
-            #define UINTPTR_MAX  UINT32_MAX
-        #endif
-
-        #define INTMAX_MIN       INT64_MIN
-        #define INTMAX_MAX       INT64_MAX
-        #define UINTMAX_MAX      UINT64_MAX
-
-        #define PTRDIFF_MIN      INTPTR_MIN
-        #define PTRDIFF_MAX      INTPTR_MAX
-
-        #ifndef SIZE_MAX
-            #ifdef _WIN64
-                #define SIZE_MAX 0xffffffffffffffffui64
-            #else
-                #define SIZE_MAX 0xffffffffui32
-            #endif
-        #endif
-    ".lines().map(|line| line.trim());
-
-    let temp_dir = tempfile::tempdir()
-        .expect("failed to create temp dir");
-    let header_path = temp_dir.path().join("dawn.h");
-    let output_path = temp_dir.path().join("bindings.rs");
-
-    let header = []
-        .into_iter()
-        .chain(header_stdint)
-        .chain(header_main)
-        .collect::<Vec<_>>()
-        .join("\n");
-    std::fs::write(&header_path, &header)
-        .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
-
-    bindgen::builder()
-        .header(header_path.display().to_string())
-        .use_core()
-        .derive_default(true)
-        .derive_eq(true)
-        .derive_ord(true)
-        .derive_hash(true)
-        .default_enum_style(bindgen::EnumVariation::NewType {
-            is_bitfield: false,
-            is_global: false,
-        })
-        .blocklist_type("WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER")
-        .generate()
-        .expect("failed to generate bindings for dawn.h")
-        .write_to_file(output_path.display().to_string())
-        .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
-
-    let bindings = std::fs::read_to_string(output_path)
-        .unwrap_or_else(|err| panic!("failed to read file {path}: {err}"))
-        .lines()
-        .filter(|line| {
-            !line.starts_with("pub type int") &&
-            !line.starts_with("pub type uint")
-        })
-        .collect::<Vec<_>>()
-        .join("\n");
-    std::fs::write(workspace_path!("dawn-sys/generated/bindings.rs"), bindings)
-        .unwrap_or_else(|err| panic!("failed to write file {path}: {err}"));
+fn main() {
+    let metadata = serde_json::from_str(DAWN_JSON).unwrap();
+    bindings::save_to_file(
+        &metadata,
+        workspace_path!("dawn-bindgen/include/dawn.h"),
+        workspace_path!("dawn-sys/generated/bindings.rs"));
+    save_token_stream_to_file(
+        dawn_sys::generate_bitmasks(&metadata),
+        workspace_path!("dawn-sys/generated/bitmasks.rs"));
+    save_token_stream_to_file(
+        dawn_sys::generate_lib(&metadata),
+        workspace_path!("dawn-sys/generated/lib.rs"));
 }
 
 fn save_token_stream_to_file(
@@ -186,142 +47,296 @@ fn save_token_stream_to_file(
         .unwrap_or_else(|err| panic!("failed to write file {path:?}: {err}"));
 }
 
-mod common {
-    #[macro_export] macro_rules! workspace_path {
-        ($path:literal) => {
-            concat!(env!("CARGO_MANIFEST_DIR"), "/../", $path)
-        };
+mod name {
+    pub fn to_pascal_case(name: &str) -> String {
+        name.split_whitespace()
+            .map(|word| {
+                let first_char = word
+                    .chars()
+                    .next()
+                    .expect("unexpected empty word")
+                    .to_ascii_uppercase();
+                Some(first_char)
+                    .into_iter()
+                    .chain(word.chars().skip(1))
+                    .collect::<String>()
+            })
+            .collect::<Vec<_>>()
+            .join("")
     }
 
-    pub const E_JSON_EXPECT_STRING: &str =
-        "failed to parse dawn.json: string expected";
-    pub const E_JSON_EXPECT_OBJECT: &str =
-        "failed to parse dawn.json: object expected";
-    pub const E_JSON_EXPECT_ARRAY: &str =
-        "failed to parse dawn.json: array expected";
+    pub fn to_screaming_snake_case(name: &str) -> String {
+        name.split_whitespace()
+            .map(|word| word.to_ascii_uppercase())
+            .collect::<Vec<_>>()
+            .join("_")
+    }
+}
 
-    use proc_macro2::TokenStream;
-    use quote::quote;
+mod metadata {
+    use crate::*;
 
-    pub fn generate_section<F>(
-        data: &serde_json::Value,
-        name: &str,
-        generate: F)
-    -> proc_macro2::TokenStream
-    where
-        F: Fn(&Name, &serde_json::Value) -> TokenStream, {
-        let data = data.as_object()
-            .expect(E_JSON_EXPECT_OBJECT);
-        let items = data.iter()
-            .filter(|&(_, data)| data["category"].as_str() == Some(name))
-            .map(|(name, data)| generate(&Name(name.clone()), data));
-        quote!(#(#items)*)
+    pub fn get_items_by_category<'a>(root: &'a JsonValue, category: &str)
+     -> Vec<(&'a str, &'a JsonValue)> {
+        let category = JsonValue::String(category.to_owned());
+        root.as_object()
+            .expect("failed to parse dawn.json: root is not object")
+            .iter()
+            .map(|(name, data)| (name.as_ref(), data))
+            .filter(|&(_, item)| item["category"] == category)
+            .collect()
     }
 
-    pub fn generate_section_by_tag<T, F>(
-        data: &serde_json::Value,
-        name: &str,
-        pred: T,
-        generate: F)
-    -> proc_macro2::TokenStream
-    where
-        T: Fn(&[&str]) -> bool,
-        F: Fn(&Name, &serde_json::Value) -> TokenStream, {
-        let data = data.as_object()
-            .expect(E_JSON_EXPECT_OBJECT);
-        let items = data.iter()
-            .filter(|&(_, data)| data["category"].as_str() == Some(name))
-            .filter(|&(_, data)| pred(&{
-                data["tags"]
-                    .as_array()
-                    .map_or(Vec::new(), |tags| {
-                        tags.iter()
-                            .map(|tag| tag.as_str().expect(E_JSON_EXPECT_STRING))
-                            .collect::<Vec<_>>()
+    pub fn get_methods(item: &JsonValue) -> Vec<(&str, &JsonValue)> {
+        item.as_object()
+            .expect("failed to parse dawn.json: item is not object")
+            .get("methods")
+            .expect("failed to parse dawn.json: object has no methods")
+            .as_array()
+            .expect("failed to parse dawn.json: methods is not array")
+            .iter()
+            .map(|method| {
+                let name = method["name"]
+                    .as_str()
+                    .expect("failed to parse dawn.json: method name is not string");
+                (name, method)
+            })
+            .collect()
+    }
+}
 
-                    })
-            }))
-            .map(|(name, data)| generate(&Name(name.clone()), data));
-        quote!(#(#items)*)
+mod bindings {
+    use crate::*;
+
+    pub fn save_to_file(
+        root: &JsonValue,
+        header_path: &str,
+        output_path: &str) {
+        let builder = bindgen::builder()
+            .header(header_path)
+            .use_core()
+            .derive_default(true)
+            .derive_eq(true)
+            .derive_ord(true)
+            .derive_hash(true)
+            .default_enum_style(bindgen::EnumVariation::NewType {
+                is_bitfield: false,
+                is_global: true,
+            });
+        let builder = get_bitmask_and_bitmast_constant_names(root)
+            .iter()
+            .fold(builder, bindgen::Builder::blocklist_item);
+        builder
+            .generate()
+            .expect("failed to generate bindings for dawn.h")
+            .write_to_file(output_path)
+            .unwrap_or_else(|err| panic!("failed to write file {output_path}: {err}"));
     }
 
-    pub struct Name(String);
-    impl Name {
-        pub fn new(name: String) -> Self {
-            Self(name)
-        }
-
-        pub fn handle_invalid_ident(&self) -> Self {
-            if let Some(prefix) = self.0.get(..2) && ["1D", "2D", "3D"].contains(&prefix) {
-                Self(format!("D{}{}", &self.0[..1], &self.0[2..]))
-            } else {
-                Self(self.0.clone())
-            }
-        }
-
-        pub fn words(&self) -> impl Iterator<Item = &str> {
-            self.0.split_whitespace()
-        }
-
-        pub fn screaming_snake_case(&self) -> String {
-            self.words()
-                .map(|word| word.to_ascii_uppercase())
-                .collect::<Vec<_>>()
-                .join("_")
-        }
-
-        pub fn pascal_case(&self) -> String {
-            self.words()
-                .map(|word| {
-                    let first_chaer = word
-                        .chars()
-                        .next()
-                        .expect("unexpected empty word")
-                        .to_ascii_uppercase();
-                    Some(first_chaer)
-                        .into_iter()
-                        .chain(word.chars().skip(1))
-                        .collect::<String>()})
-                .collect::<Vec<_>>()
-                .join("")
-        }
+    fn get_bitmask_and_bitmast_constant_names(root: &JsonValue) -> Vec<String> {
+        metadata::get_items_by_category(root, "bitmask")
+            .iter()
+            .flat_map(|(type_name, item)| {
+                Some(format!("WGPU{}", name::to_pascal_case(type_name)))
+                    .into_iter()
+                    .chain({
+                        item["values"]
+                            .as_array()
+                            .expect("failed to parse dawn.json: values is not array")
+                            .iter()
+                            .map(|data| {
+                                data["name"]
+                                    .as_str()
+                                    .expect("failed to parse dawn.json: name is not string")
+                            })
+                            .map(|name| {
+                                format!(
+                                    "WGPU{}_{}",
+                                    name::to_pascal_case(type_name),
+                                    name::to_pascal_case(name))
+                        })
+                })
+            })
+            .collect()
     }
 }
 
 mod dawn_sys {
-    use proc_macro2::TokenStream;
-    use quote::{
-        format_ident,
-        quote,
-    };
+    use crate::*;
 
-    use crate::common::*;
+    const EXTRA_EXPORT_TYPES: &[&str] = &[
+        "Bool",
+        "ChainedStruct",
+        "Flags",
+    ];
 
-    pub fn generate_lib(data: &serde_json::Value) -> TokenStream {
-        let mut out = quote!();
-        out.extend(generate_section(data, "enum", generate_enum));
+    const EXTRA_EXPORT_FUNCTIONS: &[&str] = &[
+        "AdapterInfoFreeMembers",
+        "AdapterPropertiesMemoryHeapsFreeMembers",
+        "AdapterPropertiesSubgroupMatrixConfigsFreeMembers",
+        "DawnDrmFormatCapabilitiesFreeMembers",
+        "SharedBufferMemoryEndAccessStateFreeMembers",
+        "SharedTextureMemoryEndAccessStateFreeMembers",
+        "SupportedFeaturesFreeMembers",
+        "SupportedWGSLLanguageFeaturesFreeMembers",
+        "SurfaceCapabilitiesFreeMembers",
+    ];
+
+    const EXCLUDE_CATEGORIES: &[&str] = &[
+        "constant",
+    ];
+
+    const EXCLUDE_EXPORTS: &[&str] = &[
+        "WGPUINTERNAL_HAVE_EMDAWNWEBGPU_HEADER",
+    ];
+
+    pub fn generate_bitmasks(root: &JsonValue) -> TokenStream {
+        let mut out = TokenStream::new();
+        for (name, data) in metadata::get_items_by_category(root, "bitmask") {
+            out.extend(generate_bitmask(name, data));
+        }
         out
     }
 
-    fn generate_enum(type_name: &Name, data: &serde_json::Value) -> TokenStream {
-        let type_ident = format_ident!("WGPU{}", type_name.pascal_case());
+    fn generate_bitmask(type_name: &str, data: &JsonValue) -> TokenStream {
+        let type_name = name::to_pascal_case(type_name);
+        let type_ident = format_ident!("WGPU{type_name}");
         let items = data["values"]
             .as_array()
-            .expect(E_JSON_EXPECT_ARRAY)
+            .expect("failed to parse dawn.json: values is not array")
             .iter()
             .map(|data| {
-                let name = Name::new({
-                    data["name"]
-                        .as_str()
-                        .expect(E_JSON_EXPECT_STRING)
-                        .to_owned()
-                });
-                let ident = format_ident!(
-                    "WGPU{}_{}",
-                    type_name.pascal_case(),
-                    name.pascal_case());
-                quote!(pub const #ident: #type_ident = #type_ident::#ident;)
+                let name = data["name"]
+                    .as_str()
+                    .expect("failed to parse dawn.json: name is not string")
+                    .to_owned();
+                let ident = format_ident!("{}", name::to_screaming_snake_case(&name));
+                let value = data["value"]
+                    .as_u64()
+                    .expect("failed to parse dawn.json: value is not u64");
+                quote!(const #ident = #value;)
             });
-        quote!(#(#items)*)
+        quote! {
+            ::bitflags::bitflags! {
+                #[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+                #[repr(transparent)]
+                pub struct #type_ident: WGPUFlags {
+                    #(#items)*
+                }
+            }
+        }
+
+    }
+
+    pub fn generate_lib(data: &JsonValue) -> TokenStream {
+        let mut out = TokenStream::new();
+        get_exports(data)
+            .into_iter()
+            .for_each(|ident| out.extend(quote!(pub use raw::#ident;)));
+        metadata::get_items_by_category(data, "enum")
+            .into_iter()
+            .for_each(|(name, data)| out.extend(generate_enum_impl(name, data)));
+        out
+    }
+
+    fn get_exports(data: &JsonValue) -> Vec<syn::Ident> {
+        let mut exports = Vec::new();
+
+        for &category in DAWN_ITEM_CATEGORIES {
+            if EXCLUDE_CATEGORIES.contains(&category) {
+                continue;
+            }
+
+            for (name, data) in metadata::get_items_by_category(data, category) {
+                for ident in get_exports_for_item(name, category) {
+                    exports.push(ident);
+                }
+
+                if category == "object" {
+                    for (method_name, _) in metadata::get_methods(data) {
+                        exports.extend(get_exports_for_method(name, method_name));
+                    }
+                }
+            }
+        }
+
+        for &name in EXTRA_EXPORT_TYPES {
+            exports.push(format_ident!("WGPU{}", name));
+        }
+
+        for &name in EXTRA_EXPORT_FUNCTIONS {
+            exports.push(format_ident!("wgpu{}", name));
+            exports.push(format_ident!("WGPUProc{}", name));
+        }
+
+        for &name in EXCLUDE_EXPORTS {
+            let pos = exports
+                .iter()
+                .position(|ident| ident == &name)
+                .expect("missing export in EXCLUDE_EXPORTS");
+            exports.remove(pos);
+        }
+
+        exports.sort_unstable_by_key(|ident| ident.to_string().to_ascii_lowercase());
+        exports
+    }
+
+    fn get_exports_for_item(name: &str, category: &str) -> Vec<syn::Ident> {
+        let name_pascal = name::to_pascal_case(name);
+        match category {
+            "constant" => vec![
+                format_ident!("WGPU_{}", name::to_screaming_snake_case(name)),
+            ],
+            "function" => vec![
+                format_ident!("wgpu{}", name_pascal),
+                format_ident!("WGPUProc{}", name_pascal),
+            ],
+            "object" => vec![
+                format_ident!("WGPU{}", name_pascal),
+                format_ident!("WGPU{}Impl", name_pascal),
+                format_ident!("WGPUProc{}AddRef", name_pascal),
+                format_ident!("WGPUProc{}Release", name_pascal),
+                format_ident!("wgpu{}AddRef", name_pascal),
+                format_ident!("wgpu{}Release", name_pascal),
+            ],
+            _ => vec![
+                format_ident!("WGPU{}", name_pascal),
+            ],
+        }
+    }
+
+    fn get_exports_for_method(object_name: &str, method_name: &str) -> Vec<syn::Ident> {
+        let object_name = name::to_pascal_case(object_name);
+        let method_name = name::to_pascal_case(method_name);
+        vec![
+            format_ident!("wgpu{}{method_name}", object_name),
+            format_ident!("WGPUProc{}{method_name}", object_name),
+        ]
+    }
+
+    fn generate_enum_impl(type_name: &str, data: &JsonValue) -> TokenStream {
+        let type_name = name::to_pascal_case(type_name);
+        let type_ident = format_ident!("WGPU{type_name}");
+        let items = data["values"]
+            .as_array()
+            .expect("failed to parse dawn.json: values is not array")
+            .iter()
+            .map(|data| {
+                let name = data["name"]
+                    .as_str()
+                    .expect("failed to parse dawn.json: name is not string")
+                    .to_owned();
+                let raw_name = name::to_pascal_case(&name);
+                let raw_ident = format_ident!("WGPU{type_name}_WGPU{type_name}_{raw_name}");
+                let export_name = match raw_name.get(0..2) {
+                    Some("1D") => format!("D1{}", &raw_name[2..]),
+                    Some("2D") => format!("D2{}", &raw_name[2..]),
+                    Some("3D") => format!("D3{}", &raw_name[2..]),
+                    _ => raw_name,
+                };
+                let export_ident = format_ident!("{export_name}");
+                quote!(pub const #export_ident: Self = raw::#raw_ident;)
+            });
+        quote!(impl #type_ident { #(#items)* })
     }
 }

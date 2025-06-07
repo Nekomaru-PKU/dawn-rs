@@ -1,13 +1,17 @@
 [package]
 name = "dawn-sys"
-version = "0.4.2"
-edition = { workspace = true }
-description = "Unsafe Rust bindings for Dawn, the open-source and cross-platform implementation of the WebGPU standard that powers Google Chrome, Microsoft Edge and other Chromium browsers."
-categories = ["external-ffi-bindings"]
-keywords = ["dawn", "webgpu", "wgpu", "vulkan", "metal"]
+version = "1.0.0"
+edition = "2024"
 license = "BSD-3-Clause"
 authors = { workspace = true }
 repository = { workspace = true }
 
-[features]
-std = []
+description = "Unsafe Rust bindings for Dawn, the open-source and cross-platform implementation of the WebGPU standard that powers Google Chrome, Microsoft Edge and other Chromium browsers."
+categories = ["external-ffi-bindings"]
+keywords = ["dawn", "webgpu", "wgpu", "vulkan", "metal"]
+
+[dev-dependencies]
+winsafe = { version = "0.0.24", features = ["gui"] }
+
+[dependencies]
+bitflags = "2.9.1"

@@ -1,12 +1,14 @@
 [package]
 name = "dawn-rs"
-version = { workspace = true }
-edition = { workspace = true }
+version = "0.0.1"
+edition = "2024"
+license = "BSD-3-Clause OR MIT OR Apache-2.0"
+authors = { workspace = true }
+repository = { workspace = true }
+
 description = "Safe Rust bindings for Dawn, the open-source and cross-platform implementation of the WebGPU standard that powers Google Chrome, Microsoft Edge and other Chromium browsers."
 categories = ["graphics", "api-bindings"]
 keywords = ["dawn", "webgpu", "wgpu", "vulkan", "metal"]
-license = "MIT OR Apache-2.0"
-authors = { workspace = true }
-repository = { workspace = true }
+
 
 [dependencies]

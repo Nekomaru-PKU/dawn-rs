@@ -3,11 +3,10 @@ resolver = "3"
 members = [
     "dawn-bindgen",
     "dawn-sys",
+    "dawn-macros",
     "dawn-rs",
 ]
 
 [workspace.package]
-version = "0.1.0"
-edition = "2024"
 authors = ["Nekomaru <Nekomaru@pku.edu.cn>"]
 repository = "https://github.com/Nekomaru-PKU/dawn-rs"

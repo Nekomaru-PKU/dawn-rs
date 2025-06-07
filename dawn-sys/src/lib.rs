@@ -1,67 +1,17 @@
-#![cfg_attr(not(feature = "std"), no_std)]
+#![no_std]
 #![doc = include_str!("../README.md")]
-#![expect(non_snake_case)]
 #![expect(non_upper_case_globals)]
 
-include!("../generated/bindings.rs");
-include!("../generated/lib.rs");
+mod raw {
+    #![expect(dead_code)]
+    #![expect(non_camel_case_types)]
+    #![expect(non_snake_case)]
 
-/// See <https://webgpu-native.github.io/webgpu-headers/group__UtilityTypes.html#ga9437e366d8583db3dd6ba695a970409d>
-/// for details on [`WGPUStringView`] and the `WGPU_STRLEN` sentinel value.
-impl WGPUStringView {
-    pub fn null() -> Self {
-        Self {
-            data: core::ptr::null(),
-            length: WGPU_STRLEN,
-        }
-    }
-
-    pub fn empty() -> Self {
-        Self {
-            data: core::ptr::null(),
-            length: 0,
-        }
-    }
-
-    pub fn from_bytes<'a, T: Into<Option<&'a [u8]>>>(bytes: T) -> Self {
-        if let Some(bytes) = bytes.into() {
-            Self {
-                data:
-                    bytes.as_ptr().cast(),
-                length:
-                    bytes.len(),
-            }
-        } else {
-            Self::null()
-        }
-    }
-
-    #[expect(clippy::should_implement_trait, reason = "WGPUStringView::from_str never fails")]
-    pub fn from_str<'a, T: Into<Option<&'a str>>>(s: T) -> Self {
-        Self::from_bytes(s.into().map(str::as_bytes))
-    }
-
-    pub fn as_bytes(&self) -> &[u8] {
-        if self.length == 0 || self.data.is_null() {
-            &[]
-        } else if self.length == WGPU_STRLEN {
-            unsafe {
-                core::ffi::CStr::from_ptr(self.data.cast())
-            }.to_bytes()
-        } else {
-            unsafe {
-                core::slice::from_raw_parts(
-                    self.data.cast(),
-                    self.length)
-            }
-        }
-    }
-
-    #[cfg(feature = "std")]
-    pub fn to_string_lossy(&self) -> String {
-        String::from_utf8_lossy(self.as_bytes()).into_owned()
-    }
+    include!("../generated/bindings.rs");
+    include!("../generated/bitmasks.rs");
 }
+
+include!("../generated/lib.rs");
 
 /// `true` value of [`WGPUBool`].
 pub const WGPU_TRUE: WGPUBool = 1;
