@@ -41,8 +41,7 @@ use quote::format_ident;
         if attr.to_string().as_str() == "labeled" {
             quote!(impl #ident {
                 pub fn set_label(&self, label: &str) {
-                    let label = WGPUStringViewExt::from_str(label);
-                    unsafe { #ident_sys_set_label(self.ptr(), &label) };
+                    unsafe { #ident_sys_set_label(self.ptr(), label.into()) };
                 }
             })
         } else if attr.is_empty() {
